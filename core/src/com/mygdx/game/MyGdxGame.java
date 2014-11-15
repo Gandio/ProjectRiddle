@@ -21,17 +21,17 @@ public class MyGdxGame implements ApplicationListener {
 		
 		//instanciamos la camara y la ajustamos a la resolución anterior 
 		camara = new OrthographicCamera();
-		camara.setToOrtho(false, anchura, altura);
+		camara.setToOrtho(false, 800, 480);
 		
 		//instanciamos el spritebatch
 		batch = new SpriteBatch();
 		
 		//instanciamos la textura
-		textura = new Texture(Gdx.files.internal("data/Imagenes/mapa.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/mapa.png"));
 		
 		//instanciamos la región, (0,0) es el origen, esquina superior izquierda y altura y 
 		//anchura el fin
-		region = new TextureRegion(textura, 0, 0, anchura, altura);
+		region = new TextureRegion(textura, 0,0,(int)anchura,(int)altura);
 	}
 	
 	public void render() {
