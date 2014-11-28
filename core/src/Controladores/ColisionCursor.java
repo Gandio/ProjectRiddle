@@ -10,40 +10,34 @@ import com.badlogic.gdx.utils.Array;
 import Objetos.Cursor;
 import Pantallas.Pasillo;
 
+/**
+ * Esta clase controla toda la lógica del cursor
+ * @author Francisco Madueño Chulián
+ *
+ */
 public class ColisionCursor {
 	private Pasillo pasillo;
-	private Array<Rectangle> puertas;
 	private Array<Rectangle> paredes;
-	private float[] colisionaParedesAbajo;
-	private float[] colisionaParedesArriba;
-	private float[] colisionaParedesDerecha;
-	private float[] colisionaParedesIzquierda;
 	Iterator<Rectangle> iRect;
 	private Cursor cursor;
-	private boolean noAbajo, noArriba, noIzquierda, noDerecha, colisionPuerta;
+	private boolean noAbajo, noArriba, noIzquierda, noDerecha;
 	
+	/**
+	 * Recibe el objeto Pasillo que se haya instanciado cuando se crea el juego
+	 * @param p
+	 */
 	public ColisionCursor(Pasillo p){
 		pasillo = p;
 		paredes = pasillo.getParedes();
 		cursor = pasillo.getCursor();
 		noAbajo = noArriba = noIzquierda = noDerecha = false;
-		
-		colisionaParedesAbajo = new float[paredes.size];
-		colisionaParedesArriba = new float[paredes.size];
-		colisionaParedesDerecha = new float[paredes.size];
-		colisionaParedesIzquierda = new float[paredes.size];
-		
-		iRect = paredes.iterator();
-		
-		/*for(int i = 0; i < paredes.size; ++i){
-			rectanguloAux = iRect.next(); 
-			colisionaParedesAbajo[i] = rectanguloAux.getY();
-			colisionaParedesIzquierda[i] = rectanguloAux.getX();
-			colisionaParedesArriba[i] = (rectanguloAux.getY() + rectanguloAux.getHeight());
-			colisionaParedesDerecha[i] = (rectanguloAux.getX() + rectanguloAux.getWidth());
-		}*/
 	}
 	
+	/**
+	 * Este método controla el movimiento del cursor y las colisiones con los obstaculos del 
+	 * pasillo
+	 * @param delta
+	 */
 	public void update(float delta){
 		//Me muevo
 				if(Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
@@ -113,6 +107,10 @@ public class ColisionCursor {
 		
 	}
 	
+	/**
+	 * Este método comprueba si el jugador puede moverse hacia abajo
+	 * @return noAbajo
+	 */
 	public boolean colisionaAbajo(){
 		int i = 0;
 		iRect = paredes.iterator();
@@ -131,6 +129,10 @@ public class ColisionCursor {
 		return noAbajo;
 	}
 	
+	/**
+	 * Este método comprueba si el jugador puede moverse hacia arriba
+	 * @return noArriba
+	 */
 	public boolean colisionaArriba(){
 		int i = 0;
 		iRect = paredes.iterator();
@@ -149,6 +151,11 @@ public class ColisionCursor {
 		
 		return noArriba;
 	}
+	
+	/**
+	 * Este método comprueba si el jugador puede moverse hacia la derecha
+	 * @return noDerecha
+	 */
 	public boolean colisionaDerecha(){
 		int i = 0;
 		iRect = paredes.iterator();
@@ -169,6 +176,10 @@ public class ColisionCursor {
 		return noDerecha;
 	}
 	
+	/**
+	 * Este método comprueba si el jugador puede moverse hacia la izquierda
+	 * @return noIzquierda
+	 */
 	public boolean colisionaIzquierda(){
 		int i  = 0;
 		iRect = paredes.iterator();
@@ -187,6 +198,4 @@ public class ColisionCursor {
 		
 		return noIzquierda;
 	}
-	
-	public boolean colisionaPuerta(){return colisionPuerta;}
 }

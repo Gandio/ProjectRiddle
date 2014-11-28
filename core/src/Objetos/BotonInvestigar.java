@@ -1,4 +1,4 @@
-package Objetos;
+/*package Objetos;
 
 import com.mygdx.game.MyGdxGame;
 
@@ -10,4 +10,4 @@ public class BotonInvestigar extends Boton{
 		this.game = game;
 	}
 
-}
+}*/

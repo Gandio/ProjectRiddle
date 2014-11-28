@@ -1,7 +1,5 @@
 package Objetos;
 
-import Controladores.ColisionCursor;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -12,6 +10,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Esta clase representa la situación al protagonista mientras se mueve por los pasillos de 
+ * la casa.
+ * @author Francisco Madueño Chulián
+ */
 public class Cursor extends Actor{
 	private MyGdxGame game;
 	private Texture cursor;
@@ -22,8 +25,11 @@ public class Cursor extends Actor{
 	private float stateTime;
 	private Vector2 velocity;
 	private Rectangle limites;
-	private ColisionCursor colisiones;
 	
+	/**
+	 * Recibe un objeto MyGdxGame que hereda de la clase Game
+	 * @param game
+	 */
 	public Cursor(MyGdxGame game) {
 		this.game = game;
 		
@@ -39,6 +45,7 @@ public class Cursor extends Actor{
 		izquierda = new TextureRegion[3];
 		izquierda[0] = izquierda[1] = izquierda[2] = tmp[0][1];
 		
+		//Al principio del juego el personaje mirará hacia arriba y se situará en la entrada
 		frameActual = new TextureRegion(arriba[0]);
 		
 		stateTime = 0f;
@@ -54,105 +61,90 @@ public class Cursor extends Actor{
 		
 		velocity = new Vector2(0, 0);
 		
-		//Colisiones
+		//Creamos un rectangulo que envuelva al personaje, nos ayudará con las colisiones
 		limites = new Rectangle();
 		limites.setSize(cursor.getWidth() / 4, cursor.getHeight());
-		//colisiones = new ColisionCursor(game.getPasillo());
 	}
 	
-	//Dibujamos al actor
+	/**
+	 * Este método dibujará al actor
+	 */
 	public void draw(Batch batch, float parentAlpha){  
 		batch.draw(frameActual, getX(), getY());
 	}
 	
-	//Logica del actor
-	/*public void act(float delta){
-		//Me muevo
-		if(Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-				&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-			
-			if(colisiones.colisionaArriba()){
-				velocity.y = 0;
-			}else{
-				velocity.y = 1;
-				velocity.x = 0;
-			}
-			
-			frameActual = moverArriba.getKeyFrame(stateTime,true);
-			
-			
-		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-				&& Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-			
-				velocity.y = -1;
-				velocity.x = 0;
-				frameActual = moverAbajo.getKeyFrame(stateTime,true);
-			
-		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && Gdx.input.isKeyJustPressed(Keys.A)
-				&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-
-				velocity.x = -1;
-				velocity.y = 0;
-				frameActual = moverIzquierda.getKeyFrame(stateTime,true);
-			
-		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-				&& !Gdx.input.isKeyJustPressed(Keys.S) && Gdx.input.isKeyJustPressed(Keys.D)){
-		
-				velocity.x = 1;
-				velocity.y = 0;
-				frameActual = moverDerecha.getKeyFrame(stateTime,true);
-		
-		}else{
-			velocity.x = 0;
-			velocity.y = 0;
-		}
-
-		setX(getX() + velocity.x);
-		setY(getY() + velocity.y);
-      
-        //actualizamos nuestro stateTime y dibujamos el currentFrame.
-        stateTime += delta;
-        
-        //Actualizamos la posición de las colisiones
-        limites.setPosition(getX(), getY());
-	}
-	*/
+	/**
+	 * Usamos este método para modificar el stateTime del cursor
+	 * @param time
+	 */
 	public void setStateTime(float time){
 		stateTime += time;
 	}
 	
+	/**
+	 * Este método devuelve el stateTime del cursor
+	 * @return stateTime
+	 */
 	public float getStateTime(){
 		return stateTime;
 	}
 	
+	/**
+	 * Este método devuelve la dirección en la que se mueve el cursor
+	 * @return velocity
+	 */
 	public Vector2 getVelocity(){
 		return velocity;
 	}
 	
+	/**
+	 * Modifica la dirección X del cursor
+	 * @param x
+	 */
 	public void setVelocityX(float x){
 		velocity.x = x;
 	}
 	
+	/**
+	 * Modifica la dirección Y del cursor
+	 * @param y
+	 */
 	public void setVelocityY(float y){
 		velocity.y = y;
 	}
 	
+	/**
+	 * Cambia el frame del cursor, hace que mire hacia arriba
+	 */
 	public void MirarArriba(){
 		frameActual = moverArriba.getKeyFrame(stateTime,true);
 	}
 	
+	/**
+	 * Cambia el frame del cursor, hace que mire hacia abajo
+	 */
 	public void MirarAbajo(){
 		frameActual = moverAbajo.getKeyFrame(stateTime,true);
 	}
 	
+	/**
+	 * Cambia el frame del cursor, hace que mire hacia la derecha
+	 */
 	public void MirarDerecha(){
 		frameActual = moverDerecha.getKeyFrame(stateTime,true);
 	}
 	
+	/**
+	 * Cambia el frame del cursor, hace que mire hacia la izquierda
+	 */
 	public void MirarIzquierda(){
 		frameActual = moverIzquierda.getKeyFrame(stateTime,true);
 	}
 	
+	/**
+	 * Devuelve el rectangulo que envuelve al cursor
+	 * @return limites
+	 */
 	public Rectangle getLimites(){
 		return limites;
 	}

@@ -1,8 +1,10 @@
 package Pantallas;
 
 import Controladores.ColisionCursor;
+import Controladores.ControladorBotonPuerta;
 import Objetos.Boton;
 import Objetos.BotonPuerta;
+import Objetos.BotonPuertaDesactivado;
 import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
@@ -19,27 +21,34 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
-import com.sun.java.swing.plaf.gtk.GTKConstants.ShadowType;
 
 public class Pasillo implements Screen{
-	
+	//Juego
 	private MyGdxGame game;
-	private Cursor cursor;
-	private Texture pasillos;
-	private SpriteBatch batch;
-	private OrthographicCamera camara;
 	private Stage stage;
-	private Boton botonPuerta; //permite entrar en una habitación
+	
+	//Actores
+	private Cursor cursor;
+	private BotonPuerta botonPuerta; //permite entrar en una habitación
+	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
+	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
+	
+	//Camaras
+	private OrthographicCamera camara;
+	private SpriteBatch batch;
 	private FillViewport viewport; //se usa para adaptar la pantalla
 	private float altura = Gdx.graphics.getHeight();
 	private float anchura = Gdx.graphics.getWidth();
 	private float proporcionAlto = altura/800;
 	private float proporcionAncho = anchura/480;
-	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
-	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
-	private ColisionCursor controladorCursor;
+	
+	//Texturas
+	private Texture pasillos;
 	private ShapeRenderer sr;
 	
+	//Controladores
+	private ColisionCursor controladorCursor;
+	private ControladorBotonPuerta controladorBotonPuerta;
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(proporcionAncho, proporcionAlto));
@@ -51,6 +60,7 @@ public class Pasillo implements Screen{
 		
 		//instanciamos la camara
 		camara = new OrthographicCamera();
+		camara.setToOrtho(false, proporcionAncho, proporcionAlto);
 		camara.position.set(cursor.getX(), cursor.getY(), 0);
 		camara.zoom -= 0.4;
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
@@ -76,7 +86,9 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
 		
+		//Instanciamos los controladores
 		controladorCursor = new ColisionCursor(this);
+		controladorBotonPuerta = new ControladorBotonPuerta(this);
 		
 		sr = new ShapeRenderer();
 		
@@ -105,9 +117,11 @@ public class Pasillo implements Screen{
 		//Movimiento del cursor
 		controladorCursor.update(delta);
 		
+		//Boton para abrir puertas
+		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
+		controladorBotonPuerta.update();
 		
 		//Dibujamos bordes
-		
 		sr.setProjectionMatrix(camara.combined);
 		sr.begin(ShapeType.Line);
 		sr.setColor(Color.GREEN);
@@ -176,5 +190,9 @@ public class Pasillo implements Screen{
 	
 	public Cursor getCursor(){
 		return cursor;
+	}
+	
+	public BotonPuerta getBotonPuerta(){
+		return botonPuerta;
 	}
 }
