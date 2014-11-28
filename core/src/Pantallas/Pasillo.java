@@ -1,20 +1,25 @@
 package Pantallas;
 
+import Controladores.ColisionCursor;
 import Objetos.Boton;
 import Objetos.BotonPuerta;
 import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
+import com.sun.java.swing.plaf.gtk.GTKConstants.ShadowType;
 
 public class Pasillo implements Screen{
 	
@@ -32,6 +37,9 @@ public class Pasillo implements Screen{
 	private float proporcionAncho = anchura/480;
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
+	private ColisionCursor controladorCursor;
+	private ShapeRenderer sr;
+	
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(proporcionAncho, proporcionAlto));
@@ -67,6 +75,11 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(1230, 290, 65, 65)); //derecha
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
+		
+		controladorCursor = new ColisionCursor(this);
+		
+		sr = new ShapeRenderer();
+		
 		//añadimos actores
 		stage.addActor(cursor);
 		stage.addActor(botonPuerta);
@@ -88,6 +101,37 @@ public class Pasillo implements Screen{
 		//Hacemos que la camara me siga
 		camara.position.x = cursor.getX();
 		camara.position.y = cursor.getY();
+		
+		//Movimiento del cursor
+		controladorCursor.update(delta);
+		
+		
+		//Dibujamos bordes
+		
+		sr.setProjectionMatrix(camara.combined);
+		sr.begin(ShapeType.Line);
+		sr.setColor(Color.GREEN);
+		sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
+				cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
+		
+		sr.rect(255, 403, 1000, 120);
+		sr.rect(255, 403, 50, 430);
+		sr.rect(20, 690, 250, 50); //superior
+		sr.rect(0, 150, 35, 550); //superior izquierda puerta
+		sr.rect(0, 150, 765, 105); //inferior puerta
+		sr.rect(715, 0, 50, 150); //derecha entrada
+		sr.rect(715, -38, 300, 150); //inferior entrada
+		sr.rect(938, -38, 50, 293); //izquierda entrada
+		sr.rect(938, 156, 350, 100); //inferior
+		sr.rect(1240, 156, 50, 300);
+		
+		sr.setColor(Color.PURPLE);
+		sr.rect(546, 385, 75, 75);
+		sr.rect(1060, 385, 65, 65);
+		sr.rect(1230, 290, 65, 65);
+		sr.rect(255, 200, 75, 75);
+		sr.rect(-20, 490, 75, 65);
+		sr.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
