@@ -22,6 +22,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Esta clase representa los pasillos de la casa por donde el jugador tendrá que moverse para
+ * ir de una habitación a otra.
+ * @author Francisco Madueño Chulián
+ */
 public class Pasillo implements Screen{
 	//Juego
 	private MyGdxGame game;
@@ -96,7 +101,11 @@ public class Pasillo implements Screen{
 		stage.addActor(cursor);
 		stage.addActor(botonPuerta);
 	}
-
+	
+	/**
+	 * Este método se ejecuta constantemente mientras el juego esté funcionando y se encarga
+	 * de actualizarlo.
+	 */
 	public void render(float delta){
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -121,6 +130,7 @@ public class Pasillo implements Screen{
 		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
 		controladorBotonPuerta.update();
 		
+		/*
 		//Dibujamos bordes
 		sr.setProjectionMatrix(camara.combined);
 		sr.begin(ShapeType.Line);
@@ -146,6 +156,7 @@ public class Pasillo implements Screen{
 		sr.rect(255, 200, 75, 75);
 		sr.rect(-20, 490, 75, 65);
 		sr.end();
+		*/
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -180,18 +191,34 @@ public class Pasillo implements Screen{
 	 * ---------------------------------------------------------------
 	 */
 	
+	/**
+	 * Devuelve el array con todos los rectángulos que envuelven a las paredes
+	 * @return colisionesParedes
+	 */
 	public Array<Rectangle> getParedes(){
 		return colisionesParedes;
 	}
 	
+	/**
+	 * Devuelve el array con todos los rectángulos que envuelven a las puertas
+	 * @return colisionesPuertas
+	 */
 	public Array<Rectangle> getPuertas(){
 		return colisionesPuertas;
 	}
 	
+	/**
+	 * Devuelve el cursor
+	 * @return cursor
+	 */
 	public Cursor getCursor(){
 		return cursor;
 	}
 	
+	/**
+	 * Devuelve el botón asociado a las puertas
+	 * @return botonPuerta
+	 */
 	public BotonPuerta getBotonPuerta(){
 		return botonPuerta;
 	}
