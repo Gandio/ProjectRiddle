@@ -2,14 +2,11 @@ package Pantallas;
 
 import Controladores.ColisionCursor;
 import Controladores.ControladorBotonPuerta;
-import Objetos.Boton;
 import Objetos.BotonPuerta;
-import Objetos.BotonPuertaDesactivado;
 import Objetos.Cursor;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -31,6 +28,7 @@ public class Pasillo implements Screen{
 	//Juego
 	private MyGdxGame game;
 	private Stage stage;
+	private Music musicaPasillo;
 	
 	//Actores
 	private Cursor cursor;
@@ -58,6 +56,9 @@ public class Pasillo implements Screen{
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(proporcionAncho, proporcionAlto));
 		this.game = game;
+		musicaPasillo = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		musicaPasillo.setLooping(true);
+		musicaPasillo.play();
 		
 		//instanciamos los actores
 		cursor = new Cursor(game);
@@ -183,6 +184,7 @@ public class Pasillo implements Screen{
 	public void dispose(){
 		pasillos.dispose();
 		batch.dispose();
+		musicaPasillo.dispose();
 		stage.dispose();
 	}
 	
