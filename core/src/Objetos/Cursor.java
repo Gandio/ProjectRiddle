@@ -22,6 +22,8 @@ public class Cursor extends Actor{
 	private TextureRegion[][] tmp;
 	private Animation moverArriba, moverAbajo, moverDerecha, moverIzquierda;
 	private TextureRegion frameActual;
+	public enum Posicion{ARRIBA, ABAJO, DERECHA, IZQUIERDA};
+	private Posicion posicionActual;
 	private float stateTime;
 	private Vector2 velocity;
 	private Rectangle limites;
@@ -118,6 +120,7 @@ public class Cursor extends Actor{
 	 */
 	public void MirarArriba(){
 		frameActual = moverArriba.getKeyFrame(stateTime,true);
+		posicionActual = Posicion.ARRIBA;
 	}
 	
 	/**
@@ -125,6 +128,7 @@ public class Cursor extends Actor{
 	 */
 	public void MirarAbajo(){
 		frameActual = moverAbajo.getKeyFrame(stateTime,true);
+		posicionActual = Posicion.ABAJO;
 	}
 	
 	/**
@@ -132,6 +136,7 @@ public class Cursor extends Actor{
 	 */
 	public void MirarDerecha(){
 		frameActual = moverDerecha.getKeyFrame(stateTime,true);
+		posicionActual = Posicion.DERECHA;
 	}
 	
 	/**
@@ -139,6 +144,7 @@ public class Cursor extends Actor{
 	 */
 	public void MirarIzquierda(){
 		frameActual = moverIzquierda.getKeyFrame(stateTime,true);
+		posicionActual = Posicion.IZQUIERDA;
 	}
 	
 	/**
@@ -147,5 +153,9 @@ public class Cursor extends Actor{
 	 */
 	public Rectangle getLimites(){
 		return limites;
+	}
+	
+	public Posicion getPosicion(){
+		return posicionActual;
 	}
 }

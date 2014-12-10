@@ -2,11 +2,12 @@ package Pantallas;
 
 import Controladores.ColisionCursor;
 import Controladores.ControladorBotonPuerta;
-import Objetos.BotonPuerta;
+import Controladores.ControladorBotonPuertaPasillo;
+import Objetos.Boton;
 import Objetos.Cursor;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +15,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
@@ -24,45 +24,24 @@ import com.mygdx.game.MyGdxGame;
  * ir de una habitación a otra.
  * @author Francisco Madueño Chulián
  */
-public class Pasillo implements Screen{
-	//Juego
-	private MyGdxGame game;
-	private Stage stage;
-	private Music musicaPasillo;
+public class Pasillo extends Pantalla implements Screen{
 	
-	//Actores
-	private Cursor cursor;
-	private BotonPuerta botonPuerta; //permite entrar en una habitación
+	private static Cursor cursor = new Cursor(game);
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
 	
-	//Camaras
-	private OrthographicCamera camara;
-	private SpriteBatch batch;
-	private FillViewport viewport; //se usa para adaptar la pantalla
-	private float altura = Gdx.graphics.getHeight();
-	private float anchura = Gdx.graphics.getWidth();
-	private float proporcionAlto = altura/800;
-	private float proporcionAncho = anchura/480;
-	
 	//Texturas
-	private Texture pasillos;
 	private ShapeRenderer sr;
 	
 	//Controladores
 	private ColisionCursor controladorCursor;
-	private ControladorBotonPuerta controladorBotonPuerta;
 	
 	public Pasillo(MyGdxGame game) {
-		stage = new Stage(new FillViewport(proporcionAncho, proporcionAlto));
-		this.game = game;
-		musicaPasillo = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
-		musicaPasillo.setLooping(true);
-		musicaPasillo.play();
+		super(game);
 		
-		//instanciamos los actores
-		cursor = new Cursor(game);
-		botonPuerta = new BotonPuerta(game);
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		musica.setLooping(true);
+		musica.play();
 		
 		//instanciamos la camara
 		camara = new OrthographicCamera();
@@ -94,13 +73,12 @@ public class Pasillo implements Screen{
 		
 		//Instanciamos los controladores
 		controladorCursor = new ColisionCursor(this);
-		controladorBotonPuerta = new ControladorBotonPuerta(this);
+		controladorBotonPuerta = new ControladorBotonPuertaPasillo(this, game);
 		
 		sr = new ShapeRenderer();
 		
 		//añadimos actores
 		stage.addActor(cursor);
-		stage.addActor(botonPuerta);
 	}
 	
 	/**
@@ -117,7 +95,7 @@ public class Pasillo implements Screen{
 		
 		//Empezamos a dibujar
 		batch.begin();
-		batch.draw(pasillos, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(pantalla, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
 		
 		//Hacemos que la camara me siga
@@ -170,7 +148,7 @@ public class Pasillo implements Screen{
 	public void show(){
 		//instanciamos el batch
 		batch = new SpriteBatch();
-		pasillos = new Texture("Imagenes/pasillos.png");
+		pantalla = new Texture("Imagenes/pasillos.png");
 	}
 	
 	public void hide(){
@@ -182,9 +160,9 @@ public class Pasillo implements Screen{
 	public void resume() {}
 	
 	public void dispose(){
-		pasillos.dispose();
+		pantalla.dispose();
 		batch.dispose();
-		musicaPasillo.dispose();
+		musica.dispose();
 		stage.dispose();
 	}
 	
@@ -221,7 +199,7 @@ public class Pasillo implements Screen{
 	 * Devuelve el botón asociado a las puertas
 	 * @return botonPuerta
 	 */
-	public BotonPuerta getBotonPuerta(){
+	public Boton getBotonPuerta(){
 		return botonPuerta;
 	}
 }
