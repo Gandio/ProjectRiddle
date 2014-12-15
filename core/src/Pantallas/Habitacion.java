@@ -20,23 +20,23 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Esta clase abstracta generaliza todas las habitaciones del juego.
+ * @author Francisco Madueño Chulián
+ */
 public abstract class Habitacion extends Pantalla implements Screen{
 	
 	//Actores
 	private Personaje personaje;
-	private Boton botonInvestigar;
-	private Boton botonConversacion;
-	private Pasillo pasillo;
+	protected Boton botonInvestigar;
+	protected Boton botonConversacion;
 	
 	//Controladores
-	private ControladorBotonConversacion controladorConversacion;
-	private ControladorBotonInvestigar controladorInvestigar;
+	protected ControladorBotonConversacion controladorConversacion;
+	protected ControladorBotonInvestigar controladorInvestigar;
 	
-	public Habitacion(MyGdxGame game, Pasillo pasillo) {
+	public Habitacion(MyGdxGame game) {
 		super(game);
-		
-		//Mantenemos la referencia del pasillo
-		this.pasillo = pasillo;
 
 		//Actores
 		botonConversacion = new BotonConversacion(game);
@@ -44,7 +44,7 @@ public abstract class Habitacion extends Pantalla implements Screen{
 		
 		//Camaras
 		camara = new OrthographicCamera();
-		camara.position.set(MyGdxGame.WIDTH/2f, MyGdxGame.HEIGHT/2f, 0);
+		camara.setToOrtho(false, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		Gdx.input.setInputProcessor(stage);
 		
@@ -53,6 +53,28 @@ public abstract class Habitacion extends Pantalla implements Screen{
 		stage.addActor(botonInvestigar);
 		
 		//Añadimos controladores
+		controladorConversacion = new ControladorBotonConversacion(this, game);
+		controladorInvestigar = new ControladorBotonInvestigar(this, game);
 		controladorBotonPuerta = new ControladorBotonPuertaHabitacion(this, game);
+		
+		//Asignamos controladores a otros
+		controladorConversacion.asignarControladorInvestigar(controladorInvestigar);
+		controladorInvestigar.asignarControladorConversacion(controladorConversacion);
+	}
+	
+	public Boton getBotonConversacion(){
+		return botonConversacion;
+	}
+	
+	public Boton getBotonInvestigar(){
+		return botonInvestigar;
+	}
+	
+	public ControladorBotonInvestigar getControladorInvestigar(){
+		return controladorInvestigar;
+	}
+	
+	public ControladorBotonConversacion getControladorConversacion(){
+		return controladorConversacion;
 	}
 }

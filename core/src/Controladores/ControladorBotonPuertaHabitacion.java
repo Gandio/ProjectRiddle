@@ -1,6 +1,7 @@
 package Controladores;
 
 import Pantallas.Habitacion;
+import Pantallas.Pantalla;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
@@ -15,15 +16,21 @@ import com.mygdx.game.MyGdxGame;
 
 public class ControladorBotonPuertaHabitacion extends ControladorBotonPuerta{
 	private ControladorBotonConversacion controladorConversacion;
-	private ControladorBotonInvestigar controladorInvestigar;
+	private Habitacion habitacion;
 
 	public ControladorBotonPuertaHabitacion(Habitacion h, MyGdxGame game) {
 		super(h, game);
+		habitacion = h;
+		controladorConversacion = habitacion.getControladorConversacion();
 	}
 	
 	public void update(){
 		if(Gdx.input.isKeyJustPressed(Keys.P)){
-			game.setScreen(new Pasillo(game));
+			if(!controladorConversacion.conversacionActiva()){
+				game.setScreen(new Pasillo(game));
+			}else{
+				System.out.println("Debes acabar la conversacion");
+			}
 		}
 	}
 }

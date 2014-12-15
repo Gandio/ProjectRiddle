@@ -33,16 +33,12 @@ public abstract class Pantalla{
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
 	protected FillViewport viewport; //se usa para adaptar la pantalla
-	private float altura = Gdx.graphics.getHeight();
-	private float anchura = Gdx.graphics.getWidth();
-	protected float proporcionAlto = altura/800;
-	protected float proporcionAncho = anchura/480;
 	
 	//Controladores
 	protected ControladorBotonPuerta controladorBotonPuerta;
 	
 	public Pantalla(MyGdxGame game) {
-		stage = new Stage(new FillViewport(proporcionAncho, proporcionAlto));
+		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		this.game = game;
 		
 		botonPuerta = new BotonPuerta(game);

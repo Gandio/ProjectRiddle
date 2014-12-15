@@ -1,6 +1,7 @@
 package Objetos;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.MyGdxGame;
@@ -29,6 +30,14 @@ public abstract class Boton extends Actor{
 	 * Este método se sobreescribe con la lógica de cada tipo de botón
 	 */
 	public void update(){}
+	
+	
+	/**
+	 * Se dibuja la textura del botón
+	 */
+	public void draw(Batch batch, float parentAlpha) {
+		batch.draw(boton, coordenadaX(), coordenadaY());
+	}
 	
 	/**
 	 * Devuelve el estado del botón

@@ -8,6 +8,7 @@ import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,7 +46,7 @@ public class Pasillo extends Pantalla implements Screen{
 		
 		//instanciamos la camara
 		camara = new OrthographicCamera();
-		camara.setToOrtho(false, proporcionAncho, proporcionAlto);
+		camara.setToOrtho(false, cursor.getX(), cursor.getY());
 		camara.position.set(cursor.getX(), cursor.getY(), 0);
 		camara.zoom -= 0.4;
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
@@ -109,8 +110,9 @@ public class Pasillo extends Pantalla implements Screen{
 		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
 		controladorBotonPuerta.update();
 		
-		/*
+		
 		//Dibujamos bordes
+		/*
 		sr.setProjectionMatrix(camara.combined);
 		sr.begin(ShapeType.Line);
 		sr.setColor(Color.GREEN);
@@ -136,10 +138,10 @@ public class Pasillo extends Pantalla implements Screen{
 		sr.rect(-20, 490, 75, 65);
 		sr.end();
 		*/
-		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
+	
 	public void resize(int width, int height){
 		viewport.update(width, height);
 		stage.setViewport(viewport);

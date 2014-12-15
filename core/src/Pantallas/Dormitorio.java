@@ -4,8 +4,8 @@ import com.mygdx.game.MyGdxGame;
 
 public class Dormitorio extends Habitacion{
 
-	public Dormitorio(MyGdxGame game, Pasillo pasillo) {
-		super(game, pasillo);
+	public Dormitorio(MyGdxGame game) {
+		super(game);
 		// TODO Auto-generated constructor stub
 	}
 

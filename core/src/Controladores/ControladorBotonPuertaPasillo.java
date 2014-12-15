@@ -7,6 +7,7 @@ import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
 import Pantallas.Biblioteca;
 import Pantallas.Habitacion;
+import Pantallas.HabitacionDeMuestra;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
@@ -94,9 +95,13 @@ public class ControladorBotonPuertaPasillo extends ControladorBotonPuerta{
 	//Para saber que puerta corresponde con cada habitación hay que leer los comentarios
 	//de la clase pasillo.
 	public void crearHabitacion(int i){
+		/* Esto se queda pendiente hasta que se resuelva el problema en la habitación de 
+		 * muestra
 		switch(i){
-			case 0: habitacion = new Biblioteca(game, pasillo); break;
+			case 0: habitacion = new Biblioteca(game); break;
 			default: habitacion = null;
-		}
+		}*/
+		
+		habitacion = new HabitacionDeMuestra(game);
 	}
 }

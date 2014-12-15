@@ -18,7 +18,7 @@ import Pantallas.Pasillo;
 public class ColisionCursor {
 	private Pasillo pasillo;
 	private Array<Rectangle> paredes;
-	Iterator<Rectangle> iRect;
+	private Iterator<Rectangle> iRect;
 	private Cursor cursor;
 	private boolean noAbajo, noArriba, noIzquierda, noDerecha;
 	
@@ -40,71 +40,71 @@ public class ColisionCursor {
 	 */
 	public void update(float delta){
 		//Me muevo
-				if(Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-						&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-					
-					if(colisionaArriba()){
-						cursor.setVelocityY(0);
-					}else{
-						cursor.setVelocityY(1);
-						cursor.setVelocityX(0);
-					}
-					
-					cursor.MirarArriba();
-					
-					
-				}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-						&& Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-					
-					if(colisionaAbajo()){
-						cursor.setVelocityY(0);
-					}else{
-						cursor.setVelocityY(-1);
-						cursor.setVelocityX(0);
-					}
-					
-					cursor.MirarAbajo();
-					
-				}else if(!Gdx.input.isKeyJustPressed(Keys.W) && Gdx.input.isKeyJustPressed(Keys.A)
-						&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
-					
-					if(colisionaIzquierda()){
-						cursor.setVelocityX(0);
-					}else{
-						cursor.setVelocityX(-1);
-						cursor.setVelocityY(0);
-					}
-					
-					cursor.MirarIzquierda();
-					
-				}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
-						&& !Gdx.input.isKeyJustPressed(Keys.S) && Gdx.input.isKeyJustPressed(Keys.D)){
-					
-					if(colisionaDerecha()){
-						cursor.setVelocityX(0);
-					}else{
-						cursor.setVelocityX(1);
-						cursor.setVelocityY(0);
-					}
-					
-					cursor.MirarDerecha();
-				
-				}else{
-					cursor.setVelocityX(0);
-					cursor.setVelocityY(0);
-				}
-
-				cursor.setX(cursor.getX() + cursor.getVelocity().x);
-				cursor.setY(cursor.getY() + cursor.getVelocity().y);
-		      
-		        //actualizamos nuestro stateTime y dibujamos el currentFrame.
-		        cursor.setStateTime(delta);
-		        
-		        //Actualizamos la posición de los límites
-		        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
-		        
-		        noAbajo = noArriba = noIzquierda = noDerecha = false;
+		if(Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
+				&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
+			
+			if(colisionaArriba()){
+				cursor.setVelocityY(0);
+			}else{
+				cursor.setVelocityY(1);
+				cursor.setVelocityX(0);
+			}
+			
+			cursor.MirarArriba();
+			
+			
+		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
+				&& Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
+			
+			if(colisionaAbajo()){
+				cursor.setVelocityY(0);
+			}else{
+				cursor.setVelocityY(-1);
+				cursor.setVelocityX(0);
+			}
+			
+			cursor.MirarAbajo();
+			
+		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && Gdx.input.isKeyJustPressed(Keys.A)
+				&& !Gdx.input.isKeyJustPressed(Keys.S) && !Gdx.input.isKeyJustPressed(Keys.D)){
+			
+			if(colisionaIzquierda()){
+				cursor.setVelocityX(0);
+			}else{
+				cursor.setVelocityX(-1);
+				cursor.setVelocityY(0);
+			}
+			
+			cursor.MirarIzquierda();
+			
+		}else if(!Gdx.input.isKeyJustPressed(Keys.W) && !Gdx.input.isKeyJustPressed(Keys.A)
+				&& !Gdx.input.isKeyJustPressed(Keys.S) && Gdx.input.isKeyJustPressed(Keys.D)){
+			
+			if(colisionaDerecha()){
+				cursor.setVelocityX(0);
+			}else{
+				cursor.setVelocityX(1);
+				cursor.setVelocityY(0);
+			}
+			
+			cursor.MirarDerecha();
 		
+		}else{
+			cursor.setVelocityX(0);
+			cursor.setVelocityY(0);
+		}
+
+		cursor.setX(cursor.getX() + cursor.getVelocity().x);
+		cursor.setY(cursor.getY() + cursor.getVelocity().y);
+      
+        //actualizamos nuestro stateTime y dibujamos el currentFrame.
+        cursor.setStateTime(delta);
+        
+        //Actualizamos la posición de los límites
+        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
+        
+        noAbajo = noArriba = noIzquierda = noDerecha = false;
+
 	}
 	
 	/**

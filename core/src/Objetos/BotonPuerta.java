@@ -13,34 +13,26 @@ import com.mygdx.game.MyGdxGame;
  *
  */
 public class BotonPuerta extends Boton{
-	Texture actual, botonActivado, botonDesactivado;
+	Texture botonActivado, botonDesactivado;
 	
 	public BotonPuerta(MyGdxGame game) {
 		super(game);
 		botonActivado = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
 		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/botonPuertaDesactivado.png"));
-		actual = botonDesactivado;
-	}
-	
-	/**
-	 * Se dibuja la textura actual, la cual va cambiando dependiendo de donde se encuentre el 
-	 * personaje
-	 */
-	public void draw(Batch batch, float parentAlpha) {
-		batch.draw(actual, coordenadaX(), coordenadaY());
+		boton = botonDesactivado;
 	}
 	
 	/**
 	 * Activa el botón, podemos entrar en una habitación
 	 */
 	public void activar(){
-		actual = botonActivado;
+		boton = botonActivado;
 	}
 	
 	/**
 	 * Desactiva el botón, no podemos entrar en una habitación
 	 */
 	public void desactivar(){
-		actual = botonDesactivado;
+		boton = botonDesactivado;
 	}
 }

@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 
-public class Biblioteca extends Habitacion{
-	public Biblioteca(MyGdxGame game) {
+public class HabitacionDeMuestra extends Habitacion{
+	public HabitacionDeMuestra(MyGdxGame game) {
 		super(game);
 	}
 
@@ -19,12 +19,17 @@ public class Biblioteca extends Habitacion{
 		camara.update();
 		
 		batch.begin();
-		//batch.draw(pantalla, 0, 0, proporcionAncho, proporcionAlto);
+		batch.draw(pantalla, 0, 0, stage.getWidth(), stage.getHeight());
 		batch.end();
 		
 		//Posicion de botones
 		botonPuerta.setCoordenadas(200, 200);
+		botonInvestigar.setCoordenadas(250, 200);
+		botonConversacion.setCoordenadas(300, 200);
+		
 		controladorBotonPuerta.update();
+		controladorConversacion.update();
+		controladorInvestigar.update();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -40,7 +45,7 @@ public class Biblioteca extends Habitacion{
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Biblioteca.jpg"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/plantillaHabitacion.png"));
 	}
 
 	@Override
