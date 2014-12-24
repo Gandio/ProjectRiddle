@@ -25,7 +25,7 @@ import com.mygdx.game.MyGdxGame;
  * ir de una habitación a otra.
  * @author Francisco Madueño Chulián
  */
-public class Pasillo extends Pantalla implements Screen{
+public class Pasillo extends Pantalla{
 	
 	private static Cursor cursor = new Cursor(game);
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
@@ -45,7 +45,6 @@ public class Pasillo extends Pantalla implements Screen{
 		musica.play();
 		
 		//instanciamos la camara
-		camara = new OrthographicCamera();
 		camara.setToOrtho(false, cursor.getX(), cursor.getY());
 		camara.position.set(cursor.getX(), cursor.getY(), 0);
 		camara.zoom -= 0.4;
@@ -87,12 +86,7 @@ public class Pasillo extends Pantalla implements Screen{
 	 * de actualizarlo.
 	 */
 	public void render(float delta){
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		camara.update();
-		
-		batch.setProjectionMatrix(camara.combined);
+		super.render(delta);
 		
 		//Empezamos a dibujar
 		batch.begin();
@@ -142,30 +136,12 @@ public class Pasillo extends Pantalla implements Screen{
 		stage.draw();
 	}
 	
-	public void resize(int width, int height){
-		viewport.update(width, height);
-		stage.setViewport(viewport);
-	}
-	
 	public void show(){
-		//instanciamos el batch
-		batch = new SpriteBatch();
 		pantalla = new Texture("Imagenes/pasillos.png");
 	}
 	
-	public void hide(){
-		dispose();
-	}
-	
-	public void pause() {}
-	
-	public void resume() {}
-	
 	public void dispose(){
-		pantalla.dispose();
-		batch.dispose();
 		musica.dispose();
-		stage.dispose();
 	}
 	
 	/*----------------------------------------------------------------

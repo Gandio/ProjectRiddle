@@ -27,12 +27,6 @@ public abstract class Boton extends Actor{
 	}
 	
 	/**
-	 * Este método se sobreescribe con la lógica de cada tipo de botón
-	 */
-	public void update(){}
-	
-	
-	/**
 	 * Se dibuja la textura del botón
 	 */
 	public void draw(Batch batch, float parentAlpha) {

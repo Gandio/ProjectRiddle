@@ -13,6 +13,7 @@ import Objetos.Personaje;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,7 +25,7 @@ import com.mygdx.game.MyGdxGame;
  * Esta clase abstracta generaliza todas las habitaciones del juego.
  * @author Francisco Madueño Chulián
  */
-public abstract class Habitacion extends Pantalla implements Screen{
+public abstract class Habitacion extends Pantalla{
 	
 	//Actores
 	private Personaje personaje;
@@ -43,9 +44,8 @@ public abstract class Habitacion extends Pantalla implements Screen{
 		botonInvestigar = new BotonInvestigar(game);
 		
 		//Camaras
-		camara = new OrthographicCamera();
-		camara.setToOrtho(false, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
+		camara.setToOrtho(false, 1280, 720);
+		viewport = new FillViewport(1280, 720, camara);
 		Gdx.input.setInputProcessor(stage);
 		
 		//Añadimos actores
@@ -61,6 +61,40 @@ public abstract class Habitacion extends Pantalla implements Screen{
 		controladorConversacion.asignarControladorInvestigar(controladorInvestigar);
 		controladorInvestigar.asignarControladorConversacion(controladorConversacion);
 	}
+	
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+
+		batch.begin();
+		batch.draw(pantalla, 0, 0, pantalla.getWidth(), pantalla.getHeight());
+		batch.end();
+		
+		//Posicion de botones
+		botonPuerta.setCoordenadas(200, 200);
+		botonInvestigar.setCoordenadas(250, 200);
+		botonConversacion.setCoordenadas(300, 200);
+		
+		controladorBotonPuerta.update();
+		controladorConversacion.update();
+		controladorInvestigar.update();
+		
+		stage.act(Gdx.graphics.getDeltaTime());
+		stage.draw();
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void dispose() {}
+	
+	/*----------------------------------------------------------------
+	 * -----------------------FUNCIONES AUXILIARES--------------------
+	 * ---------------------------------------------------------------
+	 */
 	
 	public Boton getBotonConversacion(){
 		return botonConversacion;
