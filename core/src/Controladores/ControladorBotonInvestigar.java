@@ -1,5 +1,6 @@
 package Controladores;
 
+import Objetos.Personaje;
 import Pantallas.Habitacion;
 
 import com.badlogic.gdx.Gdx;
@@ -10,12 +11,16 @@ public class ControladorBotonInvestigar {
 	private MyGdxGame game;
 	private Habitacion habitacion;
 	private ControladorBotonConversacion controladorConversacion;
+	private Personaje personaje;
 	private boolean investigar;
 	
 	public ControladorBotonInvestigar(Habitacion h, MyGdxGame game) {
 		this.game = game;
 		habitacion = h;
 		investigar = false; //por defecto el modo investigar está desactivado
+		personaje = habitacion.getPersonaje();
+		
+		
 	}
 	
 	public void asignarControladorConversacion(ControladorBotonConversacion c){
@@ -25,10 +30,12 @@ public class ControladorBotonInvestigar {
 	public void update(){
 		if(Gdx.input.isKeyJustPressed(Keys.I)){
 			if(!controladorConversacion.conversacionActiva() && !investigacionActiva()){
+				personaje.setCoordenadas(personaje.coordenadaX(), -400);
 				System.out.println("Paso al modo investigación");
 				activarInvestigacion();
 			}else if(!controladorConversacion.conversacionActiva() && investigacionActiva()){
 				System.out.println("Paso al modo conversacion");
+				personaje.setCoordenadas(personaje.coordenadaX(), 0);
 				desactivarInvestigacion();
 			}else{
 				System.out.println("Debes de activar el modo investigacion");

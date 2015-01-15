@@ -31,4 +31,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>android-sdk-linux</name>
+			<type>2</type>
+			<location>/home/fran/Android/android-sdk-linux</location>
+		</link>
+	</linkedResources>
 </projectDescription>

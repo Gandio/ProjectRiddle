@@ -28,7 +28,7 @@ import com.mygdx.game.MyGdxGame;
 public abstract class Habitacion extends Pantalla{
 	
 	//Actores
-	private Personaje personaje;
+	protected Personaje personaje;
 	protected Boton botonInvestigar;
 	protected Boton botonConversacion;
 	
@@ -38,28 +38,19 @@ public abstract class Habitacion extends Pantalla{
 	
 	public Habitacion(MyGdxGame game) {
 		super(game);
-
-		//Actores
-		botonConversacion = new BotonConversacion(game);
-		botonInvestigar = new BotonInvestigar(game);
 		
 		//Camaras
 		camara.setToOrtho(false, 1280, 720);
 		viewport = new FillViewport(1280, 720, camara);
 		Gdx.input.setInputProcessor(stage);
 		
+		//Actores
+		botonConversacion = new BotonConversacion(game);
+		botonInvestigar = new BotonInvestigar(game);
+		
 		//Añadimos actores
 		stage.addActor(botonConversacion);
 		stage.addActor(botonInvestigar);
-		
-		//Añadimos controladores
-		controladorConversacion = new ControladorBotonConversacion(this, game);
-		controladorInvestigar = new ControladorBotonInvestigar(this, game);
-		controladorBotonPuerta = new ControladorBotonPuertaHabitacion(this, game);
-		
-		//Asignamos controladores a otros
-		controladorConversacion.asignarControladorInvestigar(controladorInvestigar);
-		controladorInvestigar.asignarControladorConversacion(controladorConversacion);
 	}
 	
 	@Override
@@ -80,7 +71,7 @@ public abstract class Habitacion extends Pantalla{
 		controladorInvestigar.update();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
-		stage.draw();
+		//stage.draw();
 	}
 
 	@Override
@@ -110,5 +101,9 @@ public abstract class Habitacion extends Pantalla{
 	
 	public ControladorBotonConversacion getControladorConversacion(){
 		return controladorConversacion;
+	}
+	
+	public Personaje getPersonaje(){
+		return personaje;
 	}
 }
