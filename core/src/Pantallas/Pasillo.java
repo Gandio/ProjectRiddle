@@ -1,13 +1,16 @@
 package Pantallas;
 
-import Controladores.ColisionCursor;
-import Controladores.ControladorBotonPuerta;
-import Controladores.ControladorBotonPuertaPasillo;
 import Objetos.Boton;
+import Objetos.BotonAbajo;
+import Objetos.BotonArriba;
+import Objetos.BotonDerecha;
+import Objetos.BotonIzquierda;
+import Objetos.BotonPuertaPasillo;
 import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +19,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
@@ -25,20 +30,41 @@ import com.mygdx.game.MyGdxGame;
  * ir de una habitación a otra.
  * @author Francisco Madueño Chulián
  */
-public class Pasillo extends Pantalla{
+public class Pasillo implements Screen{
+	//Juego
+	protected static MyGdxGame game;
+	protected Stage stage;
+	protected Music musica;
+	protected Texture pantalla;
+	
+	//Camaras
+	protected OrthographicCamera camara;
+	public SpriteBatch batch;
+	protected FillViewport viewport; //se usa para adaptar la pantalla
+	
+	//Controladores
+	//protected ControladorBotonPuerta controladorBotonPuerta;
 	
 	private static Cursor cursor = new Cursor(game);
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
+	private BotonPuertaPasillo botonPuerta; //permite entrar en una habitación
+	private BotonArriba botonArriba;
+	private BotonAbajo botonAbajo;
+	private BotonDerecha botonDerecha;
+	private BotonIzquierda botonIzquierda;
 	
 	//Texturas
 	private ShapeRenderer sr;
 	
 	//Controladores
-	private ColisionCursor controladorCursor;
+	//private ColisionCursor controladorCursor;
 	
 	public Pasillo(MyGdxGame game) {
-		super(game);
+		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+		this.game = game;
+		camara = new OrthographicCamera();
+		batch = new SpriteBatch();
 		
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		musica.setLooping(true);
@@ -72,13 +98,35 @@ public class Pasillo extends Pantalla{
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
 		
 		//Instanciamos los controladores
-		controladorCursor = new ColisionCursor(this);
-		controladorBotonPuerta = new ControladorBotonPuertaPasillo(this, game);
+		//controladorCursor = new ColisionCursor(this);
+		//controladorBotonPuerta = new ControladorBotonPuertaPasillo(this, game);
 		
 		sr = new ShapeRenderer();
 		
+		botonPuerta = new BotonPuertaPasillo(game, cursor, colisionesPuertas);
+		botonPuerta.setTouchable(Touchable.enabled);
+		
+		botonAbajo = new BotonAbajo(game, cursor, colisionesParedes);
+		botonAbajo.setTouchable(Touchable.enabled);
+		
+		botonArriba = new BotonArriba(game, cursor, colisionesParedes);
+		botonArriba.setTouchable(Touchable.enabled);
+		
+		botonDerecha = new BotonDerecha(game, cursor, colisionesParedes);
+		botonDerecha.setTouchable(Touchable.enabled);
+		
+		botonIzquierda = new BotonIzquierda(game, cursor, colisionesParedes);
+		botonIzquierda.setTouchable(Touchable.enabled);
+		
+		Gdx.input.setInputProcessor(stage);
+		
 		//añadimos actores
 		stage.addActor(cursor);
+		stage.addActor(botonPuerta);
+		stage.addActor(botonAbajo);
+		stage.addActor(botonArriba);
+		stage.addActor(botonDerecha);
+		stage.addActor(botonIzquierda);
 	}
 	
 	/**
@@ -86,7 +134,11 @@ public class Pasillo extends Pantalla{
 	 * de actualizarlo.
 	 */
 	public void render(float delta){
-		super.render(delta);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		camara.update();
+		batch.setProjectionMatrix(camara.combined);
 		
 		//Empezamos a dibujar
 		batch.begin();
@@ -98,15 +150,25 @@ public class Pasillo extends Pantalla{
 		camara.position.y = cursor.getY();
 		
 		//Movimiento del cursor
-		controladorCursor.update(delta);
+		botonAbajo.esPulsado(delta);
+		botonArriba.esPulsado(delta);
+		botonDerecha.esPulsado(delta);
+		botonIzquierda.esPulsado(delta);
+		botonPuerta.update();
+		//controladorCursor.update(delta);
 		
 		//Boton para abrir puertas
-		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
-		controladorBotonPuerta.update();
 		
+		//controladorBotonPuerta.update();
+		
+		botonAbajo.setCoordenadas(cursor.getX() - 275, cursor.getY() - 225);
+		botonArriba.setCoordenadas(cursor.getX() - 275, cursor.getY() - 125);
+		botonDerecha.setCoordenadas(cursor.getX() - 150, cursor.getY() - 200);
+		botonIzquierda.setCoordenadas(cursor.getX() - 350, cursor.getY() - 200);
+		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
 		
 		//Dibujamos bordes
-		/*
+		
 		sr.setProjectionMatrix(camara.combined);
 		sr.begin(ShapeType.Line);
 		sr.setColor(Color.GREEN);
@@ -131,7 +193,7 @@ public class Pasillo extends Pantalla{
 		sr.rect(255, 200, 75, 75);
 		sr.rect(-20, 490, 75, 65);
 		sr.end();
-		*/
+		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
@@ -141,6 +203,9 @@ public class Pasillo extends Pantalla{
 	}
 	
 	public void dispose(){
+		batch.dispose();
+		stage.dispose();
+		pantalla.dispose();
 		musica.dispose();
 	}
 	
@@ -179,5 +244,28 @@ public class Pasillo extends Pantalla{
 	 */
 	public Boton getBotonPuerta(){
 		return botonPuerta;
+	}
+
+	public void resize(int width, int height) {
+		viewport.update(width, height);
+		stage.setViewport(viewport);
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
 	}
 }

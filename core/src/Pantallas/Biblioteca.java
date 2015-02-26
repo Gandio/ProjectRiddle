@@ -23,7 +23,7 @@ public class Biblioteca extends Habitacion{
 		batch.end();
 		
 		//Posicion de botones
-		botonPuerta.setCoordenadas(200, 200);
+		//botonPuerta.setCoordenadas(200, 200);
 		controladorBotonPuerta.update();
 		
 		stage.act(Gdx.graphics.getDeltaTime());

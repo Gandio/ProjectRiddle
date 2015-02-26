@@ -2,7 +2,7 @@ package Controladores;
 
 import java.util.Iterator;
 
-import Objetos.BotonPuerta;
+import Objetos.BotonPuertaPasillo;
 import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
 import Pantallas.Biblioteca;
@@ -21,7 +21,7 @@ import com.mygdx.game.MyGdxGame;
  * una puerta y que se desactive cuando nos alejamos. Además controla en la habitación en la 
  * que se entra.
  * @author Francisco Madueño Chulián
- */
+ **/
 
 public class ControladorBotonPuertaPasillo extends ControladorBotonPuerta{
 	private Cursor cursor;
@@ -36,7 +36,7 @@ public class ControladorBotonPuertaPasillo extends ControladorBotonPuerta{
 		super(pasillo, game);
 		this.pasillo = pasillo;
 		cursor = pasillo.getCursor();
-		boton = (BotonPuerta) pasillo.getBotonPuerta();
+		boton = (BotonPuertaPasillo) pasillo.getBotonPuerta();
 		puertas = pasillo.getPuertas();
 	}
 	
@@ -49,7 +49,7 @@ public class ControladorBotonPuertaPasillo extends ControladorBotonPuerta{
 	
 	public void update(){
 		if(colisionaPuerta()){
-			boton.activar();
+			//boton.activar();
 			if(Gdx.input.isKeyJustPressed(Keys.P)){
 				
 				if(cursor.getPosicion() == Posicion.ARRIBA) cursor.MirarAbajo();
@@ -61,7 +61,7 @@ public class ControladorBotonPuertaPasillo extends ControladorBotonPuerta{
 				game.setScreen(habitacion);
 			}
 		}else{
-			boton.desactivar();
+			//boton.desactivar();
 		}
 		
 		colisionPuerta = false;

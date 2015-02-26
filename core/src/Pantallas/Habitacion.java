@@ -7,7 +7,7 @@ import Controladores.ControladorBotonPuertaHabitacion;
 import Objetos.Boton;
 import Objetos.BotonConversacion;
 import Objetos.BotonInvestigar;
-import Objetos.BotonPuerta;
+import Objetos.BotonPuertaPasillo;
 import Objetos.Personaje;
 
 import com.badlogic.gdx.Gdx;
@@ -31,6 +31,7 @@ public abstract class Habitacion extends Pantalla{
 	protected Personaje personaje;
 	protected Boton botonInvestigar;
 	protected Boton botonConversacion;
+	private Boton botonPuerta; //permite entrar en una habitación
 	
 	//Controladores
 	protected ControladorBotonConversacion controladorConversacion;
@@ -47,10 +48,12 @@ public abstract class Habitacion extends Pantalla{
 		//Actores
 		botonConversacion = new BotonConversacion(game);
 		botonInvestigar = new BotonInvestigar(game);
+		//botonPuerta = new BotonPuertaPasillo(game);
 		
 		//Añadimos actores
 		stage.addActor(botonConversacion);
 		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	@Override

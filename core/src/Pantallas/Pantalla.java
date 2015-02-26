@@ -2,7 +2,7 @@ package Pantallas;
 
 import Controladores.ControladorBotonPuerta;
 import Objetos.Boton;
-import Objetos.BotonPuerta;
+import Objetos.BotonPuertaPasillo;
 import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
@@ -28,7 +28,6 @@ public abstract class Pantalla implements Screen{
 	protected static MyGdxGame game;
 	protected Stage stage;
 	protected Music musica;
-	protected Boton botonPuerta; //permite entrar en una habitación
 	protected Texture pantalla;
 	
 	//Camaras
@@ -42,11 +41,9 @@ public abstract class Pantalla implements Screen{
 	public Pantalla(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		this.game = game;
-		
-		botonPuerta = new BotonPuerta(game);
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
-		stage.addActor(botonPuerta);
+		
 	}
 	
 	public void render(float delta) {
@@ -72,5 +69,9 @@ public abstract class Pantalla implements Screen{
 		batch.dispose();
 		stage.dispose();
 		pantalla.dispose();
+	}
+	
+	public void pararMusica(){
+		musica.stop();
 	}
 }

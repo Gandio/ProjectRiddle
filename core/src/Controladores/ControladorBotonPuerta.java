@@ -2,9 +2,10 @@ package Controladores;
 
 import com.mygdx.game.MyGdxGame;
 
-import Objetos.BotonPuerta;
+import Objetos.BotonPuertaPasillo;
 import Pantallas.Habitacion;
 import Pantallas.Pantalla;
+import Pantallas.Pasillo;
 
 /**
  * Esta clase se encarga de la lógica en general del botón puerta.
@@ -14,17 +15,20 @@ import Pantallas.Pantalla;
 
 public abstract class ControladorBotonPuerta {
 	protected MyGdxGame game;
-	private Pantalla pantalla;
-	protected BotonPuerta boton;
+	private Pasillo pasillo;
+	private Habitacion habitacion;
+	protected BotonPuertaPasillo boton;
 	
-	public ControladorBotonPuerta(Pantalla p, MyGdxGame game) {
+	public ControladorBotonPuerta(Pasillo pasillo, MyGdxGame game) {
 		this.game = game;
-		pantalla = p;
+		this.pasillo = pasillo;
+		this.habitacion = null;
 	}
 	
 	public ControladorBotonPuerta(Habitacion h, MyGdxGame game){
 		this.game = game;
-		pantalla = h;
+		habitacion = h;
+		pasillo = null;
 	}
 	
 	public void update() {}
