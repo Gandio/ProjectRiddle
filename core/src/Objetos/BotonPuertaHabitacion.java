@@ -1,9 +1,11 @@
 package Objetos;
 
 import Pantallas.Habitacion;
+import Pantallas.Pasillo;
 import Pantallas.Habitacion.Estado;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -12,18 +14,31 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa el botón de conversación. Este botón se usa para conversar con los
- * personajes durante el juego.
- * @author Francisco Madueño Chulián
+ * Esta clase representa el botón que permite salir de una habitacion.
+ * @author Francisco Madueño Chulian
+ *
  */
 
-public class BotonConversacion extends Boton{
-
-	public BotonConversacion(MyGdxGame game) {
+public class BotonPuertaHabitacion extends Boton{
+	private Sound sonido;
+	
+	/**
+	 * Constructor de la clase.
+	 * @param game
+	 */
+	
+	public BotonPuertaHabitacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonConversacion.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * Este método comprueba si hemos pulsado el botón para salir de una habitación, si 
+	 * lo hemos hecho y no estamos realizando ninguna otra acción el jugador sale al 
+	 * pasillo.
+	 */
 	
 	public void update(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
@@ -31,13 +46,16 @@ public class BotonConversacion extends Boton{
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonConversacion)event.getTarget()).pulsado = true;
+                ((BotonPuertaHabitacion)event.getTarget()).pulsado = true;
                 return true;
             }
 		});
 		
 		if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
-			((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
+			sonido.play();
+			pulsado = false;
+			game.getScreen().dispose();
+			game.setScreen(new Pasillo(game));
 		}
 		
 		pulsado = false;

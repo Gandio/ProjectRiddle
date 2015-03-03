@@ -24,7 +24,6 @@ public class Biblioteca extends Habitacion{
 		
 		//Posicion de botones
 		//botonPuerta.setCoordenadas(200, 200);
-		controladorBotonPuerta.update();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();

@@ -12,20 +12,32 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+import Pantallas.Pasillo;
+
+/**
+ * Esta clase representa el botón que hará que el personaje se mueva hacia la derecha.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class BotonDerecha extends Boton{
-	Cursor cursor;
-	private Array<Rectangle> paredes;
 	private boolean noDerecha = false;
 	
-	public BotonDerecha(MyGdxGame game, Cursor cursor, Array<Rectangle> paredes) {
+	public BotonDerecha(MyGdxGame game) {
 		super(game);
-		this.cursor = cursor;
-		this.paredes = paredes;
 		boton = new Texture(Gdx.files.internal("Imagenes/botonDerecha.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
-	public boolean colisionaDerecha(){
+	/**
+	 * Se comprueba si el personaje está colisionando con alguna de las paredes, devuelve
+	 * true o false.
+	 * @return
+	 */
+	
+	private boolean colisionaDerecha(){
+		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
@@ -44,7 +56,15 @@ public class BotonDerecha extends Boton{
 		return noDerecha;
 	}
 	
+	/**
+	 * Este método comprueba si el botón ha sido pulsado, en cuyo caso, y si no colisiona
+	 * con ninguna pared hace que el personaje se mueva hacia  la derecha.
+	 * @param delta
+	 */
+	
 	public void esPulsado(float delta){
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		

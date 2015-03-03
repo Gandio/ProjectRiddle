@@ -45,7 +45,7 @@ public class Inicio implements Screen{
 	
 	public Inicio(MyGdxGame game){
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
+		Inicio.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		

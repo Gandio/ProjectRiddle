@@ -3,9 +3,12 @@ package Objetos;
 import java.util.Iterator;
 
 import Objetos.Cursor.Posicion;
+import Pantallas.HabitacionDeMuestra;
+import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -23,24 +26,33 @@ import com.mygdx.game.Tools;
  *
  */
 public class BotonPuertaPasillo extends Boton{
-	private Cursor cursor;
 	private Texture botonActivado, botonDesactivado;
-	private Array<Rectangle> puertas;
+	private Sound sonido;
 	
-	public BotonPuertaPasillo(MyGdxGame game, Cursor cursor, Array<Rectangle> puertas) {
-		super(game);
-		
-		this.cursor = cursor;
-		this.puertas = puertas;
-		
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
+	
+	public BotonPuertaPasillo(MyGdxGame game) {
+		super(game);		
 		botonActivado = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
 		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/botonPuertaDesactivado.png"));
 		boton = botonDesactivado;
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
-	public boolean colisionaPuerta(){
+	/**
+	 * Comprueba si el personaje está cerca de una puerta, en cuyo caso se activa la 
+	 * funcionalidad del botón.
+	 * @return
+	 */
+	
+	private boolean colisionaPuerta(){
+		Array<Rectangle> puertas = ((Pasillo) game.getScreen()).getPuertas();
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = puertas.iterator();
 		Rectangle rectanguloAux;
@@ -49,7 +61,6 @@ public class BotonPuertaPasillo extends Boton{
 			rectanguloAux = iRect.next();
 			if(cursor.getLimites().overlaps(rectanguloAux)){
 				return true;
-				//numHabitacion = i;
 			}
 			
 			++i;
@@ -58,13 +69,19 @@ public class BotonPuertaPasillo extends Boton{
 		return false;
 	}
 	
+	/**
+	 * Comprueba si hemos pulsado el botón y si estamos cerca de una puerta, si 
+	 * ambas condiciones se cumplen el jugador entrará en una habitación.
+	 */
+	
 	public void update(){
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonArriba)event.getTarget()).pulsado = true;
+                ((BotonPuertaPasillo)event.getTarget()).pulsado = true;
                 return true;
             }
 		});
@@ -72,18 +89,23 @@ public class BotonPuertaPasillo extends Boton{
 		if(colisionaPuerta()){
 			boton = botonActivado;
 			if(pulsado){
+				sonido.play();
 				if(cursor.getPosicion() == Posicion.ARRIBA) cursor.MirarAbajo();
 				else if(cursor.getPosicion() == Posicion.ABAJO) cursor.MirarArriba();
 				else if(cursor.getPosicion() == Posicion.DERECHA) cursor.MirarIzquierda();
 				else cursor.MirarDerecha();
 				
 				//entramos en una habitación
-				
 				pulsado = false;
+				game.getScreen().dispose();
+				game.setScreen(new HabitacionDeMuestra(game));
+				
 			}
 			
 		}else{
 			boton = botonDesactivado;
 		}
+		
+		pulsado = false;
 	}
 }

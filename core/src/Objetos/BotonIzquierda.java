@@ -2,6 +2,8 @@ package Objetos;
 
 import java.util.Iterator;
 
+import Pantallas.Pasillo;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -12,20 +14,31 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el botón que hará que el personaje se mueva hacia la izquierda.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class BotonIzquierda extends Boton{
-	Cursor cursor;
-	private Array<Rectangle> paredes;
 	private boolean noIzquierda = false;
 	
-	public BotonIzquierda(MyGdxGame game, Cursor cursor, Array<Rectangle> paredes) {
+	public BotonIzquierda(MyGdxGame game) {
 		super(game);
-		this.cursor = cursor;
-		this.paredes = paredes;
 		boton = new Texture(Gdx.files.internal("Imagenes/botonIzquierda.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
-	public boolean colisionaIzquierda(){
+	/**
+	 * Se comprueba si el personaje está colisionando con alguna de las paredes, devuelve
+	 * true o false.
+	 * @return
+	 */
+	
+	private boolean colisionaIzquierda(){
+		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
@@ -44,7 +57,15 @@ public class BotonIzquierda extends Boton{
 		return noIzquierda;
 	}
 	
+	/**
+	 * Este método comprueba si el botón ha sido pulsado, en cuyo caso, y si no colisiona
+	 * con ninguna pared hace que el personaje se mueva hacia la izquierda.
+	 * @param delta
+	 */
+	
 	public void esPulsado(float delta){
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		

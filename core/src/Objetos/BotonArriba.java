@@ -2,6 +2,8 @@ package Objetos;
 
 import java.util.Iterator;
 
+import Pantallas.Pasillo;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -12,20 +14,29 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el botón que hará que el personaje se mueva hacia arriba.
+ * @author Francisco Madueño Chulián
+ *
+ */
 public class BotonArriba extends Boton{
-	Cursor cursor;
-	private Array<Rectangle> paredes;
 	private boolean noArriba = false;
 	
-	public BotonArriba(MyGdxGame game, Cursor cursor, Array<Rectangle> paredes) {
+	public BotonArriba(MyGdxGame game) {
 		super(game);
-		this.cursor = cursor;
-		this.paredes = paredes;
 		boton = new Texture(Gdx.files.internal("Imagenes/botonArriba.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
-	public boolean colisionaArriba(){
+	/**
+	 * Se comprueba si el personaje está colisionando con alguna de las paredes, devuelve
+	 * true o false.
+	 * @return
+	 */
+	
+	private boolean colisionaArriba(){
+		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
@@ -44,7 +55,14 @@ public class BotonArriba extends Boton{
 		return noArriba;
 	}
 	
+	/**
+	 * Este método comprueba si el botón ha sido pulsado, en cuyo caso, y si no colisiona
+	 * con ninguna pared hace que el personaje se mueva hacia arriba.
+	 * @param delta
+	 */
+	
 	public void esPulsado(float delta){
+		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		

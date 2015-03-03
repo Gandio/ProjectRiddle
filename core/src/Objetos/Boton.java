@@ -16,15 +16,29 @@ public abstract class Boton extends Actor{
 	protected Vector2 coordenadas;
 	protected boolean pulsado = false;
 	
+	/**
+	 * Constructor de la clase botón
+	 * @param game
+	 */
+	
 	public Boton(MyGdxGame game){
 		this.game = game;
 	}
+	
+	/**
+	 * Este método modifica las coordenadas del botón
+	 * @param x
+	 * @param y
+	 */
 
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
 	}
 	
+	/**
+	 * Este método dibuja la textura del botón en el batch del stage.
+	 */
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		batch.draw(boton, coordenadas.x, coordenadas.y);

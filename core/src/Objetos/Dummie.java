@@ -8,6 +8,6 @@ public class Dummie extends Personaje{
 	
 	public Dummie(MyGdxGame game) {
 		super(game);
-		personaje = new Texture(Gdx.files.internal("Imagenes/plantillaMuñequil.png"));
+		personaje = new Texture(Gdx.files.internal("Imagenes/plantillaMuyequil.png"));
 	}
 }

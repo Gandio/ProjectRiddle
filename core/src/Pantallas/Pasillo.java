@@ -40,14 +40,12 @@ public class Pasillo implements Screen{
 	//Camaras
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
-	protected FillViewport viewport; //se usa para adaptar la pantalla
-	
-	//Controladores
-	//protected ControladorBotonPuerta controladorBotonPuerta;
+	protected FillViewport viewport; //se usa para adaptar la pantallas
 	
 	private static Cursor cursor = new Cursor(game);
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
+	private Array<Habitacion> habitaciones = new Array<Habitacion>();
 	private BotonPuertaPasillo botonPuerta; //permite entrar en una habitación
 	private BotonArriba botonArriba;
 	private BotonAbajo botonAbajo;
@@ -56,9 +54,6 @@ public class Pasillo implements Screen{
 	
 	//Texturas
 	private ShapeRenderer sr;
-	
-	//Controladores
-	//private ColisionCursor controladorCursor;
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -97,25 +92,23 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
 		
-		//Instanciamos los controladores
-		//controladorCursor = new ColisionCursor(this);
-		//controladorBotonPuerta = new ControladorBotonPuertaPasillo(this, game);
+		//Creamos las habitaciones
 		
 		sr = new ShapeRenderer();
 		
-		botonPuerta = new BotonPuertaPasillo(game, cursor, colisionesPuertas);
+		botonPuerta = new BotonPuertaPasillo(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 		
-		botonAbajo = new BotonAbajo(game, cursor, colisionesParedes);
+		botonAbajo = new BotonAbajo(game);
 		botonAbajo.setTouchable(Touchable.enabled);
 		
-		botonArriba = new BotonArriba(game, cursor, colisionesParedes);
+		botonArriba = new BotonArriba(game);
 		botonArriba.setTouchable(Touchable.enabled);
 		
-		botonDerecha = new BotonDerecha(game, cursor, colisionesParedes);
+		botonDerecha = new BotonDerecha(game);
 		botonDerecha.setTouchable(Touchable.enabled);
 		
-		botonIzquierda = new BotonIzquierda(game, cursor, colisionesParedes);
+		botonIzquierda = new BotonIzquierda(game);
 		botonIzquierda.setTouchable(Touchable.enabled);
 		
 		Gdx.input.setInputProcessor(stage);
@@ -155,16 +148,11 @@ public class Pasillo implements Screen{
 		botonDerecha.esPulsado(delta);
 		botonIzquierda.esPulsado(delta);
 		botonPuerta.update();
-		//controladorCursor.update(delta);
 		
-		//Boton para abrir puertas
-		
-		//controladorBotonPuerta.update();
-		
-		botonAbajo.setCoordenadas(cursor.getX() - 275, cursor.getY() - 225);
-		botonArriba.setCoordenadas(cursor.getX() - 275, cursor.getY() - 125);
-		botonDerecha.setCoordenadas(cursor.getX() - 150, cursor.getY() - 200);
-		botonIzquierda.setCoordenadas(cursor.getX() - 350, cursor.getY() - 200);
+		botonAbajo.setCoordenadas(cursor.getX() - 225, cursor.getY() - 235);
+		botonArriba.setCoordenadas(cursor.getX() - 225, cursor.getY() - 65);
+		botonDerecha.setCoordenadas(cursor.getX() - 140, cursor.getY() - 150);
+		botonIzquierda.setCoordenadas(cursor.getX() - 310, cursor.getY() - 150);
 		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
 		
 		//Dibujamos bordes
@@ -202,11 +190,34 @@ public class Pasillo implements Screen{
 		pantalla = new Texture("Imagenes/pasillos.png");
 	}
 	
+	public void resize(int width, int height) {
+		viewport.update(width, height);
+		stage.setViewport(viewport);
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void dispose(){
+		musica.dispose();
 		batch.dispose();
 		stage.dispose();
 		pantalla.dispose();
-		musica.dispose();
 	}
 	
 	/*----------------------------------------------------------------
@@ -236,36 +247,5 @@ public class Pasillo implements Screen{
 	 */
 	public Cursor getCursor(){
 		return cursor;
-	}
-	
-	/**
-	 * Devuelve el botón asociado a las puertas
-	 * @return botonPuerta
-	 */
-	public Boton getBotonPuerta(){
-		return botonPuerta;
-	}
-
-	public void resize(int width, int height) {
-		viewport.update(width, height);
-		stage.setViewport(viewport);
-	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 }
