@@ -1,13 +1,19 @@
-package Objetos;
+package Botones;
 
 import java.util.Iterator;
 
+import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
+import Pantallas.Biblioteca;
+import Pantallas.Dormitorio;
 import Pantallas.HabitacionDeMuestra;
 import Pantallas.Pasillo;
+import Pantallas.Salon;
+import Pantallas.Sotano;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -28,6 +34,7 @@ import com.mygdx.game.Tools;
 public class BotonPuertaPasillo extends Boton{
 	private Texture botonActivado, botonDesactivado;
 	private Sound sonido;
+	private int numPuerta = -1;
 	
 	/**
 	 * Constructor de la clase
@@ -60,6 +67,7 @@ public class BotonPuertaPasillo extends Boton{
 		while(i < puertas.size){
 			rectanguloAux = iRect.next();
 			if(cursor.getLimites().overlaps(rectanguloAux)){
+				numPuerta = i;
 				return true;
 			}
 			
@@ -95,11 +103,20 @@ public class BotonPuertaPasillo extends Boton{
 				else if(cursor.getPosicion() == Posicion.DERECHA) cursor.MirarIzquierda();
 				else cursor.MirarDerecha();
 				
-				//entramos en una habitación
 				pulsado = false;
-				game.getScreen().dispose();
-				game.setScreen(new HabitacionDeMuestra(game));
+				((Pasillo) game.getScreen()).pararMusica();
 				
+				if(numPuerta == 0){ //es el sotano
+					game.setScreen(((Pasillo) game.getScreen()).salon = new Salon(game));
+				}else if(numPuerta == 1){ //es el dormitorio
+					game.setScreen(((Pasillo) game.getScreen()).dormitorio = new Dormitorio(game));
+				}else if(numPuerta == 2){
+					System.out.println("no se entra");
+				}else if(numPuerta == 3){
+					game.setScreen(((Pasillo) game.getScreen()).biblioteca = new Biblioteca(game));
+				}else if(numPuerta == 4){
+					game.setScreen(((Pasillo) game.getScreen()).sotano = new Sotano(game));
+				}
 			}
 			
 		}else{

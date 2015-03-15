@@ -1,7 +1,8 @@
-package Objetos;
+package Botones;
 
 import java.util.Iterator;
 
+import Objetos.Cursor;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
@@ -15,22 +16,16 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa el botón que hará que el personaje se mueva hacia abajo.
+ * Esta clase representa el botón que hará que el personaje se mueva hacia arriba.
  * @author Francisco Madueño Chulián
  *
  */
-
-public class BotonAbajo extends Boton{
+public class BotonArriba extends Boton{
+	private boolean noArriba = false;
 	
-	private boolean noAbajo = false;
-	
-	/** 
-	 * Constructor de la clase
-	 * @param game
-	 */
-	public BotonAbajo(MyGdxGame game) {
+	public BotonArriba(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonAbajo.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/botonArriba.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -40,7 +35,7 @@ public class BotonAbajo extends Boton{
 	 * @return
 	 */
 	
-	private boolean colisionaAbajo(){
+	private boolean colisionaArriba(){
 		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
 		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		int i = 0;
@@ -48,22 +43,22 @@ public class BotonAbajo extends Boton{
 		float aux;
 		Rectangle rectanguloAux;
 		
-		while(i < paredes.size && !noAbajo){
+		while(i < paredes.size && !noArriba){
 			rectanguloAux = iRect.next(); 
-			aux = (rectanguloAux.getY() + rectanguloAux.getHeight());
-			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() == (aux - 1))){
-				noAbajo = true;
+			aux = rectanguloAux.getY();
+			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() + cursor.getHeight()) == aux + 1){
+				noArriba = true;
 			}
 			
 			++i;
 		}
 		
-		return noAbajo;
+		return noArriba;
 	}
 	
 	/**
 	 * Este método comprueba si el botón ha sido pulsado, en cuyo caso, y si no colisiona
-	 * con ninguna pared hace que el personaje se mueva hacia abajo.
+	 * con ninguna pared hace que el personaje se mueva hacia arriba.
 	 * @param delta
 	 */
 	
@@ -74,20 +69,20 @@ public class BotonAbajo extends Boton{
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonAbajo)event.getTarget()).pulsado = true;
+                ((BotonArriba)event.getTarget()).pulsado = true;
                 return true;
             }
             
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonAbajo)event.getTarget()).pulsado = false;
+                ((BotonArriba)event.getTarget()).pulsado = false;
             }
 		});
 		
-		if(pulsado && !colisionaAbajo()){
-			cursor.setVelocityY(-1);
+		if(pulsado && !colisionaArriba()){
+			cursor.setVelocityY(1);
 			cursor.setVelocityX(0);
 			
-			cursor.MirarAbajo();
+			cursor.MirarArriba();
 			
 			cursor.setX(cursor.getX() + cursor.getVelocity().x);
 			cursor.setY(cursor.getY() + cursor.getVelocity().y);
@@ -97,11 +92,11 @@ public class BotonAbajo extends Boton{
 	        
 	        //Actualizamos la posición de los límites
 	        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
-			
+	        
 		}else{
 			cursor.setVelocityY(0);
 		}
 		
-		noAbajo = false;
+		noArriba = false;
 	}
 }

@@ -1,7 +1,7 @@
 package Pantallas;
 
-import Objetos.BotonInicio;
-import Objetos.BotonSalir;
+import Botones.BotonInicio;
+import Botones.BotonSalir;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

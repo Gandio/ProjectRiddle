@@ -1,6 +1,6 @@
 package Pantallas;
 
-import Objetos.Dummie;
+import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,21 +18,18 @@ public class HabitacionDeMuestra extends Habitacion{
 		personaje = new Dummie(game);
 		personaje.setCoordenadas(300, 0);
 		
-		//Añadimos controladores
-		//controladorConversacion = new ControladorBotonConversacion(this, game);
-		//controladorInvestigar = new ControladorBotonInvestigar(this, game);
-		//controladorBotonPuerta = new ControladorBotonPuertaHabitacion(this, game);
-		
-		//Asignamos controladores a otros
-		//controladorConversacion.asignarControladorInvestigar(controladorInvestigar);
-		//controladorInvestigar.asignarControladorConversacion(controladorConversacion);
+		//añadimos los actores
+		stage.addActor(personaje);
 	}
 	
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		
-		stage.addActor(personaje);
+		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
+		if(personaje != null && estado == Estado.CONVERSAR){
+			
+		}
 		
 		stage.draw();
 	}

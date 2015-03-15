@@ -1,4 +1,4 @@
-package Objetos;
+package Botones;
 
 import Pantallas.Habitacion;
 import Pantallas.Habitacion.Estado;
@@ -12,16 +12,16 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa el botón de investigar. Este botón se usará pasa activar o 
- * desactivar el modo investigación mientras te encuentres en una habitación
+ * Esta clase representa el botón de conversación. Este botón se usa para conversar con los
+ * personajes durante el juego.
  * @author Francisco Madueño Chulián
  */
 
-public class BotonInvestigar extends Boton{
-	
-	public BotonInvestigar(MyGdxGame game) {
+public class BotonConversacion extends Boton{
+
+	public BotonConversacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonInvestigar.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/botonConversacion.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -31,15 +31,13 @@ public class BotonInvestigar extends Boton{
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonInvestigar)event.getTarget()).pulsado = true;
+                ((BotonConversacion)event.getTarget()).pulsado = true;
                 return true;
             }
 		});
 		
 		if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
-			((Habitacion) game.getScreen()).setEstado(Estado.INVESTIGAR);
-		}else if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.INVESTIGAR){
-			((Habitacion) game.getScreen()).setEstado(Estado.NORMAL);
+			((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
 		}
 		
 		pulsado = false;

@@ -6,11 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.MyGdxGame;
 
-public class Dormitorio extends Habitacion {
+public class Sotano extends Habitacion {
 	
 	private MyGdxGame game;
 	
-	public Dormitorio(MyGdxGame game) {
+	public Sotano(MyGdxGame game) {
 		super(game);
 		this.game = game;
 		
@@ -35,7 +35,7 @@ public class Dormitorio extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/dormitorio.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/sotano.png"));
 	}
 
 	@Override

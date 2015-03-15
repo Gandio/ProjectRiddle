@@ -1,4 +1,4 @@
-package Objetos;
+package Botones;
 
 import Pantallas.Habitacion;
 import Pantallas.Pasillo;
@@ -41,12 +41,14 @@ public class BotonPuertaHabitacion extends Boton{
 	 */
 	
 	public void update(){
+		//System.out.println("Soy el boton puerta");
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonPuertaHabitacion)event.getTarget()).pulsado = true;
+                //System.out.println("Me han tocado");
                 return true;
             }
 		});

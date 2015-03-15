@@ -1,11 +1,11 @@
 package Pantallas;
 
-import Objetos.Boton;
-import Objetos.BotonAbajo;
-import Objetos.BotonArriba;
-import Objetos.BotonDerecha;
-import Objetos.BotonIzquierda;
-import Objetos.BotonPuertaPasillo;
+import Botones.BotonAbajo;
+import Botones.BotonArriba;
+import Botones.BotonDerecha;
+import Botones.BotonInventario;
+import Botones.BotonIzquierda;
+import Botones.BotonPuertaPasillo;
 import Objetos.Cursor;
 
 import com.badlogic.gdx.Gdx;
@@ -42,18 +42,30 @@ public class Pasillo implements Screen{
 	public SpriteBatch batch;
 	protected FillViewport viewport; //se usa para adaptar la pantallas
 	
+	//Personaje
 	private static Cursor cursor = new Cursor(game);
+	
+	//Arrays
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
-	private Array<Habitacion> habitaciones = new Array<Habitacion>();
+	private static Array<Habitacion> habitaciones = new Array<Habitacion>();
+	
+	//Botones del pasillo
 	private BotonPuertaPasillo botonPuerta; //permite entrar en una habitación
 	private BotonArriba botonArriba;
 	private BotonAbajo botonAbajo;
 	private BotonDerecha botonDerecha;
 	private BotonIzquierda botonIzquierda;
+	//private BotonInventario botonInventario;
 	
 	//Texturas
 	private ShapeRenderer sr;
+	
+	//Habitaciones
+	public static Sotano sotano;
+	public static Dormitorio dormitorio;
+	public static Salon salon;
+	public static Biblioteca biblioteca;
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -92,7 +104,8 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
 		
-		//Creamos las habitaciones
+		
+		//Preparamos las habitaciones
 		
 		sr = new ShapeRenderer();
 		
@@ -111,6 +124,10 @@ public class Pasillo implements Screen{
 		botonIzquierda = new BotonIzquierda(game);
 		botonIzquierda.setTouchable(Touchable.enabled);
 		
+		//botonInventario = new BotonInventario(game);
+		//botonInventario.setTouchable(Touchable.enabled);
+		
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		//añadimos actores
@@ -120,6 +137,7 @@ public class Pasillo implements Screen{
 		stage.addActor(botonArriba);
 		stage.addActor(botonDerecha);
 		stage.addActor(botonIzquierda);
+		//stage.addActor(botonInventario);
 	}
 	
 	/**
@@ -148,6 +166,7 @@ public class Pasillo implements Screen{
 		botonDerecha.esPulsado(delta);
 		botonIzquierda.esPulsado(delta);
 		botonPuerta.update();
+		//botonInventario.update();
 		
 		botonAbajo.setCoordenadas(cursor.getX() - 225, cursor.getY() - 235);
 		botonArriba.setCoordenadas(cursor.getX() - 225, cursor.getY() - 65);
@@ -214,6 +233,7 @@ public class Pasillo implements Screen{
 	}
 	
 	public void dispose(){
+		musica.stop();
 		musica.dispose();
 		batch.dispose();
 		stage.dispose();
@@ -224,6 +244,10 @@ public class Pasillo implements Screen{
 	 * -----------------------FUNCIONES AUXILIARES--------------------
 	 * ---------------------------------------------------------------
 	 */
+	
+	public void pararMusica(){
+		musica.stop();
+	}
 	
 	/**
 	 * Devuelve el array con todos los rectángulos que envuelven a las paredes

@@ -1,10 +1,10 @@
 package Pantallas;
 
-import Objetos.Boton;
-import Objetos.BotonConversacion;
-import Objetos.BotonInvestigar;
-import Objetos.BotonPuertaHabitacion;
-import Objetos.Personaje;
+import Botones.BotonConversacion;
+import Botones.BotonInvestigar;
+import Botones.BotonPuertaHabitacion;
+import Items.Objeto;
+import Personajes.Personaje;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -15,7 +15,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.CuadroTexto;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -35,15 +37,14 @@ public abstract class Habitacion implements Screen{
 	public SpriteBatch batch;
 	protected FillViewport viewport; //se usa para adaptar la pantalla
 	
+	//Array de objetos
+	private static Array<Objeto> objetos;
+	
 	//Actores
 	protected Personaje personaje;
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	private BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
-	
-	//Controladores
-	//protected ControladorBotonConversacion controladorConversacion;
-	//protected ControladorBotonInvestigar controladorInvestigar;
 	
 	//Estado
 	/*
@@ -56,7 +57,13 @@ public abstract class Habitacion implements Screen{
 		CONVERSAR, INVESTIGAR, NORMAL;
 	};
 	
-	private Estado estado;
+	protected Estado estado;
+	private CuadroTexto cuadroTexto;
+	
+	/**
+	 * Constructor de la clase habitación.
+	 * @param game
+	 */
 	
 	public Habitacion(MyGdxGame game) {
 		estado = Estado.NORMAL;
@@ -109,12 +116,14 @@ public abstract class Habitacion implements Screen{
 		botonInvestigar.setCoordenadas(250, 200);
 		botonConversacion.setCoordenadas(300, 200);
 		
-		//controladorConversacion.update();
-		//controladorInvestigar.update();
-		
 		botonPuerta.update();
 		botonInvestigar.update();
 		botonConversacion.update();
+		
+		//Conversaciones
+		if(estado == Estado.CONVERSAR){
+			cuadroTexto.update();
+		}
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -134,6 +143,7 @@ public abstract class Habitacion implements Screen{
 		batch.dispose();
 		stage.dispose();
 		pantalla.dispose();
+		musica.stop();
 		musica.dispose();
 	}
 	
@@ -142,33 +152,21 @@ public abstract class Habitacion implements Screen{
 	 * ---------------------------------------------------------------
 	 */
 	
+	/**
+	 * Devuelve el estado actual de la habitación.
+	 * @return
+	 */
+	
 	public Estado getEstado(){
 		return estado;
 	}
 	
+	/**
+	 * Cambia el estado de la habitación.
+	 * @param e
+	 */
+	
 	public void setEstado(Estado e){
 		estado = e;
-	}
-	
-	//---------------------------SOLO VALE HASTA AQUÍ--------------------------
-	
-	public Boton getBotonConversacion(){
-		return botonConversacion;
-	}
-	
-	public Boton getBotonInvestigar(){
-		return botonInvestigar;
-	}
-	
-	/*public ControladorBotonInvestigar getControladorInvestigar(){
-		return controladorInvestigar;
-	}*/
-	
-	/*public ControladorBotonConversacion getControladorConversacion(){
-		return controladorConversacion;
-	}*/
-	
-	public Personaje getPersonaje(){
-		return personaje;
 	}
 }

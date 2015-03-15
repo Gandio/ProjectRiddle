@@ -1,4 +1,4 @@
-package Objetos;
+package Botones;
 
 import Pantallas.Pasillo;
 

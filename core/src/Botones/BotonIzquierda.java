@@ -1,7 +1,8 @@
-package Objetos;
+package Botones;
 
 import java.util.Iterator;
 
+import Objetos.Cursor;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;

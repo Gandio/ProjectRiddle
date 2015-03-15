@@ -1,4 +1,4 @@
-package Objetos;
+package Personajes;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

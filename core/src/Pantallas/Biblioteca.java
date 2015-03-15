@@ -1,51 +1,41 @@
 package Pantallas;
 
+import Personajes.Dummie;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.MyGdxGame;
 
-public class Biblioteca extends Habitacion{
+public class Biblioteca extends Habitacion {
+	
+	private MyGdxGame game;
+	
 	public Biblioteca(MyGdxGame game) {
 		super(game);
+		this.game = game;
+		
+		//Actores
+		personaje = new Dummie(game);
+		personaje.setCoordenadas(300, 0);
+		
+		//añadimos los actores
+		stage.addActor(personaje);
 	}
-
+	
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
+		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
+		if(personaje != null && estado == Estado.CONVERSAR){
+			
+		}
 		
-		camara.update();
-		
-		batch.begin();
-		//batch.draw(pantalla, 0, 0, proporcionAncho, proporcionAlto);
-		batch.end();
-		
-		//Posicion de botones
-		//botonPuerta.setCoordenadas(200, 200);
-		
-		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
-		
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		viewport.update(width, height);
-		stage.setViewport(viewport);
 	}
 
 	@Override
 	public void show() {
-		batch = new SpriteBatch();
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Biblioteca.jpg"));
-	}
-
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
+		pantalla = new Texture(Gdx.files.internal("Imagenes/biblioteca.png"));
 	}
 
 	@Override
@@ -58,10 +48,5 @@ public class Biblioteca extends Habitacion{
 	public void resume() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void dispose() {
-		pantalla.dispose();
 	}
 }
