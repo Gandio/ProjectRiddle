@@ -6,7 +6,6 @@ import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
 import Pantallas.Biblioteca;
 import Pantallas.Dormitorio;
-import Pantallas.HabitacionDeMuestra;
 import Pantallas.Pasillo;
 import Pantallas.Salon;
 import Pantallas.Sotano;
@@ -105,6 +104,8 @@ public class BotonPuertaPasillo extends Boton{
 				
 				pulsado = false;
 				((Pasillo) game.getScreen()).pararMusica();
+				
+				Cursor c = ((Pasillo) game.getScreen()).getCursor();
 				
 				if(numPuerta == 0){ //es el sotano
 					game.setScreen(((Pasillo) game.getScreen()).salon = new Salon(game));

@@ -7,6 +7,7 @@ import Pantallas.Habitacion.Estado;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -29,7 +30,7 @@ public class BotonPuertaHabitacion extends Boton{
 	
 	public BotonPuertaHabitacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/botonPuertaHabitacion.png"));
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
@@ -41,14 +42,12 @@ public class BotonPuertaHabitacion extends Boton{
 	 */
 	
 	public void update(){
-		//System.out.println("Soy el boton puerta");
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonPuertaHabitacion)event.getTarget()).pulsado = true;
-                //System.out.println("Me han tocado");
                 return true;
             }
 		});
@@ -62,4 +61,8 @@ public class BotonPuertaHabitacion extends Boton{
 		
 		pulsado = false;
 	}
+	
+	/*public void draw(Batch batch, float parentAlpha) {
+		batch.draw(boton, coordenadas.x, coordenadas.y, this.getWidth() * 2, this.getHeight() * 2);
+	}*/
 }

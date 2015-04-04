@@ -1,5 +1,7 @@
 package Objetos;
 
+import Puzzle.Inventario;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -27,6 +29,8 @@ public class Cursor extends Actor{
 	private float stateTime;
 	private Vector2 velocity;
 	private Rectangle limites;
+	private float velocidad = 2;
+	public static Inventario inventario;
 	
 	/**
 	 * Recibe un objeto MyGdxGame que hereda de la clase Game
@@ -157,5 +161,13 @@ public class Cursor extends Actor{
 	
 	public Posicion getPosicion(){
 		return posicionActual;
+	}
+	
+	public Inventario getInventario(){
+		return inventario;
+	}
+	
+	public float getVelocidad(){
+		return velocidad;
 	}
 }

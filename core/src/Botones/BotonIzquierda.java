@@ -82,7 +82,7 @@ public class BotonIzquierda extends Boton{
 		});
 		
 		if(pulsado && !colisionaIzquierda()){
-			cursor.setVelocityX(-1);
+			cursor.setVelocityX(-1.5f);
 			cursor.setVelocityY(0);
 			
 			cursor.MirarIzquierda();

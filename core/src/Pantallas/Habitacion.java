@@ -1,5 +1,7 @@
 package Pantallas;
 
+import java.util.Iterator;
+
 import Botones.BotonConversacion;
 import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
@@ -44,7 +46,8 @@ public abstract class Habitacion implements Screen{
 	protected Personaje personaje;
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
-	private BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
+	protected BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
+	//private BotonInventario botonInventario;
 	
 	//Estado
 	/*
@@ -97,6 +100,17 @@ public abstract class Habitacion implements Screen{
 		stage.addActor(botonConversacion);
 		stage.addActor(botonInvestigar);
 		stage.addActor(botonPuerta);
+		
+		//Objetos
+		Iterator<Objeto> iter = objetos.iterator();
+		
+		while(iter.hasNext()){
+			iter.next().setTouchable(Touchable.enabled);
+		}
+		
+		while(iter.hasNext()){
+			stage.addActor(iter.next());
+		}
 	}
 	
 	@Override
@@ -112,17 +126,38 @@ public abstract class Habitacion implements Screen{
 		batch.end();
 		
 		//Posicion de botones
-		botonPuerta.setCoordenadas(200, 200);
-		botonInvestigar.setCoordenadas(250, 200);
-		botonConversacion.setCoordenadas(300, 200);
+		botonPuerta.setCoordenadas(1150, 650);
+		botonInvestigar.setCoordenadas(1050, 650);
+		botonConversacion.setCoordenadas(950, 650);
+		
+		//------------------------------------------------------------------------
+		//---------------------LOGICA DE LOS BOTONES------------------------------
+		//------------------------------------------------------------------------
 		
 		botonPuerta.update();
 		botonInvestigar.update();
 		botonConversacion.update();
 		
+		//------------------------------------------------------------------------
+		//---------------------LOGICA DE LOS ESTADOS------------------------------
+		//------------------------------------------------------------------------
+		
+		Iterator<Objeto> iter = objetos.iterator();
+		
 		//Conversaciones
 		if(estado == Estado.CONVERSAR){
 			cuadroTexto.update();
+		}
+		
+		//Se empieza a investigar y se puede interactuar con los objetos de la habitacion
+		if(estado == Estado.INVESTIGAR){
+			while(iter.hasNext()){
+				iter.next().seInvestiga(true);
+			}
+		}else{
+			while(iter.hasNext()){
+				iter.next().seInvestiga(false);
+			}
 		}
 		
 		stage.act(Gdx.graphics.getDeltaTime());

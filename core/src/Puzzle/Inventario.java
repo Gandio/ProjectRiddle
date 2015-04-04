@@ -1,8 +1,10 @@
 package Puzzle;
 
-import Botones.Boton;
+import Botones.BotonAceptarCombinar;
+import Botones.BotonCancelarCombinar;
 import Botones.BotonCerrarInventario;
 import Botones.BotonCombinarObjeto;
+import Botones.BotonInventario;
 import Items.Objeto;
 
 import com.badlogic.gdx.Gdx;
@@ -18,8 +20,9 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 
 public class Inventario implements Screen{
-	private MyGdxGame game;
-	private Stage stage;
+	private static MyGdxGame game;
+	protected Stage stage;
+	private Texture inventario;
 	
 	//Camaras
 	protected OrthographicCamera camara;
@@ -27,12 +30,13 @@ public class Inventario implements Screen{
 	protected FillViewport viewport; //se usa para adaptar la pantallas
 	
 	//Botones
-	private Array<Boton> botonesObjetos;
-	private Array<Objeto> objetosInventario;
+	/*private Array<Boton> botonesObjetos;
+	private Array<Objeto> objetosInventario;*/
 	private BotonCerrarInventario cerrarInventario;
-	private BotonCombinarObjeto combinarObjeto;
+	//private BotonCombinarObjeto combinarObjeto;
+	private BotonAceptarCombinar aceptarCombinar;
+	private BotonCancelarCombinar cancelarCombinar;
 	
-	private Texture inventario;
 	
 	private int index = 0;
 	private boolean combinando = false;
@@ -47,13 +51,21 @@ public class Inventario implements Screen{
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
-		Gdx.input.setInputProcessor(stage);
-		
 		cerrarInventario = new BotonCerrarInventario(game);
 		cerrarInventario.setTouchable(Touchable.enabled);
 		
+		aceptarCombinar = new BotonAceptarCombinar(game);
+		aceptarCombinar.setTouchable(Touchable.enabled);
+		
+		cancelarCombinar = new BotonCancelarCombinar(game);
+		cancelarCombinar.setTouchable(Touchable.enabled);
+		
+		Gdx.input.setInputProcessor(stage);
+		
 		//añadimos botones
 		stage.addActor(cerrarInventario);
+		stage.addActor(aceptarCombinar);
+		stage.addActor(cancelarCombinar);
 	}
 
 	@Override
@@ -69,8 +81,16 @@ public class Inventario implements Screen{
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
+		stage.draw();
+		
+		//Posiciones de los botones
+		cerrarInventario.setCoordenadas(100, 80);
+		aceptarCombinar.setCoordenadas(200, 80);
+		cancelarCombinar.setCoordenadas(300, 80);
 		
 		cerrarInventario.update();
+		cancelarCombinar.update();
+		aceptarCombinar.update();
 	}
 
 	@Override
@@ -81,37 +101,26 @@ public class Inventario implements Screen{
 
 	@Override
 	public void show() {
-		//inventario = textura inventario 
+		inventario = new Texture(Gdx.files.internal("Imagenes/inventario.png"));
 	}
 
 	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
 	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 
 	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-	}
+	public void dispose() {}
 	
 	//-----------------------------------------------------------------------------
 	//---------------------------------FUNCIONES AUXILIARES------------------------
 	//-----------------------------------------------------------------------------
 	
-	public void añadirBotonObjeto(Boton b){
+	/*public void añadirBotonObjeto(Boton b){
 		botonesObjetos.add(b);
 		botonesObjetos.get(index).setTouchable(Touchable.enabled);
 		stage.addActor(botonesObjetos.get(index));
@@ -132,5 +141,5 @@ public class Inventario implements Screen{
 	
 	public void setCombinar(boolean estado){
 		combinando = estado;
-	}
+	}*/
 }

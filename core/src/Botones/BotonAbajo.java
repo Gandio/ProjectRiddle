@@ -85,7 +85,7 @@ public class BotonAbajo extends Boton{
 		});
 		
 		if(pulsado && !colisionaAbajo()){
-			cursor.setVelocityY(-1);
+			cursor.setVelocityY(-1.5f);
 			cursor.setVelocityX(0);
 			
 			cursor.MirarAbajo();

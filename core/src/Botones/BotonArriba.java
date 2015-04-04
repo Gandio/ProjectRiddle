@@ -79,7 +79,7 @@ public class BotonArriba extends Boton{
 		});
 		
 		if(pulsado && !colisionaArriba()){
-			cursor.setVelocityY(1);
+			cursor.setVelocityY(1.5f);
 			cursor.setVelocityX(0);
 			
 			cursor.MirarArriba();

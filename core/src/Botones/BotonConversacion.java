@@ -5,6 +5,7 @@ import Pantallas.Habitacion.Estado;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -42,4 +43,8 @@ public class BotonConversacion extends Boton{
 		
 		pulsado = false;
 	}
+	
+	/*public void draw(Batch batch, float parentAlpha) {
+		batch.draw(boton, coordenadas.x, coordenadas.y, this.getWidth() * 2, this.getHeight() * 2);
+	}*/
 }

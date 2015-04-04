@@ -2,6 +2,8 @@ package Botones;
 
 import Pantallas.Pasillo;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -12,7 +14,7 @@ public class BotonCerrarInventario extends Boton{
 
 	public BotonCerrarInventario(MyGdxGame game) {
 		super(game);
-		//boton = textura del boton
+		boton = new Texture(Gdx.files.internal("Imagenes/botonSalirInventario.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -27,9 +29,9 @@ public class BotonCerrarInventario extends Boton{
 		});
 		
 		if(pulsado){
+			pulsado = false;
 			game.getScreen().dispose();
 			game.setScreen(new Pasillo(game));
-			pulsado = false;
 		}
 		
 		pulsado = false;

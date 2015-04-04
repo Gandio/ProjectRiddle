@@ -1,7 +1,7 @@
 package Botones;
 
-import Puzzle.Inventario;
-
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -12,7 +12,7 @@ public class BotonCancelarCombinar extends Boton{
 
 	public BotonCancelarCombinar(MyGdxGame game) {
 		super(game);
-		//boton = Textura del boton
+		boton = new Texture(Gdx.files.internal("Imagenes/botonCancelarCombinar.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -27,9 +27,9 @@ public class BotonCancelarCombinar extends Boton{
             }
 		});
 		
-		if(pulsado && ((Inventario) game.getScreen()).getCombinar()){
+		/*if(pulsado && ((Inventario) game.getScreen()).getCombinar()){
 			((Inventario) game.getScreen()).setCombinar(false);
-		}
+		}*/
 		
 		pulsado = false;
 	}

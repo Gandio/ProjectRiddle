@@ -56,7 +56,7 @@ public class Pasillo implements Screen{
 	private BotonAbajo botonAbajo;
 	private BotonDerecha botonDerecha;
 	private BotonIzquierda botonIzquierda;
-	//private BotonInventario botonInventario;
+	private BotonInventario botonInventario;
 	
 	//Texturas
 	private ShapeRenderer sr;
@@ -124,8 +124,8 @@ public class Pasillo implements Screen{
 		botonIzquierda = new BotonIzquierda(game);
 		botonIzquierda.setTouchable(Touchable.enabled);
 		
-		//botonInventario = new BotonInventario(game);
-		//botonInventario.setTouchable(Touchable.enabled);
+		botonInventario = new BotonInventario(game);
+		botonInventario.setTouchable(Touchable.enabled);
 		
 		
 		Gdx.input.setInputProcessor(stage);
@@ -137,7 +137,7 @@ public class Pasillo implements Screen{
 		stage.addActor(botonArriba);
 		stage.addActor(botonDerecha);
 		stage.addActor(botonIzquierda);
-		//stage.addActor(botonInventario);
+		stage.addActor(botonInventario);
 	}
 	
 	/**
@@ -166,13 +166,15 @@ public class Pasillo implements Screen{
 		botonDerecha.esPulsado(delta);
 		botonIzquierda.esPulsado(delta);
 		botonPuerta.update();
-		//botonInventario.update();
+		botonInventario.update();
 		
-		botonAbajo.setCoordenadas(cursor.getX() - 225, cursor.getY() - 235);
-		botonArriba.setCoordenadas(cursor.getX() - 225, cursor.getY() - 65);
-		botonDerecha.setCoordenadas(cursor.getX() - 140, cursor.getY() - 150);
-		botonIzquierda.setCoordenadas(cursor.getX() - 310, cursor.getY() - 150);
-		botonPuerta.setCoordenadas(cursor.getX() + 270, cursor.getY() + 200);
+		botonAbajo.setCoordenadas(cursor.getX() - 285, cursor.getY() - 210);
+		botonArriba.setCoordenadas(cursor.getX() - 285, cursor.getY() - 40);
+		botonDerecha.setCoordenadas(cursor.getX() - 200, cursor.getY() - 125);
+		botonIzquierda.setCoordenadas(cursor.getX() - 370, cursor.getY() - 125);
+		
+		botonPuerta.setCoordenadas(cursor.getX() + 280, cursor.getY() + 140);
+		botonInventario.setCoordenadas(cursor.getX() + 200, cursor.getY() + 140);
 		
 		//Dibujamos bordes
 		
