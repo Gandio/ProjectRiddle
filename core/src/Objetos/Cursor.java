@@ -30,7 +30,7 @@ public class Cursor extends Actor{
 	private Vector2 velocity;
 	private Rectangle limites;
 	private float velocidad = 2;
-	public static Inventario inventario;
+	public static Inventario inventario = Inventario.getInstancia(); //creamos el inventario
 	
 	/**
 	 * Recibe un objeto MyGdxGame que hereda de la clase Game

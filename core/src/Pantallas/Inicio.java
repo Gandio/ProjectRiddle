@@ -23,7 +23,7 @@ import com.mygdx.game.MyGdxGame;
 
 public class Inicio implements Screen{
 	//Juego
-	protected static MyGdxGame game;
+	public static MyGdxGame game;
 	protected Stage stage;
 	protected Music musica;
 	protected Texture pantalla;
@@ -44,8 +44,11 @@ public class Inicio implements Screen{
 	 */
 	
 	public Inicio(MyGdxGame game){
-		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		Inicio.game = game;
+		
+		System.out.println("Inicio " + game);
+		
+		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
@@ -58,9 +61,9 @@ public class Inicio implements Screen{
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
 		//añadimos botones y hacemos que sean tocables
-		inicio = new BotonInicio(game);
+		inicio = new BotonInicio(Inicio.game);
 		inicio.setTouchable(Touchable.enabled);
-		salir = new BotonSalir(game);
+		salir = new BotonSalir(Inicio.game);
 		salir.setTouchable(Touchable.enabled);
 		
 		Gdx.input.setInputProcessor(stage);

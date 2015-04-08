@@ -12,3 +12,5 @@ public class Tools {
 		return game.WIDTH / 2f - textura.getWidth() / 2f;
 	}
 }
+
+

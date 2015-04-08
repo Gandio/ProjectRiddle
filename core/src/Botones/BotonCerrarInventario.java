@@ -30,7 +30,7 @@ public class BotonCerrarInventario extends Boton{
 		
 		if(pulsado){
 			pulsado = false;
-			game.getScreen().dispose();
+			//game.getScreen().dispose();
 			game.setScreen(new Pasillo(game));
 		}
 		

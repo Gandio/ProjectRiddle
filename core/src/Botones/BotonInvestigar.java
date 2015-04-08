@@ -45,8 +45,4 @@ public class BotonInvestigar extends Boton{
 		
 		pulsado = false;
 	}
-	
-	/*public void draw(Batch batch, float parentAlpha) {
-		batch.draw(boton, coordenadas.x, coordenadas.y, this.getWidth() * 2, this.getHeight() * 2);
-	}*/
 }

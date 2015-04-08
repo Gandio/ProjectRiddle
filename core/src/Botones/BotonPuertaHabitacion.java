@@ -44,25 +44,22 @@ public class BotonPuertaHabitacion extends Boton{
 	public void update(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
-		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonPuertaHabitacion)event.getTarget()).pulsado = true;
-                return true;
+            	((BotonPuertaHabitacion)event.getTarget()).pulsado = true;
+                return false;
             }
 		});
+		
 		
 		if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
 			sonido.play();
 			pulsado = false;
-			game.getScreen().dispose();
+			//game.getScreen().dispose();
+			((Habitacion) game.getScreen()).pararMusica();
 			game.setScreen(new Pasillo(game));
 		}
 		
 		pulsado = false;
 	}
-	
-	/*public void draw(Batch batch, float parentAlpha) {
-		batch.draw(boton, coordenadas.x, coordenadas.y, this.getWidth() * 2, this.getHeight() * 2);
-	}*/
 }

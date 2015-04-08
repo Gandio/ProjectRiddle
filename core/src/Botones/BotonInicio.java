@@ -1,11 +1,13 @@
 package Botones;
 
+import Pantallas.Inicio;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
@@ -17,7 +19,6 @@ import com.mygdx.game.Tools;
  *
  */
 public class BotonInicio extends Boton{
-	
 	private Sound sonido;
 	
 	/**
@@ -27,6 +28,8 @@ public class BotonInicio extends Boton{
 	 */
 	public BotonInicio(MyGdxGame game) {
 		super(game);
+		
+		System.out.println("Boton inicio " + game);
 		
 		//Inicializamos los atributos del botón.
 		boton = new Texture(Gdx.files.internal("Imagenes/botonInicio.png"));
@@ -51,7 +54,7 @@ public class BotonInicio extends Boton{
 		if(pulsado){
 			sonido.play();
 			game.getScreen().dispose();
-			game.setScreen(new Pasillo(game));
+			game.setScreen(new Pasillo(Inicio.game));
 		}
 	}
 }

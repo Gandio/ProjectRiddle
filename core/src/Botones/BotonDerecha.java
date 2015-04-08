@@ -81,7 +81,7 @@ public class BotonDerecha extends Boton{
 		});
 		
 		if(pulsado && !colisionaDerecha()){
-			cursor.setVelocityX(1.5f);
+			cursor.setVelocityX(1);
 			cursor.setVelocityY(0);
 			
 			cursor.MirarDerecha();

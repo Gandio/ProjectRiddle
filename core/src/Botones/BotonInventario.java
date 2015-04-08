@@ -32,8 +32,7 @@ public class BotonInventario extends Boton{
 		
 		if(pulsado){
 			pulsado = false;
-			game.getScreen().dispose();
-			game.setScreen(((Pasillo) game.getScreen()).getCursor().inventario = new Inventario(game));
+			game.setScreen(((Pasillo) game.getScreen()).getCursor().inventario.getInstancia());
 		}
 		
 		pulsado = false;

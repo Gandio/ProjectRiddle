@@ -32,9 +32,9 @@ import com.mygdx.game.MyGdxGame;
  */
 public class Pasillo implements Screen{
 	//Juego
-	protected static MyGdxGame game;
+	protected static MyGdxGame game = Inicio.game;
 	protected Stage stage;
-	protected Music musica;
+	protected static Music musica;
 	protected Texture pantalla;
 	
 	//Camaras
@@ -62,20 +62,22 @@ public class Pasillo implements Screen{
 	private ShapeRenderer sr;
 	
 	//Habitaciones
-	public static Sotano sotano;
-	public static Dormitorio dormitorio;
-	public static Salon salon;
-	public static Biblioteca biblioteca;
+	public static Sotano sotano = Sotano.getInstancia();
+	public static Dormitorio dormitorio = Dormitorio.getInstancia();
+	public static Habitacion salon = Salon.getInstancia();
+	public static Biblioteca biblioteca = Biblioteca.getInstancia();
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
+		//Pasillo.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		musica.setLooping(true);
 		musica.play();
+		
+		System.out.println("Pasillo " + game);
 		
 		//instanciamos la camara
 		camara.setToOrtho(false, cursor.getX(), cursor.getY());
@@ -103,7 +105,6 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(1230, 290, 65, 65)); //derecha
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
-		
 		
 		//Preparamos las habitaciones
 		
@@ -147,6 +148,8 @@ public class Pasillo implements Screen{
 	public void render(float delta){
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		Gdx.input.setInputProcessor(stage);
 		
 		camara.update();
 		batch.setProjectionMatrix(camara.combined);
@@ -271,7 +274,7 @@ public class Pasillo implements Screen{
 	 * Devuelve el cursor
 	 * @return cursor
 	 */
-	public Cursor getCursor(){
+	public static Cursor getCursor(){
 		return cursor;
 	}
 }

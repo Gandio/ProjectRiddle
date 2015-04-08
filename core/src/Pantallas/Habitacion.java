@@ -6,6 +6,7 @@ import Botones.BotonConversacion;
 import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
 import Items.Objeto;
+import Objetos.Cursor;
 import Personajes.Personaje;
 
 import com.badlogic.gdx.Gdx;
@@ -29,25 +30,22 @@ import com.mygdx.game.MyGdxGame;
 public abstract class Habitacion implements Screen{
 	
 	//Juego
-	protected static MyGdxGame game;
+	public static MyGdxGame game = Pasillo.game;
 	protected Stage stage;
 	protected Music musica;
 	protected Texture pantalla;
-	
+	protected static Cursor c = Pasillo.getCursor();
+	protected Array<Objeto> objetos;
 	//Camaras
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
 	protected FillViewport viewport; //se usa para adaptar la pantalla
-	
-	//Array de objetos
-	private static Array<Objeto> objetos;
 	
 	//Actores
 	protected Personaje personaje;
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
-	//private BotonInventario botonInventario;
 	
 	//Estado
 	/*
@@ -68,17 +66,15 @@ public abstract class Habitacion implements Screen{
 	 * @param game
 	 */
 	
-	public Habitacion(MyGdxGame game) {
+	public Habitacion(MyGdxGame game, Cursor c) {
 		estado = Estado.NORMAL;
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
 		//Musica
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		musica.setLooping(true);
-		musica.play();
 		
 		//instanciamos la camara
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
@@ -100,21 +96,12 @@ public abstract class Habitacion implements Screen{
 		stage.addActor(botonConversacion);
 		stage.addActor(botonInvestigar);
 		stage.addActor(botonPuerta);
-		
-		//Objetos
-		Iterator<Objeto> iter = objetos.iterator();
-		
-		while(iter.hasNext()){
-			iter.next().setTouchable(Touchable.enabled);
-		}
-		
-		while(iter.hasNext()){
-			stage.addActor(iter.next());
-		}
 	}
 	
 	@Override
 	public void render(float delta) {
+		musica.play();
+		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -133,7 +120,6 @@ public abstract class Habitacion implements Screen{
 		//------------------------------------------------------------------------
 		//---------------------LOGICA DE LOS BOTONES------------------------------
 		//------------------------------------------------------------------------
-		
 		botonPuerta.update();
 		botonInvestigar.update();
 		botonConversacion.update();
@@ -203,5 +189,17 @@ public abstract class Habitacion implements Screen{
 	
 	public void setEstado(Estado e){
 		estado = e;
+	}
+	
+	public Cursor getCursor(){
+		return c;
+	}
+	
+	public Array<Objeto> getObjetos(){
+		return objetos;
+	}
+	
+	public void pararMusica(){
+		musica.stop();
 	}
 }

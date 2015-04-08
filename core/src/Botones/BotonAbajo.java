@@ -5,6 +5,7 @@ import java.util.Iterator;
 import Objetos.Cursor;
 import Pantallas.Pasillo;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -85,7 +86,7 @@ public class BotonAbajo extends Boton{
 		});
 		
 		if(pulsado && !colisionaAbajo()){
-			cursor.setVelocityY(-1.5f);
+			cursor.setVelocityY(-1);
 			cursor.setVelocityX(0);
 			
 			cursor.MirarAbajo();

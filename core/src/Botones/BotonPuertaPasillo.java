@@ -41,7 +41,10 @@ public class BotonPuertaPasillo extends Boton{
 	 */
 	
 	public BotonPuertaPasillo(MyGdxGame game) {
-		super(game);		
+		super(game);
+		
+		System.out.println("BotonPuertapasillo" + game);
+		
 		botonActivado = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
 		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/botonPuertaDesactivado.png"));
 		boton = botonDesactivado;
@@ -107,16 +110,16 @@ public class BotonPuertaPasillo extends Boton{
 				
 				Cursor c = ((Pasillo) game.getScreen()).getCursor();
 				
-				if(numPuerta == 0){ //es el sotano
-					game.setScreen(((Pasillo) game.getScreen()).salon = new Salon(game));
+				if(numPuerta == 0){ //es el salon
+					game.setScreen(Salon.getInstancia());
 				}else if(numPuerta == 1){ //es el dormitorio
-					game.setScreen(((Pasillo) game.getScreen()).dormitorio = new Dormitorio(game));
+					game.setScreen(Dormitorio.getInstancia());
 				}else if(numPuerta == 2){
 					System.out.println("no se entra");
 				}else if(numPuerta == 3){
-					game.setScreen(((Pasillo) game.getScreen()).biblioteca = new Biblioteca(game));
+					game.setScreen(Biblioteca.getInstancia());
 				}else if(numPuerta == 4){
-					game.setScreen(((Pasillo) game.getScreen()).sotano = new Sotano(game));
+					game.setScreen(Sotano.getInstancia());
 				}
 			}
 			

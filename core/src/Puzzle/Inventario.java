@@ -1,11 +1,15 @@
 package Puzzle;
 
+import java.util.Iterator;
+
 import Botones.BotonAceptarCombinar;
 import Botones.BotonCancelarCombinar;
 import Botones.BotonCerrarInventario;
 import Botones.BotonCombinarObjeto;
 import Botones.BotonInventario;
+import Items.BotellaVacia;
 import Items.Objeto;
+import Pantallas.Salon;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -19,10 +23,14 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 
-public class Inventario implements Screen{
+public final class Inventario implements Screen{
 	private static MyGdxGame game;
+	private static Inventario unicaInstancia;
+	
 	protected Stage stage;
-	private Texture inventario;
+	private Texture textura;
+	private Array<Objeto> inventario;
+	private int index = 0;
 	
 	//Camaras
 	protected OrthographicCamera camara;
@@ -37,15 +45,15 @@ public class Inventario implements Screen{
 	private BotonAceptarCombinar aceptarCombinar;
 	private BotonCancelarCombinar cancelarCombinar;
 	
-	
-	private int index = 0;
 	private boolean combinando = false;
 
-	public Inventario(MyGdxGame game) {
+	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		this.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
+		
+		inventario = new Array<Objeto>();
 		
 		//instanciamos la cámara
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
@@ -66,6 +74,13 @@ public class Inventario implements Screen{
 		stage.addActor(cerrarInventario);
 		stage.addActor(aceptarCombinar);
 		stage.addActor(cancelarCombinar);
+		
+		/*añadirObjeto(new BotellaVacia(game));
+		añadirObjeto(new BotellaVacia(game));
+		añadirObjeto(new BotellaVacia(game));
+		añadirObjeto(new BotellaVacia(game));
+		añadirObjeto(new BotellaVacia(game));*/
+		
 	}
 
 	@Override
@@ -77,10 +92,11 @@ public class Inventario implements Screen{
 		batch.setProjectionMatrix(camara.combined);
 		
 		batch.begin();
-		batch.draw(inventario, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
+		Gdx.input.setInputProcessor(stage);
 		stage.draw();
 		
 		//Posiciones de los botones
@@ -91,6 +107,25 @@ public class Inventario implements Screen{
 		cerrarInventario.update();
 		cancelarCombinar.update();
 		aceptarCombinar.update();
+		
+		Iterator<Objeto> iter = inventario.iterator();
+		float x = 600;
+		float y = 400;
+		int i = 0;
+		while(iter.hasNext()){
+			if(i%3 == 0){ //nueva linea de objetos
+				x = 600;
+				y -= 70;
+			}
+			
+			Objeto o = iter.next();
+			stage.addActor(o);
+			o.setTouchable(Touchable.enabled);
+			o.setCoordenadas(x, y);
+			
+			x+=70;
+			++i;
+		}
 	}
 
 	@Override
@@ -101,7 +136,7 @@ public class Inventario implements Screen{
 
 	@Override
 	public void show() {
-		inventario = new Texture(Gdx.files.internal("Imagenes/inventario.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/inventario.png"));
 	}
 
 	@Override
@@ -120,13 +155,18 @@ public class Inventario implements Screen{
 	//---------------------------------FUNCIONES AUXILIARES------------------------
 	//-----------------------------------------------------------------------------
 	
-	/*public void añadirBotonObjeto(Boton b){
-		botonesObjetos.add(b);
-		botonesObjetos.get(index).setTouchable(Touchable.enabled);
-		stage.addActor(botonesObjetos.get(index));
+	/*public void añadirObjeto(Objeto b){
+		inventario.add(b);
+		inventario.get(index).setTouchable(Touchable.enabled);
+		stage.addActor(inventario.get(index));
+		//System.out.println(inventario.size);
 		index++;
-	}
+	}*/
 	
+	public void añadirObjeto(Objeto b){
+		inventario.add(b);
+	}
+	/*
 	public Array<Boton> getBotones(){
 		return botonesObjetos;
 	}
@@ -142,4 +182,16 @@ public class Inventario implements Screen{
 	public void setCombinar(boolean estado){
 		combinando = estado;
 	}*/
+	
+	public Array<Objeto> getContenido(){
+		return inventario;
+	}
+	
+	public static Inventario getInstancia(){
+		if(unicaInstancia == null){
+			unicaInstancia = new Inventario(game);
+		}
+		
+		return unicaInstancia;
+	}
 }

@@ -11,7 +11,7 @@ import com.mygdx.game.MyGdxGame;
 */
 
 public abstract class Boton extends Actor{
-	protected MyGdxGame game;
+	protected static MyGdxGame game;
 	protected Texture boton;
 	protected Vector2 coordenadas;
 	protected boolean pulsado = false;
@@ -22,7 +22,7 @@ public abstract class Boton extends Actor{
 	 */
 	
 	public Boton(MyGdxGame game){
-		this.game = game;
+		Boton.game = game;
 	}
 	
 	/**

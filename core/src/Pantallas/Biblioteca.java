@@ -1,18 +1,26 @@
 package Pantallas;
 
+import java.util.Iterator;
+
+import Items.Objeto;
+import Objetos.Cursor;
 import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
-public class Biblioteca extends Habitacion {
+public final class Biblioteca extends Habitacion {
 	
-	private MyGdxGame game;
+	private static MyGdxGame game;
+	private static Biblioteca unicaInstancia;
 	
-	public Biblioteca(MyGdxGame game) {
-		super(game);
+	private Biblioteca(MyGdxGame game, Cursor c) {
+		super(game, c);
 		this.game = game;
+		objetos = new Array<Objeto>();
 		
 		//Actores
 		personaje = new Dummie(game);
@@ -20,6 +28,19 @@ public class Biblioteca extends Habitacion {
 		
 		//añadimos los actores
 		stage.addActor(personaje);
+		
+		//Objetos
+		Iterator<Objeto> iter = objetos.iterator();
+		
+		while(iter.hasNext()){
+			iter.next().setTouchable(Touchable.enabled);
+		}
+		
+		iter = objetos.iterator();
+		
+		while(iter.hasNext()){
+			stage.addActor(iter.next());
+		}
 	}
 	
 	@Override
@@ -30,12 +51,13 @@ public class Biblioteca extends Habitacion {
 			
 		}
 		
+		Gdx.input.setInputProcessor(stage);
 		stage.draw();
 	}
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/biblioteca.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/Biblioteca.png"));
 	}
 
 	@Override
@@ -48,5 +70,13 @@ public class Biblioteca extends Habitacion {
 	public void resume() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static Biblioteca getInstancia(){
+		if(unicaInstancia == null){
+			unicaInstancia = new Biblioteca(game, c);
+		}
+		
+		return unicaInstancia;
 	}
 }
