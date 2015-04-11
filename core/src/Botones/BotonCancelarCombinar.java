@@ -1,5 +1,8 @@
 package Botones;
 
+import Puzzle.Inventario;
+import Puzzle.Inventario.Estado;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -9,10 +12,16 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 public class BotonCancelarCombinar extends Boton{
+	
+	private Texture botonActivado, botonDesactivado;
 
 	public BotonCancelarCombinar(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonCancelarCombinar.png"));
+		
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonCancelarCombinar.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonCancelarCombinarDesactivado.png"));
+		boton = botonDesactivado;
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -27,9 +36,16 @@ public class BotonCancelarCombinar extends Boton{
             }
 		});
 		
-		/*if(pulsado && ((Inventario) game.getScreen()).getCombinar()){
-			((Inventario) game.getScreen()).setCombinar(false);
-		}*/
+		if(((Inventario) game.getScreen()).getEstado() == Estado.COMBINANDO || 
+				((Inventario) game.getScreen()).getEstado() == Estado.COMBINACION_PREPARADA){
+			boton = botonActivado;
+			if(pulsado){
+				//logica
+				((Inventario) game.getScreen()).setEstado(Estado.NORMAL);
+			}
+		}else{
+			boton = botonDesactivado;
+		}
 		
 		pulsado = false;
 	}

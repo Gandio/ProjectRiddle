@@ -211,7 +211,7 @@ public class Pasillo implements Screen{
 	}
 	
 	public void show(){
-		pantalla = new Texture("Imagenes/pasillos.png");
+		pantalla = new Texture("Imagenes/Escenarios/pasillos.png");
 	}
 	
 	public void resize(int width, int height) {

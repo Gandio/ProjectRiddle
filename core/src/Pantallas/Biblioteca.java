@@ -2,8 +2,11 @@ package Pantallas;
 
 import java.util.Iterator;
 
+import Items.BotellaVacia;
+import Items.Flor;
 import Items.Objeto;
 import Objetos.Cursor;
+import Pantallas.Habitacion.Estado;
 import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
@@ -16,6 +19,7 @@ public final class Biblioteca extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Biblioteca unicaInstancia;
+	private static Objeto flor = new Flor(game);
 	
 	private Biblioteca(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -32,6 +36,11 @@ public final class Biblioteca extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
+		//Añadimos objetos a la habitacion
+		
+		flor.setCoordenadas(300, 300);
+		objetos.add(flor);
+		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
 		}
@@ -46,9 +55,15 @@ public final class Biblioteca extends Habitacion {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+		
 		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
 		if(personaje != null && estado == Estado.CONVERSAR){
 			
+		}
+		
+		Iterator<Objeto> iterObjetos = objetos.iterator();
+		while(iterObjetos.hasNext()){
+			iterObjetos.next().seSelecciona();
 		}
 		
 		Gdx.input.setInputProcessor(stage);
@@ -57,7 +72,7 @@ public final class Biblioteca extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Biblioteca.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Biblioteca.png"));
 	}
 
 	@Override

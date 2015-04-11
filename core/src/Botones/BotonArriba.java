@@ -25,7 +25,7 @@ public class BotonArriba extends Boton{
 	
 	public BotonArriba(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonArriba.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonArriba.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	

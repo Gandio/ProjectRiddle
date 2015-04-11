@@ -15,7 +15,7 @@ public class BotonInventario extends Boton{
 
 	public BotonInventario(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonInventario.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInventario.png"));
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}

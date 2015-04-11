@@ -32,7 +32,7 @@ public class BotonAbajo extends Boton{
 	 */
 	public BotonAbajo(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonAbajo.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonAbajo.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	

@@ -41,11 +41,15 @@ public final class Inventario implements Screen{
 	/*private Array<Boton> botonesObjetos;
 	private Array<Objeto> objetosInventario;*/
 	private BotonCerrarInventario cerrarInventario;
-	//private BotonCombinarObjeto combinarObjeto;
+	private BotonCombinarObjeto combinarObjeto;
 	private BotonAceptarCombinar aceptarCombinar;
 	private BotonCancelarCombinar cancelarCombinar;
 	
-	private boolean combinando = false;
+	public enum Estado{
+		COMBINANDO, NORMAL, COMBINACION_PREPARADA;
+	};
+	
+	private Estado estado;
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -53,6 +57,7 @@ public final class Inventario implements Screen{
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
+		estado = Estado.NORMAL;
 		inventario = new Array<Objeto>();
 		
 		//instanciamos la cámara
@@ -68,19 +73,16 @@ public final class Inventario implements Screen{
 		cancelarCombinar = new BotonCancelarCombinar(game);
 		cancelarCombinar.setTouchable(Touchable.enabled);
 		
+		combinarObjeto = new BotonCombinarObjeto(game);
+		combinarObjeto.setTouchable(Touchable.enabled);
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		//añadimos botones
 		stage.addActor(cerrarInventario);
 		stage.addActor(aceptarCombinar);
 		stage.addActor(cancelarCombinar);
-		
-		/*añadirObjeto(new BotellaVacia(game));
-		añadirObjeto(new BotellaVacia(game));
-		añadirObjeto(new BotellaVacia(game));
-		añadirObjeto(new BotellaVacia(game));
-		añadirObjeto(new BotellaVacia(game));*/
-		
+		stage.addActor(combinarObjeto);
 	}
 
 	@Override
@@ -103,10 +105,12 @@ public final class Inventario implements Screen{
 		cerrarInventario.setCoordenadas(100, 80);
 		aceptarCombinar.setCoordenadas(200, 80);
 		cancelarCombinar.setCoordenadas(300, 80);
+		combinarObjeto.setCoordenadas(400, 80);
 		
-		cerrarInventario.update();
 		cancelarCombinar.update();
 		aceptarCombinar.update();
+		combinarObjeto.update();
+		cerrarInventario.update();
 		
 		Iterator<Objeto> iter = inventario.iterator();
 		float x = 600;
@@ -136,7 +140,7 @@ public final class Inventario implements Screen{
 
 	@Override
 	public void show() {
-		textura = new Texture(Gdx.files.internal("Imagenes/inventario.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/Escenarios/inventario.png"));
 	}
 
 	@Override
@@ -173,15 +177,15 @@ public final class Inventario implements Screen{
 	
 	public Array<Objeto> getObjetos(){
 		return objetosInventario;
-	}
-	
-	public boolean getCombinar(){
-		return combinando;
-	}
-	
-	public void setCombinar(boolean estado){
-		combinando = estado;
 	}*/
+	
+	public Estado getEstado(){
+		return estado;
+	}
+	
+	public void setEstado(Estado estado){
+		this.estado = estado;
+	}
 	
 	public Array<Objeto> getContenido(){
 		return inventario;

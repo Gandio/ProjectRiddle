@@ -29,7 +29,7 @@ public class BotonSalir extends Boton{
 		System.out.println("Salir " + game);
 		
 		//Inicializamos los atributos del botón.
-		boton = new Texture(Gdx.files.internal("Imagenes/botonSalir.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton) - 310);
 		

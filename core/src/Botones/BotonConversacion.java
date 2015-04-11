@@ -19,10 +19,15 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonConversacion extends Boton{
+	
+	private Texture botonActivado, botonDesactivado;
 
 	public BotonConversacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonConversacion.png"));
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonConversacion.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonConversacionDesactivado.png"));
+		
+		boton = botonActivado;
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -37,8 +42,18 @@ public class BotonConversacion extends Boton{
             }
 		});
 		
-		if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
-			((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
+		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
+			boton = botonActivado;
+			if(pulsado){
+				((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
+			}
+		}else if(((Habitacion) game.getScreen()).getEstado() == Estado.CONVERSAR){
+			boton = botonActivado;
+			if(pulsado){
+				((Habitacion) game.getScreen()).setEstado(Estado.NORMAL);
+			}
+		}else{
+			boton = botonDesactivado;
 		}
 		
 		pulsado = false;

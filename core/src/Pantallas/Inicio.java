@@ -77,7 +77,7 @@ public class Inicio implements Screen{
 	 */
 
 	public void show() {
-		pantalla = new Texture("Imagenes/Titulo.png");
+		pantalla = new Texture("Imagenes/Escenarios/Titulo.png");
 	}
 	
 	/**

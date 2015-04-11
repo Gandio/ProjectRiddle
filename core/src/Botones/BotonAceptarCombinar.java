@@ -1,5 +1,8 @@
 package Botones;
 
+import Puzzle.Inventario;
+import Puzzle.Inventario.Estado;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -10,9 +13,15 @@ import com.mygdx.game.Tools;
 
 public class BotonAceptarCombinar extends Boton{
 
+	private Texture botonActivado, botonDesactivado;
+	
 	public BotonAceptarCombinar(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonAceptarCombinar.png"));
+		
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonAceptarCombinar.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonAceptarCombinarDesactivado.png"));
+		boton = botonDesactivado;
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 
 	}
@@ -28,8 +37,13 @@ public class BotonAceptarCombinar extends Boton{
             }
 		});
 		
-		if(pulsado){
-			//Toda la lógica de la combinación de objetos
+		if(((Inventario) game.getScreen()).getEstado() == Estado.COMBINACION_PREPARADA){
+			boton = botonActivado;
+			if(pulsado){
+				//quito objetos y añado combinación
+			}
+		}else{
+			boton = botonDesactivado;
 		}
 		
 		pulsado = false;

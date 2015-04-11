@@ -1,6 +1,8 @@
 package Botones;
 
 import Pantallas.Pasillo;
+import Puzzle.Inventario;
+import Puzzle.Inventario.Estado;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,10 +13,16 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 public class BotonCerrarInventario extends Boton{
+	
+	private Texture botonActivado, botonDesactivado;
 
 	public BotonCerrarInventario(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonSalirInventario.png"));
+		
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalirInventario.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonSalirInventarioDesactivado.png"));
+		boton = botonActivado;
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
@@ -28,10 +36,14 @@ public class BotonCerrarInventario extends Boton{
             }
 		});
 		
-		if(pulsado){
-			pulsado = false;
-			//game.getScreen().dispose();
-			game.setScreen(new Pasillo(game));
+		if((((Inventario) game.getScreen()).getEstado() == Estado.NORMAL)){
+			boton = botonActivado;
+			if(pulsado){
+				pulsado = false;
+				game.setScreen(new Pasillo(game));
+			}
+		}else{
+			boton = botonDesactivado;
 		}
 		
 		pulsado = false;

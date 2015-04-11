@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import Objetos.Cursor;
 import Pantallas.Habitacion;
+import Pantallas.Habitacion.Estado;
 import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
@@ -21,16 +22,16 @@ public abstract class Objeto extends Actor{
 	protected Texture textura;
 	//protected BotonObjeto botonObjeto;
 	protected Vector2 coordenadas;
-	protected Array<Objeto> combinables;
+	protected Array<Identificador> combinables;
 	private boolean sePuedeCoger, investigando, seleccionado;
 	protected Class<?> tipoObjeto;
 	private boolean tocadoUnaVez = false;
+	protected boolean esCombinable;
+	protected Identificador identificador;
 	
 	
 	public Objeto(MyGdxGame game){
 		//this.game = game;
-		
-		System.out.println("Objeto " + this.game);
 		
 		sePuedeCoger = false;
 		investigando = false;
@@ -80,11 +81,13 @@ public abstract class Objeto extends Actor{
 		setBounds(coordenadas.x, coordenadas.y, textura.getWidth(), textura.getHeight());
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                if(!tocadoUnaVez){
-                	((Objeto)event.getTarget()).seleccionado = true;
-                	tocadoUnaVez = true;
-                	System.out.println("me tocaste");
-                	cogerObjeto();
+                if(((Habitacion) game.getScreen()).getEstado() == Estado.INVESTIGAR){
+                	if(!tocadoUnaVez){
+                		((Objeto)event.getTarget()).seleccionado = true;
+                		tocadoUnaVez = true;
+                		System.out.println("me tocaste");
+                		cogerObjeto();
+                	}
                 }
                 
                 return true;

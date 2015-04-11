@@ -43,10 +43,8 @@ public class BotonPuertaPasillo extends Boton{
 	public BotonPuertaPasillo(MyGdxGame game) {
 		super(game);
 		
-		System.out.println("BotonPuertapasillo" + game);
-		
-		botonActivado = new Texture(Gdx.files.internal("Imagenes/botonPuerta.png"));
-		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/botonPuertaDesactivado.png"));
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonPuerta.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonPuertaDesactivado.png"));
 		boton = botonDesactivado;
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		

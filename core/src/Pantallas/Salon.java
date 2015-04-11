@@ -67,7 +67,7 @@ public final class Salon extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/salon.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
 	}
 
 	@Override

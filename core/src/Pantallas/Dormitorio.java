@@ -57,7 +57,7 @@ public final class Dormitorio extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/dormitorio.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/dormitorio.png"));
 	}
 
 	@Override

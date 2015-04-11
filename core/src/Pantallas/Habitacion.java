@@ -120,9 +120,12 @@ public abstract class Habitacion implements Screen{
 		//------------------------------------------------------------------------
 		//---------------------LOGICA DE LOS BOTONES------------------------------
 		//------------------------------------------------------------------------
-		botonPuerta.update();
+		
+		//Este orden se debe mantener si no intenta hacer cast de habitacion a pasillo
 		botonInvestigar.update();
 		botonConversacion.update();
+		botonPuerta.update();
+
 		
 		//------------------------------------------------------------------------
 		//---------------------LOGICA DE LOS ESTADOS------------------------------
@@ -132,7 +135,7 @@ public abstract class Habitacion implements Screen{
 		
 		//Conversaciones
 		if(estado == Estado.CONVERSAR){
-			cuadroTexto.update();
+			//cuadroTexto.update();
 		}
 		
 		//Se empieza a investigar y se puede interactuar con los objetos de la habitacion

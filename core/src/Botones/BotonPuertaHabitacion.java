@@ -22,6 +22,7 @@ import com.mygdx.game.Tools;
 
 public class BotonPuertaHabitacion extends Boton{
 	private Sound sonido;
+	private Texture botonActivado, botonDesactivado;
 	
 	/**
 	 * Constructor de la clase.
@@ -30,7 +31,11 @@ public class BotonPuertaHabitacion extends Boton{
 	
 	public BotonPuertaHabitacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonPuertaHabitacion.png"));
+		
+		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonPuertaHabitacion.png"));
+		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonPuertaHabitacionDesactivado.png"));
+		
+		boton = botonActivado;
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
@@ -51,13 +56,16 @@ public class BotonPuertaHabitacion extends Boton{
             }
 		});
 		
-		
-		if(pulsado && ((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
-			sonido.play();
-			pulsado = false;
-			//game.getScreen().dispose();
-			((Habitacion) game.getScreen()).pararMusica();
-			game.setScreen(new Pasillo(game));
+		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
+			boton = botonActivado;
+			if(pulsado){	
+				sonido.play();
+				pulsado = false;
+				((Habitacion) game.getScreen()).pararMusica();
+				game.setScreen(new Pasillo(game));
+			}
+		}else{
+			boton = botonDesactivado;
 		}
 		
 		pulsado = false;

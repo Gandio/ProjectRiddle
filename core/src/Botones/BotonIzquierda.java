@@ -26,7 +26,7 @@ public class BotonIzquierda extends Boton{
 	
 	public BotonIzquierda(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/botonIzquierda.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonIzquierda.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	

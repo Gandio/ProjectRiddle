@@ -29,10 +29,8 @@ public class BotonInicio extends Boton{
 	public BotonInicio(MyGdxGame game) {
 		super(game);
 		
-		System.out.println("Boton inicio " + game);
-		
 		//Inicializamos los atributos del botón.
-		boton = new Texture(Gdx.files.internal("Imagenes/botonInicio.png"));
+		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInicio.png"));
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton) - 280);
 		

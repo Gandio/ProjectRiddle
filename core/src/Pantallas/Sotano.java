@@ -57,7 +57,7 @@ public final class  Sotano extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/sotano.png"));
+		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/sotano.png"));
 	}
 
 	@Override
