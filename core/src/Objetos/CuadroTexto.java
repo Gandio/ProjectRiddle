@@ -23,6 +23,8 @@ public class CuadroTexto extends Actor{
 	private Texture cuadroTexto;
 	private Vector2 coordenadas;
 	
+	//Comentario
+	
 	//Un archivo con las conversaciones del personaje que se encuentre en la habitacion
 	
 	public CuadroTexto(MyGdxGame game){
