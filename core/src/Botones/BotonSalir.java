@@ -26,8 +26,6 @@ public class BotonSalir extends Boton{
 	public BotonSalir(MyGdxGame game) {
 		super(game);
 		
-		System.out.println("Salir " + game);
-		
 		//Inicializamos los atributos del botón.
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));

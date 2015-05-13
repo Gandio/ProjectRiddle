@@ -46,8 +46,6 @@ public class Inicio implements Screen{
 	public Inicio(MyGdxGame game){
 		Inicio.game = game;
 		
-		System.out.println("Inicio " + game);
-		
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
@@ -108,6 +106,13 @@ public class Inicio implements Screen{
 		stage.setViewport(viewport);
 	}
 
+	public void dispose() {
+		batch.dispose();
+		stage.dispose();
+		pantalla.dispose();
+		musica.dispose();
+	}
+
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
@@ -124,13 +129,5 @@ public class Inicio implements Screen{
 	public void resume() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void dispose() {
-		batch.dispose();
-		stage.dispose();
-		pantalla.dispose();
-		musica.dispose();
 	}
 }

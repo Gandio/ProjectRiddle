@@ -11,6 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Este clase representa el botón que cancela la combinanción de los objetos. Este botón esta activado durante
+ * todo momento en el modo combinación.
+ * @author Francisco Madueño Chulián
+ *
+ */
 public class BotonCancelarCombinar extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;

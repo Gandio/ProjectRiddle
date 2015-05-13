@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
+import Pantallas.Atico;
 import Pantallas.Biblioteca;
 import Pantallas.Dormitorio;
 import Pantallas.Pasillo;
@@ -113,7 +114,7 @@ public class BotonPuertaPasillo extends Boton{
 				}else if(numPuerta == 1){ //es el dormitorio
 					game.setScreen(Dormitorio.getInstancia());
 				}else if(numPuerta == 2){
-					System.out.println("no se entra");
+					game.setScreen(Atico.getInstancia());
 				}else if(numPuerta == 3){
 					game.setScreen(Biblioteca.getInstancia());
 				}else if(numPuerta == 4){

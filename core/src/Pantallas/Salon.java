@@ -2,7 +2,10 @@ package Pantallas;
 
 import java.util.Iterator;
 
+import Items.Bala;
 import Items.BotellaVacia;
+import Items.BotellaWhisky;
+import Items.Llave;
 import Items.Objeto;
 import Objetos.Cursor;
 import Personajes.Dummie;
@@ -14,7 +17,16 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 public final class Salon extends Habitacion {
-	private static Objeto botellaVacia = new BotellaVacia(game);
+	//private static Objeto botellaVacia = new BotellaVacia(game);
+	
+	//Objetos con suspense
+	private static Objeto botellaWhisky = new BotellaWhisky(game);
+	private static Objeto bala = new Bala(game);
+	private static Objeto llave = new Llave(game);
+	
+	//Objetos sin suspense
+	
+	
 	private static Salon unicaInstancia;
 	
 	private Salon(MyGdxGame game, Cursor c) {
@@ -25,6 +37,7 @@ public final class Salon extends Habitacion {
 		personaje = new Dummie(game);
 		personaje.setCoordenadas(300, 0);
 		
+		
 		//añadimos los actores
 		stage.addActor(personaje);
 		
@@ -32,9 +45,18 @@ public final class Salon extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitacion
+		if(MyGdxGame.SUSPENSE){
+			objetos.add(bala);
+			objetos.add(botellaWhisky);
+			objetos.add(llave);
+			
+			bala.setCoordenadas(1100, 180);
+			botellaWhisky.setCoordenadas(970, 400);
+			llave.setCoordenadas(500, 220);
+		}else{}
 		
-		botellaVacia.setCoordenadas(300, 300);
-		objetos.add(botellaVacia);
+		//botellaVacia.setCoordenadas(300, 300);
+		//objetos.add(botellaVacia);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -50,7 +72,7 @@ public final class Salon extends Habitacion {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
+
 		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
 		if(personaje != null && estado == Estado.CONVERSAR){
 			
@@ -67,7 +89,11 @@ public final class Salon extends Habitacion {
 
 	@Override
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
+		if(MyGdxGame.SUSPENSE){
+			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
+		}else{
+			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/salonSin.png"));
+		}
 	}
 
 	@Override

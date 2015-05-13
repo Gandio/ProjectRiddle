@@ -12,6 +12,13 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el botón que cierra el inventario y vuelve al pasillo. Este botón se desactiva cuando
+ * el jugador entra en el modo de combinar objetos.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class BotonCerrarInventario extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;

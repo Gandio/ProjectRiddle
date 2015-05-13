@@ -6,6 +6,7 @@ import Botones.BotonConversacion;
 import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
 import Items.Objeto;
+import Objetos.CuadroTexto;
 import Objetos.Cursor;
 import Personajes.Personaje;
 
@@ -20,7 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.mygdx.game.CuadroTexto;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -36,6 +36,9 @@ public abstract class Habitacion implements Screen{
 	protected Texture pantalla;
 	protected static Cursor c = Pasillo.getCursor();
 	protected Array<Objeto> objetos;
+	private boolean conversando = false;
+	private boolean ultimoTexto = false;
+	
 	//Camaras
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
@@ -46,6 +49,7 @@ public abstract class Habitacion implements Screen{
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
+	protected CuadroTexto cuadroTexto;
 	
 	//Estado
 	/*
@@ -59,7 +63,6 @@ public abstract class Habitacion implements Screen{
 	};
 	
 	protected Estado estado;
-	private CuadroTexto cuadroTexto;
 	
 	/**
 	 * Constructor de la clase habitación.
@@ -73,7 +76,10 @@ public abstract class Habitacion implements Screen{
 		batch = new SpriteBatch();
 		
 		//Musica
-		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		if(MyGdxGame.SUSPENSE)
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		else
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 		
 		//instanciamos la camara
@@ -91,6 +97,8 @@ public abstract class Habitacion implements Screen{
 		
 		botonPuerta = new BotonPuertaHabitacion(game);
 		botonPuerta.setTouchable(Touchable.enabled);
+		
+		cuadroTexto = new CuadroTexto(game);
 		
 		//Añadimos actores
 		stage.addActor(botonConversacion);
@@ -117,6 +125,9 @@ public abstract class Habitacion implements Screen{
 		botonInvestigar.setCoordenadas(1050, 650);
 		botonConversacion.setCoordenadas(950, 650);
 		
+		//Posicion cuadro texto
+		cuadroTexto.setCoordenadas(0, 0);
+		
 		//------------------------------------------------------------------------
 		//---------------------LOGICA DE LOS BOTONES------------------------------
 		//------------------------------------------------------------------------
@@ -125,6 +136,8 @@ public abstract class Habitacion implements Screen{
 		botonInvestigar.update();
 		botonConversacion.update();
 		botonPuerta.update();
+		
+		cuadroTexto.update();
 
 		
 		//------------------------------------------------------------------------
@@ -135,7 +148,13 @@ public abstract class Habitacion implements Screen{
 		
 		//Conversaciones
 		if(estado == Estado.CONVERSAR){
-			//cuadroTexto.update();
+			stage.addActor(cuadroTexto);
+			cuadroTexto.iniciarConversacion(stage);
+			if(ultimoTexto){
+				cuadroTexto.getSigConv().remove();
+				stage.addActor(cuadroTexto.getFinConv());
+			}
+			
 		}
 		
 		//Se empieza a investigar y se puede interactuar con los objetos de la habitacion
@@ -148,6 +167,8 @@ public abstract class Habitacion implements Screen{
 				iter.next().seInvestiga(false);
 			}
 		}
+		
+		System.out.println(estado);
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -204,5 +225,24 @@ public abstract class Habitacion implements Screen{
 	
 	public void pararMusica(){
 		musica.stop();
+	}
+	
+	public boolean getConversando(){
+		return conversando;
+	}
+	
+	public void setConversando(boolean b){
+		conversando = b;
+	}
+	
+	public void ultimoTexto(){
+		ultimoTexto = true;
+	}
+	
+	public void terminarConversacion(){
+		cuadroTexto.finConversacion();
+		cuadroTexto.remove();
+		ultimoTexto = false;
+		estado = Estado.NORMAL;
 	}
 }

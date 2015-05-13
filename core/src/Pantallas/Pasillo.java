@@ -36,6 +36,7 @@ public class Pasillo implements Screen{
 	protected Stage stage;
 	protected static Music musica;
 	protected Texture pantalla;
+	private boolean debug = false;
 	
 	//Camaras
 	protected OrthographicCamera camara;
@@ -66,6 +67,7 @@ public class Pasillo implements Screen{
 	public static Dormitorio dormitorio = Dormitorio.getInstancia();
 	public static Habitacion salon = Salon.getInstancia();
 	public static Biblioteca biblioteca = Biblioteca.getInstancia();
+	public static Atico atico = Atico.getInstancia();
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -180,31 +182,32 @@ public class Pasillo implements Screen{
 		botonInventario.setCoordenadas(cursor.getX() + 200, cursor.getY() + 140);
 		
 		//Dibujamos bordes
-		
-		sr.setProjectionMatrix(camara.combined);
-		sr.begin(ShapeType.Line);
-		sr.setColor(Color.GREEN);
-		sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
+		if(debug){
+			sr.setProjectionMatrix(camara.combined);
+			sr.begin(ShapeType.Line);
+			sr.setColor(Color.GREEN);
+			sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
 				cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
 		
-		sr.rect(255, 403, 1000, 120);
-		sr.rect(255, 403, 50, 430);
-		sr.rect(20, 690, 250, 50); //superior
-		sr.rect(0, 150, 35, 550); //superior izquierda puerta
-		sr.rect(0, 150, 765, 105); //inferior puerta
-		sr.rect(715, 0, 50, 150); //derecha entrada
-		sr.rect(715, -38, 300, 150); //inferior entrada
-		sr.rect(938, -38, 50, 293); //izquierda entrada
-		sr.rect(938, 156, 350, 100); //inferior
-		sr.rect(1240, 156, 50, 300);
-		
-		sr.setColor(Color.PURPLE);
-		sr.rect(546, 385, 75, 75);
-		sr.rect(1060, 385, 65, 65);
-		sr.rect(1230, 290, 65, 65);
-		sr.rect(255, 200, 75, 75);
-		sr.rect(-20, 490, 75, 65);
-		sr.end();
+			sr.rect(255, 403, 1000, 120);
+			sr.rect(255, 403, 50, 430);
+			sr.rect(20, 690, 250, 50); //superior
+			sr.rect(0, 150, 35, 550); //superior izquierda puerta
+			sr.rect(0, 150, 765, 105); //inferior puerta
+			sr.rect(715, 0, 50, 150); //derecha entrada
+			sr.rect(715, -38, 300, 150); //inferior entrada
+			sr.rect(938, -38, 50, 293); //izquierda entrada
+			sr.rect(938, 156, 350, 100); //inferior
+			sr.rect(1240, 156, 50, 300);
+			
+			sr.setColor(Color.PURPLE);
+			sr.rect(546, 385, 75, 75);
+			sr.rect(1060, 385, 65, 65);
+			sr.rect(1230, 290, 65, 65);
+			sr.rect(255, 200, 75, 75);
+			sr.rect(-20, 490, 75, 65);
+			sr.end();
+		}
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();

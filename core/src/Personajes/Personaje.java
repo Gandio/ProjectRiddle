@@ -6,14 +6,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.CuadroTexto;
 import com.mygdx.game.MyGdxGame;
 
 public abstract class Personaje extends Actor{
 	private MyGdxGame game;
 	protected Texture personaje;
 	private Vector2 posicion;
-	private CuadroTexto cuadroTexto;
 	private File dialogo = new File("/Dialogos/prueba.txt");
 	
 	

@@ -46,20 +46,19 @@ public class BotonConversacion extends Boton{
 			boton = botonActivado;
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
+				((Habitacion) game.getScreen()).setConversando(true);
 			}
 		}else if(((Habitacion) game.getScreen()).getEstado() == Estado.CONVERSAR){
 			boton = botonActivado;
-			if(pulsado){
-				((Habitacion) game.getScreen()).setEstado(Estado.NORMAL);
-			}
+			
 		}else{
 			boton = botonDesactivado;
 		}
 		
+		if(((Habitacion) game.getScreen()).getEstado() == Estado.CONVERSAR && !((Habitacion) game.getScreen()).getConversando()){
+			((Habitacion) game.getScreen()).terminarConversacion();
+		}
+		
 		pulsado = false;
 	}
-	
-	/*public void draw(Batch batch, float parentAlpha) {
-		batch.draw(boton, coordenadas.x, coordenadas.y, this.getWidth() * 2, this.getHeight() * 2);
-	}*/
 }

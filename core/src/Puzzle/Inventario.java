@@ -17,11 +17,19 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
+
+/**
+ * Esta clase representa el inventario del personaje. En esta pantalla se muestran los objetos que el 
+ * jugador ha recogido durante toda la partida, una descripción del objeto y el objetivo más inmedianto en 
+ * la partida.
+ * @author Francisco Madueño Chulián
+ */
 
 public final class Inventario implements Screen{
 	private static MyGdxGame game;
@@ -30,7 +38,7 @@ public final class Inventario implements Screen{
 	protected Stage stage;
 	private Texture textura;
 	private Array<Objeto> inventario;
-	private int index = 0;
+	private Array<Objeto> combinacion;
 	
 	//Camaras
 	protected OrthographicCamera camara;
@@ -38,8 +46,6 @@ public final class Inventario implements Screen{
 	protected FillViewport viewport; //se usa para adaptar la pantallas
 	
 	//Botones
-	/*private Array<Boton> botonesObjetos;
-	private Array<Objeto> objetosInventario;*/
 	private BotonCerrarInventario cerrarInventario;
 	private BotonCombinarObjeto combinarObjeto;
 	private BotonAceptarCombinar aceptarCombinar;
@@ -59,6 +65,7 @@ public final class Inventario implements Screen{
 		
 		estado = Estado.NORMAL;
 		inventario = new Array<Objeto>();
+		combinacion = new Array<Objeto>(2);
 		
 		//instanciamos la cámara
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
@@ -130,6 +137,13 @@ public final class Inventario implements Screen{
 			x+=70;
 			++i;
 		}
+		
+		if(estado == Estado.COMBINANDO){
+			iter = inventario.iterator();
+			while(iter.hasNext()){
+				iter.next().seSeleccionaBoton();
+			}
+		}
 	}
 
 	@Override
@@ -189,6 +203,10 @@ public final class Inventario implements Screen{
 	
 	public Array<Objeto> getContenido(){
 		return inventario;
+	}
+	
+	public Array<Objeto> getCombinacion(){
+		return combinacion;
 	}
 	
 	public static Inventario getInstancia(){
