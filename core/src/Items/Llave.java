@@ -10,7 +10,7 @@ public class Llave extends Objeto{
 
 	public Llave(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/llave.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/llave.png"));
 		//botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;

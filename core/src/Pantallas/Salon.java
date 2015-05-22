@@ -47,13 +47,15 @@ public final class Salon extends Habitacion {
 		//Añadimos objetos a la habitacion
 		if(MyGdxGame.SUSPENSE){
 			objetos.add(bala);
+			
+			bala.setCoordenadas(1100, 180);
+		}else{
 			objetos.add(botellaWhisky);
 			objetos.add(llave);
 			
-			bala.setCoordenadas(1100, 180);
-			botellaWhisky.setCoordenadas(970, 400);
+			botellaWhisky.setCoordenadas(125, 265);
 			llave.setCoordenadas(500, 220);
-		}else{}
+		}
 		
 		//botellaVacia.setCoordenadas(300, 300);
 		//objetos.add(botellaVacia);

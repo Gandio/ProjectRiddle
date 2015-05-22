@@ -235,7 +235,7 @@ public abstract class Habitacion implements Screen{
 		conversando = b;
 	}
 	
-	public void ultimoTexto(){
+	public void esUltimoTexto(){
 		ultimoTexto = true;
 	}
 	
@@ -244,5 +244,13 @@ public abstract class Habitacion implements Screen{
 		cuadroTexto.remove();
 		ultimoTexto = false;
 		estado = Estado.NORMAL;
+	}
+	
+	public CuadroTexto getCuadroTexto(){
+		return cuadroTexto;
+	}
+	
+	public Stage getStage(){
+		return stage;
 	}
 }

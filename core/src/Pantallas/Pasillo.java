@@ -75,7 +75,10 @@ public class Pasillo implements Screen{
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
-		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		if(MyGdxGame.SUSPENSE)
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		else
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 		musica.play();
 		
