@@ -6,6 +6,7 @@ import Botones.BotonConversacion;
 import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
 import Items.Objeto;
+import Objetos.CuadroDialogo;
 import Objetos.CuadroTexto;
 import Objetos.Cursor;
 import Personajes.Personaje;
@@ -49,7 +50,7 @@ public abstract class Habitacion implements Screen{
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
-	protected CuadroTexto cuadroTexto;
+	protected CuadroDialogo cuadroTexto;
 	
 	//Estado
 	/*
@@ -98,7 +99,7 @@ public abstract class Habitacion implements Screen{
 		botonPuerta = new BotonPuertaHabitacion(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 		
-		cuadroTexto = new CuadroTexto(game);
+		cuadroTexto = new CuadroDialogo(game);
 		
 		//Añadimos actores
 		stage.addActor(botonConversacion);
@@ -246,7 +247,7 @@ public abstract class Habitacion implements Screen{
 		estado = Estado.NORMAL;
 	}
 	
-	public CuadroTexto getCuadroTexto(){
+	public CuadroDialogo getCuadroDialogo(){
 		return cuadroTexto;
 	}
 	

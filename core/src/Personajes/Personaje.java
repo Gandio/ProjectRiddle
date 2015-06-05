@@ -2,6 +2,11 @@ package Personajes;
 
 import java.io.File;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -15,7 +20,13 @@ import com.mygdx.game.MyGdxGame;
 public abstract class Personaje extends Actor{
 	private MyGdxGame game;
 	protected Texture personaje;
-	private Vector2 posicion;
+	protected Vector2 posicion;
+	protected String textoActual;
+	
+	protected File textosXml;
+	protected DocumentBuilderFactory dbfactory;
+	protected DocumentBuilder dBuilder;
+	protected Document doc;
 	
 	public Personaje(MyGdxGame game){
 		this.game = game;
@@ -24,7 +35,7 @@ public abstract class Personaje extends Actor{
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		//batch.draw(personaje, posicion.x, posicion.y);
+		batch.draw(personaje, posicion.x, posicion.y);
 	}
 	
 	public void setCoordenadas(float x, float y){

@@ -2,8 +2,6 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Hueso;
-import Items.Lampara;
 import Items.Muñeca;
 import Items.Objeto;
 import Objetos.Cursor;
@@ -19,9 +17,7 @@ public final class Atico extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Atico unicaInstancia;
-	private static Objeto hueso = new Hueso(game);
 	private static Objeto muñeca = new Muñeca(game);
-	private static Objeto lampara = new Lampara(game);
 	
 	private Atico(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -40,12 +36,8 @@ public final class Atico extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		objetos.add(hueso);
-		objetos.add(lampara);
 		objetos.add(muñeca);
 		
-		hueso.setCoordenadas(500, 250);
-		lampara.setCoordenadas(850, 150);
 		muñeca.setCoordenadas(300, 100);
 		
 		while(iter.hasNext()){

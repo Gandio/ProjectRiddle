@@ -2,7 +2,6 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.BotellaVacia;
 import Items.Daga;
 import Items.Objeto;
 import Items.Veneno;
@@ -19,7 +18,6 @@ public final class  Sotano extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Sotano unicaInstancia;
-	private static Objeto botella = new BotellaVacia(game);
 	private static Objeto daga = new Daga(game);
 	private static Objeto veneno = new Veneno(game);
 	
@@ -38,11 +36,9 @@ public final class  Sotano extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		objetos.add(botella);
 		objetos.add(daga);
 		objetos.add(veneno);
 		
-		botella.setCoordenadas(150, 300);
 		daga.setCoordenadas(400, 270);
 		veneno.setCoordenadas(1150, 10);
 		

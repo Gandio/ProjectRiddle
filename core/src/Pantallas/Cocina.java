@@ -2,13 +2,11 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Bala;
-import Items.Bombilla;
+import Items.Azucar;
 import Items.Botella;
-import Items.Llave;
+import Items.Caramelo;
 import Items.Objeto;
 import Objetos.Cursor;
-import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,46 +14,41 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
-public final class Salon extends Habitacion {
-	//private static Objeto botellaVacia = new BotellaVacia(game);
+public final class Cocina extends Habitacion {
 	
-	//Objetos con suspense
-	private static Objeto bala = new Bala(game);
-
+	private static MyGdxGame game;
 	
-	//Objetos sin suspense
-	private static Objeto llave = new Llave(game);
-	private static Objeto bombilla = new Bombilla(game);
+	private static Objeto botella = new Botella(game);
+	private static Objeto azucar = new Azucar(game);
+	private static Objeto caramelos = new Caramelo(game);
 	
-	private static Salon unicaInstancia;
+	private static Cocina unicaInstancia;
 	
-	private Salon(MyGdxGame game, Cursor c) {
-		super(Pasillo.game, c);
+	private Cocina(MyGdxGame game, Cursor c) {
+		super(game, c);
+		this.game = game;
 		objetos = new Array<Objeto>();
-
+		
+		/*
 		//Actores
 		personaje = new Dummie(game);
 		personaje.setCoordenadas(300, 0);
 		
-		
 		//añadimos los actores
 		stage.addActor(personaje);
-		
+		*/
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitacion
-		if(MyGdxGame.SUSPENSE){
-			objetos.add(bala);
-			
-			bala.setCoordenadas(1100, 180);
-		}else{
-			objetos.add(llave);
-			objetos.add(bombilla);
-			
-			llave.setCoordenadas(500, 220);
-			bombilla.setCoordenadas(50, 250);
-		}
+		
+		objetos.add(azucar);
+		objetos.add(botella);
+		objetos.add(caramelos);
+		
+		azucar.setCoordenadas(850, 350);
+		botella.setCoordenadas(140, 290);
+		caramelos.setCoordenadas(1000, 260);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -71,11 +64,11 @@ public final class Salon extends Habitacion {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
+		
 		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		if(personaje != null && estado == Estado.CONVERSAR){
+		/*if(personaje != null && estado == Estado.CONVERSAR){
 			
-		}
+		}*/
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
@@ -88,11 +81,7 @@ public final class Salon extends Habitacion {
 
 	@Override
 	public void show() {
-		if(MyGdxGame.SUSPENSE){
-			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
-		}else{
-			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/salonSin.png"));
-		}
+		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/cocina.png"));
 	}
 
 	@Override
@@ -107,9 +96,9 @@ public final class Salon extends Habitacion {
 		
 	}
 	
-	public static Salon getInstancia(){
+	public static Cocina getInstancia(){
 		if(unicaInstancia == null){
-			unicaInstancia = new Salon(game, c);
+			unicaInstancia = new Cocina(game, c);
 		}
 		
 		return unicaInstancia;

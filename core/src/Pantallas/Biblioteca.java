@@ -2,9 +2,6 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.BotellaVacia;
-import Items.Flor;
-import Items.Gafas;
 import Items.Libro;
 import Items.Objeto;
 import Objetos.Cursor;
@@ -21,8 +18,6 @@ public final class Biblioteca extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Biblioteca unicaInstancia;
-	private static Objeto libro = new Libro(game);
-	private static Objeto gafas = new Gafas(game);
 	
 	//private static Objeto flor = new Flor(game);
 	
@@ -44,14 +39,6 @@ public final class Biblioteca extends Habitacion {
 		
 		//Añadimos objetos a la habitacion
 		
-		//flor.setCoordenadas(300, 300);
-		//objetos.add(flor);
-		
-		objetos.add(libro);
-		objetos.add(gafas);
-		
-		libro.setCoordenadas(510, 200);
-		gafas.setCoordenadas(1200, 200);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);

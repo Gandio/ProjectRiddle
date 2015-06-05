@@ -10,6 +10,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Este botón finaliza la conversación y devuelve la habitación a su estado original
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class BotonFinConversacion extends Boton{
 
 	public BotonFinConversacion(MyGdxGame game) {
@@ -18,6 +24,11 @@ public class BotonFinConversacion extends Boton{
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
+	
+	/**
+	 * Cuando el botón sea pulsado se borran el cuadro te texto y el texto y la habitación vuelve al 
+	 * estado NORMAL, esto quiere decir que vuelven a estar activas todas las opciones.
+	 */
 	public void esPulsado(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		

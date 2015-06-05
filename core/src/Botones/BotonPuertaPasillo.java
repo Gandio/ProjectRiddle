@@ -5,8 +5,11 @@ import java.util.Iterator;
 import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
 import Pantallas.Atico;
+import Pantallas.Baño;
 import Pantallas.Biblioteca;
+import Pantallas.Cocina;
 import Pantallas.Dormitorio;
+import Pantallas.Estudio;
 import Pantallas.Pasillo;
 import Pantallas.Salon;
 import Pantallas.Sotano;
@@ -114,11 +117,20 @@ public class BotonPuertaPasillo extends Boton{
 				}else if(numPuerta == 1){ //es el dormitorio
 					game.setScreen(Dormitorio.getInstancia());
 				}else if(numPuerta == 2){
-					game.setScreen(Atico.getInstancia());
+					if(MyGdxGame.SUSPENSE)
+						game.setScreen(Atico.getInstancia());
+					else
+						game.setScreen(Baño.getInstancia());
 				}else if(numPuerta == 3){
-					game.setScreen(Biblioteca.getInstancia());
+					if(MyGdxGame.SUSPENSE)
+						game.setScreen(Biblioteca.getInstancia());
+					else
+						game.setScreen(Estudio.getInstancia());
 				}else if(numPuerta == 4){
-					game.setScreen(Sotano.getInstancia());
+					if(MyGdxGame.SUSPENSE)
+						game.setScreen(Sotano.getInstancia());
+					else
+						game.setScreen(Cocina.getInstancia());
 				}
 			}
 			

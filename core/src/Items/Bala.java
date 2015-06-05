@@ -17,6 +17,6 @@ public class Bala extends Objeto{
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
-		identificador = Identificador.Flor;
+		identificador = Identificador.Bala;
 	}
 }

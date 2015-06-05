@@ -68,6 +68,9 @@ public class Pasillo implements Screen{
 	public static Habitacion salon = Salon.getInstancia();
 	public static Biblioteca biblioteca = Biblioteca.getInstancia();
 	public static Atico atico = Atico.getInstancia();
+	public static Estudio estudio = Estudio.getInstancia();
+	public static Baño baño = Baño.getInstancia();
+	public static Cocina cocina = Cocina.getInstancia();
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));

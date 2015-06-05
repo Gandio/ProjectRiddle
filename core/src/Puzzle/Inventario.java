@@ -7,8 +7,10 @@ import Botones.BotonCancelarCombinar;
 import Botones.BotonCerrarInventario;
 import Botones.BotonCombinarObjeto;
 import Botones.BotonInventario;
-import Items.BotellaVacia;
+import Items.Botella;
 import Items.Objeto;
+import Objetos.CuadroDescripcion;
+import Objetos.CuadroEstado;
 import Pantallas.Salon;
 
 import com.badlogic.gdx.Gdx;
@@ -50,6 +52,10 @@ public final class Inventario implements Screen{
 	private BotonCombinarObjeto combinarObjeto;
 	private BotonAceptarCombinar aceptarCombinar;
 	private BotonCancelarCombinar cancelarCombinar;
+	
+	//Cuadros de texto
+	private CuadroDescripcion cuadroDescripcion;
+	private CuadroEstado cuadroEstado;
 	
 	public enum Estado{
 		COMBINANDO, NORMAL, COMBINACION_PREPARADA;

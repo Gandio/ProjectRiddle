@@ -3,9 +3,12 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Caramelo;
+import Items.Espejo;
+import Items.Libro;
 import Items.Mascara;
 import Items.Objeto;
 import Items.Pistola;
+import Items.Reloj;
 import Objetos.Cursor;
 import Personajes.Dummie;
 
@@ -22,11 +25,12 @@ public final class Dormitorio extends Habitacion {
 	
 	//Objetos con suspense
 	private static Objeto mascara = new Mascara(game);
-	private static Objeto caramelos = new Caramelo(game);
 	private static Objeto pistola = new Pistola(game);
 	
 	//Objetos sin suspense
-	
+	private static Objeto reloj = new Reloj(game);
+	private static Objeto espejo = new Espejo(game);
+	private static Objeto libro = new Libro(game);
 	
 	private Dormitorio(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -40,17 +44,24 @@ public final class Dormitorio extends Habitacion {
 		//añadimos los actores
 		stage.addActor(personaje);
 		*/
+		
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		if(MyGdxGame.SUSPENSE){
-			objetos.add(caramelos);
 			objetos.add(mascara);
 			objetos.add(pistola);
 			
-			caramelos.setCoordenadas(810, 270);
 			mascara.setCoordenadas(510, 300);
 			pistola.setCoordenadas(300, 170);
+		}else{
+			objetos.add(espejo);
+			objetos.add(libro);
+			objetos.add(reloj);
+			
+			espejo.setCoordenadas(400, 430);
+			libro.setCoordenadas(1000, 100);
+			reloj.setCoordenadas(100, 270);
 		}
 		
 		while(iter.hasNext()){

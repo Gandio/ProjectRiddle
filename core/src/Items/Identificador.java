@@ -1,6 +1,6 @@
 package Items;
 
 public enum Identificador {
-	BotellaVacia, BotellaWhisky, Caramelo, Daga, Flor, Gafas, Hueso, Lampara, Libro, Llave, Mascara,
-	Muñeca, Pistola, Veneno;
+	Anillo, Azucar, Boligrafo, Bombilla, Botella, Cafe, Caramelo, Espejo, Joya, Libro, Daga, Bala,
+	Llave, Moneda, Mascara, Muñeca, Pistola, Reloj, Veneno, Zapato;
 }

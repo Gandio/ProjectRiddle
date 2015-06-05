@@ -6,16 +6,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
-public class Flor extends Objeto{
+public class Cafe extends Objeto{
 
-	public Flor(MyGdxGame game) {
+	public Cafe(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
-		botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/cafe.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
-		identificador = Identificador.Flor;
+		identificador = Identificador.Cafe;
 	}
 }
