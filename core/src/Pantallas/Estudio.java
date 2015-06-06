@@ -7,6 +7,8 @@ import Items.Cafe;
 import Items.Moneda;
 import Items.Objeto;
 import Objetos.Cursor;
+import Personajes.Joven;
+import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,15 +30,7 @@ public final class Estudio extends Habitacion {
 		super(game, c);
 		this.game = game;
 		objetos = new Array<Objeto>();
-		
-		/*
-		//Actores
-		personaje = new Dummie(game);
-		personaje.setCoordenadas(300, 0);
-		
-		//añadimos los actores
-		stage.addActor(personaje);
-		*/
+	
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
@@ -59,6 +53,14 @@ public final class Estudio extends Habitacion {
 		while(iter.hasNext()){
 			stage.addActor(iter.next());
 		}
+		
+		//Actores
+		personaje = Niña.getInstancia();
+		personaje.setCoordenadas(450, 0);
+		
+		//añadimos los actores
+		stage.addActor(personaje);
+		
 	}
 	
 	@Override

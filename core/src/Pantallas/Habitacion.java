@@ -254,4 +254,8 @@ public abstract class Habitacion implements Screen{
 	public Stage getStage(){
 		return stage;
 	}
+	
+	public Personaje getPersonaje(){
+		return personaje;
+	}
 }

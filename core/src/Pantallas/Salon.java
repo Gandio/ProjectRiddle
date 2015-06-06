@@ -8,6 +8,7 @@ import Items.Botella;
 import Items.Llave;
 import Items.Objeto;
 import Objetos.Cursor;
+import Personajes.Anciana;
 import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
@@ -32,14 +33,6 @@ public final class Salon extends Habitacion {
 	private Salon(MyGdxGame game, Cursor c) {
 		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
-
-		//Actores
-		personaje = new Dummie(game);
-		personaje.setCoordenadas(300, 0);
-		
-		
-		//añadimos los actores
-		stage.addActor(personaje);
 		
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
@@ -66,6 +59,13 @@ public final class Salon extends Habitacion {
 		while(iter.hasNext()){
 			stage.addActor(iter.next());
 		}
+		
+		//Actores
+		personaje = Anciana.getInstancia();
+		personaje.setCoordenadas(450, 0);
+		
+		//añadimos los actores
+		stage.addActor(personaje);
 	}
 	
 	@Override

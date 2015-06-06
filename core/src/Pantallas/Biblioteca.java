@@ -7,6 +7,7 @@ import Items.Objeto;
 import Objetos.Cursor;
 import Pantallas.Habitacion.Estado;
 import Personajes.Dummie;
+import Personajes.Mujer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,14 +27,6 @@ public final class Biblioteca extends Habitacion {
 		this.game = game;
 		objetos = new Array<Objeto>();
 		
-		/*
-		//Actores
-		personaje = new Dummie(game);
-		personaje.setCoordenadas(300, 0);
-		
-		//añadimos los actores
-		stage.addActor(personaje);
-		*/
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
@@ -49,6 +42,13 @@ public final class Biblioteca extends Habitacion {
 		while(iter.hasNext()){
 			stage.addActor(iter.next());
 		}
+		
+		//Actores
+		personaje = Mujer.getInstancia();
+		personaje.setCoordenadas(450, 0);
+		
+		//añadimos los actores
+		stage.addActor(personaje);
 	}
 	
 	@Override

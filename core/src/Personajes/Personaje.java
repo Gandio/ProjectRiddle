@@ -30,7 +30,6 @@ public abstract class Personaje extends Actor{
 	
 	public Personaje(MyGdxGame game){
 		this.game = game;
-		posicion = new Vector2(0, 0);
 	}
 	
 	@Override

@@ -7,6 +7,7 @@ import Items.Objeto;
 import Items.Veneno;
 import Objetos.Cursor;
 import Personajes.Dummie;
+import Personajes.Joven;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,14 +26,7 @@ public final class  Sotano extends Habitacion {
 		super(game, c);
 		this.game = game;
 		objetos = new Array<Objeto>();
-		/*
-		//Actores
-		personaje = new Dummie(game);
-		personaje.setCoordenadas(300, 0);
-		
-		//añadimos los actores
-		stage.addActor(personaje);
-		*/
+
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
@@ -51,6 +45,13 @@ public final class  Sotano extends Habitacion {
 		while(iter.hasNext()){
 			stage.addActor(iter.next());
 		}
+		
+		//Actores
+		personaje = Joven.getInstancia();
+		
+		//añadimos los actores
+		stage.addActor(personaje);
+		personaje.setCoordenadas(450, 0);
 	}
 	
 	@Override
