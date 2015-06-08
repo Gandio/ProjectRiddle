@@ -2,14 +2,14 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Bala;
 import Items.Bombilla;
-import Items.Botella;
 import Items.Llave;
 import Items.Objeto;
+import Items.Pistola;
+import Items.Rifle;
+import Items.Tabaco;
 import Objetos.Cursor;
 import Personajes.Anciana;
-import Personajes.Dummie;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,11 +18,10 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 public final class Salon extends Habitacion {
-	//private static Objeto botellaVacia = new BotellaVacia(game);
-	
 	//Objetos con suspense
-	private static Objeto bala = new Bala(game);
-
+	private static Objeto pistola = new Pistola(game);
+	private static Objeto rifle = new Rifle(game);
+	private static Objeto tabaco = new Tabaco(game);
 	
 	//Objetos sin suspense
 	private static Objeto llave = new Llave(game);
@@ -39,9 +38,14 @@ public final class Salon extends Habitacion {
 		
 		//Añadimos objetos a la habitacion
 		if(MyGdxGame.SUSPENSE){
-			objetos.add(bala);
+			objetos.add(pistola);
+			objetos.add(rifle);
+			objetos.add(tabaco);
 			
-			bala.setCoordenadas(1100, 180);
+			pistola.setCoordenadas(1120, 15);
+			rifle.setCoordenadas(350, 10);
+			tabaco.setCoordenadas(500, 240);
+			
 		}else{
 			objetos.add(llave);
 			objetos.add(bombilla);

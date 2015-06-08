@@ -3,6 +3,7 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Daga;
+import Items.Jaula;
 import Items.Objeto;
 import Items.Veneno;
 import Objetos.Cursor;
@@ -19,8 +20,10 @@ public final class  Sotano extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Sotano unicaInstancia;
+	
 	private static Objeto daga = new Daga(game);
 	private static Objeto veneno = new Veneno(game);
+	private static Objeto jaula = new Jaula(game);
 	
 	private Sotano(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -32,9 +35,11 @@ public final class  Sotano extends Habitacion {
 		
 		objetos.add(daga);
 		objetos.add(veneno);
+		objetos.add(jaula);
 		
-		daga.setCoordenadas(400, 270);
-		veneno.setCoordenadas(1150, 10);
+		daga.setCoordenadas(400, 240);
+		veneno.setCoordenadas(175, 290);
+		jaula.setCoordenadas(1150, 280);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -46,12 +51,14 @@ public final class  Sotano extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		//Actores
-		personaje = Joven.getInstancia();
+		if(MyGdxGame.SUSPENSE){
+			//Actores
+			personaje = Joven.getInstancia();
 		
-		//añadimos los actores
-		stage.addActor(personaje);
-		personaje.setCoordenadas(450, 0);
+			//añadimos los actores
+			stage.addActor(personaje);
+			personaje.setCoordenadas(450, 0);
+		}
 	}
 	
 	@Override

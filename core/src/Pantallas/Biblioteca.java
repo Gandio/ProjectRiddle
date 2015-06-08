@@ -2,12 +2,12 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Libro;
+import Items.Calavera;
 import Items.Objeto;
+import Items.Serpiente;
 import Objetos.Cursor;
-import Pantallas.Habitacion.Estado;
-import Personajes.Dummie;
 import Personajes.Mujer;
+import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,7 +20,8 @@ public final class Biblioteca extends Habitacion {
 	private static MyGdxGame game;
 	private static Biblioteca unicaInstancia;
 	
-	//private static Objeto flor = new Flor(game);
+	private static Objeto serpiente = new Serpiente(game);
+	private static Objeto calavera = new Calavera(game);
 	
 	private Biblioteca(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -31,7 +32,11 @@ public final class Biblioteca extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitacion
+		objetos.add(calavera);
+		objetos.add(serpiente);
 		
+		calavera.setCoordenadas(530, 220);
+		serpiente.setCoordenadas(10, 50);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -43,12 +48,14 @@ public final class Biblioteca extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		//Actores
-		personaje = Mujer.getInstancia();
-		personaje.setCoordenadas(450, 0);
+		if(MyGdxGame.SUSPENSE){
+			//Actores
+			personaje = Mujer.getInstancia();
+			personaje.setCoordenadas(450, 0);
 		
-		//añadimos los actores
-		stage.addActor(personaje);
+			//añadimos los actores
+			stage.addActor(personaje);
+		}
 	}
 	
 	@Override

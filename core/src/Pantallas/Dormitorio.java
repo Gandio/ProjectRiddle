@@ -2,12 +2,12 @@ package Pantallas;
 
 import java.util.Iterator;
 
+import Items.Basura;
 import Items.Caramelo;
 import Items.Espejo;
 import Items.Libro;
 import Items.Mascara;
 import Items.Objeto;
-import Items.Pistola;
 import Items.Reloj;
 import Objetos.Cursor;
 import Personajes.Dummie;
@@ -26,7 +26,7 @@ public final class Dormitorio extends Habitacion {
 	
 	//Objetos con suspense
 	private static Objeto mascara = new Mascara(game);
-	private static Objeto pistola = new Pistola(game);
+	private static Objeto basura = new Basura(game);
 	
 	//Objetos sin suspense
 	private static Objeto reloj = new Reloj(game);
@@ -43,10 +43,10 @@ public final class Dormitorio extends Habitacion {
 		
 		if(MyGdxGame.SUSPENSE){
 			objetos.add(mascara);
-			objetos.add(pistola);
+			objetos.add(basura);
 			
-			mascara.setCoordenadas(510, 300);
-			pistola.setCoordenadas(300, 170);
+			mascara.setCoordenadas(300, 170);
+			basura.setCoordenadas(800, 100);
 		}else{
 			objetos.add(espejo);
 			objetos.add(libro);

@@ -2,10 +2,11 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Muñeca;
+import Items.Ataud;
+import Items.Cuadro;
+import Items.Navaja;
 import Items.Objeto;
 import Objetos.Cursor;
-import Personajes.Dummie;
 import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
@@ -18,7 +19,10 @@ public final class Atico extends Habitacion {
 	
 	private static MyGdxGame game;
 	private static Atico unicaInstancia;
-	private static Objeto muñeca = new Muñeca(game);
+	
+	private static Objeto ataud = new Ataud(game);
+	private static Objeto cuadro = new Cuadro(game);
+	private static Objeto navaja = new Navaja(game);
 	
 	private Atico(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -28,9 +32,14 @@ public final class Atico extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		objetos.add(muñeca);
+		objetos.add(ataud);
+		objetos.add(cuadro);
+		objetos.add(navaja);
 		
-		muñeca.setCoordenadas(300, 100);
+		ataud.setCoordenadas(900, 40);
+		cuadro.setCoordenadas(450, 225);
+		navaja.setCoordenadas(600, 150);
+		
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -43,11 +52,13 @@ public final class Atico extends Habitacion {
 		}
 		
 		//Actores
-		personaje = Niña.getInstancia();
-		personaje.setCoordenadas(450, 0);
+		if(MyGdxGame.SUSPENSE){
+			personaje = Niña.getInstancia();
+			personaje.setCoordenadas(450, 0);
 		
-		//añadimos los actores
-		stage.addActor(personaje);
+			//añadimos los actores
+			stage.addActor(personaje);
+		}
 	}
 	
 	@Override
