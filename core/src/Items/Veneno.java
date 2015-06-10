@@ -11,7 +11,7 @@ public class Veneno extends Objeto{
 	public Veneno(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/veneno.png"));
-		//botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonVeneno.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);

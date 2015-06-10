@@ -2,6 +2,7 @@ package Objetos;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.MyGdxGame;
@@ -14,10 +15,22 @@ public class CuadroEstado extends CuadroTexto{
 		super(game);
 		this.game = game;
 		
-		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTexto.png"));
+		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroObjetivo.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		
-		texto = "es un estado";
+		texto = "Ve a la cocina";
 		font = new BitmapFont();
+	}
+	
+	public void draw(Batch batch, float parentAlpha){
+		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
+		font.setScale(2.5f);
+		String textoConLimites = wrapString(texto, 20);
+		
+		font.drawMultiLine(batch, textoConLimites, 145, 490);
+	}
+	
+	public void setTexto(String t){
+		texto = t;
 	}
 }

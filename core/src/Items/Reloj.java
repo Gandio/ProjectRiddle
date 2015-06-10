@@ -12,6 +12,7 @@ public class Reloj extends Objeto{
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/reloj.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonReloj.png"));
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();

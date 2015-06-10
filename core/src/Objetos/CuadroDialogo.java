@@ -71,7 +71,7 @@ public class CuadroDialogo extends CuadroTexto{
 		/*usar un vector, cada celda será un string, cada 4 \n (numero de lineas) se crea una nueva celda,
 		 * hasta que no se llegue a la última celda no se dibuja el boton de fin de conversacion
 		 */
-		batch.draw(cuadroTexto, getX(), getY());
+		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(3f);
 		String textoConLimites = wrapString(texto, 50);
 		textos = dividirTexto(textoConLimites);

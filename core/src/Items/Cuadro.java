@@ -11,7 +11,7 @@ public class Cuadro extends Objeto{
 	public Cuadro(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/cuadro.png"));
-		//botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCuadro.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);

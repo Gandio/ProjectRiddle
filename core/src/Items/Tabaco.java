@@ -11,7 +11,7 @@ public class Tabaco extends Objeto{
 	public Tabaco(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/tabaco.png"));
-		//botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/flor.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonTabaco.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);

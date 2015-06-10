@@ -7,7 +7,6 @@ import Items.Objeto;
 import Items.Serpiente;
 import Objetos.Cursor;
 import Personajes.Mujer;
-import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

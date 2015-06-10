@@ -1,7 +1,5 @@
 package Objetos;
 
-import Pantallas.Habitacion;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -20,16 +18,16 @@ public class CuadroDescripcion extends CuadroTexto{
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroDescripcion.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		
-		texto = "es un objeto";
+		texto = "es un objeto, pero ahora mismo no te se decir cual";
 		font = new BitmapFont();
 	}
 	
 	public void draw(Batch batch, float parentAlpha){
-		batch.draw(cuadroTexto, getX(), getY());
-		font.setScale(3f);
-		String textoConLimites = wrapString(texto, 50);
+		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
+		font.setScale(2.5f);
+		String textoConLimites = wrapString(texto, 20);
 		
-		font.drawMultiLine(batch, textoConLimites, 30, 260);
+		font.drawMultiLine(batch, textoConLimites, 900, 470);
 	}
 	
 	public void setTexto(String t){

@@ -11,7 +11,7 @@ public class Botella extends Objeto{
 	public Botella(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/botella.png"));
-		//botonObjeto = new Texture(Gdx.files.internal("Imagenes/Objetos/botellaVacia.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBotella.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);

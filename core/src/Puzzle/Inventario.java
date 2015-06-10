@@ -55,7 +55,7 @@ public final class Inventario implements Screen{
 	
 	//Cuadros de texto
 	private CuadroDescripcion cuadroDescripcion;
-	private CuadroEstado cuadroEstado;
+	private CuadroEstado cuadroObjetivo;
 	
 	public enum Estado{
 		COMBINANDO, NORMAL, COMBINACION_PREPARADA;
@@ -89,6 +89,10 @@ public final class Inventario implements Screen{
 		combinarObjeto = new BotonCombinarObjeto(game);
 		combinarObjeto.setTouchable(Touchable.enabled);
 		
+		//Instanciamos los cuadros de texto
+		cuadroDescripcion = new CuadroDescripcion(game);
+		cuadroObjetivo = new CuadroEstado(game);
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		//añadimos botones
@@ -96,6 +100,10 @@ public final class Inventario implements Screen{
 		stage.addActor(aceptarCombinar);
 		stage.addActor(cancelarCombinar);
 		stage.addActor(combinarObjeto);
+		
+		//añadimos los cuadros de texto
+		stage.addActor(cuadroDescripcion);
+		stage.addActor(cuadroObjetivo);
 	}
 
 	@Override
@@ -120,19 +128,23 @@ public final class Inventario implements Screen{
 		cancelarCombinar.setCoordenadas(300, 80);
 		combinarObjeto.setCoordenadas(400, 80);
 		
+		//Posiciones de los cuadros de texto
+		cuadroDescripcion.setCoordenadas(850, 40);
+		cuadroObjetivo.setCoordenadas(130, 250);
+		
 		cancelarCombinar.update();
 		aceptarCombinar.update();
 		combinarObjeto.update();
 		cerrarInventario.update();
 		
 		Iterator<Objeto> iter = inventario.iterator();
-		float x = 600;
+		float x = 450;
 		float y = 400;
 		int i = 0;
 		while(iter.hasNext()){
 			if(i%3 == 0){ //nueva linea de objetos
-				x = 600;
-				y -= 70;
+				x = 450;
+				y -= 100;
 			}
 			
 			Objeto o = iter.next();
@@ -140,7 +152,7 @@ public final class Inventario implements Screen{
 			o.setTouchable(Touchable.enabled);
 			o.setCoordenadas(x, y);
 			
-			x+=70;
+			x+=100;
 			++i;
 		}
 		

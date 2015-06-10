@@ -11,6 +11,7 @@ public class Moneda extends Objeto{
 	public Moneda(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/moneda.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonMoneda.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		seCoge(true);
