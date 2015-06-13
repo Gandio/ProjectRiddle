@@ -1,0 +1,13 @@
+<objetos>
+	<objeto nombre = "Bombilla">
+		<descripcion texto = "Parece nueva, puede que todavia funcione"/>
+	</objeto>
+
+	<objeto nombre = "Llave">
+		<descripcion texto = "Es una llave pequeña ¿qué abrirá?"/>
+	</objeto>
+
+	<objeto nombre = "Cafe">
+		<descripcion texto = "Huele muy bien, aún está caliente"/>
+	</objeto>
+</objetos>

@@ -82,6 +82,7 @@ public class Pasillo implements Screen{
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		else
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
+		
 		musica.setLooping(true);
 		musica.play();
 		

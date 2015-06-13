@@ -27,10 +27,20 @@ public class BotonSalir extends Boton{
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
-		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton) - 310);
+		if(MyGdxGame.SUSPENSE)
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
+		else 
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalirSin.png"));
 		
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
+		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+	}
+	
+	/**
+	 * Si el botón ha sido pulsado se sale del juego se comprueba continuamente en el método render()
+	 * de la clase Inicio.
+	 */
+	public void esPulsado(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
         addListener(new InputListener(){
@@ -39,13 +49,7 @@ public class BotonSalir extends Boton{
                 return true;
             }
 		});
-	}
-	
-	/**
-	 * Si el botón ha sido pulsado se sale del juego se comprueba continuamente en el método render()
-	 * de la clase Inicio.
-	 */
-	public void esPulsado(){
+        
 		if(pulsado){
 			sonido.play();
 			Gdx.app.exit();

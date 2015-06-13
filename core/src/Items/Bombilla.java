@@ -3,6 +3,7 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -17,5 +18,10 @@ public class Bombilla extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Bombilla;
+		
+		for (Element child : objetos){	
+			if(identificador.name().equals(child.getAttribute("nombre")))
+				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");
+		}
 	}
 }

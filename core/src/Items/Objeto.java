@@ -1,5 +1,7 @@
 package Items;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 
 import Objetos.Cursor;
@@ -7,6 +9,7 @@ import Pantallas.Habitacion;
 import Pantallas.Habitacion.Estado;
 import Puzzle.Inventario;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -14,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.XmlReader;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -35,6 +40,10 @@ public abstract class Objeto extends Actor{
 	protected Identificador identificador;
 	protected int id;
 	
+	protected XmlReader reader = new XmlReader();
+	protected Element raiz;
+	protected Array<Element> objetos;
+	protected String descripcionObjeto;
 	
 	public Objeto(MyGdxGame game){
 		//this.game = game;
@@ -42,6 +51,12 @@ public abstract class Objeto extends Actor{
 		sePuedeCoger = false;
 		investigando = false;
 		seleccionado = false;
+		
+		try{
+			raiz = reader.parse(Gdx.files.internal("xml/objetos.xml"));
+		}catch(IOException e){}
+		
+		objetos = raiz.getChildrenByName("objeto");
 	}
 	
 	public void setCoordenadas(float x, float y){
@@ -126,7 +141,9 @@ public abstract class Objeto extends Actor{
             }
             
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO
+                
+            	
+            	/*if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO
                 		&& ((Inventario) game.getScreen()).getCombinacion().size < 2){
                 	
                 	if(!control1 && !control2){
@@ -140,7 +157,9 @@ public abstract class Objeto extends Actor{
                     	((Inventario) game.getScreen()).getCombinacion().removeValue(o, true);
                     	control1 = false;
                 	}
-                }
+                }*/
+            	
+            	
                 
                 return true;
             }

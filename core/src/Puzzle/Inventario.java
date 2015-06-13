@@ -234,4 +234,12 @@ public final class Inventario implements Screen{
 		
 		return unicaInstancia;
 	}
+	
+	public CuadroDescripcion getCuadroDescripcion(){
+		return cuadroDescripcion;
+	}
+	
+	public CuadroEstado getCuadroEstado(){
+		return cuadroObjetivo;
+	}
 }

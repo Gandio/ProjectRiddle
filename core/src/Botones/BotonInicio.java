@@ -30,10 +30,20 @@ public class BotonInicio extends Boton{
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInicio.png"));
-		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton) - 280);
+		if(MyGdxGame.SUSPENSE)
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInicio.png"));
+		else
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonNuevaSin.png"));
 		
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
+		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+	}
+	
+	/**
+	 * Si el botón ha sido pulsado crea una nueva partida, se comprueba continuamente en el método render()
+	 * de la clase Inicio.
+	 */
+	public void esPulsado(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
         addListener(new InputListener(){
@@ -42,13 +52,7 @@ public class BotonInicio extends Boton{
                 return true;
             }
 		});
-	}
-	
-	/**
-	 * Si el botón ha sido pulsado crea una nueva partida, se comprueba continuamente en el método render()
-	 * de la clase Inicio.
-	 */
-	public void esPulsado(){
+        
 		if(pulsado){
 			sonido.play();
 			game.getScreen().dispose();

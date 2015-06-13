@@ -44,7 +44,7 @@ public class Inicio implements Screen{
 	 */
 	
 	public Inicio(MyGdxGame game){
-		Inicio.game = game;
+		this.game = game;
 		
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -59,9 +59,10 @@ public class Inicio implements Screen{
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
 		//añadimos botones y hacemos que sean tocables
-		inicio = new BotonInicio(Inicio.game);
+		inicio = new BotonInicio(game);
 		inicio.setTouchable(Touchable.enabled);
-		salir = new BotonSalir(Inicio.game);
+		
+		salir = new BotonSalir(game);
 		salir.setTouchable(Touchable.enabled);
 		
 		Gdx.input.setInputProcessor(stage);
@@ -75,7 +76,10 @@ public class Inicio implements Screen{
 	 */
 
 	public void show() {
-		pantalla = new Texture("Imagenes/Escenarios/Titulo.png");
+		if(MyGdxGame.SUSPENSE)
+			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Titulo.png"));
+		else
+			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/tituloSin.png"));
 	}
 	
 	/**
@@ -99,6 +103,14 @@ public class Inicio implements Screen{
 		
 		inicio.esPulsado();
 		salir.esPulsado();
+		
+		if(MyGdxGame.SUSPENSE){
+			inicio.setCoordenadas(460, 170);
+			salir.setCoordenadas(580, 100);
+		}else{
+			inicio.setCoordenadas(420, 180);
+			salir.setCoordenadas(540, 100);
+		}
 	}
 	
 	public void resize(int width, int height) {
