@@ -18,19 +18,15 @@ public class CuadroDescripcion extends CuadroTexto{
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroDescripcion.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		
-		texto = "es un objeto, pero ahora mismo no te se decir cual";
+		texto = "";
 		font = new BitmapFont();
 	}
 	
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
-		String textoConLimites = wrapString(texto, 20);
+		String textoConLimites = wrapString(texto, 17);
 		
 		font.drawMultiLine(batch, textoConLimites, 900, 470);
-	}
-	
-	public void setTexto(String t){
-		texto = t;
 	}
 }

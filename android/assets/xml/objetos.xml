@@ -1,13 +1,101 @@
 <objetos>
+    <objeto nombre = "Anillo">
+		<descripcion texto = "Está hecho de oro, parece muy valioso"/>
+	</objeto>
+	
+	<objeto nombre = "Ataud">
+		<descripcion texto = "Es un ataud para animales pequeños"/>
+	</objeto>
+	
+	<objeto nombre = "Azucar">
+		<descripcion texto = "Úsala si no te gusta el cafe amargo"/>
+	</objeto>
+	
+	<objeto nombre = "Basura">
+		<descripcion texto = "Huele fatal, que algo se mueve dentro de la bolsa"/>
+	</objeto>
+	
+	<objeto nombre = "Boligrafo">
+		<descripcion texto = "Nunca había visto un boligrafo tan brillante"/>
+	</objeto>
+	
 	<objeto nombre = "Bombilla">
 		<descripcion texto = "Parece nueva, puede que todavia funcione"/>
 	</objeto>
 
+	<objeto nombre = "Botella">
+		<descripcion texto = "Una botella de vino, está vacia, es una pena"/>
+	</objeto>
+	
+	<objeto nombre = "Cafe">
+		<descripcion texto = "Huele muy bien, aún está caliente"/>
+	</objeto>
+	
+	<objeto nombre = "Calavera">
+		<descripcion texto = "Creo que es auténtica"/>
+	</objeto>
+	
+	<objeto nombre = "Caramelo">
+		<descripcion texto = "A los niños les gustará más que a mi"/>
+	</objeto>
+	
+	<objeto nombre = "Cuadro">
+		<descripcion texto = "Mirar a esa bruja me da escalofrío"/>
+	</objeto>
+	
+	<objeto nombre = "Daga">
+		<descripcion texto = "No quiero tocarla, está afilada"/>
+	</objeto>
+	
+	<objeto nombre = "Espejo">
+		<descripcion texto = "Debería afeitarme"/>
+	</objeto>
+	
+	<objeto nombre = "Jaula">
+		<descripcion texto = "Un perro cabría aquí"/>
+	</objeto>
+	
+	<objeto nombre = "Joya">
+		<descripcion texto = "Vale mi sueldo de un mes"/>
+	</objeto>
+	
+	<objeto nombre = "Libro">
+		<descripcion texto = "El último deseo, buen título"/>
+	</objeto>
+	
 	<objeto nombre = "Llave">
 		<descripcion texto = "Es una llave pequeña ¿qué abrirá?"/>
 	</objeto>
-
-	<objeto nombre = "Cafe">
-		<descripcion texto = "Huele muy bien, aún está caliente"/>
+	
+	<objeto nombre = "Mascara">
+		<descripcion texto = "Una máscara de gas, espero no usarla"/>
+	</objeto>
+	
+	<objeto nombre = "Moneda">
+		<descripcion texto = "Coleccionar monedas, que aburrido"/>
+	</objeto>
+	
+	<objeto nombre = "Navaja">
+		<descripcion texto = "Hoy en día no se ven estas cosas"/>
+	</objeto>
+	
+	<objeto nombre = "Pistola">
+		<descripcion texto = "Se ha disparado hace poco"/>
+	</objeto>
+	
+	<objeto nombre = "Serpiente">
+		<descripcion texto = "No quiero acercarme demasiado"/>
+	</objeto>
+	
+	<objeto nombre = "Tabaco">
+		<descripcion texto = "Hace dos meses dejé de fumar"/>
+	</objeto>
+	
+	<objeto nombre = "Veneno">
+		<descripcion texto = "No solo sirve para las ratas"/>
+	</objeto>
+	
+	<objeto nombre = "Zapato">
+		<descripcion texto = "No sirve de nada sin su pareja"/>
 	</objeto>
 </objetos>

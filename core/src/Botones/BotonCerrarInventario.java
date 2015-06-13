@@ -47,6 +47,7 @@ public class BotonCerrarInventario extends Boton{
 			boton = botonActivado;
 			if(pulsado){
 				pulsado = false;
+				((Inventario) game.getScreen()).getCuadroDescripcion().setTexto("");
 				game.setScreen(new Pasillo(game));
 			}
 		}else{

@@ -135,10 +135,10 @@ public abstract class Objeto extends Actor{
 		final Objeto o = this;
 		setBounds(coordenadas.x, coordenadas.y, botonObjeto.getWidth(), botonObjeto.getHeight());
 		addListener(new InputListener(){
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-        		if(control1 && !control2) control2 = true;
-        		else if(!control1 && control2)control2 = false;
-            }
+            //public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+        		//if(control1 && !control2) control2 = true;
+        		//else if(!control1 && control2)control2 = false;
+            //}
             
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 
@@ -159,10 +159,14 @@ public abstract class Objeto extends Actor{
                 	}
                 }*/
             	
-            	
+            	((Inventario) game.getScreen()).getCuadroDescripcion().setTexto(o.getDescripcion());
                 
                 return true;
             }
 		});
+	}
+	
+	public String getDescripcion(){
+		return descripcionObjeto;
 	}
 }

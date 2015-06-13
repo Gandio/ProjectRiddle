@@ -29,8 +29,4 @@ public class CuadroEstado extends CuadroTexto{
 		
 		font.drawMultiLine(batch, textoConLimites, 145, 490);
 	}
-	
-	public void setTexto(String t){
-		texto = t;
-	}
 }

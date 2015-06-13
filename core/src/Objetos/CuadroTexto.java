@@ -79,4 +79,8 @@ public class CuadroTexto extends Actor{
 		
 		return textos;
 	}
+	
+	public void setTexto(String t){
+		texto = t;
+	}
 }

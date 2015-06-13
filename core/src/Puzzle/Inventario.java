@@ -156,12 +156,12 @@ public final class Inventario implements Screen{
 			++i;
 		}
 		
-		if(estado == Estado.COMBINANDO){
+		//if(estado == Estado.COMBINANDO){
 			iter = inventario.iterator();
 			while(iter.hasNext()){
 				iter.next().seSeleccionaBoton();
 			}
-		}
+		//}
 	}
 
 	@Override
