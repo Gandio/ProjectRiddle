@@ -54,7 +54,7 @@ public final class Estudio extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(!MyGdxGame.SUSPENSE){
+		if(!MyGdxGame.SUSPENSE_AMBIENTE){
 			//Actores
 			personaje = Niña.getInstancia();
 			personaje.setCoordenadas(450, 0);

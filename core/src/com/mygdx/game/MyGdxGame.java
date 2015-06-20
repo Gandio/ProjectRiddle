@@ -10,6 +10,10 @@ public class MyGdxGame extends Game{
 	public static final int HEIGHT = 800;
 	public static final boolean SUSPENSE = false;
 	
+	public static final boolean SUSPENSE_AMBIENTE = false;
+	public static final boolean SUSPENSE_MUSICA = false;
+	public static final boolean SUSPENSE_OBJETOS = false;
+	
 	public void create() {
 		setScreen(new Inicio(this));
 	}

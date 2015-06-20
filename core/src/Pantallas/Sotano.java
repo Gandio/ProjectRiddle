@@ -51,7 +51,7 @@ public final class  Sotano extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			//Actores
 			personaje = Joven.getInstancia();
 		
@@ -81,6 +81,7 @@ public final class  Sotano extends Habitacion {
 	@Override
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/sotano.png"));
+		
 	}
 
 	@Override

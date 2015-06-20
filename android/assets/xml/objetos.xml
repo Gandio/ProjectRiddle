@@ -1,22 +1,22 @@
 <objetos>
-    <objeto nombre = "Anillo">
-		<descripcion texto = "Está hecho de oro, parece muy valioso"/>
+    <objeto nombre = "anillo">
+		<descripcion texto = "Está hecho de oro. Parece muy valioso."/>
 	</objeto>
 	
-	<objeto nombre = "Ataud">
-		<descripcion texto = "Es un ataud para animales pequeños"/>
+	<objeto nombre = "ataud">
+		<descripcion texto = "Es un ataud para animales pequeños."/>
 	</objeto>
 	
-	<objeto nombre = "Azucar">
-		<descripcion texto = "Úsala si no te gusta el cafe amargo"/>
+	<objeto nombre = "azucar">
+		<descripcion texto = "Úsala si no te gusta el cafe amargo."/>
 	</objeto>
 	
 	<objeto nombre = "Basura">
-		<descripcion texto = "Huele fatal, que algo se mueve dentro de la bolsa"/>
+		<descripcion texto = "Huele muy mal."/>
 	</objeto>
 	
-	<objeto nombre = "Boligrafo">
-		<descripcion texto = "Nunca había visto un boligrafo tan brillante"/>
+	<objeto nombre = "boligrafo">
+		<descripcion texto = "Nunca había visto un boligrafo tan brillante."/>
 	</objeto>
 	
 	<objeto nombre = "Bombilla">
@@ -48,7 +48,7 @@
 	</objeto>
 	
 	<objeto nombre = "Espejo">
-		<descripcion texto = "Debería afeitarme"/>
+		<descripcion texto = "Me recuerda que debería afeitarme alguna vez."/>
 	</objeto>
 	
 	<objeto nombre = "Jaula">

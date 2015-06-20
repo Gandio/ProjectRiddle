@@ -53,7 +53,7 @@ public final class Baño extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(!MyGdxGame.SUSPENSE){
+		if(!MyGdxGame.SUSPENSE_AMBIENTE){
 			//Actores
 			personaje = Joven.getInstancia();
 			personaje.setCoordenadas(450, 0);
@@ -84,6 +84,7 @@ public final class Baño extends Habitacion {
 	@Override
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/bathroom.png"));
+		
 	}
 
 	@Override

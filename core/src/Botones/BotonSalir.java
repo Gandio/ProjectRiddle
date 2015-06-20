@@ -27,7 +27,7 @@ public class BotonSalir extends Boton{
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		if(MyGdxGame.SUSPENSE)
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
 		else 
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalirSin.png"));

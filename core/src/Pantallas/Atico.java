@@ -52,7 +52,7 @@ public final class Atico extends Habitacion {
 		}
 		
 		//Actores
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			personaje = Niña.getInstancia();
 			personaje.setCoordenadas(450, 0);
 		

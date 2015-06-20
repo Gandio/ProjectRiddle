@@ -30,7 +30,7 @@ public class BotonInicio extends Boton{
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		if(MyGdxGame.SUSPENSE)
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInicio.png"));
 		else
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonNuevaSin.png"));

@@ -47,7 +47,7 @@ public final class Biblioteca extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			//Actores
 			personaje = Mujer.getInstancia();
 			personaje.setCoordenadas(450, 0);
@@ -78,6 +78,7 @@ public final class Biblioteca extends Habitacion {
 	@Override
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Biblioteca.png"));
+		
 	}
 
 	@Override

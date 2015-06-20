@@ -7,8 +7,8 @@ import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
 import Items.Objeto;
 import Objetos.CuadroDialogo;
-import Objetos.CuadroTexto;
 import Objetos.Cursor;
+import Objetos.Puntuacion;
 import Personajes.Personaje;
 
 import com.badlogic.gdx.Gdx;
@@ -26,11 +26,12 @@ import com.mygdx.game.MyGdxGame;
 
 /**
  * Esta clase abstracta generaliza todas las habitaciones del juego.
+ * 
  * @author Francisco Madueño Chulián
  */
-public abstract class Habitacion implements Screen{
-	
-	//Juego
+public abstract class Habitacion implements Screen {
+
+	// Juego
 	public static MyGdxGame game = Pasillo.game;
 	protected Stage stage;
 	protected Music musica;
@@ -39,138 +40,151 @@ public abstract class Habitacion implements Screen{
 	protected Array<Objeto> objetos;
 	private boolean conversando = false;
 	private boolean ultimoTexto = false;
-	
-	//Camaras
+
+	// Camaras
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
-	protected FillViewport viewport; //se usa para adaptar la pantalla
-	
-	//Actores
+	protected FillViewport viewport; // se usa para adaptar la pantalla
+
+	// Actores
 	protected Personaje personaje;
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
-	protected BotonPuertaHabitacion botonPuerta; //permite entrar en una habitación
+	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una
+													// habitación
 	protected CuadroDialogo cuadroTexto;
-	
-	//Estado
+
+	// Puntuacion
+	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
+
+	// Estado
 	/*
-	 * Esto controla el estado de la habitación:
-	 * El estado normal es el inicial, de este estado se puede conversar o investigar
-	 * Desde el estado conversar no se puede pasar al estado investigar, solo a normal
-	 * Desde el estado investigar no se puede pasar al estado conversar, solo a normal
+	 * Esto controla el estado de la habitación: El estado normal es el inicial,
+	 * de este estado se puede conversar o investigar Desde el estado conversar
+	 * no se puede pasar al estado investigar, solo a normal Desde el estado
+	 * investigar no se puede pasar al estado conversar, solo a normal
 	 */
-	public enum Estado{
+	public enum Estado {
 		CONVERSAR, INVESTIGAR, NORMAL;
 	};
-	
+
 	protected Estado estado;
-	
+
 	/**
 	 * Constructor de la clase habitación.
+	 * 
 	 * @param game
 	 */
-	
+
 	public Habitacion(MyGdxGame game, Cursor c) {
 		estado = Estado.NORMAL;
-		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
-		
-		//Musica
-		if(MyGdxGame.SUSPENSE)
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+
+		// Musica
+		if (MyGdxGame.SUSPENSE_MUSICA)
+			musica = Gdx.audio.newMusic(Gdx.files
+					.internal("Musica/pasillo.mp3"));
 		else
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
+			musica = Gdx.audio.newMusic(Gdx.files
+					.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
-		
-		//instanciamos la camara
-		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
+
+		// instanciamos la camara
+		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f, 0);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
-		
+
 		Gdx.input.setInputProcessor(stage);
-		
-		//Actores
+
+		// Actores
 		botonConversacion = new BotonConversacion(game);
 		botonConversacion.setTouchable(Touchable.enabled);
-		
+
 		botonInvestigar = new BotonInvestigar(game);
 		botonInvestigar.setTouchable(Touchable.enabled);
-		
+
 		botonPuerta = new BotonPuertaHabitacion(game);
 		botonPuerta.setTouchable(Touchable.enabled);
-		
+
 		cuadroTexto = new CuadroDialogo(game);
-		
-		//Añadimos actores
+
+		// Añadimos actores
 		stage.addActor(botonConversacion);
 		stage.addActor(botonInvestigar);
 		stage.addActor(botonPuerta);
 	}
-	
+
 	@Override
 	public void render(float delta) {
 		musica.play();
-		
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		camara.update();
 		batch.setProjectionMatrix(camara.combined);
-		
+
 		batch.begin();
 		batch.draw(pantalla, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
-		
-		//Posicion de botones
+
+		// Posicion de botones
 		botonPuerta.setCoordenadas(1150, 650);
 		botonInvestigar.setCoordenadas(1050, 650);
 		botonConversacion.setCoordenadas(950, 650);
-		
-		//Posicion cuadro texto
+
+		// Posicion cuadro texto
 		cuadroTexto.setCoordenadas(0, 0);
-		
-		//------------------------------------------------------------------------
-		//---------------------LOGICA DE LOS BOTONES------------------------------
-		//------------------------------------------------------------------------
-		
-		//Este orden se debe mantener si no intenta hacer cast de habitacion a pasillo
+
+		// Posicion de la puntuacion
+		stage.addActor(puntuacion);
+		puntuacion.setCoordenadas(30, 750);
+
+		// ------------------------------------------------------------------------
+		// ---------------------LOGICA DE LOS
+		// BOTONES------------------------------
+		// ------------------------------------------------------------------------
+
+		// Este orden se debe mantener si no intenta hacer cast de habitacion a
+		// pasillo
 		botonInvestigar.update();
 		botonConversacion.update();
 		botonPuerta.update();
-		
+
 		cuadroTexto.update();
 
-		
-		//------------------------------------------------------------------------
-		//---------------------LOGICA DE LOS ESTADOS------------------------------
-		//------------------------------------------------------------------------
-		
+		// ------------------------------------------------------------------------
+		// ---------------------LOGICA DE LOS
+		// ESTADOS------------------------------
+		// ------------------------------------------------------------------------
+
 		Iterator<Objeto> iter = objetos.iterator();
-		
-		//Conversaciones
-		if(estado == Estado.CONVERSAR){
+
+		// Conversaciones
+		if (estado == Estado.CONVERSAR) {
 			stage.addActor(cuadroTexto);
 			cuadroTexto.iniciarConversacion(stage);
-			if(ultimoTexto){
+			if (ultimoTexto) {
 				cuadroTexto.getSigConv().remove();
 				stage.addActor(cuadroTexto.getFinConv());
 			}
-			
+
 		}
-		
-		//Se empieza a investigar y se puede interactuar con los objetos de la habitacion
-		if(estado == Estado.INVESTIGAR){
-			while(iter.hasNext()){
+
+		// Se empieza a investigar y se puede interactuar con los objetos de la
+		// habitacion
+		if (estado == Estado.INVESTIGAR) {
+			while (iter.hasNext()) {
 				iter.next().seInvestiga(true);
 			}
-		}else{
-			while(iter.hasNext()){
+		} else {
+			while (iter.hasNext()) {
 				iter.next().seInvestiga(false);
 			}
 		}
-		
-		System.out.println(estado);
-		
+
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
@@ -179,83 +193,85 @@ public abstract class Habitacion implements Screen{
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 	}
-	
+
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
 	}
 
-	public void dispose(){
+	public void dispose() {
 		batch.dispose();
 		stage.dispose();
 		pantalla.dispose();
 		musica.stop();
 		musica.dispose();
 	}
-	
+
 	/*----------------------------------------------------------------
 	 * -----------------------FUNCIONES AUXILIARES--------------------
 	 * ---------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Devuelve el estado actual de la habitación.
+	 * 
 	 * @return
 	 */
-	
-	public Estado getEstado(){
+
+	public Estado getEstado() {
 		return estado;
 	}
-	
+
 	/**
 	 * Cambia el estado de la habitación.
+	 * 
 	 * @param e
 	 */
-	
-	public void setEstado(Estado e){
+
+	public void setEstado(Estado e) {
 		estado = e;
 	}
-	
-	public Cursor getCursor(){
+
+	public Cursor getCursor() {
 		return c;
 	}
-	
-	public Array<Objeto> getObjetos(){
+
+	public Array<Objeto> getObjetos() {
 		return objetos;
 	}
-	
-	public void pararMusica(){
+
+	public void pararMusica() {
 		musica.stop();
 	}
-	
-	public boolean getConversando(){
+
+	public boolean getConversando() {
 		return conversando;
 	}
-	
-	public void setConversando(boolean b){
+
+	public void setConversando(boolean b) {
 		conversando = b;
 	}
-	
-	public void esUltimoTexto(){
+
+	public void esUltimoTexto() {
 		ultimoTexto = true;
 	}
-	
-	public void terminarConversacion(){
+
+	public void terminarConversacion() {
 		cuadroTexto.finConversacion();
 		cuadroTexto.remove();
 		ultimoTexto = false;
 		estado = Estado.NORMAL;
 	}
-	
-	public CuadroDialogo getCuadroDialogo(){
+
+	public CuadroDialogo getCuadroDialogo() {
 		return cuadroTexto;
 	}
-	
-	public Stage getStage(){
+
+	public Stage getStage() {
 		return stage;
 	}
-	
-	public Personaje getPersonaje(){
+
+	public Personaje getPersonaje() {
 		return personaje;
 	}
 }

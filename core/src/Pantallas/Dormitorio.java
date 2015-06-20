@@ -99,6 +99,8 @@ public final class Dormitorio extends Habitacion {
 		}else{
 			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/dormitorioSin.png"));
 		}
+		
+		
 	}
 
 	@Override

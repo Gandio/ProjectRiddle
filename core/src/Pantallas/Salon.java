@@ -92,11 +92,12 @@ public final class Salon extends Habitacion {
 
 	@Override
 	public void show() {
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
 		}else{
 			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/salonSin.png"));
 		}
+		
 	}
 
 	@Override

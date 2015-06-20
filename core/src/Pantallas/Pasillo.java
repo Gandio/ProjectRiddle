@@ -7,6 +7,7 @@ import Botones.BotonInventario;
 import Botones.BotonIzquierda;
 import Botones.BotonPuertaPasillo;
 import Objetos.Cursor;
+import Objetos.Puntuacion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -58,6 +59,9 @@ public class Pasillo implements Screen{
 	private BotonDerecha botonDerecha;
 	private BotonIzquierda botonIzquierda;
 	private BotonInventario botonInventario;
+		
+	//Puntuacion
+	private static Puntuacion puntuacion = Puntuacion.getInstancia();
 	
 	//Texturas
 	private ShapeRenderer sr;
@@ -78,15 +82,13 @@ public class Pasillo implements Screen{
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
-		if(MyGdxGame.SUSPENSE)
+		if(MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		else
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		
 		musica.setLooping(true);
 		musica.play();
-		
-		System.out.println("Pasillo " + game);
 		
 		//instanciamos la camara
 		camara.setToOrtho(false, cursor.getX(), cursor.getY());
@@ -137,7 +139,6 @@ public class Pasillo implements Screen{
 		botonInventario = new BotonInventario(game);
 		botonInventario.setTouchable(Touchable.enabled);
 		
-		
 		Gdx.input.setInputProcessor(stage);
 		
 		//añadimos actores
@@ -148,6 +149,7 @@ public class Pasillo implements Screen{
 		stage.addActor(botonDerecha);
 		stage.addActor(botonIzquierda);
 		stage.addActor(botonInventario);
+		stage.addActor(puntuacion);
 	}
 	
 	/**
@@ -187,6 +189,8 @@ public class Pasillo implements Screen{
 		
 		botonPuerta.setCoordenadas(cursor.getX() + 280, cursor.getY() + 140);
 		botonInventario.setCoordenadas(cursor.getX() + 200, cursor.getY() + 140);
+		
+		puntuacion.setCoordenadas(cursor.getX() - 350, cursor.getY() + 230);
 		
 		//Dibujamos bordes
 		if(debug){

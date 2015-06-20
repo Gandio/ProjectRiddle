@@ -117,17 +117,17 @@ public class BotonPuertaPasillo extends Boton{
 				}else if(numPuerta == 1){ //es el dormitorio
 					game.setScreen(Dormitorio.getInstancia());
 				}else if(numPuerta == 2){
-					if(MyGdxGame.SUSPENSE)
+					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Atico.getInstancia());
 					else
 						game.setScreen(Baño.getInstancia());
 				}else if(numPuerta == 3){
-					if(MyGdxGame.SUSPENSE)
+					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Biblioteca.getInstancia());
 					else
 						game.setScreen(Estudio.getInstancia());
 				}else if(numPuerta == 4){
-					if(MyGdxGame.SUSPENSE)
+					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Sotano.getInstancia());
 					else
 						game.setScreen(Cocina.getInstancia());

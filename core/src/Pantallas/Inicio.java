@@ -76,7 +76,7 @@ public class Inicio implements Screen{
 	 */
 
 	public void show() {
-		if(MyGdxGame.SUSPENSE)
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Titulo.png"));
 		else
 			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/tituloSin.png"));
@@ -104,7 +104,7 @@ public class Inicio implements Screen{
 		inicio.esPulsado();
 		salir.esPulsado();
 		
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			inicio.setCoordenadas(460, 170);
 			salir.setCoordenadas(580, 100);
 		}else{
