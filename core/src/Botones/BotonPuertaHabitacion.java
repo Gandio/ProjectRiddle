@@ -56,6 +56,11 @@ public class BotonPuertaHabitacion extends Boton{
             }
 		});
 		
+		/*
+		 * El botón solo se activa cuando nos encontramos en el modo normal, ni estamos
+		 * investigando ni conversando.
+		 */
+		
 		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
 			boton = botonActivado;
 			if(pulsado){	

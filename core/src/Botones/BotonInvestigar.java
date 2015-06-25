@@ -22,6 +22,11 @@ public class BotonInvestigar extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;
 	
+	/**
+	 * Constructor de la clase.
+	 * @param game
+	 */
+	
 	public BotonInvestigar(MyGdxGame game) {
 		super(game);
 		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonInvestigar.png"));
@@ -30,6 +35,10 @@ public class BotonInvestigar extends Boton{
 		boton = botonActivado;
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * Este método actualiza el comportamiento del botón durante toda la partida
+	 */
 	
 	public void update(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
@@ -41,6 +50,12 @@ public class BotonInvestigar extends Boton{
                 return true;
             }
 		});
+		
+		/*
+		 * Si estamos en el modo normal podemos acceder al modo investigar. Si estamos
+		 * en el modo investigar podremos volver al modo normal pulsado otra vez el botón.
+		 * El botón estará desactivado durante el modo conversación.
+		 */
 		
 		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
 			boton = botonActivado;

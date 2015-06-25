@@ -24,6 +24,11 @@ import Pantallas.Pasillo;
 public class BotonDerecha extends Boton{
 	private boolean noDerecha = false;
 	
+	/**
+	 * Constructor de la clase botonDerecha
+	 * @param game
+	 */
+	
 	public BotonDerecha(MyGdxGame game) {
 		super(game);
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonDerecha.png"));
@@ -43,6 +48,8 @@ public class BotonDerecha extends Boton{
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
 		Rectangle rectanguloAux;
+		
+		//Algoritmo de colisiones
 		
 		while(i < paredes.size && !noDerecha){
 			rectanguloAux = iRect.next();
@@ -80,6 +87,8 @@ public class BotonDerecha extends Boton{
             }
 		});
 		
+		//Nos movemos
+		
 		if(pulsado && !colisionaDerecha()){
 			cursor.setVelocityX(1);
 			cursor.setVelocityY(0);
@@ -95,6 +104,7 @@ public class BotonDerecha extends Boton{
 		    //Actualizamos la posición de los límites
 		    cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
 		}else{
+			//Dejamos de movernos
 			cursor.setVelocityX(0);
 		}
 	    

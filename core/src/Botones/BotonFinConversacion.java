@@ -17,6 +17,11 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonFinConversacion extends Boton{
+	
+	/**
+	 * Constructor de la clase.
+	 * @param game
+	 */
 
 	public BotonFinConversacion(MyGdxGame game) {
 		super(game);
@@ -31,6 +36,10 @@ public class BotonFinConversacion extends Boton{
 	 */
 	public void esPulsado(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
+		
+		/*
+		 * Detectamos si el botón ha sido pulsado.
+		 */
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

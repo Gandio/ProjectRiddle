@@ -14,7 +14,7 @@ import com.mygdx.game.MyGdxGame;
  */
 
 public class CuadroTexto extends Actor{
-	private MyGdxGame game;
+	protected MyGdxGame game;
 	
 	protected Texture cuadroTexto;
 	protected Vector2 coordenadas;

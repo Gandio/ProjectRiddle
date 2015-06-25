@@ -135,16 +135,18 @@ public abstract class Objeto extends Actor{
 		final Objeto o = this;
 		setBounds(coordenadas.x, coordenadas.y, botonObjeto.getWidth(), botonObjeto.getHeight());
 		addListener(new InputListener(){
-            //public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-        		//if(control1 && !control2) control2 = true;
-        		//else if(!control1 && control2)control2 = false;
-            //}
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+        		if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO){
+        			if(control1 && !control2) control2 = true;
+        			else if(!control1 && control2)control2 = false;
+        		}
+            }
             
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                
-            	
-            	/*if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO
+                if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO
                 		&& ((Inventario) game.getScreen()).getCombinacion().size < 2){
+                	
+                	((Inventario) game.getScreen()).getCuadroDescripcion().setTexto("");
                 	
                 	if(!control1 && !control2){
                 		//Iluminamos el boton y añadimos el objeto al vector de combinación
@@ -157,9 +159,10 @@ public abstract class Objeto extends Actor{
                     	((Inventario) game.getScreen()).getCombinacion().removeValue(o, true);
                     	control1 = false;
                 	}
-                }*/
+                }
             	
-            	((Inventario) game.getScreen()).getCuadroDescripcion().setTexto(o.getDescripcion());
+            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.NORMAL)
+            		((Inventario) game.getScreen()).getCuadroDescripcion().setTexto(o.getDescripcion());
                 
                 return true;
             }

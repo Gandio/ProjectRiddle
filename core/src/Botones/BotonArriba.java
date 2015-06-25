@@ -43,6 +43,10 @@ public class BotonArriba extends Boton{
 		float aux;
 		Rectangle rectanguloAux;
 		
+		/*Algoritmo de movimiento, si me choco con otro cuadrado activo la bandera que 
+		me indica que no me puedo seguir moviendo.
+		*/
+		
 		while(i < paredes.size && !noArriba){
 			rectanguloAux = iRect.next(); 
 			aux = rectanguloAux.getY();
@@ -78,6 +82,8 @@ public class BotonArriba extends Boton{
             }
 		});
 		
+		//Me empiezo a mover
+		
 		if(pulsado && !colisionaArriba()){
 			cursor.setVelocityY(1);
 			cursor.setVelocityX(0);
@@ -94,6 +100,7 @@ public class BotonArriba extends Boton{
 	        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
 	        
 		}else{
+			//Dejo de moverme
 			cursor.setVelocityY(0);
 		}
 		

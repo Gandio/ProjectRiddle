@@ -50,6 +50,8 @@ public class BotonSalir extends Boton{
             }
 		});
         
+        //Salimos del juego
+        
 		if(pulsado){
 			sonido.play();
 			Gdx.app.exit();

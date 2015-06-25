@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<estados>
+    <estado fase = 0>
+        <puzzle id = 0>
+            <objetivo texto = />
+            
+        </puzzle>
+    </estado>
+    
+    <estado fase = 1>
+        <puzzle id = 1>
+            <habitacion tipoHabitacionInicio = "salon" tipoHabitacionFinal = "dormitorio"/> <!--Habitacion donde se inicia el puzzle-->
+            <objeto tipoObjeto = "pistola"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm die Pistole!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+    </estado>
+</estados>

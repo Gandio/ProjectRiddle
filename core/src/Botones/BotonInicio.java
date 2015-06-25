@@ -53,6 +53,10 @@ public class BotonInicio extends Boton{
             }
 		});
         
+        /*
+         * Si se pulsa empieza el juego.
+         */
+        
 		if(pulsado){
 			sonido.play();
 			game.getScreen().dispose();

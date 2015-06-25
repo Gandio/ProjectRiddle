@@ -11,7 +11,18 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el botón que da acceso al inventario del jugador.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class BotonInventario extends Boton{
+	
+	/**
+	 * Constructor de la clase.
+	 * @param game
+	 */
 
 	public BotonInventario(MyGdxGame game) {
 		super(game);
@@ -19,6 +30,10 @@ public class BotonInventario extends Boton{
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * Este método actualiza el comportamiento del botón durante toda la partida
+	 */
 	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
@@ -29,6 +44,10 @@ public class BotonInventario extends Boton{
                 return true;
             }
 		});
+		
+		/*
+		 * Si pulsamos el botón nos muestra el inventario del jugador
+		 */
 		
 		if(pulsado){
 			pulsado = false;

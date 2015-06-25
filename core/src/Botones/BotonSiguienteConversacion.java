@@ -17,6 +17,11 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonSiguienteConversacion extends Boton{
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	public BotonSiguienteConversacion(MyGdxGame game) {
 		super(game);

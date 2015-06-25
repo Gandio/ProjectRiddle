@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objetos>
+    <objeto nombre = "anillo">
+        <descripcion texto = "Es ist sehr teuer und wertvoll."/>
+    </objeto>
+        
+    <objeto nombre = "ataud">
+        <descripcion texto = "Es ist ein Sarg für kleine Tiere."/>
+    </objeto>
+    
+    <objeto nombre = "azucar">
+		<descripcion texto = "Trinkst du gerne süssen Kaffee? Dann vergiss nicht den Z...!"/> 
+	</objeto>
+	
+	<objeto nombre = "basura">
+		<descripcion texto = "Oh, Gott! Das riecht fatal! Und etwas bewegt sich in der Tüte!"/> 
+	</objeto>
+	
+	<objeto nombre = "boligrafo">
+		<descripcion texto = "Wow, das ist der beste Kuli der Welt!"/>
+	</objeto>
+	
+	<objeto nombre = "bombilla">
+		<descripcion texto = "Ich denke, die ist neu und funktioniert noch."/>
+	</objeto>
+
+	<objeto nombre = "botella">
+		<descripcion texto = "Wie schade! Die Flasche Wein ist leer."/>
+	</objeto>
+	
+	<objeto nombre = "cafe">
+		<descripcion texto = "Oh, ich liebe dieses Getränk! Und es ist noch warm."/>
+	</objeto>
+	
+	<objeto nombre = "calavera">
+		<descripcion texto = "Oh, ich glaube der ist authentisch."/>
+	</objeto>
+	
+	<objeto nombre = "caramelo">
+		<descripcion texto = "Kinder lieben das. Ich so lala."/>
+	</objeto>
+	
+	<objeto nombre = "cuadro">
+		  <descripcion texto = "Oh, diese Hexe ist ein Monster!!!"/>
+	</objeto>
+	
+	<objeto nombre = "daga">
+		<descripción texto = "Uhhh, dieses Objekt ist gefährlich."/>
+	</objeto>
+	
+	<objeto nombre = "espejo">
+		<descripcion texto = "Oh, ich muss mich rasieren."/>
+	</objeto>
+	
+	<objeto nombre = "jaula">
+		<descripcion texto = "Der ist ja super gross!"/>
+	</objeto>
+	
+	<objeto nombre = "joya">
+		<descripción texto = "Dieses Objekt ist sehr teuer."/>
+	</objeto>
+	
+	<objeto nombre = "libro">
+		<descripcion texto = "Oh, das ist aber ein dickes Buch."/> 
+	</objeto>
+	
+	<objeto nombre = "llave">
+		<descripcion texto = "Das ist ein kleiner Schlüssel. Was öffnet der?"/>
+	</objeto>
+	
+	<objeto nombre = "mascara">
+		<descripcion texto = "Eine Gasmaske! Ohhh!"/>
+	</objeto>
+	
+	<objeto nombre = "moneda">
+		<descripcion texto = "Ohhhhhh, Geld!!!"/>
+	</objeto>
+	
+	<objeto nombre = "navaja">
+		<descripcion texto = "Wow, das ist aber alt!"/>
+	</objeto>
+	
+	<objeto nombre = "pistola">
+		<descripcion texto = "Ich mag keine Pistolen!"/>
+	</objeto>
+	
+	<objeto nombre = "serpiente">
+		<descripcion texto = "Ohhhhh, die ist sicher gefährlich!"/>
+	</objeto>
+	
+	<objeto nombre = "tabaco">
+		 <descripcion texto = "Ich rauche nicht mehr"/>
+	</objeto>
+	
+	<objeto nombre = "veneno">
+		<descripcion texto = "Gefährlich für Ratten, Kakerlaken und ..."/>
+	</objeto>
+	
+	<objeto nombre = "zapato">
+		<descripcion texto = "Hiervon brauchst du 2!"/>
+	</objeto>
+</objetos>

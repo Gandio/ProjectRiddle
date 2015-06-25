@@ -22,6 +22,11 @@ import com.mygdx.game.Tools;
 public class BotonCerrarInventario extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;
+	
+	/**
+	 * Constructor de la clase.
+	 * @param game
+	 */
 
 	public BotonCerrarInventario(MyGdxGame game) {
 		super(game);
@@ -33,8 +38,18 @@ public class BotonCerrarInventario extends Boton{
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
+	/**
+	 * Metodo que actualiza la lógica del boton durante todo el juego, solo se puede 
+	 * salir del inventario si el estado de este es normal, es decir, no estamos 
+	 * combinando objetos.
+	 */
+	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
+		
+		/*
+		 * Comprobamos si se pulsa el botón
+		 */
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -43,6 +58,9 @@ public class BotonCerrarInventario extends Boton{
             }
 		});
 		
+		/*Si el estado del inventario es el normal activamos el botón, si no lo
+		 * desactivamos
+		 */
 		if((((Inventario) game.getScreen()).getEstado() == Estado.NORMAL)){
 			boton = botonActivado;
 			if(pulsado){

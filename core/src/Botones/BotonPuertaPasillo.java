@@ -68,6 +68,10 @@ public class BotonPuertaPasillo extends Boton{
 		Iterator<Rectangle> iRect = puertas.iterator();
 		Rectangle rectanguloAux;
 		
+		/*Algoritmo para saber con que puerta hemos colisionado. Las puertas están ordenadas
+		 * en una lista, cada posición representa una puerta. Más abajo están los valores.
+		 */
+		
 		while(i < puertas.size){
 			rectanguloAux = iRect.next();
 			if(cursor.getLimites().overlaps(rectanguloAux)){
@@ -98,6 +102,13 @@ public class BotonPuertaPasillo extends Boton{
             }
 		});
 		
+		/*
+		 * Si colisiono con una puerta y pulso el botón la textura del personaje cambia a 
+		 * la dirección contraria para dar un efecto. Se comprueba el número de puerta con 
+		 * el que se ha colisionado y dependiendo de este se entra en una habitación o en 
+		 * otra.
+		 */
+		
 		if(colisionaPuerta()){
 			boton = botonActivado;
 			if(pulsado){
@@ -116,17 +127,17 @@ public class BotonPuertaPasillo extends Boton{
 					game.setScreen(Salon.getInstancia());
 				}else if(numPuerta == 1){ //es el dormitorio
 					game.setScreen(Dormitorio.getInstancia());
-				}else if(numPuerta == 2){
+				}else if(numPuerta == 2){// El atico o el baño, depende de la versión
 					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Atico.getInstancia());
 					else
 						game.setScreen(Baño.getInstancia());
-				}else if(numPuerta == 3){
+				}else if(numPuerta == 3){// La biblioteca o el estudio
 					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Biblioteca.getInstancia());
 					else
 						game.setScreen(Estudio.getInstancia());
-				}else if(numPuerta == 4){
+				}else if(numPuerta == 4){// El sotano o la cocina
 					if(MyGdxGame.SUSPENSE_AMBIENTE)
 						game.setScreen(Sotano.getInstancia());
 					else

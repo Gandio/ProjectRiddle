@@ -50,6 +50,7 @@ public class BotonAbajo extends Boton{
 		float aux;
 		Rectangle rectanguloAux;
 		
+		//Algoritmo de colisiones
 		while(i < paredes.size && !noAbajo){
 			rectanguloAux = iRect.next(); 
 			aux = (rectanguloAux.getY() + rectanguloAux.getHeight());
@@ -85,6 +86,8 @@ public class BotonAbajo extends Boton{
             }
 		});
 		
+		//Me empiezo a mover
+		
 		if(pulsado && !colisionaAbajo()){
 			cursor.setVelocityY(-1);
 			cursor.setVelocityX(0);
@@ -101,6 +104,8 @@ public class BotonAbajo extends Boton{
 	        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
 			
 		}else{
+			//dejo de moverme
+			
 			cursor.setVelocityY(0);
 		}
 		
