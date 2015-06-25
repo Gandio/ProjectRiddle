@@ -7,8 +7,18 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos llave.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Llave extends Objeto{
 
+	/**
+	 * Constructor de la clase llave
+	 * @param game
+	 */
+	
 	public Llave(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/llave.png"));
@@ -18,8 +28,6 @@ public class Llave extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Llave;
-		
-		
 		
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))

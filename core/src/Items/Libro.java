@@ -3,11 +3,22 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos libro.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Libro extends Objeto{
 
+	/**
+	 * Constructor de la clase libro
+	 * @param game
+	 */
+	
 	public Libro(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/libro.png"));
@@ -17,5 +28,11 @@ public class Libro extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Libro;
+		
+		//Descripción del objeto
+		for (Element child : objetos){	
+			if(identificador.name().equals(child.getAttribute("nombre")))
+				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");
+		}
 	}
 }

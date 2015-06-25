@@ -7,8 +7,17 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos boligrafo.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Bombilla extends Objeto{
 
+	/**
+	 * Constructor de la clase bombilla
+	 * @param game
+	 */
 	public Bombilla(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/bombilla.png"));
@@ -19,6 +28,7 @@ public class Bombilla extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Bombilla;
 		
+		//Descripción del objeto
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))
 				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");

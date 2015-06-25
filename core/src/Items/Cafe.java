@@ -7,8 +7,17 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos anillo.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Cafe extends Objeto{
 
+	/**
+	 * Constructor de la clase cafe
+	 * @param game
+	 */
 	public Cafe(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/cafe.png"));

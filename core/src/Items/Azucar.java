@@ -3,11 +3,22 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos azucar.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Azucar extends Objeto{
 
+	/**
+	 * Constructor de la clase azucar
+	 * @param game
+	 */
+	
 	public Azucar(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/azucar.png"));
@@ -17,5 +28,11 @@ public class Azucar extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Azucar;
+		
+		//Descripción del objeto
+		for (Element child : objetos){	
+			if(identificador.name().equals(child.getAttribute("nombre")))
+				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");
+		}
 	}
 }

@@ -3,11 +3,22 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las características de los objetos boligrafo.
+ * @author Francisco Madueño Chulián
+ */
+
 public class Boligrafo extends Objeto{
 
+	/**
+	 * Constructor de la clase boligrafo
+	 * @param game
+	 */
+	
 	public Boligrafo(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/boligrafo.png"));
@@ -16,6 +27,12 @@ public class Boligrafo extends Objeto{
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
-		identificador = Identificador.Anillo;
+		identificador = Identificador.Boligrafo;
+		
+		//Descripción del objeto
+		for (Element child : objetos){	
+			if(identificador.name().equals(child.getAttribute("nombre")))
+				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");
+		}
 	}
 }
