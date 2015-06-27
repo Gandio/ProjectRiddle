@@ -50,8 +50,7 @@ public abstract class Habitacion implements Screen {
 	protected Personaje personaje;
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
-	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una
-													// habitación
+	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una habitación
 	protected CuadroDialogo cuadroTexto;
 
 	// Puntuacion
@@ -78,18 +77,15 @@ public abstract class Habitacion implements Screen {
 
 	public Habitacion(MyGdxGame game, Cursor c) {
 		estado = Estado.NORMAL;
-		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(),
-				Gdx.graphics.getHeight()));
+		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 
 		// Musica
 		if (MyGdxGame.SUSPENSE_MUSICA)
-			musica = Gdx.audio.newMusic(Gdx.files
-					.internal("Musica/pasillo.mp3"));
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		else
-			musica = Gdx.audio.newMusic(Gdx.files
-					.internal("Musica/TemaSinSuspense.mp3"));
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 
 		// instanciamos la camara
@@ -143,8 +139,7 @@ public abstract class Habitacion implements Screen {
 		puntuacion.setCoordenadas(30, 750);
 
 		// ------------------------------------------------------------------------
-		// ---------------------LOGICA DE LOS
-		// BOTONES------------------------------
+		// ---------------------LOGICA DE LOS BOTONES------------------------------
 		// ------------------------------------------------------------------------
 
 		// Este orden se debe mantener si no intenta hacer cast de habitacion a
@@ -156,8 +151,7 @@ public abstract class Habitacion implements Screen {
 		cuadroTexto.update();
 
 		// ------------------------------------------------------------------------
-		// ---------------------LOGICA DE LOS
-		// ESTADOS------------------------------
+		// ---------------------LOGICA DE LOS ESTADOS------------------------------
 		// ------------------------------------------------------------------------
 
 		Iterator<Objeto> iter = objetos.iterator();
@@ -231,30 +225,62 @@ public abstract class Habitacion implements Screen {
 	public void setEstado(Estado e) {
 		estado = e;
 	}
+	
+	/**
+	 * Devuelve el cursor de la habitación.
+	 * @return c
+	 */
 
 	public Cursor getCursor() {
 		return c;
 	}
+	
+	/**
+	 * Devuelve el array de objetos de la habitacion
+	 * @return objetos
+	 */
 
 	public Array<Objeto> getObjetos() {
 		return objetos;
 	}
+	
+	/**
+	 * Para la música de la habitacion
+	 */
 
 	public void pararMusica() {
 		musica.stop();
 	}
+	
+	/**
+	 * Comprueba si estamos o no conversando con el personaje de la habitacion
+	 * @return conversando
+	 */
 
 	public boolean getConversando() {
 		return conversando;
 	}
+	
+	/**
+	 * Cambia el atributo conversando a true o a false
+	 * @param b
+	 */
 
 	public void setConversando(boolean b) {
 		conversando = b;
 	}
+	
+	/**
+	 * Cambia el atributo ultimoTexto a true
+	 */
 
 	public void esUltimoTexto() {
 		ultimoTexto = true;
 	}
+	
+	/**
+	 * Termina la conversación devolviendo los valores a sus estados iniciales
+	 */
 
 	public void terminarConversacion() {
 		cuadroTexto.finConversacion();
@@ -262,14 +288,29 @@ public abstract class Habitacion implements Screen {
 		ultimoTexto = false;
 		estado = Estado.NORMAL;
 	}
+	
+	/**
+	 * Devuelve el cuadro de dialogo de la conversacion
+	 * @return cuadroTexto
+	 */
 
 	public CuadroDialogo getCuadroDialogo() {
 		return cuadroTexto;
 	}
+	
+	/**
+	 * Devuelve el stage de la habitacion
+	 * @return
+	 */
 
 	public Stage getStage() {
 		return stage;
 	}
+	
+	/**
+	 * Devuelve el personaje de la habitacion
+	 * @return personaje
+	 */
 
 	public Personaje getPersonaje() {
 		return personaje;

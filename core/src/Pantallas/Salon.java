@@ -17,6 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Clase que representa a los objetos Salon
+ * @author Francisco Madueño Chulián
+ */
+
 public final class Salon extends Habitacion {
 	//Objetos con suspense
 	private static Objeto pistola = new Pistola(game);
@@ -28,6 +33,12 @@ public final class Salon extends Habitacion {
 	private static Objeto bombilla = new Bombilla(game);
 	
 	private static Salon unicaInstancia;
+	
+	/**
+	 * Contructor de la clase Salon
+	 * @param game
+	 * @param c
+	 */
 	
 	private Salon(MyGdxGame game, Cursor c) {
 		super(Pasillo.game, c);
@@ -111,6 +122,12 @@ public final class Salon extends Habitacion {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
+	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * @return unicaInstancia
+	 */
 	
 	public static Salon getInstancia(){
 		if(unicaInstancia == null){

@@ -16,6 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Clase que representa a los objetos Estudio
+ * @author Francisco Madueño Chulián
+ */
+
 public final class Estudio extends Habitacion {
 	
 	private static MyGdxGame game;
@@ -25,6 +30,12 @@ public final class Estudio extends Habitacion {
 	private static Objeto boligrafo = new Boligrafo(game);
 	
 	private static Estudio unicaInstancia;
+	
+	/**
+	 * Contructor de la clase Estudio
+	 * @param game
+	 * @param c
+	 */
 	
 	private Estudio(MyGdxGame game, Cursor c) {
 		super(game, c);
@@ -99,6 +110,12 @@ public final class Estudio extends Habitacion {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
+	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * @return unicaInstancia
+	 */
 	
 	public static Estudio getInstancia(){
 		if(unicaInstancia == null){
