@@ -1,6 +1,7 @@
 package Objetos;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,6 +26,7 @@ public class CuadroDescripcion extends CuadroTexto{
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
+		font.setColor(Color.BLACK);
 		String textoConLimites = wrapString(texto, 17);
 		
 		font.drawMultiLine(batch, textoConLimites, 900, 470);

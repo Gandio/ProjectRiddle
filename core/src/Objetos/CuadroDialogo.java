@@ -44,14 +44,8 @@ public class CuadroDialogo extends CuadroTexto{
 		finConversacion.setTouchable(Touchable.enabled);
 		
 		
-		//Provisional, el texto no va asociado al cuadro de texto, se usa otro metodo para crear el texto
-		texto = "hola mundo, espero que esto se adapte al cuadro de texto "
-				+ "porque si no vamos a tener que usar "
-				+ "otra cosa :3. Cosa que si que hace gracias algoritmo raro y desconocido que yo ya habia pensado "
-				+ "pero que otra persona ya había implementado. Ahora me queda que esto salga en otra ventana y todos"
-				+ " contentos :3. A ver este salto de linea raro si queda bien yo que se lo mismo si. Bueno ahora lo que"
-				+ " queda es ver si las transiciones de texto funcionan, he hecho una prueba con dos y si, probemos para "
-				+ "n pues que eso es más jodido.";
+		//Texto por defecto.
+		texto = "Ich habe momentan keine Information für dich!";
 				
 		
 		

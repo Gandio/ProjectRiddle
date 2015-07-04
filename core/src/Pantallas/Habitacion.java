@@ -51,7 +51,7 @@ public abstract class Habitacion implements Screen {
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una habitación
-	protected CuadroDialogo cuadroTexto;
+	protected static CuadroDialogo cuadroTexto;
 
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
@@ -294,7 +294,7 @@ public abstract class Habitacion implements Screen {
 	 * @return cuadroTexto
 	 */
 
-	public CuadroDialogo getCuadroDialogo() {
+	public static CuadroDialogo getCuadroDialogo() {
 		return cuadroTexto;
 	}
 	

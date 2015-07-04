@@ -10,7 +10,6 @@ import Items.Mascara;
 import Items.Objeto;
 import Items.Reloj;
 import Objetos.Cursor;
-import Personajes.Dummie;
 import Personajes.Hombre;
 
 import com.badlogic.gdx.Gdx;

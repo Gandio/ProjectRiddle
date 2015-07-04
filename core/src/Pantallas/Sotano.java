@@ -7,7 +7,6 @@ import Items.Jaula;
 import Items.Objeto;
 import Items.Veneno;
 import Objetos.Cursor;
-import Personajes.Dummie;
 import Personajes.Joven;
 
 import com.badlogic.gdx.Gdx;

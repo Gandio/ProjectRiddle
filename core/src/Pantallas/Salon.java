@@ -86,11 +86,6 @@ public final class Salon extends Habitacion {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){

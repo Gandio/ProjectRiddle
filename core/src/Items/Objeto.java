@@ -53,7 +53,7 @@ public abstract class Objeto extends Actor{
 		seleccionado = false;
 		
 		try{
-			raiz = reader.parse(Gdx.files.internal("xml/objetos.xml"));
+			raiz = reader.parse(Gdx.files.internal("xml/objetosAleman.xml"));
 		}catch(IOException e){}
 		
 		objetos = raiz.getChildrenByName("objeto");

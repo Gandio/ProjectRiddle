@@ -15,6 +15,7 @@ import Pantallas.Salon;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -38,6 +39,7 @@ public final class Inventario implements Screen{
 	private static Inventario unicaInstancia;
 	
 	protected Stage stage;
+	protected Music musica;
 	private Texture textura;
 	private Array<Objeto> inventario;
 	private Array<Objeto> combinacion;
@@ -54,7 +56,7 @@ public final class Inventario implements Screen{
 	private BotonCancelarCombinar cancelarCombinar;
 	
 	//Cuadros de texto
-	private CuadroDescripcion cuadroDescripcion;
+	private static CuadroDescripcion cuadroDescripcion;
 	private CuadroEstado cuadroObjetivo;
 	
 	public enum Estado{
@@ -68,6 +70,13 @@ public final class Inventario implements Screen{
 		this.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
+		
+		// Musica
+		if (MyGdxGame.SUSPENSE_MUSICA)
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
+		else
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
+		musica.setLooping(true);
 		
 		estado = Estado.NORMAL;
 		inventario = new Array<Objeto>();
@@ -202,6 +211,15 @@ public final class Inventario implements Screen{
 	public void añadirObjeto(Objeto b){
 		inventario.add(b);
 	}
+	
+	/**
+	 * Para la música del inventario
+	 */
+
+	public void pararMusica() {
+		musica.stop();
+	}
+	
 	/*
 	public Array<Boton> getBotones(){
 		return botonesObjetos;
@@ -235,7 +253,7 @@ public final class Inventario implements Screen{
 		return unicaInstancia;
 	}
 	
-	public CuadroDescripcion getCuadroDescripcion(){
+	public static CuadroDescripcion getCuadroDescripcion(){
 		return cuadroDescripcion;
 	}
 	

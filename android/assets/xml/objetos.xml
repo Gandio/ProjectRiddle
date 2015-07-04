@@ -1,13 +1,13 @@
 <objetos>
-    <objeto nombre = "anillo">
+    <objeto nombre = "Anillo">
 		<descripcion texto = "Está hecho de oro. Parece muy valioso."/>
 	</objeto>
 	
-	<objeto nombre = "ataud">
+	<objeto nombre = "Ataud">
 		<descripcion texto = "Es un ataud para animales pequeños."/>
 	</objeto>
 	
-	<objeto nombre = "azucar">
+	<objeto nombre = "Azucar">
 		<descripcion texto = "Úsala si no te gusta el cafe amargo."/>
 	</objeto>
 	
@@ -15,7 +15,7 @@
 		<descripcion texto = "Huele muy mal."/>
 	</objeto>
 	
-	<objeto nombre = "boligrafo">
+	<objeto nombre = "Boligrafo">
 		<descripcion texto = "Nunca había visto un boligrafo tan brillante."/>
 	</objeto>
 	

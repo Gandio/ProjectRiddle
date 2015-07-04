@@ -117,10 +117,9 @@ public class Pasillo implements Screen{
 		colisionesPuertas.add(new Rectangle(255, 200, 75, 75)); //inferior
 		colisionesPuertas.add(new Rectangle(-20, 490, 75, 65)); //izquierda
 		
-		//Preparamos las habitaciones
-		
 		sr = new ShapeRenderer();
 		
+		//Añadimos los botones
 		botonPuerta = new BotonPuertaPasillo(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 		
@@ -174,7 +173,7 @@ public class Pasillo implements Screen{
 		camara.position.x = cursor.getX();
 		camara.position.y = cursor.getY();
 		
-		//Movimiento del cursor
+		//Actualizacion de los botones
 		botonAbajo.esPulsado(delta);
 		botonArriba.esPulsado(delta);
 		botonDerecha.esPulsado(delta);
@@ -182,6 +181,7 @@ public class Pasillo implements Screen{
 		botonPuerta.update();
 		botonInventario.update();
 		
+		//Coordenadas de los botones
 		botonAbajo.setCoordenadas(cursor.getX() - 285, cursor.getY() - 210);
 		botonArriba.setCoordenadas(cursor.getX() - 285, cursor.getY() - 40);
 		botonDerecha.setCoordenadas(cursor.getX() - 200, cursor.getY() - 125);

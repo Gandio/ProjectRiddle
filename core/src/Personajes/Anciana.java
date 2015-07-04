@@ -6,10 +6,21 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa a los objetos Anciana
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class Anciana extends Personaje{
 	
 	private static MyGdxGame game;
 	private static Anciana unicaInstancia;
+	
+	/**
+	 * Contructor de la clase
+	 * @param game
+	 */
 	
 	private Anciana(MyGdxGame game) {
 		super(game);
@@ -20,6 +31,11 @@ public class Anciana extends Personaje{
 		
 		//textosXml = donde estén los textos 
 	}
+	
+	/**
+	 * Solo habrá un objeto Anciana durante cada partida, este método se encarga de ello.
+	 * @return
+	 */
 	
 	public static Anciana getInstancia(){
 		if(unicaInstancia == null)
