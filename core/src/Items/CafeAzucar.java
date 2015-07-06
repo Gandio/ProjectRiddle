@@ -3,39 +3,33 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos boligrafo.
+ * Esta clase representa las características de los objetos anillo.
  * @author Francisco Madueño Chulián
  */
 
-public class Boligrafo extends Objeto{
+public class CafeAzucar extends Objeto{
 
 	/**
-	 * Constructor de la clase boligrafo
+	 * Constructor de la clase cafe
 	 * @param game
 	 */
-	
-	public Boligrafo(MyGdxGame game) {
+	public CafeAzucar(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/boligrafo.png"));
-		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBoligrafo.png"));
-		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonBoligrafoActivado.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/cafe.png"));
+		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCafe.png"));
+		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCafeActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
-		
-		combinables = new Array<Identificador>();
-		combinables.add(Identificador.Libro);
-		
+		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
-		identificador = Identificador.Boligrafo;
+		identificador = Identificador.CafeAzucar;
 		
-		//Descripción del objeto
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))
 				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");

@@ -13,27 +13,24 @@ import com.mygdx.game.Tools;
  * @author Francisco Madueño Chulián
  */
 
-public class Serpiente extends Objeto{
+public class SerpienteEnjaulada extends Objeto{
 
 	/**
 	 * Constructor de la clase serpiente
 	 * @param game
 	 */
 	
-	public Serpiente(MyGdxGame game) {
+	public SerpienteEnjaulada(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/serpiente.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonSerpiente.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonSerpienteActivado.png"));
 		texturaActualBoton = botonObjeto;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
-		
-		combinables = new Array<Identificador>();
-		combinables.add(Identificador.Jaula);
-		
+		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
-		identificador = Identificador.Serpiente;
+		identificador = Identificador.SerpienteEnjaulada;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	
@@ -42,4 +39,3 @@ public class Serpiente extends Objeto{
 		}
 	}
 }
-

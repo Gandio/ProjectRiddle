@@ -8,6 +8,7 @@ import Botones.BotonCerrarInventario;
 import Botones.BotonCombinarObjeto;
 import Botones.BotonInventario;
 import Items.Botella;
+import Items.Identificador;
 import Items.Objeto;
 import Objetos.CuadroDescripcion;
 import Objetos.CuadroEstado;
@@ -200,14 +201,6 @@ public final class Inventario implements Screen{
 	//---------------------------------FUNCIONES AUXILIARES------------------------
 	//-----------------------------------------------------------------------------
 	
-	/*public void añadirObjeto(Objeto b){
-		inventario.add(b);
-		inventario.get(index).setTouchable(Touchable.enabled);
-		stage.addActor(inventario.get(index));
-		//System.out.println(inventario.size);
-		index++;
-	}*/
-	
 	public void añadirObjeto(Objeto b){
 		inventario.add(b);
 	}
@@ -224,6 +217,21 @@ public final class Inventario implements Screen{
 			}
 		}
 	}
+	
+	public boolean combinando(){
+		Iterator<Identificador> iter1;
+		iter1 = combinacion.get(0).getCombinables().iterator();
+		
+		while(iter1.hasNext()){
+			if(iter1.next() == combinacion.get(1).getIdentificador()){
+				return true;
+					
+			}
+		}
+		
+		return false;
+	}
+
 	/**
 	 * Para la música del inventario
 	 */
@@ -231,15 +239,6 @@ public final class Inventario implements Screen{
 	public void pararMusica() {
 		musica.stop();
 	}
-	
-	/*
-	public Array<Boton> getBotones(){
-		return botonesObjetos;
-	}
-	
-	public Array<Objeto> getObjetos(){
-		return objetosInventario;
-	}*/
 	
 	public EstadoInventario getEstado(){
 		return estado;

@@ -3,6 +3,7 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
@@ -26,7 +27,10 @@ public class Jaula extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonJaulaActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
-		combinables = null;
+		
+		combinables = new Array<Identificador>();
+		combinables.add(Identificador.Serpiente);
+		
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Jaula;

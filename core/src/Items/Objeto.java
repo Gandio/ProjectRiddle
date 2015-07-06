@@ -200,4 +200,8 @@ public abstract class Objeto extends Actor{
 	public Identificador getIdentificador(){
 		return identificador;
 	}
+	
+	public Array<Identificador> getCombinables(){
+		return combinables;
+	}
 }
