@@ -1,7 +1,7 @@
 package Botones;
 
 import Pantallas.Habitacion;
-import Pantallas.Habitacion.Estado;
+import Pantallas.Habitacion.EstadoHabitacion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -57,16 +57,16 @@ public class BotonInvestigar extends Boton{
 		 * El botón estará desactivado durante el modo conversación.
 		 */
 		
-		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
+		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.NORMAL){
 			boton = botonActivado;
 			if(pulsado){
-				((Habitacion) game.getScreen()).setEstado(Estado.INVESTIGAR);
+				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.INVESTIGAR);
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(450, -3000);
 			}
-		}else if(((Habitacion) game.getScreen()).getEstado() == Estado.INVESTIGAR){
+		}else if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.INVESTIGAR){
 			boton = botonActivado;
 			if(pulsado){
-				((Habitacion) game.getScreen()).setEstado(Estado.NORMAL);
+				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.NORMAL);
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(450, 0);
 			}
 		}else{

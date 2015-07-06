@@ -1,7 +1,7 @@
 package Botones;
 
 import Puzzle.Inventario;
-import Puzzle.Inventario.Estado;
+import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,24 +35,33 @@ public class BotonCancelarCombinar extends Boton{
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
 		addListener(new InputListener(){
+			//se pulsa el botón
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonCancelarCombinar)event.getTarget()).pulsado = true;
+                //Se actualiza la variable pulsado
+            	((BotonCancelarCombinar)event.getTarget()).pulsado = true;
                 
                 return true;
             }
 		});
 		
-		if(((Inventario) game.getScreen()).getEstado() == Estado.COMBINANDO || 
-				((Inventario) game.getScreen()).getEstado() == Estado.COMBINACION_PREPARADA){
+		//Si el estado actual del inventario es combinando o combinacion preparada se activa el botón
+		if(((Inventario) game.getScreen()).getEstado() == EstadoInventario.COMBINANDO || 
+				((Inventario) game.getScreen()).getEstado() == EstadoInventario.COMBINACION_PREPARADA){
 			boton = botonActivado;
+			//Solo si se ha pulsado
 			if(pulsado){
-				//logica
-				((Inventario) game.getScreen()).setEstado(Estado.NORMAL);
+				//Se vuelve al estado normal, se vacia el array de combinacion y se devuelve
+				//la textura original de los objetos
+				((Inventario) game.getScreen()).setEstado(EstadoInventario.NORMAL);
+				((Inventario) game.getScreen()).getCombinacion().clear();
+				((Inventario) game.getScreen()).restaurarBotonesObjetos();
 			}
 		}else{
+			//El botón está desactivado y no funciona
 			boton = botonDesactivado;
 		}
 		
+		//Volvemos a actualizar la variable pulsado
 		pulsado = false;
 	}
 }

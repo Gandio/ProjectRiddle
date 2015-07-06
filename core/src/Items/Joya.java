@@ -23,7 +23,9 @@ public class Joya extends Objeto{
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/joya.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonJoya.png"));
+		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonJoyaActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+		texturaActualBoton = botonObjeto;
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();

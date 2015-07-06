@@ -63,11 +63,11 @@ public abstract class Habitacion implements Screen {
 	 * no se puede pasar al estado investigar, solo a normal Desde el estado
 	 * investigar no se puede pasar al estado conversar, solo a normal
 	 */
-	public enum Estado {
+	public enum EstadoHabitacion {
 		CONVERSAR, INVESTIGAR, NORMAL;
 	};
 
-	protected Estado estado;
+	protected EstadoHabitacion estado;
 
 	/**
 	 * Constructor de la clase habitación.
@@ -76,7 +76,7 @@ public abstract class Habitacion implements Screen {
 	 */
 
 	public Habitacion(MyGdxGame game, Cursor c) {
-		estado = Estado.NORMAL;
+		estado = EstadoHabitacion.NORMAL;
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
@@ -157,7 +157,7 @@ public abstract class Habitacion implements Screen {
 		Iterator<Objeto> iter = objetos.iterator();
 
 		// Conversaciones
-		if (estado == Estado.CONVERSAR) {
+		if (estado == EstadoHabitacion.CONVERSAR) {
 			stage.addActor(cuadroTexto);
 			cuadroTexto.iniciarConversacion(stage);
 			if (ultimoTexto) {
@@ -169,7 +169,7 @@ public abstract class Habitacion implements Screen {
 
 		// Se empieza a investigar y se puede interactuar con los objetos de la
 		// habitacion
-		if (estado == Estado.INVESTIGAR) {
+		if (estado == EstadoHabitacion.INVESTIGAR) {
 			while (iter.hasNext()) {
 				iter.next().seInvestiga(true);
 			}
@@ -212,7 +212,7 @@ public abstract class Habitacion implements Screen {
 	 * @return
 	 */
 
-	public Estado getEstado() {
+	public EstadoHabitacion getEstado() {
 		return estado;
 	}
 
@@ -222,7 +222,7 @@ public abstract class Habitacion implements Screen {
 	 * @param e
 	 */
 
-	public void setEstado(Estado e) {
+	public void setEstado(EstadoHabitacion e) {
 		estado = e;
 	}
 	
@@ -286,7 +286,7 @@ public abstract class Habitacion implements Screen {
 		cuadroTexto.finConversacion();
 		cuadroTexto.remove();
 		ultimoTexto = false;
-		estado = Estado.NORMAL;
+		estado = EstadoHabitacion.NORMAL;
 	}
 	
 	/**

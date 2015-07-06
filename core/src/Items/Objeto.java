@@ -1,15 +1,16 @@
 package Items;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 
 import Objetos.Cursor;
 import Pantallas.Habitacion;
-import Pantallas.Habitacion.Estado;
+import Pantallas.Habitacion.EstadoHabitacion;
 import Puzzle.Inventario;
+import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -31,6 +32,8 @@ public abstract class Objeto extends Actor{
 	private MyGdxGame game = Habitacion.game;
 	protected Texture textura;
 	protected Texture botonObjeto;
+	protected Texture botonObjetoActivado;
+	protected Texture texturaActualBoton;
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
 	private boolean sePuedeCoger, investigando, seleccionado;
@@ -45,12 +48,17 @@ public abstract class Objeto extends Actor{
 	protected Array<Element> objetos;
 	protected String descripcionObjeto;
 	
+	private Sound sonido;
+	
 	public Objeto(MyGdxGame game){
 		//this.game = game;
 		
 		sePuedeCoger = false;
 		investigando = false;
 		seleccionado = false;
+		
+		
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/cogerObjeto.wav"));
 		
 		try{
 			raiz = reader.parse(Gdx.files.internal("xml/objetosAleman.xml"));
@@ -68,7 +76,7 @@ public abstract class Objeto extends Actor{
 	
 	public void draw(Batch batch, float parentAlpha) {
 		if(game.getScreen().getClass() == Inventario.class){
-			batch.draw(botonObjeto, coordenadas.x, coordenadas.y);
+			batch.draw(texturaActualBoton, coordenadas.x, coordenadas.y);
 		}else{
 			batch.draw(textura, coordenadas.x, coordenadas.y);
 		}
@@ -101,6 +109,7 @@ public abstract class Objeto extends Actor{
 			
 			//Y lo quitamos de la habitacion
 			iter = h.getObjetos().iterator();
+			sonido.play();
 			
 			while(iter.hasNext()){
 				if(iter.next().getClass() == tipoObjeto){
@@ -116,11 +125,10 @@ public abstract class Objeto extends Actor{
 		setBounds(coordenadas.x, coordenadas.y, textura.getWidth(), textura.getHeight());
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                if(game.getScreen().getClass() != Inventario.class && ((Habitacion) game.getScreen()).getEstado() == Estado.INVESTIGAR){
+                if(game.getScreen().getClass() != Inventario.class && ((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.INVESTIGAR){
                 	if(!tocadoUnaVez){
                 		((Objeto)event.getTarget()).seleccionado = true;
                 		tocadoUnaVez = true;
-                		System.out.println("me tocaste");
                 		cogerObjeto();
                 	}
                 }
@@ -131,37 +139,49 @@ public abstract class Objeto extends Actor{
 		
 	}
 	
+	//Pulsar botonObjeto
 	public void seSeleccionaBoton(){
 		final Objeto o = this;
-		setBounds(coordenadas.x, coordenadas.y, botonObjeto.getWidth(), botonObjeto.getHeight());
+		setBounds(coordenadas.x, coordenadas.y, texturaActualBoton.getWidth(), texturaActualBoton.getHeight());
 		addListener(new InputListener(){
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-        		if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO){
+            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINANDO
+            			|| ((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINACION_PREPARADA){
         			if(control1 && !control2) control2 = true;
         			else if(!control1 && control2)control2 = false;
         		}
             }
             
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.COMBINANDO
-                		&& ((Inventario) game.getScreen()).getCombinacion().size < 2){
+            	//Se pueden activar o desactivar los botones objeto en cualquier momento mientras que
+            	//no se acepte la combinación
+            	System.out.println(((Inventario) game.getScreen()).getCombinacion().size);
+            	
+                if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINANDO 
+                		||((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINACION_PREPARADA){
                 	
+                	//Borramos el texto de las descripciones mientras este modo esté activo
                 	((Inventario) game.getScreen()).getCuadroDescripcion().setTexto("");
                 	
-                	if(!control1 && !control2){
+                	
+                	if(!control1 && !control2 && ((Inventario) game.getScreen()).getCombinacion().size < 2){
                 		//Iluminamos el boton y añadimos el objeto al vector de combinación
+                		texturaActualBoton = botonObjetoActivado;
                     	((Inventario) game.getScreen()).getCombinacion().add(o);
                     	control1 = true;
                 		
                 	}else if(control1 && control2){
                 		//Devolvemos el botón a su estado inicial y quitamos el objeto del 
                 		//vector de combinacion
+                		texturaActualBoton = botonObjeto;
                     	((Inventario) game.getScreen()).getCombinacion().removeValue(o, true);
+                    	((Inventario) game.getScreen()).setEstado(EstadoInventario.COMBINANDO);
                     	control1 = false;
+                    	
                 	}
                 }
             	
-            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.Estado.NORMAL)
+            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.NORMAL)
             		((Inventario) game.getScreen()).getCuadroDescripcion().setTexto(o.getDescripcion());
                 
                 return true;
@@ -171,5 +191,13 @@ public abstract class Objeto extends Actor{
 	
 	public String getDescripcion(){
 		return descripcionObjeto;
+	}
+	
+	public void devolverTexturaOriginal(){
+		texturaActualBoton = botonObjeto;
+	}
+	
+	public Identificador getIdentificador(){
+		return identificador;
 	}
 }

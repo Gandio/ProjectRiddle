@@ -1,7 +1,7 @@
 package Botones;
 
 import Puzzle.Inventario;
-import Puzzle.Inventario.Estado;
+import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,9 +35,9 @@ public class BotonCombinarObjeto extends Boton{
             }
 		});
 		
-		if(((Inventario) game.getScreen()).getEstado() == Estado.NORMAL){
+		if(((Inventario) game.getScreen()).getEstado() == EstadoInventario.NORMAL){
 			if(pulsado){
-				((Inventario) game.getScreen()).setEstado(Estado.COMBINANDO);
+				((Inventario) game.getScreen()).setEstado(EstadoInventario.COMBINANDO);
 			}
 		}
 		

@@ -23,7 +23,9 @@ public class Llave extends Objeto{
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/llave.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonLlave.png"));
+		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonLlaveActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+		texturaActualBoton = botonObjeto;
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();

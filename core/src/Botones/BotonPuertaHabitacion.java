@@ -2,7 +2,7 @@ package Botones;
 
 import Pantallas.Habitacion;
 import Pantallas.Pasillo;
-import Pantallas.Habitacion.Estado;
+import Pantallas.Habitacion.EstadoHabitacion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -61,7 +61,7 @@ public class BotonPuertaHabitacion extends Boton{
 		 * investigando ni conversando.
 		 */
 		
-		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
+		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.NORMAL){
 			boton = botonActivado;
 			if(pulsado){	
 				sonido.play();

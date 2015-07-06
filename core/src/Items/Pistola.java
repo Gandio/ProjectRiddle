@@ -23,7 +23,9 @@ public class Pistola extends Objeto{
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/pistola.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonPistola.png"));
+		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonPistolaActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+		texturaActualBoton = botonObjeto;
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();

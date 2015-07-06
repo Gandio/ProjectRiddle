@@ -1,7 +1,7 @@
 package Botones;
 
 import Pantallas.Habitacion;
-import Pantallas.Habitacion.Estado;
+import Pantallas.Habitacion.EstadoHabitacion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -58,13 +58,13 @@ public class BotonConversacion extends Boton{
 		 * de conversar.
 		 */
 		
-		if(((Habitacion) game.getScreen()).getEstado() == Estado.NORMAL){
+		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.NORMAL){
 			boton = botonActivado;
 			if(pulsado){
-				((Habitacion) game.getScreen()).setEstado(Estado.CONVERSAR);
+				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.CONVERSAR);
 				((Habitacion) game.getScreen()).setConversando(true);
 			}
-		}else if(((Habitacion) game.getScreen()).getEstado() == Estado.CONVERSAR){
+		}else if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.CONVERSAR){
 			boton = botonActivado;
 			
 		}else{
@@ -76,7 +76,7 @@ public class BotonConversacion extends Boton{
 		 * la conversación y nos devuelve al modo normal
 		 */
 		
-		if(((Habitacion) game.getScreen()).getEstado() == Estado.CONVERSAR && !((Habitacion) game.getScreen()).getConversando()){
+		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.CONVERSAR && !((Habitacion) game.getScreen()).getConversando()){
 			((Habitacion) game.getScreen()).terminarConversacion();
 		}
 		

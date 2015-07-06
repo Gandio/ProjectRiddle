@@ -59,11 +59,11 @@ public final class Inventario implements Screen{
 	private static CuadroDescripcion cuadroDescripcion;
 	private CuadroEstado cuadroObjetivo;
 	
-	public enum Estado{
+	public enum EstadoInventario{
 		COMBINANDO, NORMAL, COMBINACION_PREPARADA;
 	};
 	
-	private Estado estado;
+	private EstadoInventario estado;
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -78,7 +78,7 @@ public final class Inventario implements Screen{
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 		
-		estado = Estado.NORMAL;
+		estado = EstadoInventario.NORMAL;
 		inventario = new Array<Objeto>();
 		combinacion = new Array<Objeto>(2);
 		
@@ -212,6 +212,18 @@ public final class Inventario implements Screen{
 		inventario.add(b);
 	}
 	
+	public void borrarObjeto(Objeto b){
+		Iterator<Objeto> iter;
+		
+		iter = inventario.iterator();
+		
+		while(iter.hasNext()){
+			if(iter.next().getIdentificador()== b.getIdentificador()){
+				iter.remove();
+				b.remove();
+			}
+		}
+	}
 	/**
 	 * Para la música del inventario
 	 */
@@ -229,11 +241,11 @@ public final class Inventario implements Screen{
 		return objetosInventario;
 	}*/
 	
-	public Estado getEstado(){
+	public EstadoInventario getEstado(){
 		return estado;
 	}
 	
-	public void setEstado(Estado estado){
+	public void setEstado(EstadoInventario estado){
 		this.estado = estado;
 	}
 	
@@ -259,5 +271,14 @@ public final class Inventario implements Screen{
 	
 	public CuadroEstado getCuadroEstado(){
 		return cuadroObjetivo;
+	}
+	
+	public void restaurarBotonesObjetos(){
+		Iterator<Objeto> iter = inventario.iterator();
+		
+		iter = inventario.iterator();
+		while(iter.hasNext()){
+			iter.next().devolverTexturaOriginal();
+		}
 	}
 }

@@ -1,7 +1,10 @@
 package Botones;
 
+import java.util.Iterator;
+
+import Items.Objeto;
 import Puzzle.Inventario;
-import Puzzle.Inventario.Estado;
+import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,11 +38,13 @@ public class BotonAceptarCombinar extends Boton{
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
-		if(((Inventario) game.getScreen()).getCombinacion().size == 2){ //Esta lleno, se puede combinar
-			((Inventario) game.getScreen()).setEstado(Estado.COMBINACION_PREPARADA);
+		//Si el array de combinacion está lleno se pasa al estado combinacion preparada
+		if(((Inventario) game.getScreen()).getCombinacion().size == 2){
+			((Inventario) game.getScreen()).setEstado(EstadoInventario.COMBINACION_PREPARADA);
 		}
 		
 		addListener(new InputListener(){
+			//Se pulsa el botón de aceptar la combinación
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonAceptarCombinar)event.getTarget()).pulsado = true;
                 
@@ -47,20 +52,28 @@ public class BotonAceptarCombinar extends Boton{
             }
 		});
 		
-		if(((Inventario) game.getScreen()).getEstado() == Estado.COMBINACION_PREPARADA){
+		if(((Inventario) game.getScreen()).getEstado() == EstadoInventario.COMBINACION_PREPARADA){
 			boton = botonActivado;
 			if(pulsado){
 				//Compruebo si los objetos se pueden combinar, si lo son se combinan, se eliminan del 
 				//inventario, se añade el resultado de la combinación y se vuelve al estado normal, si no 
 				//se vuelve al estado normal y se vacia el array de combinacion
-				((Inventario) game.getScreen()).getCombinacion().clear();
-				((Inventario) game.getScreen()).setEstado(Estado.NORMAL);
 				
+				((Inventario) game.getScreen()).restaurarBotonesObjetos();
+				
+				if(true){
+					((Inventario) game.getScreen()).borrarObjeto(((Inventario) game.getScreen()).getCombinacion().get(0));
+					((Inventario) game.getScreen()).borrarObjeto(((Inventario) game.getScreen()).getCombinacion().get(1));
+				}
+				
+				((Inventario) game.getScreen()).getCombinacion().clear();
+				((Inventario) game.getScreen()).setEstado(EstadoInventario.NORMAL);
 			}
 		}else{
+			//Boton desactivado
 			boton = botonDesactivado;
 		}
-		
+		//Se actualiza la variable pulsado
 		pulsado = false;
 	}
 

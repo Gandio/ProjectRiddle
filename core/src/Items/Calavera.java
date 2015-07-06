@@ -22,7 +22,9 @@ public class Calavera extends Objeto{
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/calavera.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCalavera.png"));
+		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCalaveraActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+		texturaActualBoton = botonObjeto;
 		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();

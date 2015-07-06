@@ -2,7 +2,7 @@ package Botones;
 
 import Pantallas.Pasillo;
 import Puzzle.Inventario;
-import Puzzle.Inventario.Estado;
+import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -61,7 +61,7 @@ public class BotonCerrarInventario extends Boton{
 		/*Si el estado del inventario es el normal activamos el botón, si no lo
 		 * desactivamos
 		 */
-		if((((Inventario) game.getScreen()).getEstado() == Estado.NORMAL)){
+		if((((Inventario) game.getScreen()).getEstado() == EstadoInventario.NORMAL)){
 			boton = botonActivado;
 			if(pulsado){
 				pulsado = false;
