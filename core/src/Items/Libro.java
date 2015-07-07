@@ -34,6 +34,7 @@ public class Libro extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Libro;
+		id = 4;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

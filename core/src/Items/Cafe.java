@@ -33,6 +33,7 @@ public class Cafe extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Cafe;
+		id = 2;
 		
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))

@@ -34,6 +34,7 @@ public class Boligrafo extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Boligrafo;
+		id = 1;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

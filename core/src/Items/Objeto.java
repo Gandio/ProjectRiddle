@@ -41,7 +41,7 @@ public abstract class Objeto extends Actor{
 	private boolean tocadoUnaVez = false;
 	private boolean control1 = false, control2 = false;
 	protected Identificador identificador;
-	protected int id;
+	protected int id = -1;
 	
 	protected XmlReader reader = new XmlReader();
 	protected Element raiz;
@@ -203,5 +203,9 @@ public abstract class Objeto extends Actor{
 	
 	public Array<Identificador> getCombinables(){
 		return combinables;
+	}
+	
+	public int getId(){
+		return id;
 	}
 }

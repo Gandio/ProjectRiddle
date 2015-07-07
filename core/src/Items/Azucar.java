@@ -34,6 +34,7 @@ public class Azucar extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Azucar;
+		id = 0;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

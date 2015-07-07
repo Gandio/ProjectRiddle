@@ -2,6 +2,7 @@ package Botones;
 
 import java.util.Iterator;
 
+import Items.CafeAzucar;
 import Items.Objeto;
 import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
@@ -62,11 +63,14 @@ public class BotonAceptarCombinar extends Boton{
 				((Inventario) game.getScreen()).restaurarBotonesObjetos();
 				
 				if(((Inventario) game.getScreen()).combinando()){
-					((Inventario) game.getScreen()).borrarObjeto(((Inventario) game.getScreen()).getCombinacion().get(0));
-					((Inventario) game.getScreen()).borrarObjeto(((Inventario) game.getScreen()).getCombinacion().get(1));
+					Objeto o1 = ((Inventario) game.getScreen()).getCombinacion().get(0);
+					Objeto o2 = ((Inventario) game.getScreen()).getCombinacion().get(1);
+					
+					((Inventario) game.getScreen()).borrarObjeto(o1);
+					((Inventario) game.getScreen()).borrarObjeto(o2);
+					
+					((Inventario) game.getScreen()).getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
 				}
-				
-				System.out.println(((Inventario) game.getScreen()).combinando());
 				
 				((Inventario) game.getScreen()).getCombinacion().clear();
 				((Inventario) game.getScreen()).setEstado(EstadoInventario.NORMAL);

@@ -34,6 +34,7 @@ public class Jaula extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Jaula;
+		id = 3;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

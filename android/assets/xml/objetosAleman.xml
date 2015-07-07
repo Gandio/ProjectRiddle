@@ -31,6 +31,10 @@
 		<descripcion texto = "Oh, ich liebe dieses Getränk! Und es ist noch warm."/>
 	</objeto>
 	
+	<objeto nombre = "CafeAzucar">
+		<descripcion texto = "Está dulce."/>
+	</objeto>
+	
 	<objeto nombre = "Calavera">
 		<descripcion texto = "Oh, ich glaube der ist authentisch."/>
 	</objeto>
@@ -63,6 +67,10 @@
 		<descripcion texto = "Oh, das ist aber ein dickes Buch."/> 
 	</objeto>
 	
+	<objeto nombre = "LibroPintado">
+		<descripcion texto = "Tiene mi firma."/> 
+	</objeto>
+	
 	<objeto nombre = "Llave">
 		<descripcion texto = "Das ist ein kleiner Schlüssel. Was öffnet der?"/>
 	</objeto>
@@ -85,6 +93,10 @@
 	
 	<objeto nombre = "Serpiente">
 		<descripcion texto = "Ohhhhh, die ist sicher gefährlich!"/>
+	</objeto>
+	
+	<objeto nombre = "SerpienteEnjaulada">
+		<descripcion texto = "Ahora no es peligrosa"/>
 	</objeto>
 	
 	<objeto nombre = "Tabaco">

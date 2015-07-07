@@ -1,18 +1,14 @@
 package com.mygdx.game;
 
 
+import Items.CafeAzucar;
+import Items.LibroPintado;
 import Items.Objeto;
+import Items.SerpienteEnjaulada;
 
 import com.badlogic.gdx.graphics.Texture;
 
 public class Tools {
-	private int nObjetos = 2;
-	private boolean matrizObjetos[][] = new boolean[nObjetos][nObjetos];
-	
-	public Tools(){
-		//inicializamos la matriz de booleanos
-	}
-	
 	public static float centrarAlto(MyGdxGame game, Texture textura){
 		return game.HEIGHT / 2f - textura.getHeight() / 2f;
 	}
@@ -21,8 +17,10 @@ public class Tools {
 		return game.WIDTH / 2f - textura.getWidth() / 2f;
 	}
 	
-	public boolean esPosibleCombinar(Objeto o1, Objeto o2){
-		int x = 0, y = 0;
-		return matrizObjetos[x][y];
+	public static Objeto devolverCombinacion(MyGdxGame game, int i, int j){
+		if((i == 0 && j == 2) || (i == 2 && j == 0)) return new CafeAzucar(game);
+		else if((i == 1 && j == 4) || (i == 4 && j == 1)) return new LibroPintado(game);
+		else if((i == 3 && j == 5) || (i == 5 && j == 3)) return new SerpienteEnjaulada(game);
+		else return null;
 	}
 }

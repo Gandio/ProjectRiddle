@@ -34,6 +34,7 @@ public class Serpiente extends Objeto{
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Serpiente;
+		id = 5;
 		
 		//Descripción del objeto
 		for (Element child : objetos){	
