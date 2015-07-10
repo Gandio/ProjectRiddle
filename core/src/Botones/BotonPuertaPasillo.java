@@ -15,11 +15,8 @@ import Pantallas.Salon;
 import Pantallas.Sotano;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -37,6 +34,17 @@ import com.mygdx.game.Tools;
 public class BotonPuertaPasillo extends Boton{
 	private Texture botonActivado, botonDesactivado;
 	private Sound sonido;
+	private Cursor cursor = Pasillo.getCursor();
+	/*
+	 * Cada puerta tiene un entero asociado por el cual podemos identificar por que habitacion
+	 * entramos. Los valores son los siguientes.
+	 * 
+	 * 0 ------- Salon
+	 * 1 ------- Dormitorio
+	 * 2 ------- Ático / Baño Depende de la versión del juego
+	 * 3 ------- Biblioteca / Estudio
+	 * 4 ------- Sotano / Cocina
+	 */
 	private int numPuerta = -1;
 	
 	/**
@@ -56,42 +64,11 @@ public class BotonPuertaPasillo extends Boton{
 	}
 	
 	/**
-	 * Comprueba si el personaje está cerca de una puerta, en cuyo caso se activa la 
-	 * funcionalidad del botón.
-	 * @return
-	 */
-	
-	private boolean colisionaPuerta(){
-		Array<Rectangle> puertas = ((Pasillo) game.getScreen()).getPuertas();
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
-		int i = 0;
-		Iterator<Rectangle> iRect = puertas.iterator();
-		Rectangle rectanguloAux;
-		
-		/*Algoritmo para saber con que puerta hemos colisionado. Las puertas están ordenadas
-		 * en una lista, cada posición representa una puerta. Más abajo están los valores.
-		 */
-		
-		while(i < puertas.size){
-			rectanguloAux = iRect.next();
-			if(cursor.getLimites().overlaps(rectanguloAux)){
-				numPuerta = i;
-				return true;
-			}
-			
-			++i;
-		}
-		
-		return false;
-	}
-	
-	/**
 	 * Comprueba si hemos pulsado el botón y si estamos cerca de una puerta, si 
 	 * ambas condiciones se cumplen el jugador entrará en una habitación.
 	 */
 	
 	public void update(){
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
@@ -113,36 +90,13 @@ public class BotonPuertaPasillo extends Boton{
 			boton = botonActivado;
 			if(pulsado){
 				sonido.play();
-				if(cursor.getPosicion() == Posicion.ARRIBA) cursor.MirarAbajo();
-				else if(cursor.getPosicion() == Posicion.ABAJO) cursor.MirarArriba();
-				else if(cursor.getPosicion() == Posicion.DERECHA) cursor.MirarIzquierda();
-				else cursor.MirarDerecha();
+				
+				cambiarPosicionPersonaje();
 				
 				pulsado = false;
 				((Pasillo) game.getScreen()).pararMusica();
 				
-				Cursor c = ((Pasillo) game.getScreen()).getCursor();
-				
-				if(numPuerta == 0){ //es el salon
-					game.setScreen(Salon.getInstancia());
-				}else if(numPuerta == 1){ //es el dormitorio
-					game.setScreen(Dormitorio.getInstancia());
-				}else if(numPuerta == 2){// El atico o el baño, depende de la versión
-					if(MyGdxGame.SUSPENSE_AMBIENTE)
-						game.setScreen(Atico.getInstancia());
-					else
-						game.setScreen(Baño.getInstancia());
-				}else if(numPuerta == 3){// La biblioteca o el estudio
-					if(MyGdxGame.SUSPENSE_AMBIENTE)
-						game.setScreen(Biblioteca.getInstancia());
-					else
-						game.setScreen(Estudio.getInstancia());
-				}else if(numPuerta == 4){// El sotano o la cocina
-					if(MyGdxGame.SUSPENSE_AMBIENTE)
-						game.setScreen(Sotano.getInstancia());
-					else
-						game.setScreen(Cocina.getInstancia());
-				}
+				cambiarHabitacion(numPuerta);
 			}
 			
 		}else{
@@ -150,5 +104,68 @@ public class BotonPuertaPasillo extends Boton{
 		}
 		
 		pulsado = false;
+	}
+	
+	//------------------------------------------------------------------------------------
+	//------------------------------ FUNCIONES AUXILIARES --------------------------------
+	//------------------------------------------------------------------------------------
+	
+	/**
+	 * Comprueba si el personaje está cerca de una puerta, en cuyo caso se activa la 
+	 * funcionalidad del botón.
+	 * @return
+	 */
+	
+	private boolean colisionaPuerta(){
+		Array<Rectangle> puertas = ((Pasillo) game.getScreen()).getPuertas();
+		int i = 0;
+		Iterator<Rectangle> iRect = puertas.iterator();
+		Rectangle rectanguloAux;
+		
+		/*Algoritmo para saber con que puerta hemos colisionado. Las puertas están ordenadas
+		 * en una lista, cada posición representa una puerta.
+		 */
+		
+		while(i < puertas.size){
+			rectanguloAux = iRect.next();
+			if(cursor.getLimites().overlaps(rectanguloAux)){
+				numPuerta = i;
+				return true;
+			}
+			
+			++i;
+		}
+		
+		return false;
+	}
+	
+	private void cambiarPosicionPersonaje(){
+		if(cursor.getPosicion() == Posicion.ARRIBA) cursor.MirarAbajo();
+		else if(cursor.getPosicion() == Posicion.ABAJO) cursor.MirarArriba();
+		else if(cursor.getPosicion() == Posicion.DERECHA) cursor.MirarIzquierda();
+		else cursor.MirarDerecha();
+	}
+	
+	private void cambiarHabitacion(int numPuerta){
+		if(numPuerta == 0){ //es el salon
+			game.setScreen(Salon.getInstancia());
+		}else if(numPuerta == 1){ //es el dormitorio
+			game.setScreen(Dormitorio.getInstancia());
+		}else if(numPuerta == 2){// El atico o el baño
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				game.setScreen(Atico.getInstancia());
+			else
+				game.setScreen(Baño.getInstancia());
+		}else if(numPuerta == 3){// La biblioteca o el estudio
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				game.setScreen(Biblioteca.getInstancia());
+			else
+				game.setScreen(Estudio.getInstancia());
+		}else if(numPuerta == 4){// El sotano o la cocina
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				game.setScreen(Sotano.getInstancia());
+			else
+				game.setScreen(Cocina.getInstancia());
+		}
 	}
 }

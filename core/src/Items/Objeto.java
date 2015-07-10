@@ -30,16 +30,12 @@ import com.mygdx.game.MyGdxGame;
 
 public abstract class Objeto extends Actor{
 	private MyGdxGame game = Habitacion.game;
-	protected Texture textura;
-	protected Texture botonObjeto;
-	protected Texture botonObjetoActivado;
-	protected Texture texturaActualBoton;
+	protected Texture textura, botonObjeto, botonObjetoActivado, texturaActualBoton;
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
 	private boolean sePuedeCoger, investigando, seleccionado;
 	protected Class<?> tipoObjeto;
-	private boolean tocadoUnaVez = false;
-	private boolean control1 = false, control2 = false;
+	private boolean tocadoUnaVez = false, control1 = false, control2 = false;
 	protected Identificador identificador;
 	protected int id = -1;
 	
@@ -115,7 +111,6 @@ public abstract class Objeto extends Actor{
 				if(iter.next().getClass() == tipoObjeto){
 					iter.remove();
 					remove();
-					System.out.println("lo quito");
 				}
 			}
 		}
@@ -126,9 +121,16 @@ public abstract class Objeto extends Actor{
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 if(game.getScreen().getClass() != Inventario.class && ((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.INVESTIGAR){
+                	/*
+                	 * Si pulsamos sobre el objeto se selecciona y se deseleciona durante varios
+                	 * frames, para que no ocurra eso usamos este condicional.
+                	 */
                 	if(!tocadoUnaVez){
                 		((Objeto)event.getTarget()).seleccionado = true;
                 		tocadoUnaVez = true;
+                		/*
+                		 * Si no estuviera el condicional se cogerían varias veces el objeto
+                		 */
                 		cogerObjeto();
                 	}
                 }
@@ -136,10 +138,8 @@ public abstract class Objeto extends Actor{
                 return true;
             }
 		});
-		
 	}
 	
-	//Pulsar botonObjeto
 	public void seSeleccionaBoton(){
 		final Objeto o = this;
 		setBounds(coordenadas.x, coordenadas.y, texturaActualBoton.getWidth(), texturaActualBoton.getHeight());
@@ -155,13 +155,12 @@ public abstract class Objeto extends Actor{
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
             	//Se pueden activar o desactivar los botones objeto en cualquier momento mientras que
             	//no se acepte la combinación
-            	System.out.println(((Inventario) game.getScreen()).getCombinacion().size);
             	
                 if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINANDO 
                 		||((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.COMBINACION_PREPARADA){
                 	
                 	//Borramos el texto de las descripciones mientras este modo esté activo
-                	((Inventario) game.getScreen()).getCuadroDescripcion().setTexto("");
+                	Inventario.getCuadroDescripcion().setTexto("");
                 	
                 	
                 	if(!control1 && !control2 && ((Inventario) game.getScreen()).getCombinacion().size < 2){
@@ -182,7 +181,7 @@ public abstract class Objeto extends Actor{
                 }
             	
             	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.NORMAL)
-            		((Inventario) game.getScreen()).getCuadroDescripcion().setTexto(o.getDescripcion());
+            		Inventario.getCuadroDescripcion().setTexto(o.getDescripcion());
                 
                 return true;
             }

@@ -114,5 +114,4 @@ public class CuadroDialogo extends CuadroTexto{
 	public boolean getFinTexto(){
 		return finTexto;
 	}
-
 }

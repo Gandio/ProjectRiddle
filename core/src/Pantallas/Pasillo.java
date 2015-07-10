@@ -50,7 +50,7 @@ public class Pasillo implements Screen{
 	//Arrays
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
-	private static Array<Habitacion> habitaciones = new Array<Habitacion>();
+	//private static Array<Habitacion> habitaciones = new Array<Habitacion>();
 	
 	//Botones del pasillo
 	private BotonPuertaPasillo botonPuerta; //permite entrar en una habitación
@@ -82,6 +82,9 @@ public class Pasillo implements Screen{
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
+		/*
+		 * La música depende de esta variable.
+		 */
 		if(MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		else
@@ -119,7 +122,7 @@ public class Pasillo implements Screen{
 		
 		sr = new ShapeRenderer();
 		
-		//Añadimos los botones
+		//Añadimos los botones y los configuramos como elementos "tocables" dentro del juego
 		botonPuerta = new BotonPuertaPasillo(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 		
@@ -173,7 +176,7 @@ public class Pasillo implements Screen{
 		camara.position.x = cursor.getX();
 		camara.position.y = cursor.getY();
 		
-		//Actualizacion de los botones
+		//Estamos constatemente comprobando el estado de los botones
 		botonAbajo.esPulsado(delta);
 		botonArriba.esPulsado(delta);
 		botonDerecha.esPulsado(delta);
@@ -192,33 +195,10 @@ public class Pasillo implements Screen{
 		
 		puntuacion.setCoordenadas(cursor.getX() - 350, cursor.getY() + 230);
 		
-		//Dibujamos bordes
-		if(debug){
-			sr.setProjectionMatrix(camara.combined);
-			sr.begin(ShapeType.Line);
-			sr.setColor(Color.GREEN);
-			sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
-				cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
-		
-			sr.rect(255, 403, 1000, 120);
-			sr.rect(255, 403, 50, 430);
-			sr.rect(20, 690, 250, 50); //superior
-			sr.rect(0, 150, 35, 550); //superior izquierda puerta
-			sr.rect(0, 150, 765, 105); //inferior puerta
-			sr.rect(715, 0, 50, 150); //derecha entrada
-			sr.rect(715, -38, 300, 150); //inferior entrada
-			sr.rect(938, -38, 50, 293); //izquierda entrada
-			sr.rect(938, 156, 350, 100); //inferior
-			sr.rect(1240, 156, 50, 300);
-			
-			sr.setColor(Color.PURPLE);
-			sr.rect(546, 385, 75, 75);
-			sr.rect(1060, 385, 65, 65);
-			sr.rect(1230, 290, 65, 65);
-			sr.rect(255, 200, 75, 75);
-			sr.rect(-20, 490, 75, 65);
-			sr.end();
-		}
+		/*Dibujamos bordes. Esto solo sirve para buscar bugs durante el movimiento, no se muestra
+		 * en la versión final del juego
+		*/
+		if(debug) debug();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -291,5 +271,32 @@ public class Pasillo implements Screen{
 	 */
 	public static Cursor getCursor(){
 		return cursor;
+	}
+	
+	public void debug(){
+		sr.setProjectionMatrix(camara.combined);
+		sr.begin(ShapeType.Line);
+		sr.setColor(Color.GREEN);
+		sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
+			cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
+	
+		sr.rect(255, 403, 1000, 120);
+		sr.rect(255, 403, 50, 430);
+		sr.rect(20, 690, 250, 50); //superior
+		sr.rect(0, 150, 35, 550); //superior izquierda puerta
+		sr.rect(0, 150, 765, 105); //inferior puerta
+		sr.rect(715, 0, 50, 150); //derecha entrada
+		sr.rect(715, -38, 300, 150); //inferior entrada
+		sr.rect(938, -38, 50, 293); //izquierda entrada
+		sr.rect(938, 156, 350, 100); //inferior
+		sr.rect(1240, 156, 50, 300);
+		
+		sr.setColor(Color.PURPLE);
+		sr.rect(546, 385, 75, 75);
+		sr.rect(1060, 385, 65, 65);
+		sr.rect(1230, 290, 65, 65);
+		sr.rect(255, 200, 75, 75);
+		sr.rect(-20, 490, 75, 65);
+		sr.end();
 	}
 }

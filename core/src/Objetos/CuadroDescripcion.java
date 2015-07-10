@@ -10,11 +10,8 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 public class CuadroDescripcion extends CuadroTexto{
-	private static MyGdxGame game;
-	
 	public CuadroDescripcion(MyGdxGame game) {
 		super(game);
-		this.game = game;
 		
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroDescripcion.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));

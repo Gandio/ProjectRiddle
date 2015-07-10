@@ -151,6 +151,69 @@ public class Cursor extends Actor{
 		posicionActual = Posicion.IZQUIERDA;
 	}
 	
+	public void moverIzquierda(float delta){
+		velocity.x = -1;
+		velocity.y = 0;
+		
+		MirarIzquierda();
+		
+		setX(getX() + velocity.x);
+		setY(getY() + velocity.y);
+      
+        //actualizamos nuestro stateTime y dibujamos el currentFrame.
+        setStateTime(delta);
+        
+        //Actualizamos la posición de los límites
+        getLimites().setPosition(getX(), getY());
+	}
+	
+	public void moverDerecha(float delta){
+		velocity.x = 1;
+		velocity.y = 0;
+		
+		MirarDerecha();
+		
+		setX(getX() + velocity.x);
+		setY(getY() + velocity.y);
+	  
+	    //actualizamos nuestro stateTime y dibujamos el currentFrame.
+	    setStateTime(delta);
+	    
+	    //Actualizamos la posición de los límites
+	    getLimites().setPosition(getX(), getY());
+	}
+	public void moverArriba(float delta){
+		velocity.x = 0;
+		velocity.y = 1;
+		
+		MirarArriba();
+		
+		setX(getX() + velocity.x);
+		setY(getY() + velocity.y);
+      
+        //actualizamos nuestro stateTime y dibujamos el currentFrame.
+        setStateTime(delta);
+        
+        //Actualizamos la posición de los límites
+        getLimites().setPosition(getX(), getY());
+	}
+	
+	public void moverAbajo(float delta){
+		velocity.y = -1;
+		velocity.x = 0;
+		
+		MirarAbajo();
+		
+		setX(getX() + velocity.x);
+		setY(getY() + velocity.y);
+      
+        //actualizamos nuestro stateTime y dibujamos el currentFrame.
+        setStateTime(delta);
+        
+        //Actualizamos la posición de los límites
+        getLimites().setPosition(getX(), getY());
+	}
+	
 	/**
 	 * Devuelve el rectangulo que envuelve al cursor
 	 * @return limites

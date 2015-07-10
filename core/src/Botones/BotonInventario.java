@@ -52,7 +52,8 @@ public class BotonInventario extends Boton{
 		if(pulsado){
 			pulsado = false;
 			((Pasillo) game.getScreen()).pararMusica();
-			game.setScreen(((Pasillo) game.getScreen()).getCursor().inventario.getInstancia());
+			Pasillo.getCursor();
+			game.setScreen(Inventario.getInstancia());
 		}
 		
 		pulsado = false;

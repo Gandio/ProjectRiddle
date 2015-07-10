@@ -43,13 +43,20 @@ public class BotonDerecha extends Boton{
 	
 	private boolean colisionaDerecha(){
 		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
 		Rectangle rectanguloAux;
 		
-		//Algoritmo de colisiones
+		/*Algoritmo de colisiones. Comprobamos todos los bordes izquierdos de las paredes,
+		 * si chocamos mientras nos movemos hacia derecha chocamos con el borde izquierdo de las 
+		 * paredes. Si en algún momento se solapan los rectangulos de la pared y el cursor se 
+		 * activa la variable noDerecha que nos impide seguir con este movimiento. Debemos preveer
+		 * el choque, si no el cursor se quedará atrapado, solo podremos movernos de arriba
+		 * a abajo mientras nos estemos cochando, por eso comprobamos tambien si se va 
+		 * a chocar
+		*/
 		
 		while(i < paredes.size && !noDerecha){
 			rectanguloAux = iRect.next();
@@ -71,7 +78,7 @@ public class BotonDerecha extends Boton{
 	 */
 	
 	public void esPulsado(float delta){
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
@@ -90,19 +97,7 @@ public class BotonDerecha extends Boton{
 		//Nos movemos
 		
 		if(pulsado && !colisionaDerecha()){
-			cursor.setVelocityX(1);
-			cursor.setVelocityY(0);
-			
-			cursor.MirarDerecha();
-			
-			cursor.setX(cursor.getX() + cursor.getVelocity().x);
-			cursor.setY(cursor.getY() + cursor.getVelocity().y);
-		  
-		    //actualizamos nuestro stateTime y dibujamos el currentFrame.
-		    cursor.setStateTime(delta);
-		    
-		    //Actualizamos la posición de los límites
-		    cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
+			cursor.moverDerecha(delta);
 		}else{
 			//Dejamos de movernos
 			cursor.setVelocityX(0);

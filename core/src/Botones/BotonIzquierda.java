@@ -43,14 +43,21 @@ public class BotonIzquierda extends Boton{
 	
 	private boolean colisionaIzquierda(){
 		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
 		Rectangle rectanguloAux;
 		
-		//Algoritmo de colisiones
+		/*Algoritmo de colisiones. Comprobamos todos los bordes derechos de las paredes,
+		 * si chocamos mientras nos movemos hacia izquierda chocamos con el borde derecho de las 
+		 * paredes. Si en algún momento se solapan los rectangulos de la pared y el cursor se 
+		 * activa la variable noIzquierda que nos impide seguir con este movimiento. Debemos preveer
+		 * el choque, si no el cursor se quedará atrapado, solo podremos movernos de arriba
+		 * a abajo mientras nos estemos cochando, por eso comprobamos tambien si se va 
+		 * a chocar
+		*/
 		
 		while(i < paredes.size && !noIzquierda){
 			rectanguloAux = iRect.next();
@@ -72,7 +79,7 @@ public class BotonIzquierda extends Boton{
 	 */
 	
 	public void esPulsado(float delta){
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
@@ -91,19 +98,7 @@ public class BotonIzquierda extends Boton{
 		//Nos empezamos a mover
 		
 		if(pulsado && !colisionaIzquierda()){
-			cursor.setVelocityX(-1);
-			cursor.setVelocityY(0);
-			
-			cursor.MirarIzquierda();
-			
-			cursor.setX(cursor.getX() + cursor.getVelocity().x);
-			cursor.setY(cursor.getY() + cursor.getVelocity().y);
-	      
-	        //actualizamos nuestro stateTime y dibujamos el currentFrame.
-	        cursor.setStateTime(delta);
-	        
-	        //Actualizamos la posición de los límites
-	        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
+			cursor.moverIzquierda(delta);
 			
 		}else{
 			

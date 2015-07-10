@@ -37,14 +37,19 @@ public class BotonArriba extends Boton{
 	
 	private boolean colisionaArriba(){
 		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
 		float aux;
 		Rectangle rectanguloAux;
 		
-		/*Algoritmo de movimiento, si me choco con otro cuadrado activo la bandera que 
-		me indica que no me puedo seguir moviendo.
+		/*Algoritmo de colisiones. Comprobamos todos los bordes inferiores de las paredes,
+		 * si chocamos mientras nos movemos hacia arriba chocamos con el borde inferior de las 
+		 * paredes. Si en algún momento se solapan los rectangulos de la pared y el cursor se 
+		 * activa la variable noArriba que nos impide seguir con este movimiento. Debemos preveer
+		 * el choque, si no el cursor se quedará atrapado, solo podremos movernos de izquierda
+		 * a derecha mientras nos estemos cochando, por eso comprobamos tambien si se va 
+		 * a chocar
 		*/
 		
 		while(i < paredes.size && !noArriba){
@@ -67,7 +72,7 @@ public class BotonArriba extends Boton{
 	 */
 	
 	public void esPulsado(float delta){
-		Cursor cursor = ((Pasillo) game.getScreen()).getCursor();
+		Cursor cursor = Pasillo.getCursor();
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
@@ -82,23 +87,10 @@ public class BotonArriba extends Boton{
             }
 		});
 		
-		//Me empiezo a mover
+		//Me empiezo a mover. Hacmos justo lo contrario que con el boton Abajo.
 		
 		if(pulsado && !colisionaArriba()){
-			cursor.setVelocityY(1);
-			cursor.setVelocityX(0);
-			
-			cursor.MirarArriba();
-			
-			cursor.setX(cursor.getX() + cursor.getVelocity().x);
-			cursor.setY(cursor.getY() + cursor.getVelocity().y);
-	      
-	        //actualizamos nuestro stateTime y dibujamos el currentFrame.
-	        cursor.setStateTime(delta);
-	        
-	        //Actualizamos la posición de los límites
-	        cursor.getLimites().setPosition(cursor.getX(), cursor.getY());
-	        
+			cursor.moverArriba(delta);
 		}else{
 			//Dejo de moverme
 			cursor.setVelocityY(0);

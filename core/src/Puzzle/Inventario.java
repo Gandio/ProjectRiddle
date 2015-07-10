@@ -6,13 +6,10 @@ import Botones.BotonAceptarCombinar;
 import Botones.BotonCancelarCombinar;
 import Botones.BotonCerrarInventario;
 import Botones.BotonCombinarObjeto;
-import Botones.BotonInventario;
-import Items.Botella;
 import Items.Identificador;
 import Items.Objeto;
 import Objetos.CuadroDescripcion;
 import Objetos.CuadroEstado;
-import Pantallas.Salon;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -21,7 +18,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
@@ -68,7 +64,7 @@ public final class Inventario implements Screen{
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
+		//this.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
@@ -81,6 +77,7 @@ public final class Inventario implements Screen{
 		
 		estado = EstadoInventario.NORMAL;
 		inventario = new Array<Objeto>();
+		//Usamos un array especial, solo de dos elementos, para las combinaciones
 		combinacion = new Array<Objeto>(2);
 		
 		//instanciamos la cámara
@@ -147,6 +144,9 @@ public final class Inventario implements Screen{
 		combinarObjeto.update();
 		cerrarInventario.update();
 		
+		/*
+		 * Cuadramos los botones objeto en el inventario
+		 */
 		Iterator<Objeto> iter = inventario.iterator();
 		float x = 450;
 		float y = 400;
@@ -201,10 +201,18 @@ public final class Inventario implements Screen{
 	//---------------------------------FUNCIONES AUXILIARES------------------------
 	//-----------------------------------------------------------------------------
 	
+	/**
+	 * Este método añade un objeto al inventario
+	 * @param b
+	 */
 	public void añadirObjeto(Objeto b){
 		inventario.add(b);
 	}
 	
+	/**
+	 * Este método borra el objeto que se le pase del inventario
+	 * @param b
+	 */
 	public void borrarObjeto(Objeto b){
 		Iterator<Objeto> iter;
 		
@@ -218,6 +226,10 @@ public final class Inventario implements Screen{
 		}
 	}
 	
+	/**
+	 * Comprueba si los objetos que hay en el array de combinación se pueden combinar
+	 * @return
+	 */
 	public boolean combinando(){
 		Iterator<Identificador> iter1;
 		iter1 = combinacion.get(0).getCombinables().iterator();
@@ -240,21 +252,43 @@ public final class Inventario implements Screen{
 		musica.stop();
 	}
 	
+	/**
+	 * Devuelve el estado del inventario
+	 * @return estado
+	 */
+	
 	public EstadoInventario getEstado(){
 		return estado;
 	}
 	
+	/**
+	 * Cambia el estado actual del inventario
+	 * @param estado
+	 */
 	public void setEstado(EstadoInventario estado){
 		this.estado = estado;
 	}
 	
+	/**
+	 * Devuelve el contenido del inventario del jugador
+	 * @return inventario
+	 */
 	public Array<Objeto> getContenido(){
 		return inventario;
 	}
 	
+	/**
+	 * Devuelve el contenido del array de combinacion
+	 * @return combinacion
+	 */
 	public Array<Objeto> getCombinacion(){
 		return combinacion;
 	}
+	
+	/**
+	 * Si ya existe una instancia del inventario se devuelve si no se crea y se devuelve
+	 * @return unicaInstancia
+	 */
 	
 	public static Inventario getInstancia(){
 		if(unicaInstancia == null){
@@ -264,14 +298,26 @@ public final class Inventario implements Screen{
 		return unicaInstancia;
 	}
 	
+	/**
+	 * Devuelve el cuadro de descripción de los objetos
+	 * @return cuadroDescripcion
+	 */
+	
 	public static CuadroDescripcion getCuadroDescripcion(){
 		return cuadroDescripcion;
 	}
 	
+	/**
+	 * Devuelve el cuadro de objetivos
+	 * @return cuadroObjetivo
+	 */
 	public CuadroEstado getCuadroEstado(){
 		return cuadroObjetivo;
 	}
 	
+	/**
+	 * Este método quita el resplandor exterior de los botones objeto
+	 */
 	public void restaurarBotonesObjetos(){
 		Iterator<Objeto> iter = inventario.iterator();
 		

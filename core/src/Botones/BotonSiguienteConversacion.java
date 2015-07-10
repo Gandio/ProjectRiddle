@@ -47,11 +47,11 @@ public class BotonSiguienteConversacion extends Boton{
 		
 		if(pulsado){
 			//pasa al texto siguiente y si es el ultimo texto dibuja el boton fin de conversacion
-			if(((Habitacion) game.getScreen()).getCuadroDialogo().getFinTexto()){
+			if(Habitacion.getCuadroDialogo().getFinTexto()){
 				((Habitacion) game.getScreen()).esUltimoTexto();
 			}
 			
-			((Habitacion) game.getScreen()).getCuadroDialogo().sigParteTexto();
+			Habitacion.getCuadroDialogo().sigParteTexto();
 		}
 		
 		pulsado = false;

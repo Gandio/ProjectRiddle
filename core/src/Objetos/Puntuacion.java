@@ -38,9 +38,21 @@ public final class Puntuacion extends Actor{
 		puntos += p;
 	}
 	
+	public void sumarError(){
+		numFallos += 1;
+	}
+	
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
+	}
+	
+	public int getPuntos(){
+		return puntos;
+	}
+	
+	public int getError(){
+		return numFallos;
 	}
 	
 	public static Puntuacion getInstancia(){

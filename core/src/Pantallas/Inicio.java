@@ -76,6 +76,9 @@ public class Inicio implements Screen{
 	 */
 
 	public void show() {
+		/*
+		 * Dependiendo de la variable cargamos una pantalla u otra
+		 */
 		if(MyGdxGame.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Titulo.png"));
 		else
@@ -101,9 +104,13 @@ public class Inicio implements Screen{
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 		
+		//Estamos constantemente comprobando el estado de los botones
 		inicio.esPulsado();
 		salir.esPulsado();
 		
+		/*
+		 * Los botones también dependen de esta variable
+		 */
 		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			inicio.setCoordenadas(460, 170);
 			salir.setCoordenadas(580, 100);
