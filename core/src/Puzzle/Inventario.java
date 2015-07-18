@@ -38,7 +38,7 @@ public final class Inventario implements Screen{
 	protected Stage stage;
 	protected Music musica;
 	private Texture textura;
-	private Array<Objeto> inventario;
+	private static Array<Objeto> inventario;
 	private Array<Objeto> combinacion;
 	
 	//Camaras
@@ -64,7 +64,7 @@ public final class Inventario implements Screen{
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		//this.game = game;
+		this.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
@@ -84,6 +84,7 @@ public final class Inventario implements Screen{
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
+		//Inicializamos los botones y hacemos que se puedan pulsar
 		cerrarInventario = new BotonCerrarInventario(game);
 		cerrarInventario.setTouchable(Touchable.enabled);
 		
@@ -273,7 +274,7 @@ public final class Inventario implements Screen{
 	 * Devuelve el contenido del inventario del jugador
 	 * @return inventario
 	 */
-	public Array<Objeto> getContenido(){
+	public static Array<Objeto> getContenido(){
 		return inventario;
 	}
 	

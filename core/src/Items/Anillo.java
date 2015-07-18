@@ -26,7 +26,6 @@ public class Anillo extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonAnilloActivado.png"));
 		texturaActualBoton = botonObjeto;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
-		combinables = null;
 		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Anillo;

@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import Objetos.Cursor;
+import Objetos.Puntuacion;
 import Pantallas.Habitacion;
 import Pantallas.Habitacion.EstadoHabitacion;
+import Pantallas.Pasillo;
 import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
 
@@ -29,7 +31,7 @@ import com.mygdx.game.MyGdxGame;
  */
 
 public abstract class Objeto extends Actor{
-	private MyGdxGame game = Habitacion.game;
+	private MyGdxGame game = Pasillo.game;
 	protected Texture textura, botonObjeto, botonObjetoActivado, texturaActualBoton;
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
@@ -44,7 +46,7 @@ public abstract class Objeto extends Actor{
 	protected Array<Element> objetos;
 	protected String descripcionObjeto;
 	
-	private Sound sonido;
+	private Sound sonido, error;
 	
 	public Objeto(MyGdxGame game){
 		//this.game = game;
@@ -53,8 +55,8 @@ public abstract class Objeto extends Actor{
 		investigando = false;
 		seleccionado = false;
 		
-		
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/cogerObjeto.wav"));
+		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
 		
 		try{
 			raiz = reader.parse(Gdx.files.internal("xml/objetosAleman.xml"));
@@ -71,6 +73,7 @@ public abstract class Objeto extends Actor{
 	//Si estamos en el inventario se pinta el botón asociado al objeto, si no dibujamos el objeto.
 	
 	public void draw(Batch batch, float parentAlpha) {
+		game.getClass();
 		if(game.getScreen().getClass() == Inventario.class){
 			batch.draw(texturaActualBoton, coordenadas.x, coordenadas.y);
 		}else{
@@ -99,9 +102,15 @@ public abstract class Objeto extends Actor{
 		Cursor c = h.getCursor();
 		Iterator<Objeto> iter;
 		
-		if(investigando && sePuedeCoger && seleccionado){;
-			//Colocamos el objeto en el inventario
-			c.getInventario().añadirObjeto(this);
+		if(investigando && seleccionado){
+			if(sePuedeCoger){
+				//Colocamos el objeto en el inventario
+				c.getInventario().añadirObjeto(this);
+			}else{
+				//Sumamos 1 al contador de errores y se reproduce un efecto de sonido
+				Puntuacion.sumarError();
+				error.play();
+			}
 			
 			//Y lo quitamos de la habitacion
 			iter = h.getObjetos().iterator();

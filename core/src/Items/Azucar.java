@@ -31,7 +31,6 @@ public class Azucar extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Cafe);
 		
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Azucar;
 		id = 0;

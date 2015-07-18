@@ -1,6 +1,7 @@
 package Botones;
 
 import Pantallas.Habitacion;
+import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
 /**
@@ -17,7 +19,7 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonFinConversacion extends Boton{
-	
+	private MyGdxGame game = Inicio.game;
 	/**
 	 * Constructor de la clase.
 	 * @param game
@@ -25,6 +27,7 @@ public class BotonFinConversacion extends Boton{
 
 	public BotonFinConversacion(MyGdxGame game) {
 		super(game);
+		//this.game = game;
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/finConv.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
@@ -51,6 +54,7 @@ public class BotonFinConversacion extends Boton{
 		if(pulsado){
 			//termina la conversacion
 			((Habitacion) game.getScreen()).setConversando(false);
+			OrganizadorEstados.getEstadoActual().seIniciaMision(true);
 		}
 		
 		pulsado = false;

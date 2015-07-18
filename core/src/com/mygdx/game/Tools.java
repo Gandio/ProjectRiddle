@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Tools {
 	public static float centrarAlto(MyGdxGame game, Texture textura){
-		return game.HEIGHT / 2f - textura.getHeight() / 2f;
+		return MyGdxGame.HEIGHT / 2f - textura.getHeight() / 2f;
 	}
 	
 	public static float centrarAncho(MyGdxGame game, Texture textura){
-		return game.WIDTH / 2f - textura.getWidth() / 2f;
+		return MyGdxGame.WIDTH / 2f - textura.getWidth() / 2f;
 	}
 	
 	public static Objeto devolverCombinacion(MyGdxGame game, int i, int j){

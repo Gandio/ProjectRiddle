@@ -27,7 +27,6 @@ public class Basura extends Objeto{
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Basura;
 		

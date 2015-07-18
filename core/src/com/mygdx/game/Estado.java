@@ -25,23 +25,32 @@ public class Estado {
 	private boolean misionEnCurso = false;
 	
 	public Estado(int numEstado){
+		
 		try{
-			raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSuspense.xml"));
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSuspense.xml"));
+			else
+				raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSinSuspense.xml"));
 		}catch(IOException e){}
 		
 		estados = raiz.getChildrenByName("estado");
 		
+		//Cogemos el elemento estado actual
+		Element child = raiz.getChild(numEstado);
+		
+		//Dentro del estado actual seleccionamos, al azar el puzzle que se va a ejecutar
+		
 		Random rm = new Random();
 		int idPuzzle = rm.nextInt();
-		Element child = raiz.getChild(1);
+		Element puzzle = child.getChild(0); //Ahora es 0, se cambiará por idPuzzle más adelante
 		
-		habitacionInicio = child.getChildByName("habitacion").getAttribute("tipoHabitacionInicio");
-		habitacionDestino = child.getChildByName("habitacion").getAttribute("tipoHabitacionFinal");
-		objeto = child.getChildByName("objeto").getAttribute("tipoObjeto");
-		personaje = child.getChildByName("personaje").getAttribute("tipoPersonaje");
-		textoPersonaje = child.getChildByName("dialogo").getAttribute("texto");
-		pistaPersonaje = child.getChildByName("pista").getAttribute("texto");
-		objetivo = child.getChildByName("objetivo").getAttribute("texto");
+		habitacionInicio = puzzle.getChildByName("habitacion").getAttribute("tipoHabitacionInicio");
+		habitacionDestino = puzzle.getChildByName("habitacion").getAttribute("tipoHabitacionFinal");
+		objeto = puzzle.getChildByName("objeto").getAttribute("tipoObjeto");
+		personaje = puzzle.getChildByName("personaje").getAttribute("tipoPersonaje");
+		textoPersonaje = puzzle.getChildByName("dialogo").getAttribute("texto");
+		pistaPersonaje = puzzle.getChildByName("pista").getAttribute("texto");
+		objetivo = puzzle.getChildByName("objetivo").getAttribute("texto");
 	}
 
 	public String getHabitacionInicio() {

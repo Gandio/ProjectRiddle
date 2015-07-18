@@ -31,7 +31,6 @@ public class Jaula extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Serpiente);
 		
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Jaula;
 		id = 3;

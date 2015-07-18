@@ -25,6 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 
 /**
  * Esta clase representa los pasillos de la casa por donde el jugador tendrá que moverse para
@@ -33,7 +34,7 @@ import com.mygdx.game.MyGdxGame;
  */
 public class Pasillo implements Screen{
 	//Juego
-	protected static MyGdxGame game = Inicio.game;
+	public static MyGdxGame game = Inicio.game;
 	protected Stage stage;
 	protected static Music musica;
 	protected Texture pantalla;
@@ -78,7 +79,9 @@ public class Pasillo implements Screen{
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		//Pasillo.game = game;
+		this.game = game;
+		System.out.println(game.toString());
+		
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
@@ -245,6 +248,9 @@ public class Pasillo implements Screen{
 	 * ---------------------------------------------------------------
 	 */
 	
+	/**
+	 * Se para la música del escenario.
+	 */
 	public void pararMusica(){
 		musica.stop();
 	}

@@ -27,7 +27,6 @@ public class Tabaco extends Objeto{
 		texturaActualBoton = botonObjeto;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Tabaco;
 		

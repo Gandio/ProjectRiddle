@@ -31,7 +31,6 @@ public class Serpiente extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Jaula);
 		
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Serpiente;
 		id = 5;

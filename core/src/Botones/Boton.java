@@ -1,5 +1,7 @@
 package Botones;
 
+import Pantallas.Habitacion;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -11,7 +13,7 @@ import com.mygdx.game.MyGdxGame;
 */
 
 public abstract class Boton extends Actor{
-	protected static MyGdxGame game;
+	protected static MyGdxGame game = Habitacion.game;
 	protected Texture boton;
 	protected Vector2 coordenadas;
 	protected boolean pulsado = false;
@@ -22,7 +24,7 @@ public abstract class Boton extends Actor{
 	 */
 	
 	public Boton(MyGdxGame game){
-		Boton.game = game;
+		//Boton.game = game;
 	}
 	
 	/**

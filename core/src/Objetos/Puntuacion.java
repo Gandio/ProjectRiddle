@@ -38,7 +38,7 @@ public final class Puntuacion extends Actor{
 		puntos += p;
 	}
 	
-	public void sumarError(){
+	public static void sumarError(){
 		numFallos += 1;
 	}
 	

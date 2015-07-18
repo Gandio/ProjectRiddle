@@ -27,7 +27,6 @@ public class Reloj extends Objeto{
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonReloj.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Reloj;
 		

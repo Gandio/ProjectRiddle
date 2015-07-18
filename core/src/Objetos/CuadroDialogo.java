@@ -4,6 +4,7 @@ import Botones.Boton;
 import Botones.BotonFinConversacion;
 import Botones.BotonSiguienteConversacion;
 import Pantallas.Habitacion;
+import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,7 +18,7 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 public class CuadroDialogo extends CuadroTexto{
 	
-	private static MyGdxGame game;
+	private static MyGdxGame game = Inicio.game;
 	private BotonSiguienteConversacion siguienteConversacion;
 	private BotonFinConversacion finConversacion;
 	
@@ -29,8 +30,7 @@ public class CuadroDialogo extends CuadroTexto{
 	
 	public CuadroDialogo(MyGdxGame game) {
 		super(game);
-		
-		this.game = game;
+		//this.game = game;
 		siguienteConversacion = new BotonSiguienteConversacion(game);
 		finConversacion = new BotonFinConversacion(game);
 		
@@ -43,16 +43,10 @@ public class CuadroDialogo extends CuadroTexto{
 		siguienteConversacion.setTouchable(Touchable.enabled);
 		finConversacion.setTouchable(Touchable.enabled);
 		
-		
 		//Texto por defecto.
 		texto = "Ich habe momentan keine Information für dich!";
-				
-		
-		
-		//texto = "hola";
 		
 		font = new BitmapFont();
-		
 	}
 	
 	public void update(){
@@ -72,6 +66,7 @@ public class CuadroDialogo extends CuadroTexto{
 		
 		if(textos.size == 1){
 			siguienteConversacion.remove();
+			//System.out.println(this.game.getClass());
 			((Habitacion) game.getScreen()).getStage().addActor(finConversacion);
 		}
 		else if(parteTexto == textos.size-2){

@@ -25,7 +25,6 @@ public class MyGdxGame extends Game{
 	
 	//Habitaciones
 	public static Pasillo pasillo;
-	
 	public void create() {
 		setScreen(new Inicio(this));
 	}

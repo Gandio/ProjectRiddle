@@ -10,6 +10,7 @@ import Objetos.CuadroDialogo;
 import Objetos.Cursor;
 import Objetos.Puntuacion;
 import Personajes.Personaje;
+import Puzzle.CuadroEleccion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -23,6 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 
 /**
  * Esta clase abstracta generaliza todas las habitaciones del juego.
@@ -51,10 +53,15 @@ public abstract class Habitacion implements Screen {
 	protected BotonInvestigar botonInvestigar;
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una habitación
-	protected static CuadroDialogo cuadroTexto;
+	protected CuadroDialogo cuadroTexto;
+	protected static Array<CuadroEleccion> cuadrosEleccion;
+	
 
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
+	
+	//Organizador de estados
+	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
 
 	// Estado
 	/*
@@ -75,7 +82,7 @@ public abstract class Habitacion implements Screen {
 	 * @param game
 	 */
 
-	public Habitacion(MyGdxGame game, Cursor c) {
+	public Habitacion(MyGdxGame game, Cursor c) { //este game está mal, revisarlo
 		estado = EstadoHabitacion.NORMAL;
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -104,7 +111,13 @@ public abstract class Habitacion implements Screen {
 		botonPuerta = new BotonPuertaHabitacion(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 
-		cuadroTexto = new CuadroDialogo(game);
+		cuadroTexto = new CuadroDialogo(this.game);
+		
+		cuadrosEleccion = new Array<CuadroEleccion>(4); //Hay cuatro posibles elecciones
+		for(int i = 0; i < 4; ++i){
+			cuadrosEleccion.add(new CuadroEleccion(game));
+			cuadrosEleccion.get(i).setTouchable(Touchable.enabled);
+		}
 
 		// Añadimos actores
 		stage.addActor(botonConversacion);
@@ -164,7 +177,8 @@ public abstract class Habitacion implements Screen {
 				cuadroTexto.getSigConv().remove();
 				stage.addActor(cuadroTexto.getFinConv());
 			}
-
+			//Se actualiza el estado del juego
+			organizador.actualizarEstado();
 		}
 
 		// Se empieza a investigar y se puede interactuar con los objetos de la
@@ -294,7 +308,7 @@ public abstract class Habitacion implements Screen {
 	 * @return cuadroTexto
 	 */
 
-	public static CuadroDialogo getCuadroDialogo() {
+	public CuadroDialogo getCuadroDialogo() {
 		return cuadroTexto;
 	}
 	

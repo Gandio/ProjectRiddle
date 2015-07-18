@@ -1,8 +1,5 @@
 package Botones;
 
-import java.util.Iterator;
-
-import Items.CafeAzucar;
 import Items.Objeto;
 import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
@@ -69,7 +66,7 @@ public class BotonAceptarCombinar extends Boton{
 					((Inventario) game.getScreen()).borrarObjeto(o1);
 					((Inventario) game.getScreen()).borrarObjeto(o2);
 					
-					((Inventario) game.getScreen()).getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
+					Inventario.getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
 				}
 				
 				((Inventario) game.getScreen()).getCombinacion().clear();

@@ -31,7 +31,6 @@ public class Boligrafo extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Libro);
 		
-		seCoge(true);
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Boligrafo;
 		id = 1;
