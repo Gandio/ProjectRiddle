@@ -106,11 +106,6 @@ public abstract class Objeto extends Actor{
 			if(sePuedeCoger){
 				//Colocamos el objeto en el inventario
 				c.getInventario().añadirObjeto(this);
-			}else{
-				//Sumamos 1 al contador de errores y se reproduce un efecto de sonido
-				Puntuacion.sumarError();
-				error.play();
-			}
 			
 			//Y lo quitamos de la habitacion
 			iter = h.getObjetos().iterator();
@@ -121,6 +116,12 @@ public abstract class Objeto extends Actor{
 					iter.remove();
 					remove();
 				}
+			}
+			
+			}else{
+				//Sumamos 1 al contador de errores y se reproduce un efecto de sonido
+				Puntuacion.sumarError();
+				error.play();
 			}
 		}
 	}

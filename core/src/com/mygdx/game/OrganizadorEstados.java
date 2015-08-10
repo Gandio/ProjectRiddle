@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.lang.Object;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 
 import Items.Objeto;
@@ -43,7 +44,6 @@ public class OrganizadorEstados {
 		Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
 		String objeto = estados.get(estadoActual).getObjeto();
 		String personaje = estados.get(estadoActual).getPersonaje();
-		Objeto o = null;
 		
 		//Actualizamos el objetivo
 		Inventario.getCuadroDescripcion().setTexto(e.getObjetivo());
@@ -53,13 +53,19 @@ public class OrganizadorEstados {
 			habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
 			
 			//Se habilita el objeto para que se pueda coger
-			o = permitirCogerObjeto(habitacionDestino, objeto);
+			e.permitirCogerObjeto(habitacionDestino, objeto);
 		}else{
 			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
 		}
 		
-		if(inventarioContieneObjeto(o)){
+		if(inventarioContieneObjeto(e.getItem())){
+			System.out.println("Me ejecuto");
 			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+		}
+		
+		//Si se supera el puzzle, pasamos al nuevo estado
+		if(e.estadoPuzzle()){
+			estadoActual++;
 		}
 	}
 	
@@ -95,23 +101,13 @@ public class OrganizadorEstados {
 			return null;
 	}
 	
-	private Objeto permitirCogerObjeto(Habitacion h, String objeto){
-		Array<Objeto> aux = h.getObjetos();
-		Iterator<Objeto> iter = aux.iterator();
-		Objeto o = null;
-		
-		while(iter.hasNext()){
-			o = iter.next();
-			if(o.getIdentificador().equals(objeto)){
-				o.seCoge(true);
-			}
-		}
-		
-		return o;
-	}
-	
 	private boolean inventarioContieneObjeto(Objeto o){
-		if(Inventario.getContenido().contains(o, true)) return true;
-		else return false;
+		System.out.println(e.getItem());
+		if(Inventario.getContenido().contains(e.getItem(), false)){ 
+			e.seCogeObjeto(true);
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

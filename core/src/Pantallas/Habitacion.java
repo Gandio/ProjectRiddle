@@ -56,7 +56,6 @@ public abstract class Habitacion implements Screen {
 	protected CuadroDialogo cuadroTexto;
 	protected static Array<CuadroEleccion> cuadrosEleccion;
 	
-
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
 	
@@ -167,8 +166,6 @@ public abstract class Habitacion implements Screen {
 		// ---------------------LOGICA DE LOS ESTADOS------------------------------
 		// ------------------------------------------------------------------------
 
-		Iterator<Objeto> iter = objetos.iterator();
-
 		// Conversaciones
 		if (estado == EstadoHabitacion.CONVERSAR) {
 			stage.addActor(cuadroTexto);
@@ -183,6 +180,8 @@ public abstract class Habitacion implements Screen {
 
 		// Se empieza a investigar y se puede interactuar con los objetos de la
 		// habitacion
+		Iterator<Objeto> iter = objetos.iterator();
+		
 		if (estado == EstadoHabitacion.INVESTIGAR) {
 			while (iter.hasNext()) {
 				iter.next().seInvestiga(true);

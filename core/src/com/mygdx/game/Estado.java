@@ -1,7 +1,11 @@
 package com.mygdx.game;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Random;
+
+import Items.Objeto;
+import Pantallas.Habitacion;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
@@ -12,6 +16,7 @@ public class Estado {
 	private String habitacionInicio;
 	private String habitacionDestino;
 	private String objeto;
+	private Objeto item;
 	private String personaje;
 	private String textoPersonaje;
 	private String pistaPersonaje;
@@ -22,6 +27,8 @@ public class Estado {
 	protected Array<Element> estados;
 	
 	private boolean puzzleSuperado = false;
+	private boolean sePermiteCogerObjeto = false;
+	private boolean objetoConseguido = false;
 	private boolean misionEnCurso = false;
 	
 	public Estado(int numEstado){
@@ -89,6 +96,10 @@ public class Estado {
 		return misionEnCurso;
 	}
 	
+	public boolean objetoConseguido(){
+		return objetoConseguido;
+	}
+	
 	public void seSuperaPuzzle(boolean b){
 		puzzleSuperado = b;
 	}
@@ -96,5 +107,37 @@ public class Estado {
 	public void seIniciaMision(boolean b){
 		misionEnCurso = b;
 		
+	}
+	
+	public void seCogeObjeto(boolean b){
+		objetoConseguido = b;
+	}
+	
+	public void setItem(Objeto o){
+		item = o;
+	}
+	
+	public Objeto getItem(){
+		return item;
+	}
+	
+	public void permitirCogerObjeto(Habitacion h, String objeto){
+		if(!sePermiteCogerObjeto){
+			Array<Objeto> aux = h.getObjetos();
+			Iterator<Objeto> iter = aux.iterator();
+			Objeto objetoAux = null;
+			Objeto o = null;
+		
+			while(iter.hasNext()){
+				objetoAux = iter.next();
+				if(objetoAux.getIdentificador().toString().equals(objeto)){
+					o = objetoAux;
+					o.seCoge(true);
+				}
+			}
+		
+			item = o;
+			sePermiteCogerObjeto = true;
+		}
 	}
 }

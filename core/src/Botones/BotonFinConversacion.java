@@ -2,12 +2,14 @@ package Botones;
 
 import Pantallas.Habitacion;
 import Pantallas.Inicio;
+import Puzzle.Inventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.Estado;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
@@ -52,11 +54,27 @@ public class BotonFinConversacion extends Boton{
 		});
 		
 		if(pulsado){
+			
+			Estado estadoActual = OrganizadorEstados.getEstadoActual();
 			//termina la conversacion
 			((Habitacion) game.getScreen()).setConversando(false);
-			OrganizadorEstados.getEstadoActual().seIniciaMision(true);
-		}
+			
+			//Vamos a hacer un poco de trampa, como salón no aparece como "Salón", esta es la
+			//forma de saber si estamos en la misma habitación de la lógica del puzzle.
+			String cadenaClase = "class Pantallas." + estadoActual.getHabitacionInicio().toString();
+			
+			//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
+			if(cadenaClase.equals(game.getScreen().getClass().toString()))
+				estadoActual.seIniciaMision(true);
+				
+			//Se entrega el objeto, es decir, lo borramos del inventario
+			System.out.println(estadoActual.objetoConseguido());
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
+				Inventario.borrarObjeto(estadoActual.getItem());
+				estadoActual.seSuperaPuzzle(true);
+			}
 		
-		pulsado = false;
+			pulsado = false;
+		}
 	}
 }

@@ -206,7 +206,7 @@ public final class Inventario implements Screen{
 	 * Este método añade un objeto al inventario
 	 * @param b
 	 */
-	public void añadirObjeto(Objeto b){
+	public static void añadirObjeto(Objeto b){
 		inventario.add(b);
 	}
 	
@@ -214,7 +214,7 @@ public final class Inventario implements Screen{
 	 * Este método borra el objeto que se le pase del inventario
 	 * @param b
 	 */
-	public void borrarObjeto(Objeto b){
+	public static void borrarObjeto(Objeto b){
 		Iterator<Objeto> iter;
 		
 		iter = inventario.iterator();
