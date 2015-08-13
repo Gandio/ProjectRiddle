@@ -18,14 +18,14 @@ public class CuadroEstado extends CuadroTexto{
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroObjetivo.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		
-		texto = "Ve a la cocina";
+		texto = "";
 		font = new BitmapFont();
 	}
 	
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
-		String textoConLimites = wrapString(texto, 20);
+		String textoConLimites = wrapString(texto, 15);
 		
 		font.drawMultiLine(batch, textoConLimites, 145, 490);
 	}

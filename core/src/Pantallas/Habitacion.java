@@ -54,7 +54,7 @@ public abstract class Habitacion implements Screen {
 	protected BotonConversacion botonConversacion;
 	protected BotonPuertaHabitacion botonPuerta; // permite entrar en una habitación
 	protected CuadroDialogo cuadroTexto;
-	protected static Array<CuadroEleccion> cuadrosEleccion;
+	protected Array<CuadroEleccion> cuadrosEleccion;
 	
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
@@ -70,7 +70,7 @@ public abstract class Habitacion implements Screen {
 	 * investigar no se puede pasar al estado conversar, solo a normal
 	 */
 	public enum EstadoHabitacion {
-		CONVERSAR, INVESTIGAR, NORMAL;
+		CONVERSAR, INVESTIGAR, NORMAL, DECISION;
 	};
 
 	protected EstadoHabitacion estado;
@@ -113,6 +113,7 @@ public abstract class Habitacion implements Screen {
 		cuadroTexto = new CuadroDialogo(this.game);
 		
 		cuadrosEleccion = new Array<CuadroEleccion>(4); //Hay cuatro posibles elecciones
+		
 		for(int i = 0; i < 4; ++i){
 			cuadrosEleccion.add(new CuadroEleccion(game));
 			cuadrosEleccion.get(i).setTouchable(Touchable.enabled);
@@ -161,6 +162,10 @@ public abstract class Habitacion implements Screen {
 		botonPuerta.update();
 
 		cuadroTexto.update();
+		
+		for(int i = 0; i < 4; ++i){
+			cuadrosEleccion.get(i).update();
+		}
 
 		// ------------------------------------------------------------------------
 		// ---------------------LOGICA DE LOS ESTADOS------------------------------
@@ -174,8 +179,18 @@ public abstract class Habitacion implements Screen {
 				cuadroTexto.getSigConv().remove();
 				stage.addActor(cuadroTexto.getFinConv());
 			}
-			//Se actualiza el estado del juego
-			organizador.actualizarEstado();
+		}
+		
+		//Decisiones
+		if(estado == EstadoHabitacion.DECISION){
+			int tbloque = 75;
+			int aux = 0;
+			horaDeElegir();
+			for(int i = 0; i < 4; ++i){
+				cuadrosEleccion.get(i).setCoordenadas(0, aux);
+				stage.addActor(cuadrosEleccion.get(i));
+				aux+=tbloque;
+			}
 		}
 
 		// Se empieza a investigar y se puede interactuar con los objetos de la
@@ -191,6 +206,11 @@ public abstract class Habitacion implements Screen {
 				iter.next().seInvestiga(false);
 			}
 		}
+		
+		//Se actualiza el estado del juego
+		organizador.actualizarEstado();
+		
+		//System.out.println(estado);
 
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -302,6 +322,22 @@ public abstract class Habitacion implements Screen {
 		estado = EstadoHabitacion.NORMAL;
 	}
 	
+	public void horaDeElegir() {
+		cuadroTexto.finConversacion();
+		cuadroTexto.remove();
+		ultimoTexto = false;
+		estado = EstadoHabitacion.DECISION;
+	}
+	
+	public void terminarEleccion(){
+		for(int i = 0; i < 4; ++i){
+			cuadrosEleccion.get(i).remove();
+		}
+		
+		estado = EstadoHabitacion.CONVERSAR;
+		setConversando(true);
+	}
+	
 	/**
 	 * Devuelve el cuadro de dialogo de la conversacion
 	 * @return cuadroTexto
@@ -327,5 +363,9 @@ public abstract class Habitacion implements Screen {
 
 	public Personaje getPersonaje() {
 		return personaje;
+	}
+	
+	public Array<CuadroEleccion> getCuadrosEleccion(){
+		return cuadrosEleccion;
 	}
 }

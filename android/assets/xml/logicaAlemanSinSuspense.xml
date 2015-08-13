@@ -1,20 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<estados>
-    <estado fase = "0">
-        <puzzle id = "0">
-            <objetivo texto = ""/>
-            
+<estados>    
+    <estado fase = "1">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Salon"/>
+            <dialogo texto = "Dime de que color es la joya del baño"/>
+            <opcion1 texto = "Roja" correcto = "no"/>
+            <opcion2 texto = "Amarilla" correcto = "no"/>
+            <opcion3 texto = "Verde" correcto = "si"/>
+            <opcion4 texto = "Azul" correcto = "no"/>
+            <pista texto = "El asesino tiene una cabeza"/>
+            <objetivo texto = "Ve al salon, tonto"/>
         </puzzle>
     </estado>
     
-    <estado fase = "1">
+    <estado fase = "2">
         <puzzle id = "1">
-            <habitacion tipoHabitacionInicio = "Salon" tipoHabitacionFinal = "Cocina"/> <!--Habitacion donde se inicia el puzzle-->
+            <habitacion tipoHabitacionInicio = "Salon" tipoHabitacionFinal = "Cocina"/> <!--Habitacion donde se inicia el puzzle y termina-->
             <objeto tipoObjeto = "Botella"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
-            <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm die Pistole!"/> <!--Texto del personaje-->
+            <dialogo texto = "Geh bitte ins Kochen! Such und nimm die Glühbirne!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo texto = "Ve la cocina"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "2">
+            <habitacion tipoHabitacionInicio = "Estudio" tipoHabitacionFinal = "Cocina"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Caramelo"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Kochen! Such und nimm das Bombon!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve la cocina"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "3">
+            <habitacion tipoHabitacionInicio = "Cocina" tipoHabitacionFinal = "Salon"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Llave"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Wohnzimmer! Such und nimm den Schlüssel!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "4">
+            <habitacion tipoHabitacionInicio = "Baño" tipoHabitacionFinal = "Dormitorio"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Reloj"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm die Uhr!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "5">
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Baño"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Zapato"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Schuh!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+    </estado>
+    
+    <estado fase = "3">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Salon"/>
+            <dialogo texto = "Dime de que color es la joya del baño"/>
+            <opcion1 texto = "Roja" correcto = "no"/>
+            <opcion2 texto = "Amarilla" correcto = "no"/>
+            <opcion3 texto = "Verde" correcto = "si"/>
+            <opcion4 texto = "Azul" correcto = "no"/>
+            <pista texto = "El asesino tiene una cabeza"/>
+            <objetivo texto = "Ve al salon tonto"/>
+        </puzzle>
+    </estado>
+    
+    <estado fase = "4">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal1 = "Estudio" tipoHabitacionFinal2 = "Cocina"/> <!--Habitacion donde se inicia el puzzle-->
+            <objeto tipoObjetoFinal = "CafeAzucar" tipoObjeto1 = "Cafe" tipoObjeto2 = "Azucar"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Such bitte den Kaffee. Aber bitte einen süssen Kaffee!" /> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Encuentra un cafe dulce"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "2">
+            <habitacion tipoHabitacionInicio = "Baño" tipoHabitacionFinal1 = "Dormitorio" tipoHabitacionFinal2 = "Estudio"/> <!--Habitacion donde se inicia el puzzle-->
+            <objeto tipoObjetoFinal = "LibroPintado" tipoObjeto1 = "Libro" tipoObjeto2 = "Boligrafo"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Such bitte das Buch und notier bitte deinen Namen in dem Buch!" /> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Pinta en un libro"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+    </estado>
+    
+    <estado fase = "5">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Cocina" tipoHabitacionFinal = "Baño"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Anillo"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Ring!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "2">
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Salon"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Bombilla"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Wohnzimmer! Such und nimm die Glühbirne!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "3">
+            <habitacion tipoHabitacionInicio = "Estudio" tipoHabitacionFinal = "Dormitorio"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Espejo"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm den Spiegel!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "4">
+            <habitacion tipoHabitacionInicio = "Cocina" tipoHabitacionFinal = "Baño"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Joya"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Diamanten!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+        </puzzle>
+        
+        <puzzle id = "5">
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Estudio"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Moneda"/> <!--Objeto que participa en el puzzle-->
+            <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
+            <dialogo texto = "Geh bitte ins Büro! Such und nimm das Geld!"/> <!--Texto del personaje-->
+            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
+            <objetivo texto = "Ve al estudio"/> <!--Objetivo que aparece en el inventario-->
         </puzzle>
     </estado>
 </estados>

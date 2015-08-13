@@ -2,6 +2,7 @@ package Botones;
 
 import Pantallas.Habitacion;
 import Pantallas.Inicio;
+import Pantallas.Habitacion.EstadoHabitacion;
 import Puzzle.Inventario;
 
 import com.badlogic.gdx.Gdx;
@@ -54,7 +55,6 @@ public class BotonFinConversacion extends Boton{
 		});
 		
 		if(pulsado){
-			
 			Estado estadoActual = OrganizadorEstados.getEstadoActual();
 			//termina la conversacion
 			((Habitacion) game.getScreen()).setConversando(false);
@@ -63,15 +63,32 @@ public class BotonFinConversacion extends Boton{
 			//forma de saber si estamos en la misma habitación de la lógica del puzzle.
 			String cadenaClase = "class Pantallas." + estadoActual.getHabitacionInicio().toString();
 			
-			//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
-			if(cadenaClase.equals(game.getScreen().getClass().toString()))
+			if(estadoActual.getNumEstado() == 1 || estadoActual.getNumEstado() == 3 || estadoActual.getNumEstado() == 4){
+				//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
+				if(cadenaClase.equals(game.getScreen().getClass().toString()))
+					estadoActual.seIniciaMision(true);
+					
+				//Se entrega el objeto, es decir, lo borramos del inventario
+				if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
+					Inventario.borrarObjeto(estadoActual.getItem());
+					estadoActual.seSuperaPuzzle(true);
+				}
+			}else{
+				//Estamos en la habitacion de inicio y además ya se ha hablado con la persona, nos muestran las elecciones
+				if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.estadoMision()){
+					((Habitacion) game.getScreen()).horaDeElegir();
+				}
+				
 				estadoActual.seIniciaMision(true);
 				
-			//Se entrega el objeto, es decir, lo borramos del inventario
-			System.out.println(estadoActual.objetoConseguido());
-			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
-				Inventario.borrarObjeto(estadoActual.getItem());
-				estadoActual.seSuperaPuzzle(true);
+				if(estadoActual.getEleccionCorrecta() == 0){
+					((Habitacion) game.getScreen()).terminarConversacion();
+					estadoActual.eleccionCorrecta(-1);
+				}else if(estadoActual.getEleccionCorrecta() == 1){
+					estadoActual.seSuperaPuzzle(true);
+					((Habitacion) game.getScreen()).terminarConversacion();
+					((Habitacion) game.getScreen()).terminarEleccion();
+				}
 			}
 		
 			pulsado = false;

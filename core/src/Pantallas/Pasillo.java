@@ -77,6 +77,9 @@ public class Pasillo implements Screen{
 	public static Baño baño = Baño.getInstancia();
 	public static Cocina cocina = Cocina.getInstancia();
 	
+	//Organizador de estados
+	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
+	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		this.game = game;
@@ -202,6 +205,9 @@ public class Pasillo implements Screen{
 		 * en la versión final del juego
 		*/
 		if(debug) debug();
+		
+		//Se actualiza el estado del juego
+		organizador.actualizarEstado();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();

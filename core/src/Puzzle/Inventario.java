@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 
 /**
  * Esta clase representa el inventario del personaje. En esta pantalla se muestran los objetos que el 
@@ -54,13 +55,16 @@ public final class Inventario implements Screen{
 	
 	//Cuadros de texto
 	private static CuadroDescripcion cuadroDescripcion;
-	private CuadroEstado cuadroObjetivo;
+	private static CuadroEstado cuadroObjetivo;
 	
 	public enum EstadoInventario{
 		COMBINANDO, NORMAL, COMBINACION_PREPARADA;
 	};
 	
 	private EstadoInventario estado;
+	
+	//Organizador de estados
+	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -167,12 +171,13 @@ public final class Inventario implements Screen{
 			++i;
 		}
 		
-		//if(estado == Estado.COMBINANDO){
-			iter = inventario.iterator();
-			while(iter.hasNext()){
-				iter.next().seSeleccionaBoton();
-			}
-		//}
+		iter = inventario.iterator();
+		while(iter.hasNext()){
+			iter.next().seSeleccionaBoton();
+		}
+		
+		//Se actualiza el estado del juego
+		organizador.actualizarEstado();
 	}
 
 	@Override
@@ -312,7 +317,7 @@ public final class Inventario implements Screen{
 	 * Devuelve el cuadro de objetivos
 	 * @return cuadroObjetivo
 	 */
-	public CuadroEstado getCuadroEstado(){
+	public static CuadroEstado getCuadroEstado(){
 		return cuadroObjetivo;
 	}
 	

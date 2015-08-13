@@ -19,18 +19,19 @@ import Pantallas.Habitacion;
 import Pantallas.Inicio;
 import Pantallas.Salon;
 import Pantallas.Sotano;
+import Pantallas.Habitacion.EstadoHabitacion;
 
 public class OrganizadorEstados {
 	private static MyGdxGame game = Inicio.game;
 	private static ArrayList<Estado> estados;
 	private static OrganizadorEstados unicaInstancia;
 	private static int estadoActual = 0;
-	private static int nEstados = 1; //numero total de estados del juego
+	private static int nEstados = 5; //numero total de estados del juego
 	private static Estado e;
 	
 	private OrganizadorEstados(MyGdxGame game){
 		//this.game = game;
-		estados = new ArrayList<Estado>();
+		estados = new ArrayList<Estado>(4);
 		
 		//llenamos el array de estados aleatorios
 		for(int i = 1; i <= nEstados; ++i){
@@ -39,30 +40,92 @@ public class OrganizadorEstados {
 	}
 	
 	public void actualizarEstado(){
+		System.out.println("estoy en el estado " + estadoActual);
 		e = estados.get(estadoActual);
-		Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
-		Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
-		String objeto = estados.get(estadoActual).getObjeto();
-		String personaje = estados.get(estadoActual).getPersonaje();
-		
-		//Actualizamos el objetivo
-		Inventario.getCuadroDescripcion().setTexto(e.getObjetivo());
-		
-		//Ya has aceptado la misión, no se vuelve a repetir la conversación
-		if(e.estadoMision()){
-			habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
+		if(estadoActual == 0 || estadoActual == 2){
+			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
 			
-			//Se habilita el objeto para que se pueda coger
-			e.permitirCogerObjeto(habitacionDestino, objeto);
-		}else{
-			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
-		}
+			//Actualizamos el objetivo
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			
+			//Se termina de inicializar los cuadros eleccion
+			for(int i = 0; i < 4; ++i){ //Siempre hay 4 cuadros de eleccion, lo valores no cambian
+				habitacionInicio.getCuadrosEleccion().get(i).setTexto(e.getTextoEleccion(i));
+				if(e.getEleccion(i).equals("si"))
+					habitacionInicio.getCuadrosEleccion().get(i).setEleccion(1);
+				else
+					habitacionInicio.getCuadrosEleccion().get(i).setEleccion(0);
+			}
+			
+			if(e.estadoMision()){
+				//Aparecería un cuadro de texto, diciendo "Ya lo sabes?"
+				if(e.getEleccionCorrecta() == -1){
+					habitacionInicio.getCuadroDialogo().setTexto("¿Ya lo sabes?");
+				}
+				
+				//seguidamente aparecerían los 4 cuadros eleccion, esto pasa cuando se pulsa el botón de final de conversacion
+				//si pulsas uno incorrecto aparecería un cuadro de texto "vuelve a intentarlo" y se terminaria la secuencia
+				else if(e.getEleccionCorrecta() == 0){
+					habitacionInicio.getCuadroDialogo().setTexto("Vuelve a intentarlo");
+				}else{ //si pulsas el correcto aparece el cuadro de texto con la pista y continua el juego
+					habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+				}
+			}else{
+				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+			}
+			
+			
+		}else if(estadoActual == 1 || estadoActual == 4){
+			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
+			Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+			String objeto = estados.get(estadoActual).getObjeto();
+			String personaje = estados.get(estadoActual).getPersonaje();
 		
-		if(inventarioContieneObjeto(e.getItem())){
-			System.out.println("Me ejecuto");
-			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
-		}
+			//Actualizamos el objetivo
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
 		
+			//Ya has aceptado la misión, no se vuelve a repetir la conversación
+			if(e.estadoMision()){
+				habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
+			
+				//Se habilita el objeto para que se pueda coger
+				e.permitirCogerObjeto(habitacionDestino, objeto);
+			}else{
+				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+			}
+		
+			if(inventarioContieneObjeto(e.getItem())){
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+			}
+		}else if(estadoActual == 3){
+			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
+			Habitacion habitacionDestino1 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+			Habitacion habitacionDestino2 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+			String objeto = estados.get(estadoActual).getObjeto(); //este es el objeto final
+			String objetoCombinacion1 = estados.get(estadoActual).getObjetoCombinacion1();
+			String objetoCombinacion2 = estados.get(estadoActual).getObjetoCombinacion2();
+			String personaje = estados.get(estadoActual).getPersonaje();
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			
+			//Actualizamos el objetivo
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+		
+			//Ya has aceptado la misión, no se vuelve a repetir la conversación
+			if(e.estadoMision()){
+				habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
+			
+				//Se habilita el objeto para que se pueda coger
+				e.permitirCogerObjeto(habitacionDestino1, objetoCombinacion1);
+				e.permitirCogerObjeto(habitacionDestino2, objetoCombinacion2);
+			}else{
+				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+			}
+		
+			if(inventarioContieneObjeto(e.getItem())){
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+			}			
+			
+		}
 		//Si se supera el puzzle, pasamos al nuevo estado
 		if(e.estadoPuzzle()){
 			estadoActual++;
