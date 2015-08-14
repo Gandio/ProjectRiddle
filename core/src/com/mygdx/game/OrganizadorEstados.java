@@ -2,10 +2,14 @@ package com.mygdx.game;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
+import java.io.IOException;
 import java.lang.Object;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.XmlReader;
+import com.badlogic.gdx.utils.XmlReader.Element;
 
 import Items.Objeto;
 import Puzzle.Inventario;
@@ -29,13 +33,98 @@ public class OrganizadorEstados {
 	private static int nEstados = 5; //numero total de estados del juego
 	private static Estado e;
 	
+	protected XmlReader reader = new XmlReader();
+	protected Element raiz;
+	protected Array<Element> pistasAsesino;
+	protected Array<Element> pistasArma;
+	protected Array<String> pistas;
+	
 	private OrganizadorEstados(MyGdxGame game){
 		//this.game = game;
 		estados = new ArrayList<Estado>(4);
+		pistas = new Array<String>(nEstados);
 		
-		//llenamos el array de estados aleatorios
+		//Vamos a seleccionar al asesino y almacenar las pistas para descubrirlo
+		
+		Random rm = new Random();
+		/*
+		 * 0 - chica
+		 * 1 - hombre
+		 * 2 - joven
+		 * 3 - anciana
+		 * 4 - mujer
+		 */
+		int asesino = rm.nextInt((4 - 0) + 1) + 0;
+		
+		try{
+			if(asesino == 0)
+				raiz = reader.parse(Gdx.files.internal("xml/pistasChica.xml"));
+			else if(asesino == 1)
+				raiz = reader.parse(Gdx.files.internal("xml/pistasHombre.xml"));
+			else if(asesino == 2)
+				raiz = reader.parse(Gdx.files.internal("xml/pistasJoven.xml"));
+			else if(asesino == 3)
+				raiz = reader.parse(Gdx.files.internal("xml/pistasMujerMayor.xml"));
+			else
+				raiz = reader.parse(Gdx.files.internal("xml/pistasMujer.xml"));
+				
+		}catch(IOException e){}
+		
+		pistasAsesino = raiz.getChildrenByName("pista");
+		
+		for(int i = 0; i < pistasAsesino.size; ++i){
+			pistas.add(raiz.getChild(i).getAttribute("texto"));
+		}
+		
+		//Vamos a escoger el arma y las pistas para descubrirla
+		
+		int arma = rm.nextInt((3 - 0) + 1) + 0;
+		
+		/*
+		 * 0 - daga
+		 * 1 - pistola
+		 * 2 - rifle
+		 * 3 - serpiente
+		 */
+		
+		try{
+			if(arma == 0)
+				raiz = reader.parse(Gdx.files.internal("xml/dagaPistas.xml"));
+			else if(arma == 1)
+				raiz = reader.parse(Gdx.files.internal("xml/pistolaPistas.xml"));
+			else if(arma == 2)
+				raiz = reader.parse(Gdx.files.internal("xml/riflePistas.xml"));
+			else
+				raiz = reader.parse(Gdx.files.internal("xml/serpientePistas.xml"));
+				
+		}catch(IOException e){}
+		
+		pistasArma= raiz.getChildrenByName("pista");
+		
+		for(int i = 0; i < pistasArma.size; ++i){
+			pistas.add(raiz.getChild(i).getAttribute("texto"));
+		}
+		
+		System.out.println("Asesino " + asesino);
+		System.out.println("Arma " + arma);
+		System.out.println(pistas.size);
+		
+		//llenamos el array de estados aleatorios y le pasamos una pista al azar
+		//String siguienteHabitacion = null;
 		for(int i = 1; i <= nEstados; ++i){
-			estados.add(new Estado(i));
+			int j = rm.nextInt((pistas.size - 0)) + 0;
+			
+			estados.add(new Estado(i, pistas.get(j)));
+			/*
+			System.out.println(i);
+			
+			if(i > 1){
+				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
+				estados.get(i-2).crearPista(siguienteHabitacion);
+			}
+			*/
+			pistas.removeIndex(j);
+			
 		}
 	}
 	

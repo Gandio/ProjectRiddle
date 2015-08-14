@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pistas>
+    <pista id = "1" texto = "Ich weiss, dass der Mörder grosse Waffen liebt."></pista> <!--El asesino usa armas grandes-->
+    <pista id = "2" texto = "Ich weiss, dass der Mörder aus grosser Distanz tötet."></pista> <!--Grandes distancias-->
+</pistas>

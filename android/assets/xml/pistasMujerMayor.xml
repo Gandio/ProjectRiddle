@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pistas>
+    <pista id = "1" texto = "Ich weiss, dass der Mörder keine Krawatte trägt."></pista> <!--El asesino no lleva corbata-->
+    <pista id = "2" texto = "Ich weiss, dass der Mörder nicht jung ist."></pista> <!--El asesino no es joven-->
+    <pista id = "3" texto = "Ich weiss, dass der Mörder eine Kette trägt."></pista> <!--El asesino lleva collar-->
+</pistas>
