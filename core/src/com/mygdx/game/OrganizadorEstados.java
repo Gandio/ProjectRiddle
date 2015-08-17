@@ -110,19 +110,19 @@ public class OrganizadorEstados {
 		System.out.println(pistas.size);
 		
 		//llenamos el array de estados aleatorios y le pasamos una pista al azar
-		//String siguienteHabitacion = null;
+		String siguienteHabitacion = null;
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
 			estados.add(new Estado(i, pistas.get(j)));
-			/*
-			System.out.println(i);
+			
+			//System.out.println(i);
 			
 			if(i > 1){
 				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
 				estados.get(i-2).crearPista(siguienteHabitacion);
 			}
-			*/
+			
 			pistas.removeIndex(j);
 			
 		}
@@ -131,11 +131,13 @@ public class OrganizadorEstados {
 	public void actualizarEstado(){
 		System.out.println("estoy en el estado " + estadoActual);
 		e = estados.get(estadoActual);
+		
+		Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
+		
 		if(estadoActual == 0 || estadoActual == 2){
-			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
 			
 			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
 			
 			//Se termina de inicializar los cuadros eleccion
 			for(int i = 0; i < 4; ++i){ //Siempre hay 4 cuadros de eleccion, lo valores no cambian
@@ -148,14 +150,15 @@ public class OrganizadorEstados {
 			
 			if(e.estadoMision()){
 				//Aparecería un cuadro de texto, diciendo "Ya lo sabes?"
+				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
 				if(e.getEleccionCorrecta() == -1){
-					habitacionInicio.getCuadroDialogo().setTexto("¿Ya lo sabes?");
+					habitacionInicio.getCuadroDialogo().setTexto(e.getPrePuzzle());
 				}
 				
 				//seguidamente aparecerían los 4 cuadros eleccion, esto pasa cuando se pulsa el botón de final de conversacion
 				//si pulsas uno incorrecto aparecería un cuadro de texto "vuelve a intentarlo" y se terminaria la secuencia
 				else if(e.getEleccionCorrecta() == 0){
-					habitacionInicio.getCuadroDialogo().setTexto("Vuelve a intentarlo");
+					habitacionInicio.getCuadroDialogo().setTexto(e.getError());
 				}else{ //si pulsas el correcto aparece el cuadro de texto con la pista y continua el juego
 					habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 				}
@@ -165,17 +168,17 @@ public class OrganizadorEstados {
 			
 			
 		}else if(estadoActual == 1 || estadoActual == 4){
-			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
 			Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
 			String objeto = estados.get(estadoActual).getObjeto();
 			String personaje = estados.get(estadoActual).getPersonaje();
 		
 			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
 		
 			//Ya has aceptado la misión, no se vuelve a repetir la conversación
 			if(e.estadoMision()){
-				habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
+				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
 			
 				//Se habilita el objeto para que se pueda coger
 				e.permitirCogerObjeto(habitacionDestino, objeto);
@@ -183,41 +186,48 @@ public class OrganizadorEstados {
 				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
 			}
 		
-			if(inventarioContieneObjeto(e.getItem())){
+			if(inventarioContieneObjeto()){
 				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 			}
 		}else if(estadoActual == 3){
-			Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
 			Habitacion habitacionDestino1 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
-			Habitacion habitacionDestino2 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+			Habitacion habitacionDestino2 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino2());
 			String objeto = estados.get(estadoActual).getObjeto(); //este es el objeto final
 			String objetoCombinacion1 = estados.get(estadoActual).getObjetoCombinacion1();
 			String objetoCombinacion2 = estados.get(estadoActual).getObjetoCombinacion2();
 			String personaje = estados.get(estadoActual).getPersonaje();
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
 			
 			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo());
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
 		
 			//Ya has aceptado la misión, no se vuelve a repetir la conversación
 			if(e.estadoMision()){
-				habitacionInicio.getCuadroDialogo().setTexto("Was ist los? Zackibacki! Geh!!!!");
+				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
 			
 				//Se habilita el objeto para que se pueda coger
-				e.permitirCogerObjeto(habitacionDestino1, objetoCombinacion1);
-				e.permitirCogerObjeto(habitacionDestino2, objetoCombinacion2);
+				e.permitirCogerObjetosCombinacion(habitacionDestino1, objetoCombinacion1, habitacionDestino2, objetoCombinacion2);
+				
 			}else{
 				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
 			}
 		
-			if(inventarioContieneObjeto(e.getItem())){
+			if(inventarioContieneObjeto()){
 				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 			}			
 			
 		}
 		//Si se supera el puzzle, pasamos al nuevo estado
+		
 		if(e.estadoPuzzle()){
+			habitacionInicio.terminarConversacion();
+			habitacionInicio.getCuadroDialogo().setTexto(habitacionInicio.getCuadroDialogo().getTextoDefecto());
 			estadoActual++;
+			
+			if(estadoActual > nEstados){ //Se acaba el juego
+				Gdx.app.exit();
+			}
 		}
 	}
 	
@@ -253,13 +263,27 @@ public class OrganizadorEstados {
 			return null;
 	}
 	
-	private boolean inventarioContieneObjeto(Objeto o){
-		System.out.println(e.getItem());
+	private boolean inventarioContieneObjeto(){
+		//System.out.println("Entro");
+		//System.out.println(e.getItem());
 		if(Inventario.getContenido().contains(e.getItem(), false)){ 
 			e.seCogeObjeto(true);
 			return true;
+			/*
+			 * El contains solo funciona si es el mismo objeto, como cada vez que combinamos creamos
+			 * un objeto que antes no estaba en el universo del juego tenemos que buscar otra forma
+			 * de comparar. Comparar por el nombre es la forma más sencilla. Tenemos que asegurarnos
+			 * de que el inventario no está vacio, si no se produce un error al intentar acceder al
+			 * primer elemento
+			 */
+		}else if(Inventario.getContenido().size != 0){
+			if(Inventario.getContenido().first().toString().equals(e.getItem().toString())){
+				e.seCogeObjeto(true);
+				return true;
+			}
 		}else{
 			return false;
 		}
+		return false;
 	}
 }

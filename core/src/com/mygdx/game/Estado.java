@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
 
+import Items.CafeAzucar;
+import Items.LibroPintado;
 import Items.Objeto;
+import Items.SerpienteEnjaulada;
 import Pantallas.Habitacion;
+import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
@@ -24,7 +28,8 @@ public class Estado {
 	private String personaje;
 	private String textoPersonaje;
 	private String pistaPersonaje;
-	private String objetivo;
+	private String objetivo1;
+	private String objetivo2;
 	private String siguienteHabitacion; // indica la habitacion donde se desarrolla el próximo puzzle
 
 	private String textoOpcion1;
@@ -36,6 +41,10 @@ public class Estado {
 	private String opcion2;
 	private String opcion3;
 	private String opcion4;
+	
+	private String error;
+	private String prePuzzle;
+	private String postPuzzle;
 
 	protected XmlReader reader = new XmlReader();
 	protected Element raiz;
@@ -87,6 +96,9 @@ public class Estado {
 			opcion2 = puzzle.getChildByName("opcion2").getAttribute("correcto");
 			opcion3 = puzzle.getChildByName("opcion3").getAttribute("correcto");
 			opcion4 = puzzle.getChildByName("opcion4").getAttribute("correcto");
+			
+			error = puzzle.getChildByName("fallo").getAttribute("texto");
+			prePuzzle = puzzle.getChildByName("prePuzzle").getAttribute("texto");
 
 		} else if (numEstado == 2 || numEstado == 5) { // en estos estados se realizará el primer tipo de puzzle
 			idPuzzle = rm.nextInt((4 - 0) + 1) + 0;
@@ -95,6 +107,8 @@ public class Estado {
 			habitacionDestino = puzzle.getChildByName("habitacion").getAttribute("tipoHabitacionFinal");
 			objeto = puzzle.getChildByName("objeto").getAttribute("tipoObjeto");
 			personaje = puzzle.getChildByName("personaje").getAttribute("tipoPersonaje");
+			postPuzzle = puzzle.getChildByName("postPuzzle").getAttribute("texto");
+		
 		} else if (numEstado == 4) {
 			// Estoy hay que modificarlo para que sirva para la versión con suspensesolo hay un puzzle de combinacion
 			idPuzzle = rm.nextInt((1 - 0) + 1) + 0;
@@ -104,13 +118,14 @@ public class Estado {
 			habitacionDestino2 = puzzle.getChildByName("habitacion").getAttribute("tipoHabitacionFinal2");
 			objeto = puzzle.getChildByName("objeto").getAttribute("tipoObjetoFinal");
 			objetoCombinacion1 = puzzle.getChildByName("objeto").getAttribute("tipoObjeto1");
-			objetoCombinacion1 = puzzle.getChildByName("objeto").getAttribute("tipoObjeto2");
+			objetoCombinacion2 = puzzle.getChildByName("objeto").getAttribute("tipoObjeto2");
 			personaje = puzzle.getChildByName("personaje").getAttribute("tipoPersonaje");
-			
+			postPuzzle = puzzle.getChildByName("postPuzzle").getAttribute("texto");
 		}
 		
 		habitacionInicio = puzzle.getChildByName("habitacion").getAttribute("tipoHabitacionInicio");
-		objetivo = puzzle.getChildByName("objetivo").getAttribute("texto");
+		objetivo1 = puzzle.getChildByName("objetivo1").getAttribute("texto");
+		objetivo2 = puzzle.getChildByName("objetivo2").getAttribute("texto");
 		textoPersonaje = puzzle.getChildByName("dialogo").getAttribute("texto");
 		pistaPersonaje = pista;
 	}
@@ -151,8 +166,12 @@ public class Estado {
 		return pistaPersonaje;
 	}
 
-	public String getObjetivo() {
-		return objetivo;
+	public String getObjetivo1() {
+		return objetivo1;
+	}
+	
+	public String getObjetivo2(){
+		return objetivo2;
 	}
 
 	public boolean estadoPuzzle() {
@@ -186,6 +205,18 @@ public class Estado {
 
 	public Objeto getItem() {
 		return item;
+	}
+	
+	public String getError(){
+		return error;
+	}
+	
+	public String getPrePuzzle(){
+		return prePuzzle;
+	}
+	
+	public String getPostPuzzle(){
+		return postPuzzle;
 	}
 
 	public String getTextoEleccion(int i) {
@@ -236,20 +267,71 @@ public class Estado {
 					o.seCoge(true);
 				}
 			}
-
 			item = o;
 			sePermiteCogerObjeto = true;
 		}
 	}
 	
-	public void crearPista(String sigHab){
-		if(sigHab == null){
-			System.out.println("algo falla o es el estado final");
+	public void permitirCogerObjetosCombinacion(Habitacion h1, String objeto1, Habitacion h2, String objeto2) {
+		if (!sePermiteCogerObjeto) {
+			Array<Objeto> aux = h1.getObjetos();
+			Array<Objeto> aux2 = h2.getObjetos();
+			Iterator<Objeto> iter = aux.iterator();
+			Objeto objetoAux = null;
+			Objeto o = null;
+
+			while (iter.hasNext()) {
+				objetoAux = iter.next();
+				if (objetoAux.getIdentificador().toString().equals(objeto1)) {
+					o = objetoAux;
+					o.seCoge(true);
+				}
+			}
+			
+			objetoAux = null;
+			o = null;
+			iter = aux2.iterator();
+			
+			while (iter.hasNext()) {
+				objetoAux = iter.next();
+				if (objetoAux.getIdentificador().toString().equals(objeto2)) {
+					o = objetoAux;
+					o.seCoge(true);
+				}
+			}
+			
+			if(objeto1.equals("Cafe") || objeto2.equals("Cafe")){
+				item = new CafeAzucar(Inicio.game);	
+			}else if(objeto1.equals("Libro") || objeto2.equals("Libro")){
+				item = new LibroPintado(Inicio.game);
+			}else if(objeto1.equals("Serpiente") || objeto2.equals("Serpiente")){
+				item = new SerpienteEnjaulada(Inicio.game);
+			}
+			sePermiteCogerObjeto = true;
 		}
+	}
+	
+	public void crearPista(String sigHab){
+		if(sigHab == null)
+			System.out.println("algo falla o es el estado inicial");
 		else if(sigHab.equals("Salon"))
 			siguienteHabitacion = "Geh jetzt bitte ins Wohnzimmer und such neue Informationen!";
-		else if (sigHab.equals("Dormitorio"))
+		else if(sigHab.equals("Dormitorio"))
 			siguienteHabitacion = "Geh jetzt bitte ins Schlafzimmer und such neue Informationen!";
+		else if(sigHab.equals("Desvan"))
+			siguienteHabitacion = "Geh jetzt bitte auf den Dachboden und such neue Informationen!";
+		else if(sigHab.equals("Sotano"))
+			siguienteHabitacion = "Geh jetzt bitte in den Keller und such neue Informationen!";
+		else if(sigHab.equals("Biblioteca"))
+			siguienteHabitacion = "Geh jetzt bitte die Bibliothek und such neue Informationen!";
+		else if(sigHab.equals("Cocina"))
+			siguienteHabitacion = "Geh jetzt bitte la cocina und such neue Informationen!";
+		else if(sigHab.equals("Estudio"))
+			siguienteHabitacion = "Geh jetzt bitte al estudio und such neue Informationen!";
+		else if(sigHab.equals("Baño"))
+			siguienteHabitacion = "Geh jetzt bitte al baño und such neue Informationen!";
+		else
+			siguienteHabitacion = "fallo";
 
 		pistaPersonaje = pistaPersonaje + siguienteHabitacion;
 		

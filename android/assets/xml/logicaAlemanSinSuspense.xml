@@ -9,7 +9,10 @@
             <opcion3 texto = "Verde" correcto = "si"/>
             <opcion4 texto = "Azul" correcto = "no"/>
             <pista texto = "El asesino tiene una cabeza"/>
-            <objetivo texto = "Ve al salon, tonto"/>
+            <objetivo1 texto = "Ve al salon"/>
+            <objetivo2 texto = "Descubre el color del diamante"/>
+            <fallo texto = "Vuelve a intentarlo"/>
+            <prePuzzle texto = "¿Ya lo sabes?"/>
         </puzzle>
     </estado>
     
@@ -20,7 +23,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Kochen! Such und nimm die Glühbirne!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve la cocina"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge la botella"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/>
         </puzzle>
         
         <puzzle id = "2">
@@ -29,7 +34,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Kochen! Such und nimm das Bombon!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve la cocina"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al estudio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el caramelo"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "3">
@@ -38,7 +45,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und nimm den Schlüssel!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve a la cocina"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge la llave"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "4">
@@ -47,7 +56,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm die Uhr!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el reloj"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "5">
@@ -56,7 +67,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Schuh!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge la llave"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
     </estado>
     
@@ -69,7 +82,10 @@
             <opcion3 texto = "Verde" correcto = "si"/>
             <opcion4 texto = "Azul" correcto = "no"/>
             <pista texto = "El asesino tiene una cabeza"/>
-            <objetivo texto = "Ve al salon tonto"/>
+            <objetivo1 texto = "Ve al salon tonto"/>
+            <objetivo2 texto = "Descubre el color del diamante"/>
+            <fallo texto = "Vuelve a intentarlo"/>
+            <prePuzzle texto = "¿Ya lo sabes?"/>
         </puzzle>
     </estado>
     
@@ -80,7 +96,10 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Such bitte den Kaffee. Aber bitte einen süssen Kaffee!" /> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Encuentra un cafe dulce"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al dormitorio"/>
+            <objetivo2 texto = "Encuentra un cafe dulce"/> <!--Objetivo que aparece en el inventario-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "2">
@@ -89,7 +108,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Such bitte das Buch und notier bitte deinen Namen in dem Buch!" /> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Pinta en un libro"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al baño"/>
+            <objetivo2 texto = "Pinta en un libro"/> <!--Objetivo que aparece en el inventario-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
     </estado>
     
@@ -100,7 +121,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Ring!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve a la cocina"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el anillo"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "2">
@@ -109,7 +132,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und nimm die Glühbirne!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge la bombilla"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "3">
@@ -118,7 +143,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm den Spiegel!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al estudio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el espejo"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "4">
@@ -127,7 +154,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Diamanten!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve a la cocina"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el diamante"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
         
         <puzzle id = "5">
@@ -136,7 +165,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Büro! Such und nimm das Geld!"/> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
-            <objetivo texto = "Ve al estudio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo1 texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge la moneda"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
     </estado>
 </estados>

@@ -24,9 +24,10 @@ public class CuadroDialogo extends CuadroTexto{
 	
 	private Array<String> textos = new Array<String>();
 	
-	
 	private int parteTexto = 0;
 	private boolean finTexto = false;
+	
+	private String textoDefecto = "Ich habe momentan keine Information für dich!";
 	
 	public CuadroDialogo(MyGdxGame game) {
 		super(game);
@@ -44,7 +45,7 @@ public class CuadroDialogo extends CuadroTexto{
 		finConversacion.setTouchable(Touchable.enabled);
 		
 		//Texto por defecto.
-		texto = "Ich habe momentan keine Information für dich!";
+		texto = textoDefecto;
 		
 		font = new BitmapFont();
 	}
@@ -84,6 +85,7 @@ public class CuadroDialogo extends CuadroTexto{
 		parteTexto = 0;
 		finTexto = false;
 		finConversacion.remove();
+		siguienteConversacion.remove();
 	}
 	
 	public Boton getFinConv(){
@@ -108,5 +110,9 @@ public class CuadroDialogo extends CuadroTexto{
 	
 	public boolean getFinTexto(){
 		return finTexto;
+	}
+	
+	public String getTextoDefecto(){
+		return textoDefecto;
 	}
 }

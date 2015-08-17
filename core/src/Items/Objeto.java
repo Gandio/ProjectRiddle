@@ -139,15 +139,21 @@ public abstract class Objeto extends Actor{
                 		((Objeto)event.getTarget()).seleccionado = true;
                 		tocadoUnaVez = true;
                 		/*
-                		 * Si no estuviera el condicional se cogerían varias veces el objeto
-                		 */
+                		* Si no estuviera el condicional se cogerían varias veces el objeto
+                		*/
                 		cogerObjeto();
+                			
                 	}
                 }
                 
                 return true;
             }
 		});
+		/*Solo se podría tocar el objeto una vez, si fallas no lo puedes volver a seleccionar
+		 * esta línea de código lo impide. Puedes seleccionar el objeto todas las veces que quieras
+		 * hasta que lo puedas coger.
+		 */
+		if(!sePuedeCoger) tocadoUnaVez = false;
 	}
 	
 	public void seSeleccionaBoton(){

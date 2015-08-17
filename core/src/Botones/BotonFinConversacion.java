@@ -67,6 +67,7 @@ public class BotonFinConversacion extends Boton{
 				//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
 				if(cadenaClase.equals(game.getScreen().getClass().toString()))
 					estadoActual.seIniciaMision(true);
+				
 					
 				//Se entrega el objeto, es decir, lo borramos del inventario
 				if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
