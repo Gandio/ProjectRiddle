@@ -57,6 +57,7 @@ public class Estado {
 	private int eleccionCorrecta = -1; // tri estado -1 no lo has intentado todavia, 0 has fallado, 1 correcto
 
 	private int numEstado;
+	private int contErrores;
 
 	public Estado(int numEstado, String pista) {
 		try {
@@ -72,6 +73,7 @@ public class Estado {
 		estados = raiz.getChildrenByName("estado");
 
 		this.numEstado = numEstado - 1;
+		contErrores = 0;
 
 		// Cogemos el elemento estado actual
 		Element child = raiz.getChild(numEstado - 1);
@@ -252,6 +254,14 @@ public class Estado {
 	public int getNumEstado() {
 		return numEstado;
 	}
+	
+	public int getContErrores(){
+		return contErrores;
+	}
+	
+	public void aumentarContErrores(){
+		contErrores++;
+	}
 
 	public void permitirCogerObjeto(Habitacion h, String objeto) {
 		if (!sePermiteCogerObjeto) {
@@ -318,7 +328,7 @@ public class Estado {
 			siguienteHabitacion = "Geh jetzt bitte ins Wohnzimmer und such neue Informationen!";
 		else if(sigHab.equals("Dormitorio"))
 			siguienteHabitacion = "Geh jetzt bitte ins Schlafzimmer und such neue Informationen!";
-		else if(sigHab.equals("Desvan"))
+		else if(sigHab.equals("Atico"))
 			siguienteHabitacion = "Geh jetzt bitte auf den Dachboden und such neue Informationen!";
 		else if(sigHab.equals("Sotano"))
 			siguienteHabitacion = "Geh jetzt bitte in den Keller und such neue Informationen!";

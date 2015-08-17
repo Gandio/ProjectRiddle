@@ -55,7 +55,8 @@ public class BotonFinConversacion extends Boton{
 		});
 		
 		if(pulsado){
-			Estado estadoActual = OrganizadorEstados.getEstadoActual();
+			OrganizadorEstados.logicaSubestados();
+			/*Estado estadoActual = OrganizadorEstados.getEstadoActual();
 			//termina la conversacion
 			((Habitacion) game.getScreen()).setConversando(false);
 			
@@ -90,7 +91,7 @@ public class BotonFinConversacion extends Boton{
 					((Habitacion) game.getScreen()).terminarConversacion();
 					((Habitacion) game.getScreen()).terminarEleccion();
 				}
-			}
+			}*/
 		
 			pulsado = false;
 		}

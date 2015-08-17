@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 
 /**
  * Esta clase abstracta representa a todos los objetos con los que se puede interactuar durante una 
@@ -121,6 +122,7 @@ public abstract class Objeto extends Actor{
 			}else{
 				//Sumamos 1 al contador de errores y se reproduce un efecto de sonido
 				Puntuacion.sumarError();
+				OrganizadorEstados.getEstadoActual().aumentarContErrores();
 				error.play();
 			}
 		}

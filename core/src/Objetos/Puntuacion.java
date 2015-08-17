@@ -17,13 +17,13 @@ public final class Puntuacion extends Actor{
 	private Texture puntuacion;
 	
 	protected BitmapFont font;
-	protected String texto;
+	protected static String texto;
 	
 	private Puntuacion(MyGdxGame game){
 		this.game = game;
 		puntos = 0;
 		numFallos = 0;
-		texto = "Puntos: 0";
+		texto = "Puntos: " + puntos;
 		font = new BitmapFont();
 		font.scale(1.5f);
 		coordenadas = new Vector2();
@@ -34,8 +34,9 @@ public final class Puntuacion extends Actor{
 		font.draw(batch, texto, coordenadas.x, coordenadas.y); 
 	}
 	
-	public void setPuntuacion(int p){
+	public static void setPuntuacion(int p){
 		puntos += p;
+		texto = "Puntos: " + puntos;
 	}
 	
 	public static void sumarError(){
@@ -47,7 +48,7 @@ public final class Puntuacion extends Actor{
 		coordenadas.y = y;
 	}
 	
-	public int getPuntos(){
+	public static int getPuntos(){
 		return puntos;
 	}
 	

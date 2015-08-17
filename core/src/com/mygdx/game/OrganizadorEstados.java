@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 import Items.Objeto;
+import Objetos.Puntuacion;
 import Puzzle.Inventario;
 import Pantallas.Atico;
 import Pantallas.Baño;
@@ -39,9 +40,12 @@ public class OrganizadorEstados {
 	protected Array<Element> pistasArma;
 	protected Array<String> pistas;
 	
+	private static int asesino;
+	private static int arma;
+	
 	private OrganizadorEstados(MyGdxGame game){
 		//this.game = game;
-		estados = new ArrayList<Estado>(4);
+		estados = new ArrayList<Estado>(nEstados-1);
 		pistas = new Array<String>(nEstados);
 		
 		//Vamos a seleccionar al asesino y almacenar las pistas para descubrirlo
@@ -54,7 +58,7 @@ public class OrganizadorEstados {
 		 * 3 - anciana
 		 * 4 - mujer
 		 */
-		int asesino = rm.nextInt((4 - 0) + 1) + 0;
+		asesino = rm.nextInt((4 - 0) + 1) + 0;
 		
 		try{
 			if(asesino == 0)
@@ -78,7 +82,7 @@ public class OrganizadorEstados {
 		
 		//Vamos a escoger el arma y las pistas para descubrirla
 		
-		int arma = rm.nextInt((3 - 0) + 1) + 0;
+		arma = rm.nextInt((3 - 0) + 1) + 0;
 		
 		/*
 		 * 0 - daga
@@ -105,18 +109,12 @@ public class OrganizadorEstados {
 			pistas.add(raiz.getChild(i).getAttribute("texto"));
 		}
 		
-		System.out.println("Asesino " + asesino);
-		System.out.println("Arma " + arma);
-		System.out.println(pistas.size);
-		
 		//llenamos el array de estados aleatorios y le pasamos una pista al azar
 		String siguienteHabitacion = null;
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
 			estados.add(new Estado(i, pistas.get(j)));
-			
-			//System.out.println(i);
 			
 			if(i > 1){
 				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
@@ -223,9 +221,11 @@ public class OrganizadorEstados {
 		if(e.estadoPuzzle()){
 			habitacionInicio.terminarConversacion();
 			habitacionInicio.getCuadroDialogo().setTexto(habitacionInicio.getCuadroDialogo().getTextoDefecto());
+			Puntuacion.setPuntuacion(1000 - e.getContErrores()*100);
+			System.out.println(Puntuacion.getPuntos());
 			estadoActual++;
 			
-			if(estadoActual > nEstados){ //Se acaba el juego
+			if(estadoActual >= nEstados){ //Se acaba el juego
 				Gdx.app.exit();
 			}
 		}
@@ -285,5 +285,54 @@ public class OrganizadorEstados {
 			return false;
 		}
 		return false;
+	}
+	
+	public static void logicaSubestados(){
+		Estado estadoActual = OrganizadorEstados.getEstadoActual();
+		//termina la conversacion
+		((Habitacion) game.getScreen()).setConversando(false);
+		
+		//Vamos a hacer un poco de trampa, como salón no aparece como "Salón", esta es la
+		//forma de saber si estamos en la misma habitación de la lógica del puzzle.
+		String cadenaClase = "class Pantallas." + estadoActual.getHabitacionInicio().toString();
+		
+		if(estadoActual.getNumEstado() == 1 || estadoActual.getNumEstado() == 3 || estadoActual.getNumEstado() == 4){
+			//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
+			if(cadenaClase.equals(game.getScreen().getClass().toString()))
+				estadoActual.seIniciaMision(true);
+			
+				
+			//Se entrega el objeto, es decir, lo borramos del inventario
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
+				Inventario.borrarObjeto(estadoActual.getItem());
+				estadoActual.seSuperaPuzzle(true);
+			}
+		}else{
+			//Estamos en la habitacion de inicio y además ya se ha hablado con la persona, nos muestran las elecciones
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.estadoMision()){
+				((Habitacion) game.getScreen()).horaDeElegir();
+			}
+			
+			estadoActual.seIniciaMision(true);
+			
+			if(estadoActual.getEleccionCorrecta() == 0){
+				((Habitacion) game.getScreen()).terminarConversacion();
+				e.aumentarContErrores();
+				Puntuacion.sumarError();
+				estadoActual.eleccionCorrecta(-1);
+			}else if(estadoActual.getEleccionCorrecta() == 1){
+				estadoActual.seSuperaPuzzle(true);
+				((Habitacion) game.getScreen()).terminarConversacion();
+				((Habitacion) game.getScreen()).terminarEleccion();
+			}
+		}
+	}
+	
+	public static int getAsesino(){
+		return asesino;
+	}
+	
+	public static int getArma(){
+		return arma;
 	}
 }
