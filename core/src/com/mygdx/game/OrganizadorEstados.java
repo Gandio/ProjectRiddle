@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import Items.Objeto;
 import Objetos.Puntuacion;
 import Puzzle.Inventario;
+import Puzzle.PantallaAsesino;
 import Pantallas.Atico;
 import Pantallas.Baño;
 import Pantallas.Biblioteca;
@@ -225,8 +226,8 @@ public class OrganizadorEstados {
 			System.out.println(Puntuacion.getPuntos());
 			estadoActual++;
 			
-			if(estadoActual >= nEstados){ //Se acaba el juego
-				Gdx.app.exit();
+			if(estadoActual >= nEstados){ //Se pasa a la pantalla de seleccion de asesino
+				game.setScreen(new PantallaAsesino());
 			}
 		}
 	}

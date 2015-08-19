@@ -37,7 +37,7 @@ public final class Inventario implements Screen{
 	private static Inventario unicaInstancia;
 	
 	protected Stage stage;
-	protected Music musica;
+	protected static Music musica;
 	private Texture textura;
 	private static Array<Objeto> inventario;
 	private Array<Objeto> combinacion;
@@ -73,11 +73,7 @@ public final class Inventario implements Screen{
 		batch = new SpriteBatch();
 		
 		// Musica
-		if (MyGdxGame.SUSPENSE_MUSICA)
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
-		else
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
-		musica.setLooping(true);
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
 		
 		estado = EstadoInventario.NORMAL;
 		inventario = new Array<Objeto>();
@@ -142,12 +138,14 @@ public final class Inventario implements Screen{
 		
 		//Posiciones de los cuadros de texto
 		cuadroDescripcion.setCoordenadas(850, 40);
-		cuadroObjetivo.setCoordenadas(130, 250);
+		cuadroObjetivo.setCoordenadas(135, 250);
 		
 		cancelarCombinar.update();
 		aceptarCombinar.update();
 		combinarObjeto.update();
 		cerrarInventario.update();
+		
+		musica.play();
 		
 		/*
 		 * Cuadramos los botones objeto en el inventario
@@ -254,8 +252,8 @@ public final class Inventario implements Screen{
 	 * Para la música del inventario
 	 */
 
-	public void pararMusica() {
-		musica.stop();
+	public static void pararMusica() {
+		musica.dispose();
 	}
 	
 	/**

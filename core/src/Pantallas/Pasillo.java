@@ -8,6 +8,7 @@ import Botones.BotonIzquierda;
 import Botones.BotonPuertaPasillo;
 import Objetos.Cursor;
 import Objetos.Puntuacion;
+import Puzzle.Inventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -205,6 +206,8 @@ public class Pasillo implements Screen{
 		 * en la versión final del juego
 		*/
 		if(debug) debug();
+		
+		Inventario.pararMusica();
 		
 		//Se actualiza el estado del juego
 		organizador.actualizarEstado();

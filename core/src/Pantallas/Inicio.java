@@ -51,7 +51,11 @@ public class Inicio implements Screen{
 		batch = new SpriteBatch();
 		
 		//musica
-		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/titulo.mp3"));
+		if(MyGdxGame.SUSPENSE_MUSICA)
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/titulo.mp3"));
+		else
+			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TituloSinSuspense.mp3"));
+		
 		musica.play();
 		
 		//instanciamos la cámara
