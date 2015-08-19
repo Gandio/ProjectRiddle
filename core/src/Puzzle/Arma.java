@@ -1,5 +1,12 @@
 package Puzzle;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import Objetos.Puntuacion;
 import Pantallas.Inicio;
 
@@ -41,6 +48,29 @@ public class Arma extends Actor{
 		
 		if(pulsado){
 			if(armaUsada){ //Se acaba el juego
+				File prueba = new File("prueba.txt");
+				PrintWriter writer;
+				try {
+					if(!prueba.exists()){
+						try {
+							prueba.createNewFile();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				
+				try {
+					writer = new PrintWriter(new FileWriter(prueba, true));
+					writer.println("Puntuacion final: " + Puntuacion.getPuntos() +  " --- " +
+									"Fallos totales: " + Puntuacion.getError());
+					writer.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} finally{}
+				
 				Gdx.app.exit();
 			}else{
 				Puntuacion.sumarError();

@@ -14,7 +14,6 @@ public final class Puntuacion extends Actor{
 	
 	private static int puntos;
 	private static int numFallos;
-	private Texture puntuacion;
 	
 	protected BitmapFont font;
 	protected static String texto;
@@ -52,7 +51,7 @@ public final class Puntuacion extends Actor{
 		return puntos;
 	}
 	
-	public int getError(){
+	public static int getError(){
 		return numFallos;
 	}
 	

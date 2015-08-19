@@ -42,6 +42,7 @@ public class Asesino extends Actor{
 		
 		if(pulsado){
 			if(culpable){ //se pasa a la pantalla de seleccion de arma
+				game.getScreen().dispose();
 				game.setScreen(new PantallaArma());
 			}else{
 				Puntuacion.sumarError();

@@ -1,5 +1,7 @@
 package Puzzle;
 
+import Objetos.Puntuacion;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -24,6 +26,9 @@ public class PantallaAsesino implements Screen{
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
 	protected FillViewport viewport; // se usa para adaptar la pantalla
+	
+	// Puntuacion
+	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
 	
 	public PantallaAsesino(){
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -86,6 +91,10 @@ public class PantallaAsesino implements Screen{
 		for(int i = 0; i < asesinos.size; ++i){
 			asesinos.get(i).update();
 		}
+		
+		// Posicion de la puntuacion
+		stage.addActor(puntuacion);
+		puntuacion.setCoordenadas(30, 750);
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
