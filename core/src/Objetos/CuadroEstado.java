@@ -8,8 +8,20 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el cuadro de texto donde se muestra el siguiente paso que tiene
+ * que dar el jugador. Esta clase sirve como ayuda para el jugador, un pequeño resumen de
+ * lo que tiene que hacer si se queda atascado durante la partida.
+ * @author Francisco Madueño Chulian
+ */
+
 public class CuadroEstado extends CuadroTexto{
 	private static MyGdxGame game;
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	
 	public CuadroEstado(MyGdxGame game) {
 		super(game);
@@ -22,10 +34,14 @@ public class CuadroEstado extends CuadroTexto{
 		font = new BitmapFont();
 	}
 	
+	/**
+	 * Dibuja el actor en el stage
+	 */
+	
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
-		String textoConLimites = wrapString(texto, 15);
+		String textoConLimites = wrapString(texto, 15); //como máximo 15 caracteres por linea
 		
 		font.drawMultiLine(batch, textoConLimites, 145, 490);
 	}

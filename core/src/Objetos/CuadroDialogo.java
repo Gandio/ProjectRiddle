@@ -16,9 +16,14 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
+
+/**
+ * Esta clase representa los cuadros donde se colocan los dialogos con los personajes
+ * durante la partida.
+ * @author Francisco Madueño Chulian
+ */
+
 public class CuadroDialogo extends CuadroTexto{
-	
-	private static MyGdxGame game = Inicio.game;
 	private BotonSiguienteConversacion siguienteConversacion;
 	private BotonFinConversacion finConversacion;
 	
@@ -27,11 +32,16 @@ public class CuadroDialogo extends CuadroTexto{
 	private int parteTexto = 0;
 	private boolean finTexto = false;
 	
+	//Todos los personajes te dirán esto a no ser que estén implicados en el puzzle
 	private String textoDefecto = "Ich habe momentan keine Information für dich!";
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	
 	public CuadroDialogo(MyGdxGame game) {
 		super(game);
-		//this.game = game;
 		siguienteConversacion = new BotonSiguienteConversacion(game);
 		finConversacion = new BotonFinConversacion(game);
 		
@@ -50,11 +60,19 @@ public class CuadroDialogo extends CuadroTexto{
 		font = new BitmapFont();
 	}
 	
+	/**
+	 * Comprueba si se han pulsado los botones de siguiente conversacion o  de fin 
+	 * conversacion.
+	 */
+	
 	public void update(){
-		
 		siguienteConversacion.esPulsado();
 		finConversacion.esPulsado();
 	}
+	
+	/**
+	 * Dibuja el actor en el stage
+	 */
 	
 	public void draw(Batch batch, float parentAlpha){
 		/*usar un vector, cada celda será un string, cada 4 \n (numero de lineas) se crea una nueva celda,
@@ -67,7 +85,6 @@ public class CuadroDialogo extends CuadroTexto{
 		
 		if(textos.size == 1){
 			siguienteConversacion.remove();
-			//System.out.println(this.game.getClass());
 			((Habitacion) game.getScreen()).getStage().addActor(finConversacion);
 		}
 		else if(parteTexto == textos.size-2){
@@ -76,6 +93,7 @@ public class CuadroDialogo extends CuadroTexto{
 		
 		font.drawMultiLine(batch, textos.get(parteTexto), 30, 260);
 	}
+	
 	
 	public void iniciarConversacion(Stage s){
 		s.addActor(siguienteConversacion);

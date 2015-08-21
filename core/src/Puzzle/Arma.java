@@ -1,11 +1,9 @@
 package Puzzle;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 import Objetos.Puntuacion;
 import Pantallas.Inicio;
@@ -21,6 +19,13 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa las posibles armas que se han usado durante la partida. El 
+ * jugador debe escoger, en base a las pistas conseguidas, cual de las armas que se ofrece
+ * es la correcta.
+ * @author Francisco Madueño Chulian
+ */
+
 public class Arma extends Actor{
 	private boolean armaUsada = false;
 	private Texture textura;
@@ -29,6 +34,10 @@ public class Arma extends Actor{
 	private static MyGdxGame game = Inicio.game;
 	private Sound error;
 	
+	/**
+	 * Constructor de la clase
+	 * @param t
+	 */
 	public Arma(Texture t){
 		textura = t;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
@@ -36,6 +45,11 @@ public class Arma extends Actor{
 		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
 	}
 	
+	/**
+	 * Lógica del actor. Si se escoge el arma correcta se termina el juego y se añade la
+	 * puntuación conseguida a un fichero txt. Si no se añade un fallo al contador de 
+	 * errores y se restan puntos.
+	 */
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, textura.getWidth(), textura.getHeight());
 		
@@ -48,7 +62,11 @@ public class Arma extends Actor{
 		
 		if(pulsado){
 			if(armaUsada){ //Se acaba el juego
-				File prueba = new File("prueba.txt");
+				/*Se crea un fichero para almacenar las puntuaciones, si ya existe no se
+				 * sobreescribe. En este fichero se indica tanto los puntos conseguidos al 
+				 * final de la partida como el número de fallos que el jugador ha cometido.
+				 */
+				File prueba = new File("puntuaciones.txt");
 				PrintWriter writer;
 				try {
 					if(!prueba.exists()){
@@ -81,39 +99,31 @@ public class Arma extends Actor{
 		pulsado = false;
 	}
 	
-	public boolean esArmaUsada(){
-		return armaUsada;
-	}
-	
-	public void setUsada(boolean b){
-		armaUsada = b;
-	}
-	
-	public void setCoordenadas(float x, float y){
-		coordenadas.x = x;
-		coordenadas.y = y;
-	}
-	
+	/**
+	 * Dibuja el actor en el stage
+	 */
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		batch.draw(textura, coordenadas.x, coordenadas.y);
 	}
 	
 	/**
-	 * Devuelve la coordenada x del asesino
-	 * @return x
+	 * Determina el arma que se ha usado
+	 * @param b
 	 */
 	
-	public float coordenadaX(){
-		return coordenadas.x;
+	public void setUsada(boolean b){
+		armaUsada = b;
 	}
 	
-	
 	/**
-	 * Devuelve la coordenada y del asesino
-	 * @return y
+	 * Modifica las coordenadas de cada actor
+	 * @param x
+	 * @param y
 	 */
-	public float coordenadaY(){
-		return coordenadas.y;
+	
+	public void setCoordenadas(float x, float y){
+		coordenadas.x = x;
+		coordenadas.y = y;
 	}
 }

@@ -14,6 +14,13 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 
+/**
+ * Esta clase representa la pantalla de introducción al juego. Aquí se explicará en que 
+ * consiste el juego y cual es el objetivo del mismo. Tiene un botón que permite entrar en 
+ * la partida y comenzar a jugar.
+ * @author Francisco Madueño Chulian
+ */
+
 public class Introduccion implements Screen {
 	
 	private Stage stage;
@@ -27,7 +34,11 @@ public class Introduccion implements Screen {
 	private FillViewport viewport; // se usa para adaptar la pantalla
 	
 	//Actores
-	private BotonContinuar botonContinuar;
+	private BotonContinuar botonContinuar; //este botón se usa para entrar en la partida
+	
+	/**
+	 * Constructor de la clase
+	 */
 	
 	public Introduccion() {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -50,6 +61,11 @@ public class Introduccion implements Screen {
 		
 		stage.addActor(botonContinuar);
 	}
+	
+	/**
+	 * Este bucle se ejecuta durante todo el tiempo que el jugador permanezca en la 
+	 * pantalla. Comprueba continuamente si se ha pulsado el botón continuar.
+	 */
 
 	@Override
 	public void render(float delta) {

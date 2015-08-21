@@ -9,7 +9,18 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa el cuadro donde se muestra la descripción de los objetos que se
+ * recogen.
+ * @author Francisco Madueño Chulián
+ */
+
 public class CuadroDescripcion extends CuadroTexto{
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	public CuadroDescripcion(MyGdxGame game) {
 		super(game);
 		
@@ -20,11 +31,14 @@ public class CuadroDescripcion extends CuadroTexto{
 		font = new BitmapFont();
 	}
 	
+	/**
+	 * Dibuja el actor en el stage
+	 */
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
 		font.setColor(Color.BLACK);
-		String textoConLimites = wrapString(texto, 17);
+		String textoConLimites = wrapString(texto, 17); //máximo 17 caracteres por linea
 		
 		font.drawMultiLine(batch, textoConLimites, 900, 470);
 	}

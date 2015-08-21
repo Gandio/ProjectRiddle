@@ -16,6 +16,12 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
+/**
+ * Esta clase representa la pantalla de selección del arma. En esta pantalla el jugador
+ * debe elegir el arma que ha sido utilizada por el asesino.
+ * @author Francisco Madueño Chulian
+ */
+
 public class PantallaArma implements Screen{
 	
 	private Array<Arma> armas;
@@ -30,6 +36,10 @@ public class PantallaArma implements Screen{
 	
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
+	
+	/**
+	 * Contructor de la clase
+	 */
 	
 	public PantallaArma() {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -67,8 +77,12 @@ public class PantallaArma implements Screen{
 			armas.get(i).setTouchable(Touchable.enabled);
 		}
 	}
+	
+	/**
+	 * Este método se ejecuta en bucle durante todo el tiempo que el jugador pase en la 
+	 * pantalla. Comprueba continuamente si el jugador a pulsado sobre un arma.
+	 */
 
-	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -80,10 +94,10 @@ public class PantallaArma implements Screen{
 		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
 		
-		int aux = 100;
+		int coordenadaAux = 100; //los actores se empiezan a dibujar a patir de esta posición
 		for(int i = 0; i < armas.size; ++i){
-			armas.get(i).setCoordenadas(aux, 0);
-			aux += 100;
+			armas.get(i).setCoordenadas(coordenadaAux, 0);
+			coordenadaAux += 100;
 		}
 		
 		for(int i = 0; i < armas.size; ++i){
@@ -99,38 +113,20 @@ public class PantallaArma implements Screen{
 		
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 		
 	}
 
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void show() {}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 
-	@Override
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();

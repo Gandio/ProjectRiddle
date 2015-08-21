@@ -59,7 +59,7 @@ public class BotonAceptarCombinar extends Boton{
 				
 				((Inventario) game.getScreen()).restaurarBotonesObjetos();
 				
-				if(((Inventario) game.getScreen()).combinando()){
+				if(((Inventario) game.getScreen()).sePuedeCombinar()){
 					Objeto o1 = ((Inventario) game.getScreen()).getCombinacion().get(0);
 					Objeto o2 = ((Inventario) game.getScreen()).getCombinacion().get(1);
 					

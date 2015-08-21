@@ -12,8 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
+
+/**
+ * Esta clase representa a los candidatos para que sean el asesino en cada partida.
+ * Representa a cada uno de los personajes con los que el jugador se ha encontrado a lo 
+ * largo de la partida.
+ * @author Francisco Madueño Chulián
+ */
 
 public class Asesino extends Actor{
 	private boolean culpable = false;
@@ -23,6 +29,9 @@ public class Asesino extends Actor{
 	private static MyGdxGame game = Inicio.game;
 	private Sound error;
 	
+	/**
+	 * Constructor de la clase.
+	 */
 	public Asesino(Texture t){
 		textura = t;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
@@ -30,6 +39,11 @@ public class Asesino extends Actor{
 		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
 	}
 	
+	/**
+	 * Lógica de la clase, si el jugador escoge al culpable se pasará a la pantalla de 
+	 * selección de arma. Si no se le restarán puntos y se añadirá otro fallo al contador
+	 * de errores.
+	 */
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, textura.getWidth(), textura.getHeight());
 		
@@ -53,39 +67,32 @@ public class Asesino extends Actor{
 		pulsado = false;
 	}
 	
-	public boolean esCulpable(){
-		return culpable;
+	/**
+	 * Se dibuja al actor en el stage
+	 */
+	@Override
+	public void draw(Batch batch, float parentAlpha) {
+		scaleBy(-2, -2);
+		batch.draw(textura, coordenadas.x, coordenadas.y, getWidth() / 1.6f, getHeight() / 1.6f);
 	}
+	
+	/**
+	 * Selecciona a uno de los asesinos como culpable
+	 * @param b
+	 */
 	
 	public void setCulpable(boolean b){
 		culpable = b;
 	}
 	
+	/**
+	 * Este método se usa para cambiar las coordenadas del actor
+	 * @param x
+	 * @param y
+	 */
+	
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
-	}
-	
-	@Override
-	public void draw(Batch batch, float parentAlpha) {
-		batch.draw(textura, coordenadas.x, coordenadas.y);
-	}
-	
-	/**
-	 * Devuelve la coordenada x del asesino
-	 * @return x
-	 */
-	
-	public float coordenadaX(){
-		return coordenadas.x;
-	}
-	
-	
-	/**
-	 * Devuelve la coordenada y del asesino
-	 * @return y
-	 */
-	public float coordenadaY(){
-		return coordenadas.y;
 	}
 }

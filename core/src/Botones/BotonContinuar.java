@@ -12,9 +12,20 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
+/**
+ * Esta clase representa al botón que iniciará la partida
+ * @author Francisco Madueño Chulian
+ *
+ */
+
 public class BotonContinuar extends Boton{
 	
 	private Sound sonido;
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	public BotonContinuar(MyGdxGame game) {
 		super(game);
@@ -22,6 +33,10 @@ public class BotonContinuar extends Boton{
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * Detecta si el botón ha sido pulsado. Si se pulsa empieza la partida
+	 */
 	
 	public void esPulsado(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
@@ -42,6 +57,7 @@ public class BotonContinuar extends Boton{
 			game.getScreen().dispose();
 			game.setScreen(new Pasillo(Inicio.game));
 		}
+		
+		pulsado = false;
 	}
-
 }

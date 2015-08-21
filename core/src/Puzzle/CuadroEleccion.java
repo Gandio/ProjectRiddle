@@ -12,15 +12,24 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
-import Botones.BotonSalir;
 import Objetos.CuadroTexto;
 import Pantallas.Habitacion;
-import Pantallas.Habitacion.EstadoHabitacion;
+
+/**
+ * Esta clase representa a los cuadros que almacenan las posibles respuestas en los puzzles
+ * de respuesta múltiple.
+ * @author Francisco Madueño Chulián
+ */
 
 public class CuadroEleccion extends CuadroTexto{
 	
-	private boolean eleccionCorrecta;
+	private boolean eleccionCorrecta; //indica si el cuadro contiene la eleccion correcta o no
 	private boolean pulsado;
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	public CuadroEleccion(MyGdxGame game) {
 		super(game);
@@ -35,6 +44,10 @@ public class CuadroEleccion extends CuadroTexto{
 		pulsado = false;
 	}
 	
+	/**
+	 * Dibuja al actor en el stage
+	 */
+	
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
@@ -43,6 +56,12 @@ public class CuadroEleccion extends CuadroTexto{
 		//palabras
 		font.drawMultiLine(batch, texto, coordenadas.x + 20, coordenadas.y + 50); //esto hay que ajustarlo
 	}
+	
+	/**
+	 * Contiene la lógica del actor. Si se pulsa la opción correcta se manda un 1 al 
+	 * organizador de estados, si no un 0. El organizador de estados actua de una forma
+	 * u otra en consecuencia.
+	 */
 	
 	public void update(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
@@ -55,13 +74,15 @@ public class CuadroEleccion extends CuadroTexto{
 		});
         
 		if(pulsado){
-			if(getEleccion()){
+			if(eleccionCorrecta){
 				OrganizadorEstados.getEstadoActual().eleccionCorrecta(1);
 			}else{
 				OrganizadorEstados.getEstadoActual().eleccionCorrecta(0);
 				
 			}
-			//Siempre que eliges una opción termina en una conversacion
+			/*Siempre que eliges una opción sigue una conversacion, ya sea para
+			 * darte la pista o indicarte que has fallado
+			 */
 			((Habitacion) game.getScreen()).terminarEleccion();
 			((Habitacion) game.getScreen()).setConversando(true);
 		}
@@ -69,12 +90,12 @@ public class CuadroEleccion extends CuadroTexto{
 		pulsado = false;
 	}
 	
+	/**
+	 * Dependiendo de la información que contega el fichero de la lógica del juego hace
+	 * que una elección sea correcta o erronea.
+	 */
 	public void setEleccion(int i){
 		if(i == 0) eleccionCorrecta = false;
 		else eleccionCorrecta = true;
-	}
-	
-	public boolean getEleccion(){
-		return eleccionCorrecta;
 	}
 }

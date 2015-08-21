@@ -1,9 +1,6 @@
 package Botones;
 
-import Pantallas.Inicio;
-import Pantallas.Introduccion;
-import Pantallas.Pasillo;
-import Puzzle.PantallaArma;
+
 import Puzzle.PantallaAsesino;
 
 import com.badlogic.gdx.Gdx;

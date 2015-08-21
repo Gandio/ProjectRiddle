@@ -57,10 +57,12 @@ public final class Inventario implements Screen{
 	private static CuadroDescripcion cuadroDescripcion;
 	private static CuadroEstado cuadroObjetivo;
 	
+	//Diferentes estados por los que pasa el inventario a lo largo de la partida
 	public enum EstadoInventario{
 		COMBINANDO, NORMAL, COMBINACION_PREPARADA;
 	};
 	
+	//Estado en el que se encuentra actualmente el inventario
 	private EstadoInventario estado;
 	
 	//Organizador de estados
@@ -68,7 +70,7 @@ public final class Inventario implements Screen{
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
+		Inventario.game = game;
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
@@ -77,6 +79,7 @@ public final class Inventario implements Screen{
 		
 		estado = EstadoInventario.NORMAL;
 		inventario = new Array<Objeto>();
+		
 		//Usamos un array especial, solo de dos elementos, para las combinaciones
 		combinacion = new Array<Objeto>(2);
 		
@@ -113,8 +116,11 @@ public final class Inventario implements Screen{
 		stage.addActor(cuadroDescripcion);
 		stage.addActor(cuadroObjetivo);
 	}
-
-	@Override
+	
+	/**
+	 * Este método se ejecuta en bucle durante el tiempo que el jugador permanezca en el 
+	 * inventario
+	 */
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -140,6 +146,7 @@ public final class Inventario implements Screen{
 		cuadroDescripcion.setCoordenadas(850, 40);
 		cuadroObjetivo.setCoordenadas(135, 250);
 		
+		//Se comprueban si los botones han sido pulsados
 		cancelarCombinar.update();
 		aceptarCombinar.update();
 		combinarObjeto.update();
@@ -178,27 +185,21 @@ public final class Inventario implements Screen{
 		organizador.actualizarEstado();
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 	}
 
-	@Override
 	public void show() {
 		textura = new Texture(Gdx.files.internal("Imagenes/Escenarios/inventario.png"));
 	}
 
-	@Override
 	public void hide() {}
 
-	@Override
 	public void pause() {}
 
-	@Override
 	public void resume() {}
 
-	@Override
 	public void dispose() {}
 	
 	//-----------------------------------------------------------------------------
@@ -223,6 +224,7 @@ public final class Inventario implements Screen{
 		iter = inventario.iterator();
 		
 		while(iter.hasNext()){
+			//Comparamos los identificadores
 			if(iter.next().getIdentificador()== b.getIdentificador()){
 				iter.remove();
 				b.remove();
@@ -234,7 +236,7 @@ public final class Inventario implements Screen{
 	 * Comprueba si los objetos que hay en el array de combinación se pueden combinar
 	 * @return
 	 */
-	public boolean combinando(){
+	public boolean sePuedeCombinar(){
 		Iterator<Identificador> iter1;
 		iter1 = combinacion.get(0).getCombinables().iterator();
 		

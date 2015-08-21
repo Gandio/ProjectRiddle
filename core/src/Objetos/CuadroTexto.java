@@ -21,22 +21,36 @@ public class CuadroTexto extends Actor{
 	protected BitmapFont font;
 	protected String texto;
 	
-	//Un archivo con las conversaciones del personaje que se encuentre en la habitacion
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	
 	public CuadroTexto(MyGdxGame game){
 		this.game = game;
 		
 	}
 	
+	/**
+	 * Modifica las coordenadas del actor
+	 * @param x
+	 * @param y
+	 */
+	
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
 	}
 	
-	//Este algoritmo ajusta el texto al cuadro de texto forzando los saltos de líneas
+	/**
+	 * Este algoritmo ajusta el texto al cuadro de texto añadiendo saltos de lineas
+	 * @param string
+	 * @param charWrap
+	 * @return
+	 */
 	public static String wrapString(String string, int charWrap) {
 	    int lastBreak = 0;
-	    int nextBreak = charWrap;
+	    int nextBreak = charWrap; // número de caracteres permitidos por cada linea
 	    if (string.length() > charWrap) {
 	        String setString = "";
 	        do {
@@ -58,6 +72,12 @@ public class CuadroTexto extends Actor{
 	    }
 	}
 	
+	/**
+	 * Este algoritmo divide el texto completo en fragmentos y los mete en un array.
+	 * Cada 4 saltos de linea fragmenta el texto.
+	 * @param texto
+	 * @return
+	 */
 	public Array<String> dividirTexto(String texto){
 		Array<String> textos = new Array<String>();
 		int contador = 0; // cuenta los /n que nos encontramos
@@ -79,6 +99,11 @@ public class CuadroTexto extends Actor{
 		
 		return textos;
 	}
+	
+	/**
+	 * Modifica el texto
+	 * @param t
+	 */
 	
 	public void setTexto(String t){
 		texto = t;

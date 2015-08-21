@@ -16,6 +16,15 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
+/**
+ * Esta clase representa la pantalla de selección de asesino. Esta pantalla aparece
+ * justo después de obtener la última pista. El jugador tiene que escoger de entre los
+ * personajes que se muestran en esta pantalla quien, basándose en las pistas que tiene, es 
+ * el asesino.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class PantallaAsesino implements Screen{
 	private Array<Asesino> asesinos;
 	private Stage stage;
@@ -30,6 +39,10 @@ public class PantallaAsesino implements Screen{
 	// Puntuacion
 	protected static Puntuacion puntuacion = Puntuacion.getInstancia();
 	
+	/**
+	 * Constructor de la clase, además de inicializar los atributos, elige quien
+	 * es el asesino.
+	 */
 	public PantallaAsesino(){
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -70,8 +83,12 @@ public class PantallaAsesino implements Screen{
 			
 		}
 	}
+	
+	/**
+	 * Este es el bucle que se ejecutará durante todo el tiempo que permanezcamos en la
+	 * pantalla. Se muestran los asesinos y la puntuación conseguida por el jugador.
+	 */
 
-	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -82,12 +99,13 @@ public class PantallaAsesino implements Screen{
 		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
 		
-		int aux = 0;
+		int coordenadaAux = -60; //a partir de esta coordenada se empezarán a dibujar los personajes
 		for(int i = 0; i < asesinos.size; ++i){
-			asesinos.get(i).setCoordenadas(aux, 0);
-			aux += 400;
+			asesinos.get(i).setCoordenadas(coordenadaAux, 0);
+			coordenadaAux += 250; // con 250 de separación entre ellos
 		}
 		
+		//vamos comprobando si alguno de ellos ha sido escogido (pulsado por el jugador)
 		for(int i = 0; i < asesinos.size; ++i){
 			asesinos.get(i).update();
 		}
@@ -100,38 +118,20 @@ public class PantallaAsesino implements Screen{
 		stage.draw();
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 		
 	}
 
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void show() {}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 
-	@Override
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();
