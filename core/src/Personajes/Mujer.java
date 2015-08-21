@@ -7,11 +7,9 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa a los objetos Mujer
+ * Esta clase representa al personaje de la mujer
  * @author Francisco Madueño Chulián
- *
  */
-
 public class Mujer extends Personaje{
 	
 	private static MyGdxGame game;
@@ -21,22 +19,18 @@ public class Mujer extends Personaje{
 	 * Contructor de la clase
 	 * @param game
 	 */
-	
 	private Mujer(MyGdxGame game) {
 		super(game);
-		this.game = game;
+		Mujer.game = game;
 		
 		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"));
-		posicion = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
-		
-		//textosXml = donde estén los textos 
+		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	
 	/**
 	 * Solo habrá un objeto Mujer durante cada partida, este método se encarga de ello.
 	 * @return
 	 */
-	
 	public static Mujer getInstancia(){
 		if(unicaInstancia == null)
 			unicaInstancia = new Mujer(game);

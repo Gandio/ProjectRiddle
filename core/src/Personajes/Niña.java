@@ -7,16 +7,13 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa a los objetos Niña
+ * Esta clase representa al personaje de la niña.
  * @author Francisco Madueño Chulián
- *
  */
-
 public class Niña extends Personaje{
 	
 	private static MyGdxGame game;
 	private static Niña unicaInstancia;
-	
 	
 	/**
 	 * Contructor de la clase
@@ -24,19 +21,16 @@ public class Niña extends Personaje{
 	 */
 	private Niña(MyGdxGame game) {
 		super(game);
-		this.game = game;
+		Niña.game = game;
 		
 		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/chica.png"));
-		posicion = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
-		
-		//textosXml = donde estén los textos 
+		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	
 	/**
 	 * Solo habrá un objeto Niña durante cada partida, este método se encarga de ello.
 	 * @return
 	 */
-	
 	public static Niña getInstancia(){
 		if(unicaInstancia == null)
 			unicaInstancia = new Niña(game);
