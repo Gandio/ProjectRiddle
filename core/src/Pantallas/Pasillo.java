@@ -52,7 +52,6 @@ public class Pasillo implements Screen{
 	//Arrays
 	private Array<Rectangle> colisionesParedes = new Array<Rectangle>();
 	private Array<Rectangle> colisionesPuertas = new Array<Rectangle>();
-	//private static Array<Habitacion> habitaciones = new Array<Habitacion>();
 	
 	//Botones del pasillo
 	private BotonPuertaPasillo botonPuerta; //permite entrar en una habitación
@@ -83,7 +82,7 @@ public class Pasillo implements Screen{
 	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-		this.game = game;
+		Pasillo.game = game;
 		System.out.println(game.toString());
 		
 		camara = new OrthographicCamera();
@@ -162,8 +161,8 @@ public class Pasillo implements Screen{
 	}
 	
 	/**
-	 * Este método se ejecuta constantemente mientras el juego esté funcionando y se encarga
-	 * de actualizarlo.
+	 * Este método se ejecuta constantemente mientras el jugador se encuentre en el pasillo
+	 *  y se encarga de actualizarlo.
 	 */
 	public void render(float delta){
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -179,7 +178,7 @@ public class Pasillo implements Screen{
 		batch.draw(pantalla, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
 		
-		//Hacemos que la camara me siga
+		//Hacemos que la camara siga al jugador
 		camara.position.x = cursor.getX();
 		camara.position.y = cursor.getY();
 		
@@ -207,6 +206,9 @@ public class Pasillo implements Screen{
 		*/
 		if(debug) debug();
 		
+		/*Al no poder usar el dispose porque se crearían nuevos escenarios hay que parar la 
+		 * música manualmente
+		 */
 		Inventario.pararMusica();
 		
 		//Se actualiza el estado del juego
@@ -216,8 +218,11 @@ public class Pasillo implements Screen{
 		stage.draw();
 	}
 	
+	/**
+	 * Se muestra la textura de los pasillos
+	 */
+	
 	public void show(){
-		//pantalla = new Texture("Imagenes/Escenarios/pasillos.png");
 		pantalla = new Texture("Imagenes/Escenarios/pruebaPasillo.png");
 	}
 	
@@ -226,23 +231,11 @@ public class Pasillo implements Screen{
 		stage.setViewport(viewport);
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
 	public void dispose(){
 		musica.stop();

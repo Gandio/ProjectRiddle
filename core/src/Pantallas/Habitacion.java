@@ -5,10 +5,7 @@ import java.util.Iterator;
 import Botones.BotonConversacion;
 import Botones.BotonInvestigar;
 import Botones.BotonPuertaHabitacion;
-import Items.CafeAzucar;
-import Items.LibroPintado;
 import Items.Objeto;
-import Items.SerpienteEnjaulada;
 import Objetos.CuadroDialogo;
 import Objetos.Cursor;
 import Objetos.Puntuacion;
@@ -75,16 +72,16 @@ public abstract class Habitacion implements Screen {
 	public enum EstadoHabitacion {
 		CONVERSAR, INVESTIGAR, NORMAL, DECISION;
 	};
-
+	
+	//Estado actual de la habitacion
 	protected EstadoHabitacion estado;
 
 	/**
 	 * Constructor de la clase habitación.
-	 * 
 	 * @param game
 	 */
 
-	public Habitacion(MyGdxGame game, Cursor c) { //este game está mal, revisarlo
+	public Habitacion(MyGdxGame game, Cursor c) {
 		estado = EstadoHabitacion.NORMAL;
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -113,7 +110,7 @@ public abstract class Habitacion implements Screen {
 		botonPuerta = new BotonPuertaHabitacion(game);
 		botonPuerta.setTouchable(Touchable.enabled);
 
-		cuadroTexto = new CuadroDialogo(this.game);
+		cuadroTexto = new CuadroDialogo(Habitacion.game);
 		
 		cuadrosEleccion = new Array<CuadroEleccion>(4); //Hay cuatro posibles elecciones
 		
@@ -127,8 +124,11 @@ public abstract class Habitacion implements Screen {
 		stage.addActor(botonInvestigar);
 		stage.addActor(botonPuerta);
 	}
+	
+	/**
+	 * Este método se ejecuta todo el tiempo que el jugador permanezca en una habitación
+	 */
 
-	@Override
 	public void render(float delta) {
 		musica.play();
 
@@ -224,10 +224,7 @@ public abstract class Habitacion implements Screen {
 		stage.setViewport(viewport);
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-	}
+	public void hide() {}
 
 	public void dispose() {
 		batch.dispose();
@@ -293,7 +290,7 @@ public abstract class Habitacion implements Screen {
 	 * @return conversando
 	 */
 
-	public boolean getConversando() {
+	public boolean seEstaConversando() {
 		return conversando;
 	}
 	

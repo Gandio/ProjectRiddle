@@ -4,7 +4,6 @@ import Botones.Boton;
 import Botones.BotonFinConversacion;
 import Botones.BotonSiguienteConversacion;
 import Pantallas.Habitacion;
-import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

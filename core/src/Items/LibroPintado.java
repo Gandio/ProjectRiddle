@@ -8,7 +8,7 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos libro.
+ * Esta clase representa las características de los objetos libro pintado.
  * @author Francisco Madueño Chulián
  */
 

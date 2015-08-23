@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa a los objetos Salon
+ * Clase que representa al objeto Salón
  * @author Francisco Madueño Chulián
  */
 
@@ -83,7 +83,9 @@ public final class Salon extends Habitacion {
 		stage.addActor(personaje);
 	}
 	
-	@Override
+	/**
+	 * Se ejecuta todo el tiempo que el jugador permanezca en el salón
+	 */
 	public void render(float delta) {
 		super.render(delta);
 		
@@ -95,8 +97,11 @@ public final class Salon extends Habitacion {
 		Gdx.input.setInputProcessor(stage);
 		stage.draw();
 	}
+	
+	/**
+	 * Muestra la textura del salón, varia si el suspense está activado o no
+	 */
 
-	@Override
 	public void show() {
 		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
@@ -106,17 +111,9 @@ public final class Salon extends Habitacion {
 		
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.

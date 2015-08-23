@@ -1,6 +1,7 @@
 package Botones;
 
-import Pantallas.Habitacion;
+
+import Pantallas.Inicio;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -13,7 +14,7 @@ import com.mygdx.game.MyGdxGame;
 */
 
 public abstract class Boton extends Actor{
-	protected static MyGdxGame game = Habitacion.game;
+	protected static MyGdxGame game = Inicio.game;
 	protected Texture boton;
 	protected Vector2 coordenadas;
 	protected boolean pulsado = false;
@@ -22,17 +23,13 @@ public abstract class Boton extends Actor{
 	 * Constructor de la clase botón
 	 * @param game
 	 */
-	
-	public Boton(MyGdxGame game){
-		//Boton.game = game;
-	}
+	public Boton(MyGdxGame game){}
 	
 	/**
 	 * Este método modifica las coordenadas del botón
 	 * @param x
 	 * @param y
 	 */
-
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
@@ -41,7 +38,6 @@ public abstract class Boton extends Actor{
 	/**
 	 * Este método dibuja la textura del botón en el batch del stage.
 	 */
-	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		batch.draw(boton, coordenadas.x, coordenadas.y);
 	}

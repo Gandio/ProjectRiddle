@@ -16,8 +16,6 @@ import com.mygdx.game.Tools;
  */
 
 public class CuadroEstado extends CuadroTexto{
-	private static MyGdxGame game;
-	
 	/**
 	 * Constructor de la clase
 	 * @param game
@@ -25,8 +23,6 @@ public class CuadroEstado extends CuadroTexto{
 	
 	public CuadroEstado(MyGdxGame game) {
 		super(game);
-		this.game = game;
-
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroObjetivo.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		

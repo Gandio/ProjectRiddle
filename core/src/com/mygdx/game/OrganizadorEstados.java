@@ -1,17 +1,14 @@
 package com.mygdx.game;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.io.IOException;
-import java.lang.Object;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
-import Items.Objeto;
 import Objetos.Puntuacion;
 import Puzzle.Inventario;
 import Puzzle.PantallaAsesino;
@@ -25,7 +22,6 @@ import Pantallas.Habitacion;
 import Pantallas.Inicio;
 import Pantallas.Salon;
 import Pantallas.Sotano;
-import Pantallas.Habitacion.EstadoHabitacion;
 
 public class OrganizadorEstados {
 	private static MyGdxGame game = Inicio.game;
@@ -45,7 +41,6 @@ public class OrganizadorEstados {
 	private static int arma;
 	
 	private OrganizadorEstados(MyGdxGame game){
-		//this.game = game;
 		estados = new ArrayList<Estado>(nEstados-1);
 		pistas = new Array<String>(nEstados);
 		
@@ -59,8 +54,8 @@ public class OrganizadorEstados {
 		 * 3 - anciana
 		 * 4 - mujer
 		 */
-		asesino = rm.nextInt((4 - 0) + 1) + 0;
 		
+		asesino = rm.nextInt((4 - 0) + 1) + 0;
 		try{
 			if(asesino == 0)
 				raiz = reader.parse(Gdx.files.internal("xml/pistasChica.xml"));
@@ -83,8 +78,8 @@ public class OrganizadorEstados {
 		
 		//Vamos a escoger el arma y las pistas para descubrirla
 		
+		rm = new Random();
 		arma = rm.nextInt((3 - 0) + 1) + 0;
-		
 		/*
 		 * 0 - daga
 		 * 1 - pistola
@@ -115,7 +110,14 @@ public class OrganizadorEstados {
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
-			estados.add(new Estado(i, pistas.get(j)));
+			//estados.add(new Estado(i, pistas.get(j)));
+			
+			if(i == 1 || i == 3)
+				estados.add(new EstadoDecision(i, pistas.get(j)));
+			else if(i == 2 || i == 5)
+				estados.add(new EstadoCogerObjeto(i, pistas.get(j)));
+			else if(i == 4)
+				estados.add(new EstadoCombinarObjeto(i, pistas.get(j)));
 			
 			if(i > 1){
 				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
@@ -123,110 +125,34 @@ public class OrganizadorEstados {
 			}
 			
 			pistas.removeIndex(j);
-			
 		}
 	}
 	
 	public void actualizarEstado(){
-		System.out.println("estoy en el estado " + estadoActual);
 		e = estados.get(estadoActual);
 		
 		Habitacion habitacionInicio = conversorStringHabitacion(estados.get(estadoActual).getHabitacionInicio());
 		
-		if(estadoActual == 0 || estadoActual == 2){
+		if(e.getClass().equals(EstadoDecision.class)){
+			logicaEstadoDecision(habitacionInicio);
 			
-			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
+		}else if(e.getClass().equals(EstadoCogerObjeto.class)){
+			logicaEstadoCogerObjeto(habitacionInicio);
 			
-			//Se termina de inicializar los cuadros eleccion
-			for(int i = 0; i < 4; ++i){ //Siempre hay 4 cuadros de eleccion, lo valores no cambian
-				habitacionInicio.getCuadrosEleccion().get(i).setTexto(e.getTextoEleccion(i));
-				if(e.getEleccion(i).equals("si"))
-					habitacionInicio.getCuadrosEleccion().get(i).setEleccion(1);
-				else
-					habitacionInicio.getCuadrosEleccion().get(i).setEleccion(0);
-			}
-			
-			if(e.estadoMision()){
-				//Aparecería un cuadro de texto, diciendo "Ya lo sabes?"
-				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
-				if(e.getEleccionCorrecta() == -1){
-					habitacionInicio.getCuadroDialogo().setTexto(e.getPrePuzzle());
-				}
-				
-				//seguidamente aparecerían los 4 cuadros eleccion, esto pasa cuando se pulsa el botón de final de conversacion
-				//si pulsas uno incorrecto aparecería un cuadro de texto "vuelve a intentarlo" y se terminaria la secuencia
-				else if(e.getEleccionCorrecta() == 0){
-					habitacionInicio.getCuadroDialogo().setTexto(e.getError());
-				}else{ //si pulsas el correcto aparece el cuadro de texto con la pista y continua el juego
-					habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
-				}
-			}else{
-				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
-			}
-			
-			
-		}else if(estadoActual == 1 || estadoActual == 4){
-			Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
-			String objeto = estados.get(estadoActual).getObjeto();
-			String personaje = estados.get(estadoActual).getPersonaje();
-		
-			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
-		
-			//Ya has aceptado la misión, no se vuelve a repetir la conversación
-			if(e.estadoMision()){
-				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
-				habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
-			
-				//Se habilita el objeto para que se pueda coger
-				e.permitirCogerObjeto(habitacionDestino, objeto);
-			}else{
-				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
-			}
-		
-			if(inventarioContieneObjeto()){
-				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
-			}
-		}else if(estadoActual == 3){
-			Habitacion habitacionDestino1 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
-			Habitacion habitacionDestino2 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino2());
-			String objeto = estados.get(estadoActual).getObjeto(); //este es el objeto final
-			String objetoCombinacion1 = estados.get(estadoActual).getObjetoCombinacion1();
-			String objetoCombinacion2 = estados.get(estadoActual).getObjetoCombinacion2();
-			String personaje = estados.get(estadoActual).getPersonaje();
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
-			
-			//Actualizamos el objetivo
-			Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
-		
-			//Ya has aceptado la misión, no se vuelve a repetir la conversación
-			if(e.estadoMision()){
-				Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
-				habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
-			
-				//Se habilita el objeto para que se pueda coger
-				e.permitirCogerObjetosCombinacion(habitacionDestino1, objetoCombinacion1, habitacionDestino2, objetoCombinacion2);
-				
-			}else{
-				habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
-			}
-		
-			if(inventarioContieneObjeto()){
-				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
-			}			
-			
+		}else if(e.getClass().equals(EstadoCombinarObjeto.class)){
+			logicaEstadoCombinarObjeto(habitacionInicio);
 		}
+		
 		//Si se supera el puzzle, pasamos al nuevo estado
 		
-		if(e.estadoPuzzle()){
+		if(e.puzzleSuperado()){
 			habitacionInicio.terminarConversacion();
 			habitacionInicio.getCuadroDialogo().setTexto(habitacionInicio.getCuadroDialogo().getTextoDefecto());
 			Puntuacion.setPuntuacion(1000 - e.getContErrores()*100);
-			System.out.println(Puntuacion.getPuntos());
 			estadoActual++;
 			
 			if(estadoActual >= nEstados){ //Se pasa a la pantalla de seleccion de asesino
+				((Habitacion) game.getScreen()).pararMusica();
 				game.setScreen(new PantallaAsesino());
 			}
 		}
@@ -265,8 +191,6 @@ public class OrganizadorEstados {
 	}
 	
 	private boolean inventarioContieneObjeto(){
-		//System.out.println("Entro");
-		//System.out.println(e.getItem());
 		if(Inventario.getContenido().contains(e.getItem(), false)){ 
 			e.seCogeObjeto(true);
 			return true;
@@ -310,18 +234,18 @@ public class OrganizadorEstados {
 			}
 		}else{
 			//Estamos en la habitacion de inicio y además ya se ha hablado con la persona, nos muestran las elecciones
-			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.estadoMision()){
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.misionEnCurso()){
 				((Habitacion) game.getScreen()).horaDeElegir();
 			}
 			
 			estadoActual.seIniciaMision(true);
 			
-			if(estadoActual.getEleccionCorrecta() == 0){
+			if(((EstadoDecision) estadoActual).getEleccionCorrecta() == 0){
 				((Habitacion) game.getScreen()).terminarConversacion();
 				e.aumentarContErrores();
 				Puntuacion.sumarError();
-				estadoActual.eleccionCorrecta(-1);
-			}else if(estadoActual.getEleccionCorrecta() == 1){
+				((EstadoDecision) estadoActual).eleccionCorrecta(-1);
+			}else if(((EstadoDecision) estadoActual).getEleccionCorrecta() == 1){
 				estadoActual.seSuperaPuzzle(true);
 				((Habitacion) game.getScreen()).terminarConversacion();
 				((Habitacion) game.getScreen()).terminarEleccion();
@@ -335,5 +259,86 @@ public class OrganizadorEstados {
 	
 	public static int getArma(){
 		return arma;
+	}
+	
+	private void logicaEstadoDecision(Habitacion habitacionInicio){
+		//Actualizamos el objetivo
+		Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
+		
+		//Se termina de inicializar los cuadros eleccion
+		for(int i = 0; i < 4; ++i){ //Siempre hay 4 cuadros de eleccion, lo valores no cambian
+			habitacionInicio.getCuadrosEleccion().get(i).setTexto(((EstadoDecision) e).getTextoEleccion(i));
+			if(((EstadoDecision) e).getEleccion(i).equals("si"))
+				habitacionInicio.getCuadrosEleccion().get(i).setEleccion(1);
+			else
+				habitacionInicio.getCuadrosEleccion().get(i).setEleccion(0);
+		}
+		
+		if(e.misionEnCurso()){
+			//Aparecería un cuadro de texto, diciendo "Ya lo sabes?"
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
+			if(((EstadoDecision) e).getEleccionCorrecta() == -1){
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPrePuzzle());
+			}
+			
+			//seguidamente aparecerían los 4 cuadros eleccion, esto pasa cuando se pulsa el botón de final de conversacion
+			//si pulsas uno incorrecto aparecería un cuadro de texto "vuelve a intentarlo" y se terminaria la secuencia
+			else if(((EstadoDecision) e).getEleccionCorrecta() == 0){
+				habitacionInicio.getCuadroDialogo().setTexto(((EstadoDecision) e).getError());
+			}else{ //si pulsas el correcto aparece el cuadro de texto con la pista y continua el juego
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+			}
+		}else{
+			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+		}
+	}
+	
+	private void logicaEstadoCogerObjeto(Habitacion habitacionInicio){
+		Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+		String objeto = estados.get(estadoActual).getObjeto();
+		//Actualizamos el objetivo
+		Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
+	
+		//Ya has aceptado la misión, no se vuelve a repetir la conversación
+		if(e.misionEnCurso()){
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
+			habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
+		
+			//Se habilita el objeto para que se pueda coger
+			((EstadoCogerObjeto) e).permitirCogerObjeto(habitacionDestino, objeto);
+		}else{
+			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+		}
+	
+		if(inventarioContieneObjeto()){
+			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+		}
+	}
+	
+	private void logicaEstadoCombinarObjeto(Habitacion habitacionInicio){
+		Habitacion habitacionDestino1 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
+		Habitacion habitacionDestino2 = conversorStringHabitacion(((EstadoCombinarObjeto) estados.get(estadoActual)).getHabitacionDestino2());
+		String objetoCombinacion1 = ((EstadoCombinarObjeto) estados.get(estadoActual)).getObjetoCombinacion1();
+		String objetoCombinacion2 = ((EstadoCombinarObjeto) estados.get(estadoActual)).getObjetoCombinacion2();
+		Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
+		
+		//Actualizamos el objetivo
+		Inventario.getCuadroEstado().setTexto(e.getObjetivo1());
+	
+		//Ya has aceptado la misión, no se vuelve a repetir la conversación
+		if(e.misionEnCurso()){
+			Inventario.getCuadroEstado().setTexto(e.getObjetivo2());
+			habitacionInicio.getCuadroDialogo().setTexto(e.getPostPuzzle());
+		
+			//Se habilita el objeto para que se pueda coger
+			((EstadoCombinarObjeto) e).permitirCogerObjetosCombinacion(habitacionDestino1, objetoCombinacion1, habitacionDestino2, objetoCombinacion2);
+			
+		}else{
+			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
+		}
+	
+		if(inventarioContieneObjeto()){
+			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+		}
 	}
 }

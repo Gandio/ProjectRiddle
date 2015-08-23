@@ -50,8 +50,6 @@ public abstract class Objeto extends Actor{
 	private Sound sonido, error;
 	
 	public Objeto(MyGdxGame game){
-		//this.game = game;
-		
 		sePuedeCoger = false;
 		investigando = false;
 		seleccionado = false;
@@ -105,8 +103,9 @@ public abstract class Objeto extends Actor{
 		
 		if(investigando && seleccionado){
 			if(sePuedeCoger){
+				c.getInventario();
 				//Colocamos el objeto en el inventario
-				c.getInventario().añadirObjeto(this);
+				Inventario.añadirObjeto(this);
 			
 			//Y lo quitamos de la habitacion
 			iter = h.getObjetos().iterator();

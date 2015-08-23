@@ -3,7 +3,6 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Basura;
-import Items.Caramelo;
 import Items.Espejo;
 import Items.Libro;
 import Items.Mascara;
@@ -19,7 +18,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa a los objetos Dormitorio
+ * Clase que representa al objeto dormitorio 
  * @author Francisco Madueño Chulián
  */
 
@@ -45,7 +44,7 @@ public final class Dormitorio extends Habitacion {
 	
 	private Dormitorio(MyGdxGame game, Cursor c) {
 		super(game, c);
-		this.game = game;
+		Dormitorio.game = game;
 		objetos = new Array<Objeto>();
 		
 		//Objetos
@@ -85,13 +84,11 @@ public final class Dormitorio extends Habitacion {
 		stage.addActor(personaje);
 	}
 	
-	@Override
+	/**
+	 * Este método se ejecuta todo el tiempo que el jugador permanezca en el dormitorio
+	 */
 	public void render(float delta) {
 		super.render(delta);
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		/*if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}*/
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
@@ -101,29 +98,21 @@ public final class Dormitorio extends Habitacion {
 		Gdx.input.setInputProcessor(stage);
 		stage.draw();
 	}
-
-	@Override
+	
+	/**
+	 * Muestra la textura del dormitorio, depende si el suspense está activado o no
+	 */
 	public void show() {
 		if(MyGdxGame.SUSPENSE){
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/dormitorio.png"));
 		}else{
 			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/dormitorioSin.png"));
 		}
-		
-		
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
+	
+	public void resume() {}
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.

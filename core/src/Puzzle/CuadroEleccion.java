@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.EstadoDecision;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
@@ -75,9 +76,9 @@ public class CuadroEleccion extends CuadroTexto{
         
 		if(pulsado){
 			if(eleccionCorrecta){
-				OrganizadorEstados.getEstadoActual().eleccionCorrecta(1);
+				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(1);
 			}else{
-				OrganizadorEstados.getEstadoActual().eleccionCorrecta(0);
+				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(0);
 				
 			}
 			/*Siempre que eliges una opción sigue una conversacion, ya sea para

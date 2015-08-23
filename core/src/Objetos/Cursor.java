@@ -18,7 +18,6 @@ import com.mygdx.game.MyGdxGame;
  * @author Francisco Madueño Chulián
  */
 public class Cursor extends Actor{
-	private MyGdxGame game;
 	private Texture cursor;
 	private TextureRegion[] arriba, abajo, derecha, izquierda;
 	private TextureRegion[][] tmp;
@@ -37,8 +36,6 @@ public class Cursor extends Actor{
 	 * @param game
 	 */
 	public Cursor(MyGdxGame game) {
-		this.game = game;
-		
 		//Creamos el grafico del cursor
 		cursor = new Texture(Gdx.files.internal("Imagenes/personaje.png"));
 		tmp = TextureRegion.split(cursor, cursor.getWidth() / 4, cursor.getHeight());

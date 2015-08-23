@@ -75,7 +75,7 @@ public class BotonConversacion extends Boton{
 		 * la conversación y nos devuelve al modo normal
 		 */
 		
-		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.CONVERSAR && !((Habitacion) game.getScreen()).getConversando()){
+		if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.CONVERSAR && !((Habitacion) game.getScreen()).seEstaConversando()){
 			((Habitacion) game.getScreen()).terminarConversacion();
 		}
 		

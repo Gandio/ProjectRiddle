@@ -3,7 +3,6 @@ package Items;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
@@ -16,7 +15,7 @@ import com.mygdx.game.Tools;
 public class SerpienteEnjaulada extends Objeto{
 
 	/**
-	 * Constructor de la clase serpiente
+	 * Constructor de la clase serpiente enjaulada
 	 * @param game
 	 */
 	

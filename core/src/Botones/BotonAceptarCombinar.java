@@ -22,6 +22,10 @@ public class BotonAceptarCombinar extends Boton{
 
 	private Texture botonActivado, botonDesactivado;
 	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	public BotonAceptarCombinar(MyGdxGame game) {
 		super(game);
 		
@@ -30,8 +34,13 @@ public class BotonAceptarCombinar extends Boton{
 		boton = botonDesactivado;
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
-
 	}
+	
+	/**
+	 * Este método implementa la lógica del boton. Solo se activa si hay dos objetos 
+	 * seleccionados. Y solo sirve si ambos objetos se pueden combinar, en caso contrario no
+	 * sirve de nada.
+	 */
 	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
@@ -63,8 +72,8 @@ public class BotonAceptarCombinar extends Boton{
 					Objeto o1 = ((Inventario) game.getScreen()).getCombinacion().get(0);
 					Objeto o2 = ((Inventario) game.getScreen()).getCombinacion().get(1);
 					
-					((Inventario) game.getScreen()).borrarObjeto(o1);
-					((Inventario) game.getScreen()).borrarObjeto(o2);
+					Inventario.borrarObjeto(o1);
+					Inventario.borrarObjeto(o2);
 					
 					Inventario.getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
 				}
@@ -79,5 +88,4 @@ public class BotonAceptarCombinar extends Boton{
 		//Se actualiza la variable pulsado
 		pulsado = false;
 	}
-
 }

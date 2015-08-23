@@ -44,7 +44,7 @@ public class Inicio implements Screen{
 	 */
 	
 	public Inicio(MyGdxGame game){
-		this.game = game;
+		Inicio.game = game;
 		
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -71,6 +71,7 @@ public class Inicio implements Screen{
 		
 		Gdx.input.setInputProcessor(stage);
 		
+		//se añaden los botones
 		stage.addActor(inicio);
 		stage.addActor(salir);
 	}
@@ -79,10 +80,8 @@ public class Inicio implements Screen{
 	 * Muestra la textura de la pantalla.
 	 */
 
-	public void show() {
-		/*
-		 * Dependiendo de la variable cargamos una pantalla u otra
-		 */
+	public void show(){
+		//Dependiendo de la variable cargamos una pantalla u otra
 		if(MyGdxGame.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Titulo.png"));
 		else
@@ -136,21 +135,9 @@ public class Inicio implements Screen{
 		musica.dispose();
 	}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 }

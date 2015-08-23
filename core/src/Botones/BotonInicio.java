@@ -1,6 +1,8 @@
 package Botones;
 
 
+import Pantallas.Introduccion;
+import Puzzle.PantallaArma;
 import Puzzle.PantallaAsesino;
 
 import com.badlogic.gdx.Gdx;
@@ -61,6 +63,7 @@ public class BotonInicio extends Boton{
 			game.getScreen().dispose();
 			//game.setScreen(new Introduccion());
 			game.setScreen(new PantallaAsesino());
+			//game.setScreen(new PantallaArma());
 		}
 	}
 }

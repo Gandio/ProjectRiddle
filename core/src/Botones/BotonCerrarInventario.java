@@ -66,7 +66,7 @@ public class BotonCerrarInventario extends Boton{
 			//Cerramos el inventario
 			if(pulsado){
 				pulsado = false;
-				((Inventario) game.getScreen()).pararMusica();
+				Inventario.pararMusica();
 				Inventario.getCuadroDescripcion().setTexto("");
 				game.setScreen(new Pasillo(game));
 			}

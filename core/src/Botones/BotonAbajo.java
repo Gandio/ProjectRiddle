@@ -18,7 +18,6 @@ import com.mygdx.game.Tools;
 /**
  * Esta clase representa el botón que hará que el personaje se mueva hacia abajo.
  * @author Francisco Madueño Chulián
- *
  */
 
 public class BotonAbajo extends Boton{
@@ -40,7 +39,6 @@ public class BotonAbajo extends Boton{
 	 * true o false.
 	 * @return
 	 */
-	
 	private boolean colisionaAbajo(){
 		Array<Rectangle> paredes = ((Pasillo) game.getScreen()).getParedes();
 		Cursor cursor = Pasillo.getCursor();
@@ -75,8 +73,6 @@ public class BotonAbajo extends Boton{
 	 * con ninguna pared hace que el personaje se mueva hacia abajo.
 	 * @param delta
 	 */
-	
-	
 	public void esPulsado(float delta){
 		Cursor cursor = Pasillo.getCursor();
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.

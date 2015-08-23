@@ -32,7 +32,7 @@ public final class Puntuacion extends Actor{
 	 */
 	
 	private Puntuacion(MyGdxGame game){
-		this.game = game;
+		Puntuacion.game = game;
 		puntos = 0;
 		numFallos = 0;
 		texto = "Puntos: " + puntos;

@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class CafeAzucar extends Objeto{
 
 	/**
-	 * Constructor de la clase cafe
+	 * Constructor de la clase cafe con azucar
 	 * @param game
 	 */
 	public CafeAzucar(MyGdxGame game) {

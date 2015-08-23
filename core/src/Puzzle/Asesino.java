@@ -72,7 +72,6 @@ public class Asesino extends Actor{
 	 */
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		scaleBy(-2, -2);
 		batch.draw(textura, coordenadas.x, coordenadas.y, getWidth() / 1.6f, getHeight() / 1.6f);
 	}
 	

@@ -61,7 +61,7 @@ public class PantallaAsesino implements Screen{
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png"))));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png"))));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"))));
-		
+				
 		if(OrganizadorEstados.getAsesino() == 0) //es la niña
 			asesinos.get(0).setCulpable(true);
 		else if(OrganizadorEstados.getAsesino() == 1) //es el hombre
@@ -80,7 +80,6 @@ public class PantallaAsesino implements Screen{
 		for(int i = 0; i < asesinos.size; ++i){
 			asesinos.get(i).setTouchable(Touchable.enabled);
 			stage.addActor(asesinos.get(i));
-			
 		}
 	}
 	
@@ -98,6 +97,8 @@ public class PantallaAsesino implements Screen{
 		batch.begin();
 		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 		batch.end();
+		
+		Gdx.input.setInputProcessor(stage);
 		
 		int coordenadaAux = -60; //a partir de esta coordenada se empezarán a dibujar los personajes
 		for(int i = 0; i < asesinos.size; ++i){

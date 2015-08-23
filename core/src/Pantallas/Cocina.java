@@ -14,7 +14,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
-
+/**
+ * Esta clase representa el objeto cocina
+ * @author Francisco Madueño Chulián
+ */
 public final class Cocina extends Habitacion {
 	
 	private static MyGdxGame game;
@@ -25,9 +28,14 @@ public final class Cocina extends Habitacion {
 	
 	private static Cocina unicaInstancia;
 	
+	/**
+	 * Constructor de la clase cocina
+	 * @param game
+	 * @param c
+	 */
 	private Cocina(MyGdxGame game, Cursor c) {
 		super(game, c);
-		this.game = game;
+		Cocina.game = game;
 		objetos = new Array<Objeto>();
 		
 		//Objetos
@@ -63,14 +71,11 @@ public final class Cocina extends Habitacion {
 		}
 	}
 	
-	@Override
+	/**
+	 * Este método se ejecuta todo el tiempo que el jugador permanezca en la cocina
+	 */
 	public void render(float delta) {
 		super.render(delta);
-		
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		/*if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}*/
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
@@ -81,24 +86,23 @@ public final class Cocina extends Habitacion {
 		stage.draw();
 	}
 
-	@Override
+	/**
+	 * Muestra la textura de la cocina
+	 */
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/cocina.png"));
 		
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
+	/**
+	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
+	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * @return unicaInstancia
+	 */
 	public static Cocina getInstancia(){
 		if(unicaInstancia == null){
 			unicaInstancia = new Cocina(game, c);

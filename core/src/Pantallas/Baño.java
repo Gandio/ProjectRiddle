@@ -8,7 +8,6 @@ import Items.Objeto;
 import Items.Zapato;
 import Objetos.Cursor;
 import Personajes.Joven;
-import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,7 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa a los objetos Baño
+ * Clase que representa al objeto baño
  * @author Francisco Madueño Chulián
  */
 
@@ -39,7 +38,7 @@ public final class Baño extends Habitacion {
 	
 	private Baño(MyGdxGame game, Cursor c) {
 		super(game, c);
-		this.game = game;
+		Baño.game = game;
 		objetos = new Array<Objeto>();
 		
 		//Objetos
@@ -74,15 +73,12 @@ public final class Baño extends Habitacion {
 		}
 	}
 	
-	@Override
+	/**
+	 * Este método se ejecuta todo el tiempo que el jugador permanezca en el baño
+	 */
 	public void render(float delta) {
 		super.render(delta);
-		
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		/*if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}*/
-		
+
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
 			iterObjetos.next().seSelecciona();
@@ -92,23 +88,16 @@ public final class Baño extends Habitacion {
 		stage.draw();
 	}
 
-	@Override
+	/**
+	 * Muestra la textura del baño
+	 */
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/bathroom.png"));
-		
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.

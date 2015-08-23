@@ -7,7 +7,6 @@ import Items.Cafe;
 import Items.Moneda;
 import Items.Objeto;
 import Objetos.Cursor;
-import Personajes.Joven;
 import Personajes.Niña;
 
 import com.badlogic.gdx.Gdx;
@@ -39,7 +38,7 @@ public final class Estudio extends Habitacion {
 	
 	private Estudio(MyGdxGame game, Cursor c) {
 		super(game, c);
-		this.game = game;
+		Estudio.game = game;
 		objetos = new Array<Objeto>();
 	
 		//Objetos
