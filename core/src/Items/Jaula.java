@@ -9,14 +9,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos pistola.
+ * Esta clase representa las características de los objetos jaula.
  * @author Francisco Madueño Chulián
  */
 
 public class Jaula extends Objeto{
 
 	/**
-	 * Constructor de la clase jaula
+	 * Constructor de la clase Jaula
 	 * @param game
 	 */
 	

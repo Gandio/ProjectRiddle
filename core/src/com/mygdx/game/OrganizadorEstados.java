@@ -23,6 +23,11 @@ import Pantallas.Inicio;
 import Pantallas.Salon;
 import Pantallas.Sotano;
 
+/**
+ * Esta clase representa como funciona cada estado, es decir, la lógica del juego.
+ * @author Francisco Madueño Chulián
+ */
+
 public class OrganizadorEstados {
 	private static MyGdxGame game = Inicio.game;
 	private static ArrayList<Estado> estados;
@@ -39,6 +44,11 @@ public class OrganizadorEstados {
 	
 	private static int asesino;
 	private static int arma;
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 	
 	private OrganizadorEstados(MyGdxGame game){
 		estados = new ArrayList<Estado>(nEstados-1);
@@ -110,8 +120,6 @@ public class OrganizadorEstados {
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
-			//estados.add(new Estado(i, pistas.get(j)));
-			
 			if(i == 1 || i == 3)
 				estados.add(new EstadoDecision(i, pistas.get(j)));
 			else if(i == 2 || i == 5)
@@ -127,6 +135,10 @@ public class OrganizadorEstados {
 			pistas.removeIndex(j);
 		}
 	}
+	
+	/**
+	 * Este método actualiza el estado durante todo el juego
+	 */
 	
 	public void actualizarEstado(){
 		e = estados.get(estadoActual);
@@ -158,16 +170,11 @@ public class OrganizadorEstados {
 		}
 	}
 	
-	public static OrganizadorEstados getInstancia(){
-		if(unicaInstancia == null)
-			unicaInstancia = new OrganizadorEstados(game);
-		
-		return unicaInstancia; 
-	}
-	
-	public static Estado getEstadoActual(){
-		return e;
-	}
+	/**
+	 * Conversor de String a Habitacion
+	 * @param s
+	 * @return
+	 */
 	
 	private Habitacion conversorStringHabitacion(String s){
 		if(s.equals("Atico"))
@@ -189,6 +196,11 @@ public class OrganizadorEstados {
 		else
 			return null;
 	}
+	
+	/**
+	 * Comprueba si el inventario contiene el objeto que se pide en un estado.
+	 * @return
+	 */
 	
 	private boolean inventarioContieneObjeto(){
 		if(Inventario.getContenido().contains(e.getItem(), false)){ 
@@ -212,6 +224,54 @@ public class OrganizadorEstados {
 		return false;
 	}
 	
+	/**
+	 * Devuelve el id del asesino
+	 * @return
+	 */
+	
+	public static int getAsesino(){
+		return asesino;
+	}
+	
+	/**
+	 * Devuelve el id del arma
+	 * @return
+	 */
+	
+	public static int getArma(){
+		return arma;
+	}
+	
+	/**
+	 * Devuelve el estado actual
+	 * @return
+	 */
+	
+	public static Estado getEstadoActual(){
+		return e;
+	}
+	
+	/**
+	 * Este método se asegura de que solo haya un organizador de estados en el juego
+	 * @return
+	 */
+	
+	public static OrganizadorEstados getInstancia(){
+		if(unicaInstancia == null)
+			unicaInstancia = new OrganizadorEstados(game);
+		
+		return unicaInstancia; 
+	}
+	
+	//-----------------------------------------------------------------------------------
+	//----------------------------- METODOS LOGICAS DE ESTADOS --------------------------
+	//-----------------------------------------------------------------------------------
+	
+	/**
+	 * Este método representa los la logica de los subestados que hay dentro de cada estado
+	 * principal.
+	 */
+	
 	public static void logicaSubestados(){
 		Estado estadoActual = OrganizadorEstados.getEstadoActual();
 		//termina la conversacion
@@ -221,7 +281,7 @@ public class OrganizadorEstados {
 		//forma de saber si estamos en la misma habitación de la lógica del puzzle.
 		String cadenaClase = "class Pantallas." + estadoActual.getHabitacionInicio().toString();
 		
-		if(estadoActual.getNumEstado() == 1 || estadoActual.getNumEstado() == 3 || estadoActual.getNumEstado() == 4){
+		if(estadoActual.getClass().equals(EstadoCogerObjeto.class) || estadoActual.getClass().equals(EstadoCombinarObjeto.class)){
 			//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
 			if(cadenaClase.equals(game.getScreen().getClass().toString()))
 				estadoActual.seIniciaMision(true);
@@ -232,7 +292,7 @@ public class OrganizadorEstados {
 				Inventario.borrarObjeto(estadoActual.getItem());
 				estadoActual.seSuperaPuzzle(true);
 			}
-		}else{
+		}else if(estadoActual.getClass().equals(EstadoDecision.class)){
 			//Estamos en la habitacion de inicio y además ya se ha hablado con la persona, nos muestran las elecciones
 			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.misionEnCurso()){
 				((Habitacion) game.getScreen()).horaDeElegir();
@@ -253,13 +313,10 @@ public class OrganizadorEstados {
 		}
 	}
 	
-	public static int getAsesino(){
-		return asesino;
-	}
-	
-	public static int getArma(){
-		return arma;
-	}
+	/**
+	 * Logica de los estados de decision
+	 * @param habitacionInicio
+	 */
 	
 	private void logicaEstadoDecision(Habitacion habitacionInicio){
 		//Actualizamos el objetivo
@@ -293,6 +350,11 @@ public class OrganizadorEstados {
 		}
 	}
 	
+	/**
+	 * Logica de los estados de recoger objetos
+	 * @param habitacionInicio
+	 */
+	
 	private void logicaEstadoCogerObjeto(Habitacion habitacionInicio){
 		Habitacion habitacionDestino = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());
 		String objeto = estados.get(estadoActual).getObjeto();
@@ -314,6 +376,11 @@ public class OrganizadorEstados {
 			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 		}
 	}
+	
+	/**
+	 * Logica de los estados de combinar objetos
+	 * @param habitacionInicio
+	 */
 	
 	private void logicaEstadoCombinarObjeto(Habitacion habitacionInicio){
 		Habitacion habitacionDestino1 = conversorStringHabitacion(estados.get(estadoActual).getHabitacionDestino());

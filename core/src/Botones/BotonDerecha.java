@@ -46,7 +46,7 @@ public class BotonDerecha extends Boton{
 		Cursor cursor = Pasillo.getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
-		float aux;
+		float nuevaCoordenada;
 		Rectangle rectanguloAux;
 		
 		/*Algoritmo de colisiones. Comprobamos todos los bordes izquierdos de las paredes,
@@ -60,8 +60,8 @@ public class BotonDerecha extends Boton{
 		
 		while(i < paredes.size && !noDerecha){
 			rectanguloAux = iRect.next();
-			aux = rectanguloAux.getX();
-			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getX() + cursor.getWidth() == aux + 1)){
+			nuevaCoordenada = rectanguloAux.getX();
+			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getX() + cursor.getWidth() == nuevaCoordenada + 1)){
 				noDerecha = true;
 			}
 			
@@ -83,6 +83,7 @@ public class BotonDerecha extends Boton{
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
+		//sin esto no se puede manter pulsado el botón para moverse
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonDerecha)event.getTarget()).pulsado = true;
@@ -95,7 +96,6 @@ public class BotonDerecha extends Boton{
 		});
 		
 		//Nos movemos
-		
 		if(pulsado && !colisionaDerecha()){
 			cursor.moverDerecha(delta);
 		}else{

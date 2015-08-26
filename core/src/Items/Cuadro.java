@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Cuadro extends Objeto{
 
 	/**
-	 * Constructor de la clase cuadro
+	 * Constructor de la clase Cuadro
 	 * @param game
 	 */
 	public Cuadro(MyGdxGame game) {

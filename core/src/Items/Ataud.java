@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Ataud extends Objeto{
 
 	/**
-	 * Constructor de la clase ataud.
+	 * Constructor de la clase Ataud.
 	 * @param game
 	 */
 	

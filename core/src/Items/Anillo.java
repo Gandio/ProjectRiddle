@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Anillo extends Objeto{
 
 	/**
-	 * Constructor de la clase anillo.
+	 * Constructor de la clase Anillo.
 	 * @param game
 	 */
 	

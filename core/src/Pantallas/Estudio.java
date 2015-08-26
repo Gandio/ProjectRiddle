@@ -44,8 +44,7 @@ public final class Estudio extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		//Añadimos objetos a la habitacion
-		
+		//Añadimos objetos a la habitación
 		objetos.add(boligrafo);
 		objetos.add(cafe);
 		objetos.add(moneda);
@@ -75,14 +74,13 @@ public final class Estudio extends Habitacion {
 		
 	}
 	
-	@Override
+	/**
+	 * Este método se ejecuta durante todo el tiempo que el jugador permanezca en el 
+	 * estudio
+	 */
+	
 	public void render(float delta) {
 		super.render(delta);
-		
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		/*if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}*/
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
@@ -93,26 +91,17 @@ public final class Estudio extends Habitacion {
 		stage.draw();
 	}
 
-	@Override
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/estudio.png"));
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
-	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
 	

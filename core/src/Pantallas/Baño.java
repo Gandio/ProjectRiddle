@@ -44,7 +44,7 @@ public final class Baño extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		//Añadimos objetos a la habitacion
+		//Añadimos objetos a la habitación
 		objetos.add(anillo);
 		objetos.add(joya);
 		objetos.add(zapato);
@@ -101,7 +101,7 @@ public final class Baño extends Habitacion {
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
-	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
 	

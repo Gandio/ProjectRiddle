@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Llave extends Objeto{
 
 	/**
-	 * Constructor de la clase llave
+	 * Constructor de la clase Llave
 	 * @param game
 	 */
 	

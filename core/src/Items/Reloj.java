@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Reloj extends Objeto{
 
 	/**
-	 * Constructor de la clase reloj
+	 * Constructor de la clase Reloj
 	 * @param game
 	 */
 	

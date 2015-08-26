@@ -87,7 +87,6 @@ public class PantallaAsesino implements Screen{
 	 * Este es el bucle que se ejecutará durante todo el tiempo que permanezcamos en la
 	 * pantalla. Se muestran los asesinos y la puntuación conseguida por el jugador.
 	 */
-
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

@@ -80,10 +80,19 @@ public abstract class Objeto extends Actor{
 		}
 	}
 	
+	/**
+	 * Este método modifica la variable sePuedeCoger. Permite que un objeto se pueda coger
+	 * o no.
+	 * @param b
+	 */
 	public void seCoge(boolean b){
 		sePuedeCoger = b;
 	}
 	
+	/**
+	 * 
+	 * @param b
+	 */
 	public void seInvestiga(boolean b){
 		investigando = b;
 	}
@@ -96,6 +105,9 @@ public abstract class Objeto extends Actor{
 	//--------------------------------------METODOS AUXILIARES----------------------------------
 	//------------------------------------------------------------------------------------------
 	
+	/**
+	 * Este método permite coger un objeto de la habitación y colocarlo en el inventario
+	 */
 	public void cogerObjeto(){
 		Habitacion h = (Habitacion) game.getScreen(); //habitación del objeto
 		Cursor c = h.getCursor();
@@ -127,6 +139,9 @@ public abstract class Objeto extends Actor{
 		}
 	}
 	
+	/**
+	 * Este método permite al jugador tocar un objeto.
+	 */
 	public void seSelecciona(){
 		setBounds(coordenadas.x, coordenadas.y, textura.getWidth(), textura.getHeight());
 		addListener(new InputListener(){
@@ -157,6 +172,9 @@ public abstract class Objeto extends Actor{
 		if(!sePuedeCoger) tocadoUnaVez = false;
 	}
 	
+	/**
+	 * Este método permite al jugador seleccionar un botón objeto.
+	 */
 	public void seSeleccionaBoton(){
 		final Objeto o = this;
 		setBounds(coordenadas.x, coordenadas.y, texturaActualBoton.getWidth(), texturaActualBoton.getHeight());
@@ -205,22 +223,41 @@ public abstract class Objeto extends Actor{
 		});
 	}
 	
+	/**
+	 * Devuelve la descripción del objeto.
+	 * @return
+	 */
 	public String getDescripcion(){
 		return descripcionObjeto;
 	}
 	
+	/**
+	 * Quita la selección de los botones objeto tocados.
+	 */
 	public void devolverTexturaOriginal(){
 		texturaActualBoton = botonObjeto;
 	}
 	
+	/**
+	 * Devuelve el identificador del objeto
+	 * @return
+	 */
 	public Identificador getIdentificador(){
 		return identificador;
 	}
 	
+	/**
+	 * Devuelve el vector de objetos que se pueden combinar con este.
+	 * @return
+	 */
 	public Array<Identificador> getCombinables(){
 		return combinables;
 	}
 	
+	/**
+	 * Devuelve el id del objeto
+	 * @return
+	 */
 	public int getId(){
 		return id;
 	}

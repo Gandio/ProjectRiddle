@@ -5,6 +5,7 @@ import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -21,6 +22,7 @@ import com.mygdx.game.Tools;
 public class BotonAceptarCombinar extends Boton{
 
 	private Texture botonActivado, botonDesactivado;
+	private Sound sonido;
 	
 	/**
 	 * Constructor de la clase
@@ -34,6 +36,8 @@ public class BotonAceptarCombinar extends Boton{
 		boton = botonDesactivado;
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+		
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/combinarObjeto.wav"));
 	}
 	
 	/**
@@ -69,13 +73,8 @@ public class BotonAceptarCombinar extends Boton{
 				((Inventario) game.getScreen()).restaurarBotonesObjetos();
 				
 				if(((Inventario) game.getScreen()).sePuedeCombinar()){
-					Objeto o1 = ((Inventario) game.getScreen()).getCombinacion().get(0);
-					Objeto o2 = ((Inventario) game.getScreen()).getCombinacion().get(1);
-					
-					Inventario.borrarObjeto(o1);
-					Inventario.borrarObjeto(o2);
-					
-					Inventario.getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
+					sonido.play();
+					combinar();
 				}
 				
 				((Inventario) game.getScreen()).getCombinacion().clear();
@@ -87,5 +86,18 @@ public class BotonAceptarCombinar extends Boton{
 		}
 		//Se actualiza la variable pulsado
 		pulsado = false;
+	}
+	
+	/**
+	 * Este método combina dos objetos
+	 */
+	private void combinar(){
+		Objeto o1 = ((Inventario) game.getScreen()).getCombinacion().get(0);
+		Objeto o2 = ((Inventario) game.getScreen()).getCombinacion().get(1);
+		
+		Inventario.borrarObjeto(o1);
+		Inventario.borrarObjeto(o2);
+		
+		Inventario.getContenido().add(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
 	}
 }

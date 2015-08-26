@@ -41,7 +41,7 @@ public class Pasillo implements Screen{
 	protected Texture pantalla;
 	private boolean debug = false;
 	
-	//Camaras
+	//Cámaras
 	protected OrthographicCamera camara;
 	public SpriteBatch batch;
 	protected FillViewport viewport; //se usa para adaptar la pantallas
@@ -61,7 +61,7 @@ public class Pasillo implements Screen{
 	private BotonIzquierda botonIzquierda;
 	private BotonInventario botonInventario;
 		
-	//Puntuacion
+	//Puntuación
 	private static Puntuacion puntuacion = Puntuacion.getInstancia();
 	
 	//Texturas
@@ -80,10 +80,14 @@ public class Pasillo implements Screen{
 	//Organizador de estados
 	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
 	
+	/**
+	 * Constructor de la clase Pasillo
+	 * @param game
+	 */
+	
 	public Pasillo(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		Pasillo.game = game;
-		System.out.println(game.toString());
 		
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
@@ -99,13 +103,11 @@ public class Pasillo implements Screen{
 		musica.setLooping(true);
 		musica.play();
 		
-		//instanciamos la camara
+		//instanciamos la cámara
 		camara.setToOrtho(false, cursor.getX(), cursor.getY());
 		camara.position.set(cursor.getX(), cursor.getY(), 0);
 		camara.zoom -= 0.4;
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
-		
-		Gdx.input.setInputProcessor(stage);
 		
 		//Preparamos las colisiones con las paredes
 		colisionesParedes.add(new Rectangle(255, 403, 1000, 120)); //pared con dos puertas
@@ -162,7 +164,7 @@ public class Pasillo implements Screen{
 	
 	/**
 	 * Este método se ejecuta constantemente mientras el jugador se encuentre en el pasillo
-	 *  y se encarga de actualizarlo.
+	 *  y se encargá de actualizarlo.
 	 */
 	public void render(float delta){
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -195,13 +197,13 @@ public class Pasillo implements Screen{
 		botonArriba.setCoordenadas(cursor.getX() - 285, cursor.getY() - 40);
 		botonDerecha.setCoordenadas(cursor.getX() - 200, cursor.getY() - 125);
 		botonIzquierda.setCoordenadas(cursor.getX() - 370, cursor.getY() - 125);
-		
 		botonPuerta.setCoordenadas(cursor.getX() + 280, cursor.getY() + 140);
 		botonInventario.setCoordenadas(cursor.getX() + 200, cursor.getY() + 140);
 		
+		//Coordenada del marcador de puntos
 		puntuacion.setCoordenadas(cursor.getX() - 350, cursor.getY() + 230);
 		
-		/*Dibujamos bordes. Esto solo sirve para buscar bugs durante el movimiento, no se muestra
+		/*Dibujamos bordes. Esto solo sirve para buscar bugs en el movimiento, no se muestra
 		 * en la versión final del juego
 		*/
 		if(debug) debug();
@@ -281,7 +283,11 @@ public class Pasillo implements Screen{
 		return cursor;
 	}
 	
-	public void debug(){
+	/**
+	 * Este método se usa solo para las pruebas de colisión
+	 */
+	
+	private void debug(){
 		sr.setProjectionMatrix(camara.combined);
 		sr.begin(ShapeType.Line);
 		sr.setColor(Color.GREEN);

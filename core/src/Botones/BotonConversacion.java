@@ -35,13 +35,12 @@ public class BotonConversacion extends Boton{
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
+	/**
+	 * Se activa la logica del botón de conversación
+	 */
 	public void update(){
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
-		
-		/*
-		 * Comprobamos si se pulsa el botón.
-		 */
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

@@ -2,8 +2,6 @@ package Botones;
 
 
 import Pantallas.Introduccion;
-import Puzzle.PantallaArma;
-import Puzzle.PantallaAsesino;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -61,9 +59,7 @@ public class BotonInicio extends Boton{
 		if(pulsado){
 			sonido.play();
 			game.getScreen().dispose();
-			//game.setScreen(new Introduccion());
-			game.setScreen(new PantallaAsesino());
-			//game.setScreen(new PantallaArma());
+			game.setScreen(new Introduccion());
 		}
 	}
 }

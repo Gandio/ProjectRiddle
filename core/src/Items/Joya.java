@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Joya extends Objeto{
 
 	/**
-	 * Constructor de la clase joya
+	 * Constructor de la clase Joya
 	 * @param game
 	 */
 	

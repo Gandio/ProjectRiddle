@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa al objeto Salón
+ * Clase que representa al objeto Salon
  * @author Francisco Madueño Chulián
  */
 
@@ -47,7 +47,7 @@ public final class Salon extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		//Añadimos objetos a la habitacion
+		//Añadimos objetos a la habitación
 		if(MyGdxGame.SUSPENSE){
 			objetos.add(pistola);
 			objetos.add(rifle);
@@ -99,7 +99,7 @@ public final class Salon extends Habitacion {
 	}
 	
 	/**
-	 * Muestra la textura del salón, varia si el suspense está activado o no
+	 * Muestra la textura del salón, varía si el suspense está activado o no
 	 */
 
 	public void show() {
@@ -117,7 +117,7 @@ public final class Salon extends Habitacion {
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
-	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
 	

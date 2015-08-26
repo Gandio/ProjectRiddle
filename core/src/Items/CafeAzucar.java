@@ -8,14 +8,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos anillo.
+ * Esta clase representa las características de los objetos cafeAzucar.
  * @author Francisco Madueño Chulián
  */
 
 public class CafeAzucar extends Objeto{
 
 	/**
-	 * Constructor de la clase cafe con azucar
+	 * Constructor de la clase CafeAzucar
 	 * @param game
 	 */
 	public CafeAzucar(MyGdxGame game) {

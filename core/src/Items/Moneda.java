@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Moneda extends Objeto{
 	
 	/**
-	 * Constructor de la clase moneda
+	 * Constructor de la clase Moneda
 	 * @param game
 	 */
 

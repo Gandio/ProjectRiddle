@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa a los objetos Sotano
+ * Clase que representa al objeto Sotano
  * @author Francisco Madueño Chulián
  */
 
@@ -25,6 +25,7 @@ public final class  Sotano extends Habitacion {
 	private static MyGdxGame game;
 	private static Sotano unicaInstancia;
 	
+	//Estos son los objetos que se encuentran en el sótano
 	private static Objeto daga = new Daga(game);
 	private static Objeto veneno = new Veneno(game);
 	private static Objeto jaula = new Jaula(game);
@@ -72,8 +73,8 @@ public final class  Sotano extends Habitacion {
 	}
 	
 	/**
-	 * Este método se ejecuta todo el tiempo que el jugador permanece en el sotano, comprueba
-	 * si los objetos de la habitacion han sido seleccionados por el jugador
+	 * Este método se ejecuta todo el tiempo que el jugador permanece en el sótano, comprueba
+	 * si los objetos de la habitación han sido seleccionados por el jugador
 	 */
 	
 	public void render(float delta) {
@@ -103,7 +104,7 @@ public final class  Sotano extends Habitacion {
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
-	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
 	

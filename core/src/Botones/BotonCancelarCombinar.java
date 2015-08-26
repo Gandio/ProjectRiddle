@@ -20,6 +20,11 @@ import com.mygdx.game.Tools;
 public class BotonCancelarCombinar extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	public BotonCancelarCombinar(MyGdxGame game) {
 		super(game);
@@ -30,6 +35,11 @@ public class BotonCancelarCombinar extends Boton{
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * La combinación puede cancelarse en cualquier momento. Cuando se hace se vuelve al 
+	 * estado normal del inventario
+	 */
 	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());

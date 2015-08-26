@@ -8,14 +8,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos mascara.
+ * Esta clase representa las características de los objetos máscara.
  * @author Francisco Madueño Chulián
  */
 
 public class Mascara extends Objeto{
 	
 	/**
-	 * Constructor de la clase mascara
+	 * Constructor de la clase Máscara
 	 * @param game
 	 */
 

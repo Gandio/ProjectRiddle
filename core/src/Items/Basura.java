@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Basura extends Objeto{
 	
 	/**
-	 * Constructor de la clase basura.
+	 * Constructor de la clase Basura.
 	 * @param game
 	 */
 

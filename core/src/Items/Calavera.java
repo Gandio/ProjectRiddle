@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Calavera extends Objeto{
 
 	/**
-	 * Constructor de la clase calavera
+	 * Constructor de la clase Calavera
 	 * @param game
 	 */
 	public Calavera(MyGdxGame game) {

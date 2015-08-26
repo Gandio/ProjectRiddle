@@ -18,12 +18,21 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonCombinarObjeto extends Boton{
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	public BotonCombinarObjeto(MyGdxGame game) {
 		super(game);
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonCombinar.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
+	
+	/**
+	 * Si se pulsa se activa el modo combinación
+	 */
 	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
@@ -43,5 +52,4 @@ public class BotonCombinarObjeto extends Boton{
 		
 		pulsado = false;
 	}
-
 }

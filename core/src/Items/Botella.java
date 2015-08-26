@@ -8,14 +8,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos anillo.
+ * Esta clase representa las características de los objetos botella.
  * @author Francisco Madueño Chulián
  */
 
 public class Botella extends Objeto{
 
 	/**
-	 * Constructor de la clase botella
+	 * Constructor de la clase Botella
 	 * @param game
 	 */
 	public Botella(MyGdxGame game) {

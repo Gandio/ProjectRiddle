@@ -86,6 +86,7 @@ public class CuadroDialogo extends CuadroTexto{
 			siguienteConversacion.remove();
 			((Habitacion) game.getScreen()).getStage().addActor(finConversacion);
 		}
+		//Me preparo para añadir el botón de fin conversación
 		else if(parteTexto == textos.size-2){
 			finTexto = true;
 		}
@@ -93,11 +94,17 @@ public class CuadroDialogo extends CuadroTexto{
 		font.drawMultiLine(batch, textos.get(parteTexto), 30, 260);
 	}
 	
-	
+	/**
+	 * Este método añade el botón de siguiente conversación al stage
+	 * @param s
+	 */
 	public void iniciarConversacion(Stage s){
 		s.addActor(siguienteConversacion);
 	}
 	
+	/**
+	 * Se termina la conversación
+	 */
 	public void finConversacion(){
 		parteTexto = 0;
 		finTexto = false;
@@ -105,29 +112,58 @@ public class CuadroDialogo extends CuadroTexto{
 		siguienteConversacion.remove();
 	}
 	
+	/**
+	 * Devuelve el botón de fin conversación
+	 * @return finConversacion
+	 */
+	
 	public Boton getFinConv(){
 		return finConversacion;
 	}
 	
+	/**
+	 * Devuelve el botón de siguiente conversación
+	 * @return
+	 */
 	public Boton getSigConv(){
 		return siguienteConversacion;
 	}
 	
+	/**
+	 * Modifica el texto que se muestra en el cuadro
+	 */
 	public void setTexto(String t){
 		texto = t;
 	}
 	
+	/**
+	 * Devuelve la posicion del vector donde se almacena el texto
+	 * @return parteTexto
+	 */
 	public int getParteTexto(){
 		return parteTexto;
 	}
 	
+	/**
+	 * Accede a la siguiente parte del texto
+	 */
 	public void sigParteTexto(){
 		parteTexto++;;
 	}
 	
+	/**
+	 * Comprueba si se ha acabado el texto
+	 * @return
+	 */
+	
 	public boolean getFinTexto(){
 		return finTexto;
 	}
+	
+	/**
+	 * Devuelve el texto por defecto del personaje
+	 * @return textoDefecto
+	 */
 	
 	public String getTextoDefecto(){
 		return textoDefecto;

@@ -73,11 +73,11 @@ public abstract class Habitacion implements Screen {
 		CONVERSAR, INVESTIGAR, NORMAL, DECISION;
 	};
 	
-	//Estado actual de la habitacion
+	//Estado actual de la habitación
 	protected EstadoHabitacion estado;
 
 	/**
-	 * Constructor de la clase habitación.
+	 * Constructor de la clase Habitacion.
 	 * @param game
 	 */
 
@@ -87,14 +87,14 @@ public abstract class Habitacion implements Screen {
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 
-		// Musica
+		// Música
 		if (MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
 		else
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 
-		// instanciamos la camara
+		// instanciamos la cámara
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f, 0);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 
@@ -158,7 +158,7 @@ public abstract class Habitacion implements Screen {
 		// ---------------------LOGICA DE LOS BOTONES------------------------------
 		// ------------------------------------------------------------------------
 
-		// Este orden se debe mantener si no intenta hacer cast de habitacion a
+		// Este orden se debe mantener si no intenta hacer cast de habitación a
 		// pasillo
 		botonInvestigar.update();
 		botonConversacion.update();
@@ -212,8 +212,6 @@ public abstract class Habitacion implements Screen {
 		
 		//Se actualiza el estado del juego
 		organizador.actualizarEstado();
-		
-		//System.out.println(estado);
 
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
@@ -269,7 +267,7 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Devuelve el array de objetos de la habitacion
+	 * Devuelve el array de objetos de la habitación
 	 * @return objetos
 	 */
 
@@ -278,7 +276,7 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Para la música de la habitacion
+	 * Para la música de la habitación
 	 */
 
 	public void pararMusica() {
@@ -286,7 +284,7 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Comprueba si estamos o no conversando con el personaje de la habitacion
+	 * Comprueba si estamos o no conversando con el personaje de la habitación
 	 * @return conversando
 	 */
 
@@ -322,12 +320,20 @@ public abstract class Habitacion implements Screen {
 		estado = EstadoHabitacion.NORMAL;
 	}
 	
+	/**
+	 * Este método hace que la habitación pase del estado CONVERSACION al estado DECISION
+	 */
+	
 	public void horaDeElegir() {
 		cuadroTexto.finConversacion();
 		cuadroTexto.remove();
 		ultimoTexto = false;
 		estado = EstadoHabitacion.DECISION;
 	}
+	
+	/**
+	 * Este método hace que la habitación pase del estado DECISION al estado CONVERSACION
+	 */
 	
 	public void terminarEleccion(){
 		for(int i = 0; i < 4; ++i){
@@ -339,7 +345,7 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Devuelve el cuadro de dialogo de la conversacion
+	 * Devuelve el cuadro de dialogo de la conversaciÓn
 	 * @return cuadroTexto
 	 */
 
@@ -348,7 +354,7 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Devuelve el stage de la habitacion
+	 * Devuelve el stage de la habitación
 	 * @return
 	 */
 
@@ -357,13 +363,18 @@ public abstract class Habitacion implements Screen {
 	}
 	
 	/**
-	 * Devuelve el personaje de la habitacion
+	 * Devuelve el personaje de la habitación
 	 * @return personaje
 	 */
 
 	public Personaje getPersonaje() {
 		return personaje;
 	}
+	
+	/**
+	 * Devuelve el vector de cuadros de elección
+	 * @return cuadrosEleccion
+	 */
 	
 	public Array<CuadroEleccion> getCuadrosEleccion(){
 		return cuadrosEleccion;

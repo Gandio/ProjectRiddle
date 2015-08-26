@@ -8,14 +8,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos serpiente.
+ * Esta clase representa las características de los objetos serpiente enjaulada.
  * @author Francisco Madueño Chulián
  */
 
 public class SerpienteEnjaulada extends Objeto{
 
 	/**
-	 * Constructor de la clase serpiente enjaulada
+	 * Constructor de la clase SerpienteEnjaulada
 	 * @param game
 	 */
 	

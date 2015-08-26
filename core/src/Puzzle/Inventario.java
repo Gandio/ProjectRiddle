@@ -74,7 +74,7 @@ public final class Inventario implements Screen{
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
-		// Musica
+		// Música
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
 		
 		estado = EstadoInventario.NORMAL;

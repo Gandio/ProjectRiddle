@@ -22,7 +22,6 @@ import com.mygdx.game.MyGdxGame;
  */
 
 public class Introduccion implements Screen {
-	
 	private Stage stage;
 	private Texture textura;
 	private MyGdxGame game = Inicio.game;
@@ -51,7 +50,7 @@ public class Introduccion implements Screen {
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
 		musica.play();
 		
-		// instanciamos la camara
+		// instanciamos la cámara
 		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f, 0);
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
@@ -67,7 +66,6 @@ public class Introduccion implements Screen {
 	 * pantalla. Comprueba continuamente si se ha pulsado el botón continuar.
 	 */
 
-	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -86,38 +84,19 @@ public class Introduccion implements Screen {
 		
 	}
 
-	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		stage.setViewport(viewport);
-		
 	}
 
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void show() {}
 
-	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
+	public void hide() {}
+	
+	public void pause() {}
+	
+	public void resume() {}
+	
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();

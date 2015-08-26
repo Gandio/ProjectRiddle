@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Navaja extends Objeto{
 
 	/**
-	 * Constructor de la clase navaja
+	 * Constructor de la clase Navaja
 	 * @param game
 	 */
 	

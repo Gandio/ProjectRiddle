@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Daga extends Objeto{
 
 	/**
-	 * Constructor de la clase daga
+	 * Constructor de la clase Daga
 	 * @param game
 	 */
 	public Daga(MyGdxGame game) {

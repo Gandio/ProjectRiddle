@@ -15,11 +15,12 @@ import com.mygdx.game.Tools;
  *
  */
 
-public class BotonFinConversacion extends Boton{
+public class BotonFinConversacion extends Boton{	
 	/**
 	 * Constructor de la clase.
 	 * @param game
 	 */
+	
 	public BotonFinConversacion(MyGdxGame game) {
 		super(game);
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/finConv.png"));

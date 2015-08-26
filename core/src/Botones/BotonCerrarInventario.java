@@ -5,6 +5,7 @@ import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -22,7 +23,7 @@ import com.mygdx.game.Tools;
 public class BotonCerrarInventario extends Boton{
 	
 	private Texture botonActivado, botonDesactivado;
-	
+	private Sound sonido;
 	/**
 	 * Constructor de la clase.
 	 * @param game
@@ -36,6 +37,7 @@ public class BotonCerrarInventario extends Boton{
 		boton = botonActivado;
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirInventario.wav"));
 	}
 	
 	/**
@@ -67,6 +69,7 @@ public class BotonCerrarInventario extends Boton{
 			if(pulsado){
 				pulsado = false;
 				Inventario.pararMusica();
+				sonido.play();
 				Inventario.getCuadroDescripcion().setTexto("");
 				game.setScreen(new Pasillo(game));
 			}

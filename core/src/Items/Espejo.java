@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Espejo extends Objeto{
 
 	/**
-	 * Constructor de la clase espejo
+	 * Constructor de la clase Espejo
 	 * @param game
 	 */
 	public Espejo(MyGdxGame game) {

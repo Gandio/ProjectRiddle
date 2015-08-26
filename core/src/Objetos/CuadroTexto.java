@@ -52,14 +52,20 @@ public class CuadroTexto extends Actor{
 	    int lastBreak = 0;
 	    int nextBreak = charWrap; // número de caracteres permitidos por cada linea
 	    if (string.length() > charWrap) {
+	    	//se empieza con la partición
 	        String setString = "";
 	        do {
 	            while (string.charAt(nextBreak) != ' ' && nextBreak > lastBreak) {
+	            	/*mientras no se encuentre con un espacio, para no cortar palabras
+	            	 * y no se haya superado el numero de caracteres permitidos
+	            	 */
 	                nextBreak--;
 	            }
+	            
 	            if (nextBreak == lastBreak) {
 	                nextBreak = lastBreak + charWrap;
 	            }
+	            //se divide la cadena y se actualizan los valores
 	            setString += string.substring(lastBreak, nextBreak).trim() + "\n";
 	            lastBreak = nextBreak;
 	            nextBreak += charWrap;

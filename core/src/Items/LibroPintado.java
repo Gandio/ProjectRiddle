@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class LibroPintado extends Objeto{
 
 	/**
-	 * Constructor de la clase libro
+	 * Constructor de la clase LibroPintado
 	 * @param game
 	 */
 	

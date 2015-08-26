@@ -4,6 +4,7 @@ import Pantallas.Pasillo;
 import Puzzle.Inventario;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -18,6 +19,7 @@ import com.mygdx.game.Tools;
  */
 
 public class BotonInventario extends Boton{
+	private Sound sonido;
 	
 	/**
 	 * Constructor de la clase.
@@ -29,6 +31,8 @@ public class BotonInventario extends Boton{
 		boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonInventario.png"));
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+		
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirInventario.wav"));
 	}
 	
 	/**
@@ -52,6 +56,7 @@ public class BotonInventario extends Boton{
 		if(pulsado){
 			pulsado = false;
 			((Pasillo) game.getScreen()).pararMusica();
+			sonido.play();
 			Pasillo.getCursor();
 			game.setScreen(Inventario.getInstancia());
 		}

@@ -8,14 +8,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos boligrafo.
+ * Esta clase representa las características de los objetos bombilla.
  * @author Francisco Madueño Chulián
  */
 
 public class Bombilla extends Objeto{
 
 	/**
-	 * Constructor de la clase bombilla
+	 * Constructor de la clase Bombilla
 	 * @param game
 	 */
 	public Bombilla(MyGdxGame game) {

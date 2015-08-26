@@ -81,7 +81,7 @@ public class CuadroEleccion extends CuadroTexto{
 				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(0);
 				
 			}
-			/*Siempre que eliges una opción sigue una conversacion, ya sea para
+			/*Siempre que eliges una opción sigue una conversación, ya sea para
 			 * darte la pista o indicarte que has fallado
 			 */
 			((Habitacion) game.getScreen()).terminarEleccion();

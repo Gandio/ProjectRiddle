@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Clase que representa a los objetos Atico
+ * Clase que representa al objeto ático
  * @author Francisco Madueño Chulián
  */
 
@@ -72,13 +72,12 @@ public final class Atico extends Habitacion {
 		}
 	}
 	
-	@Override
+	/**
+	 * Este método se ejecuta durante todo el tiempo que el jugador permanzca en el ático
+	 */
+	
 	public void render(float delta) {
 		super.render(delta);
-		//si vamos a conversar con el personaje se debe mostrar el cuadro de texto
-		/*if(personaje != null && estado == Estado.CONVERSAR){
-			
-		}*/
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
 		while(iterObjetos.hasNext()){
@@ -88,27 +87,22 @@ public final class Atico extends Habitacion {
 		Gdx.input.setInputProcessor(stage);
 		stage.draw();
 	}
+	
+	/**
+	 * Muestra la textura del ático
+	 */
 
-	@Override
 	public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/atico.png"));
 	}
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
-	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 	
 	/**
 	 * Para que solo haya un único objeto en el juego se debe hacer que el contructor sea privado.
-	 * Si la habitación está creada no hace nada, sino se llama al contructor.
+	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
 	

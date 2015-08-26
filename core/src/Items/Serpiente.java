@@ -16,7 +16,7 @@ import com.mygdx.game.Tools;
 public class Serpiente extends Objeto{
 
 	/**
-	 * Constructor de la clase serpiente
+	 * Constructor de la clase Serpiente
 	 * @param game
 	 */
 	

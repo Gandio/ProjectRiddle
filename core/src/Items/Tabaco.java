@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Tabaco extends Objeto{
 
 	/**
-	 * Constructor de la clase tabaco
+	 * Constructor de la clase Tabaco
 	 * @param game
 	 */
 	

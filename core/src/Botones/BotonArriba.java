@@ -40,7 +40,7 @@ public class BotonArriba extends Boton{
 		Cursor cursor = Pasillo.getCursor();
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
-		float aux;
+		float nuevaCoordenada;
 		Rectangle rectanguloAux;
 		
 		/*Algoritmo de colisiones. Comprobamos todos los bordes inferiores de las paredes,
@@ -54,8 +54,8 @@ public class BotonArriba extends Boton{
 		
 		while(i < paredes.size && !noArriba){
 			rectanguloAux = iRect.next(); 
-			aux = rectanguloAux.getY();
-			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() + cursor.getHeight()) == aux + 1){
+			nuevaCoordenada = rectanguloAux.getY();
+			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() + cursor.getHeight()) == nuevaCoordenada + 1){
 				noArriba = true;
 			}
 			
@@ -82,6 +82,7 @@ public class BotonArriba extends Boton{
                 return true;
             }
             
+            //sin esto no se puede manter pulsado el botón para moverse
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonArriba)event.getTarget()).pulsado = false;
             }

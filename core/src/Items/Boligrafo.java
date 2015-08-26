@@ -9,14 +9,14 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa las características de los objetos boligrafo.
+ * Esta clase representa las características de los objetos bolígrafo.
  * @author Francisco Madueño Chulián
  */
 
 public class Boligrafo extends Objeto{
 
 	/**
-	 * Constructor de la clase boligrafo
+	 * Constructor de la clase Bolígrafo
 	 * @param game
 	 */
 	

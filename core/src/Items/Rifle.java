@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Rifle extends Objeto{
 	
 	/**
-	 * Constructor de la clase rifle
+	 * Constructor de la clase Rifle
 	 * @param game
 	 */
 

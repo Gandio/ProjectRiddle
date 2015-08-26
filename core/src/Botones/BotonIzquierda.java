@@ -47,7 +47,7 @@ public class BotonIzquierda extends Boton{
 		
 		int i = 0;
 		Iterator<Rectangle> iRect = paredes.iterator();
-		float aux;
+		float nuevaCoordenada;
 		Rectangle rectanguloAux;
 		
 		/*Algoritmo de colisiones. Comprobamos todos los bordes derechos de las paredes,
@@ -61,8 +61,8 @@ public class BotonIzquierda extends Boton{
 		
 		while(i < paredes.size && !noIzquierda){
 			rectanguloAux = iRect.next();
-			aux = rectanguloAux.getX() + rectanguloAux.getWidth();
-			if(cursor.getLimites().overlaps(rectanguloAux) && cursor.getX() == aux - 1){
+			nuevaCoordenada = rectanguloAux.getX() + rectanguloAux.getWidth();
+			if(cursor.getLimites().overlaps(rectanguloAux) && cursor.getX() == nuevaCoordenada - 1){
 				noIzquierda = true;
 			}
 			
@@ -89,14 +89,13 @@ public class BotonIzquierda extends Boton{
                 ((BotonIzquierda)event.getTarget()).pulsado = true;
                 return true;
             }
-            
+            //sin esto no se puede manter pulsado el botón para moverse
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 ((BotonIzquierda)event.getTarget()).pulsado = false;
             }
 		});
 		
 		//Nos empezamos a mover
-		
 		if(pulsado && !colisionaIzquierda()){
 			cursor.moverIzquierda(delta);
 			

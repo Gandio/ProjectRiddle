@@ -16,7 +16,7 @@ import com.mygdx.game.Tools;
 public class Azucar extends Objeto{
 
 	/**
-	 * Constructor de la clase azucar
+	 * Constructor de la clase Azucar
 	 * @param game
 	 */
 	

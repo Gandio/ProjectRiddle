@@ -15,7 +15,7 @@ import com.mygdx.game.Tools;
 public class Zapato extends Objeto{
 
 	/**
-	 * Constructor de la clase zapato
+	 * Constructor de la clase Zapato
 	 * @param game
 	 */
 	

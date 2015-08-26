@@ -112,7 +112,7 @@ public class Inicio implements Screen{
 		salir.esPulsado();
 		
 		/*
-		 * Los botones también dependen de esta variable
+		 * La situación de los botones también dependen de esta variable
 		 */
 		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			inicio.setCoordenadas(460, 170);
