@@ -1,5 +1,11 @@
 package com.mygdx.game;
 
+/**
+ * Esta clase representa al estado en el que el puzzle consiste en responder a una pregunta
+ * de respuesta múltiple
+ * @author Francisco Madueño Chulián
+ */
+
 public class EstadoDecision extends Estado{
 	
 	private String textoOpcion1;
@@ -15,6 +21,12 @@ public class EstadoDecision extends Estado{
 	private int eleccionCorrecta = -1; // tri estado -1 no lo has intentado todavia, 0 has fallado, 1 correcto
 	
 	protected String error;
+	
+	/**
+	 * Constructor de la clase
+	 * @param numEstado
+	 * @param pista
+	 */
 
 	public EstadoDecision(int numEstado, String pista) {
 		super(numEstado, pista);
@@ -33,6 +45,11 @@ public class EstadoDecision extends Estado{
 		prePuzzle = puzzle.getChildByName("prePuzzle").getAttribute("texto");
 	}
 	
+	/**
+	 * Este método devuelve el texto de cada respuesta
+	 * @param i
+	 * @return
+	 */
 	public String getTextoEleccion(int i) {
 		if (i == 1)
 			return textoOpcion1;
@@ -44,6 +61,12 @@ public class EstadoDecision extends Estado{
 			return textoOpcion4;
 	}
 
+	/**
+	 * Este método devuelve si o no, dependiendo del número de respuesta que se le pase. Si
+	 * devuelve si, la respuesta es correcta, si no devuelve no.
+	 * @param i
+	 * @return
+	 */
 	public String getEleccion(int i) {
 		if (i == 1)
 			return opcion1;
@@ -55,14 +78,26 @@ public class EstadoDecision extends Estado{
 			return opcion4;
 	}
 	
+	/**
+	 * Selecciona la respuesta correcta
+	 * @param i
+	 */
 	public void eleccionCorrecta(int i) {
 		eleccionCorrecta = i;
 	}
-
+	
+	/**
+	 * Devuelve la respuesta correcta
+	 * @return eleccionCorrecta
+	 */
 	public int getEleccionCorrecta() {
 		return eleccionCorrecta;
 	}
 	
+	/**
+	 * Devuelve el mensaje de error que te lanza el personaje al fallar una respuesta.
+	 * @return error
+	 */
 	public String getError(){
 		return error;
 	}

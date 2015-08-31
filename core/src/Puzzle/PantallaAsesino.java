@@ -1,6 +1,7 @@
 package Puzzle;
 
 import Objetos.Puntuacion;
+import Puzzle.Asesino.NombreAsesino;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -62,15 +63,15 @@ public class PantallaAsesino implements Screen{
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png"))));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"))));
 				
-		if(OrganizadorEstados.getAsesino() == 0) //es la niña
+		if(OrganizadorEstados.getAsesino().equals(NombreAsesino.NIÑA)) //es la niña
 			asesinos.get(0).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino() == 1) //es el hombre
+		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.HOMBRE)) //es el hombre
 			asesinos.get(1).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino() == 2) //es el joven
+		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.JOVEN)) //es el joven
 			asesinos.get(2).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino() == 3) //es la anciana
+		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.ANCIANA)) //es la anciana
 			asesinos.get(3).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino() == 4) //es la mujer
+		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.MUJER)) //es la mujer
 			asesinos.get(4).setCulpable(true);
 		
 		textura = new Texture(Gdx.files.internal("Imagenes/pruebaFondoPasillo.png"));

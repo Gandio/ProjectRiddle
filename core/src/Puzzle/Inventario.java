@@ -67,6 +67,11 @@ public final class Inventario implements Screen{
 	
 	//Organizador de estados
 	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
 
 	private Inventario(MyGdxGame game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -189,6 +194,10 @@ public final class Inventario implements Screen{
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 	}
+	
+	/**
+	 * Este método dibuja la textura de la pantalla
+	 */
 
 	public void show() {
 		textura = new Texture(Gdx.files.internal("Imagenes/Escenarios/inventario.png"));

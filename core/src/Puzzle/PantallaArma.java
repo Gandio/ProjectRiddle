@@ -1,6 +1,7 @@
 package Puzzle;
 
 import Objetos.Puntuacion;
+import Puzzle.Arma.NombreArma;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -59,13 +60,13 @@ public class PantallaArma implements Screen{
 		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonRifle.png"))));
 		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonSerpiente.png"))));
 		
-		if(OrganizadorEstados.getArma() == 0) //se usa la daga
+		if(OrganizadorEstados.getArma().equals(NombreArma.DAGA)) //se usa la daga
 			armas.get(0).setUsada(true);
-		else if(OrganizadorEstados.getArma() == 1) //se usa la pistola
+		else if(OrganizadorEstados.getArma().equals(NombreArma.PISTOLA)) //se usa la pistola
 			armas.get(1).setUsada(true);
-		else if(OrganizadorEstados.getArma() == 2) //se usa el rifle
+		else if(OrganizadorEstados.getArma().equals(NombreArma.RIFLE)) //se usa el rifle
 			armas.get(2).setUsada(true);
-		else if(OrganizadorEstados.getArma() == 3) //se usa la serpiente
+		else if(OrganizadorEstados.getArma().equals(NombreArma.SERPIENTE)) //se usa la serpiente
 			armas.get(3).setUsada(true);
 		
 		textura = new Texture(Gdx.files.internal("Imagenes/pruebaFondoPasillo.png"));

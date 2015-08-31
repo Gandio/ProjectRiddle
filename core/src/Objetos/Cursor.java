@@ -13,8 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.MyGdxGame;
 
 /**
- * Esta clase representa la situación al protagonista mientras se mueve por los pasillos de 
- * la casa.
+ * Esta clase representa al protagonista mientras se mueve por los pasillos de la casa.
  * @author Francisco Madueño Chulián
  */
 public class Cursor extends Actor{
@@ -52,7 +51,7 @@ public class Cursor extends Actor{
 		frameActual = new TextureRegion(arriba[0]);
 		
 		stateTime = 0f;
-		setPosition(500, 300);
+		setPosition(830, 170);
 		setWidth(cursor.getWidth() / 4);
 		setHeight(cursor.getHeight());
 		
@@ -148,6 +147,10 @@ public class Cursor extends Actor{
 		posicionActual = Posicion.IZQUIERDA;
 	}
 	
+	/**
+	 * Con este método nos movemos a la izquierda
+	 * @param delta
+	 */
 	public void moverIzquierda(float delta){
 		velocity.x = -1;
 		velocity.y = 0;
@@ -164,6 +167,10 @@ public class Cursor extends Actor{
         getLimites().setPosition(getX(), getY());
 	}
 	
+	/**
+	 * Con este método nos movemos a la derecha
+	 * @param delta
+	 */
 	public void moverDerecha(float delta){
 		velocity.x = 1;
 		velocity.y = 0;
@@ -179,6 +186,11 @@ public class Cursor extends Actor{
 	    //Actualizamos la posición de los límites
 	    getLimites().setPosition(getX(), getY());
 	}
+	
+	/**
+	 * Con este método nos movemos hacia arriba
+	 * @param delta
+	 */
 	public void moverArriba(float delta){
 		velocity.x = 0;
 		velocity.y = 1;
@@ -195,6 +207,10 @@ public class Cursor extends Actor{
         getLimites().setPosition(getX(), getY());
 	}
 	
+	/**
+	 * Con este método nos movemos hacia abajo
+	 * @param delta
+	 */
 	public void moverAbajo(float delta){
 		velocity.y = -1;
 		velocity.x = 0;
@@ -219,14 +235,26 @@ public class Cursor extends Actor{
 		return limites;
 	}
 	
+	/**
+	 * Devuelve la posición actual del cursor
+	 * @return posicionActual
+	 */
 	public Posicion getPosicion(){
 		return posicionActual;
 	}
 	
+	/**
+	 * Devuelve el inventario asociado al cursor
+	 * @return inventario
+	 */
 	public Inventario getInventario(){
 		return inventario;
 	}
 	
+	/**
+	 * Devuelve a la velocidad a la que se mueve el cursor
+	 * @return velocidad
+	 */
 	public float getVelocidad(){
 		return velocidad;
 	}

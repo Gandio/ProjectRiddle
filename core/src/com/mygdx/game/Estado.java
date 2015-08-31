@@ -54,6 +54,7 @@ public abstract class Estado {
 	 */
 
 	public Estado(int numEstado, String pista) {
+		System.out.println("estado " + numEstado);
 		try {
 			if (MyGdxGame.SUSPENSE_AMBIENTE)
 				raiz = reader.parse(Gdx.files

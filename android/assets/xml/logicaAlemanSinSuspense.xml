@@ -44,7 +44,6 @@
             <objeto tipoObjeto = "Llave"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und nimm den Schlüssel!"/> <!--Texto del personaje-->
-            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Ve a la cocina"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Coge la llave"/>
             <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
@@ -55,7 +54,6 @@
             <objeto tipoObjeto = "Reloj"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und nimm die Uhr!"/> <!--Texto del personaje-->
-            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Ve al baño"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Coge el reloj"/>
             <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
@@ -66,7 +64,6 @@
             <objeto tipoObjeto = "Zapato"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Badezimmer! Such und nimm den Schuh!"/> <!--Texto del personaje-->
-            <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Ve al dormitorio"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Coge la llave"/>
             <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->

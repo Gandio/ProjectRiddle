@@ -34,6 +34,10 @@ public class Arma extends Actor{
 	private static MyGdxGame game = Inicio.game;
 	private Sound error;
 	
+	public enum NombreArma{
+		DAGA, PISTOLA, RIFLE, SERPIENTE
+	}
+	
 	/**
 	 * Constructor de la clase
 	 * @param t

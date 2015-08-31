@@ -29,6 +29,10 @@ public class Asesino extends Actor{
 	private static MyGdxGame game = Inicio.game;
 	private Sound error;
 	
+	public enum NombreAsesino{
+		NIÑA, JOVEN, MUJER, HOMBRE, ANCIANA
+	}
+	
 	/**
 	 * Constructor de la clase.
 	 */

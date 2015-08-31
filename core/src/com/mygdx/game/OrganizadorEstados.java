@@ -10,8 +10,10 @@ import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
 import Objetos.Puntuacion;
+import Puzzle.Asesino.NombreAsesino;
 import Puzzle.Inventario;
 import Puzzle.PantallaAsesino;
+import Puzzle.Arma.NombreArma;
 import Pantallas.Atico;
 import Pantallas.Baño;
 import Pantallas.Biblioteca;
@@ -42,8 +44,8 @@ public class OrganizadorEstados {
 	protected Array<Element> pistasArma;
 	protected Array<String> pistas;
 	
-	private static int asesino;
-	private static int arma;
+	private static NombreAsesino nombreAsesino;
+	private static NombreArma nombreArma;
 	
 	/**
 	 * Constructor de la clase
@@ -65,18 +67,28 @@ public class OrganizadorEstados {
 		 * 4 - mujer
 		 */
 		
-		asesino = rm.nextInt((4 - 0) + 1) + 0;
+		int asesino = rm.nextInt((4 - 0) + 1) + 0;
 		try{
-			if(asesino == 0)
+			if(asesino == 0){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasChica.xml"));
-			else if(asesino == 1)
+				nombreAsesino = NombreAsesino.NIÑA;
+			}
+			else if(asesino == 1){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasHombre.xml"));
-			else if(asesino == 2)
+				nombreAsesino = NombreAsesino.HOMBRE;
+			}
+			else if(asesino == 2){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasJoven.xml"));
-			else if(asesino == 3)
+				nombreAsesino = NombreAsesino.JOVEN;
+			}
+			else if(asesino == 3){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasMujerMayor.xml"));
-			else
+				nombreAsesino = NombreAsesino.ANCIANA;
+			}
+			else{
 				raiz = reader.parse(Gdx.files.internal("xml/pistasMujer.xml"));
+				nombreAsesino = NombreAsesino.MUJER;
+			}
 				
 		}catch(IOException e){}
 		
@@ -89,7 +101,7 @@ public class OrganizadorEstados {
 		//Vamos a escoger el arma y las pistas para descubrirla
 		
 		rm = new Random();
-		arma = rm.nextInt((3 - 0) + 1) + 0;
+		int arma = rm.nextInt((3 - 0) + 1) + 0;
 		/*
 		 * 0 - daga
 		 * 1 - pistola
@@ -98,14 +110,22 @@ public class OrganizadorEstados {
 		 */
 		
 		try{
-			if(arma == 0)
+			if(arma == 0){
 				raiz = reader.parse(Gdx.files.internal("xml/dagaPistas.xml"));
-			else if(arma == 1)
+				nombreArma = NombreArma.DAGA;
+			}
+			else if(arma == 1){
 				raiz = reader.parse(Gdx.files.internal("xml/pistolaPistas.xml"));
-			else if(arma == 2)
+				nombreArma = NombreArma.PISTOLA;
+			}
+			else if(arma == 2){
 				raiz = reader.parse(Gdx.files.internal("xml/riflePistas.xml"));
-			else
+				nombreArma = NombreArma.RIFLE;
+			}
+			else{
 				raiz = reader.parse(Gdx.files.internal("xml/serpientePistas.xml"));
+				nombreArma = NombreArma.SERPIENTE;
+			}
 				
 		}catch(IOException e){}
 		
@@ -229,8 +249,8 @@ public class OrganizadorEstados {
 	 * @return
 	 */
 	
-	public static int getAsesino(){
-		return asesino;
+	public static NombreAsesino getAsesino(){
+		return nombreAsesino;
 	}
 	
 	/**
@@ -238,8 +258,8 @@ public class OrganizadorEstados {
 	 * @return
 	 */
 	
-	public static int getArma(){
-		return arma;
+	public static NombreArma getArma(){
+		return nombreArma;
 	}
 	
 	/**
