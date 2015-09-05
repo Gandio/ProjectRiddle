@@ -69,7 +69,7 @@ public class PantallaArma implements Screen{
 		else if(OrganizadorEstados.getArma().equals(NombreArma.SERPIENTE)) //se usa la serpiente
 			armas.get(3).setUsada(true);
 		
-		textura = new Texture(Gdx.files.internal("Imagenes/pruebaFondoPasillo.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/pantallaArma.png"));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
 		musica.play();
 		

@@ -37,8 +37,7 @@ public final class  Sotano extends Habitacion {
 	 */
 	
 	private Sotano(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Sotano.game = game;
+		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 
 		//Objetos

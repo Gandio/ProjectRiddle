@@ -34,8 +34,7 @@ public final class Cocina extends Habitacion {
 	 * @param c
 	 */
 	private Cocina(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Cocina.game = game;
+		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos

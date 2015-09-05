@@ -1,5 +1,7 @@
 package Objetos;
 
+import Pantallas.Inicio;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
@@ -27,7 +29,7 @@ public class CuadroTexto extends Actor{
 	 */
 	
 	public CuadroTexto(MyGdxGame game){
-		this.game = game;
+		this.game = Inicio.game;
 		
 	}
 	

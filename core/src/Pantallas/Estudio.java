@@ -37,8 +37,7 @@ public final class Estudio extends Habitacion {
 	 */
 	
 	private Estudio(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Estudio.game = game;
+		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 	
 		//Objetos

@@ -3,4 +3,5 @@
     <pista id = "1" texto = "Ich weiss, dass der Mörder keine Frau ist."></pista> <!--El asesino no es mujer-->
     <pista id = "2" texto = "Ich weiss, dass der Mörder eine Brille trägt."></pista> <!--El asesino lleva gafas-->
     <pista id = "3" texto = "Ich weiss, dass der Mörder eine Krawatte trägt."></pista> <!--El asesino lleva corbata-->
+    <pista id = "4" texto = "Ich weiss, dass der Mörder keine Kette trägt."></pista> <!--no lleva collar-->
 </pistas>

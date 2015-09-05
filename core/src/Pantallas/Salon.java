@@ -48,13 +48,13 @@ public final class Salon extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitación
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			objetos.add(pistola);
 			objetos.add(rifle);
 			objetos.add(tabaco);
 			
-			pistola.setCoordenadas(1120, 15);
-			rifle.setCoordenadas(350, 10);
+			pistola.setCoordenadas(600, 25);
+			rifle.setCoordenadas(50, 100);
 			tabaco.setCoordenadas(500, 240);
 			
 		}else{

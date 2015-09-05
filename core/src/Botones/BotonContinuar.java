@@ -2,6 +2,7 @@ package Botones;
 
 import Pantallas.Inicio;
 import Pantallas.Pasillo;
+import Puzzle.PantallaAsesino;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -55,6 +56,7 @@ public class BotonContinuar extends Boton{
 		if(pulsado){
 			sonido.play();
 			game.getScreen().dispose();
+			//game.setScreen(new PantallaAsesino());
 			game.setScreen(new Pasillo(Inicio.game));
 		}
 		

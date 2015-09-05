@@ -77,7 +77,7 @@ public class Introduccion implements Screen {
 		batch.end();
 		
 		botonContinuar.esPulsado();
-		botonContinuar.setCoordenadas(300, 300);
+		botonContinuar.setCoordenadas(900, 0);
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();

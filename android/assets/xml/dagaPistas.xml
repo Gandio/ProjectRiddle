@@ -2,4 +2,5 @@
 <pistas>
     <pista id = "1" texto = "Ich weiss, dass der Mörder aus kleiner Distanz tötet."></pista> <!--Corta distancia-->
     <pista id = "2" texto = "Ich weiss, dass der Mörder konventionelle Waffen liebt."></pista> <!--Armas normales-->
+    <pista id = "3" texto = "Ich weiss, dass der Mörder kleine Waffen liebt."></pista> <!--El asesino usa armas pequeñas-->
 </pistas>

@@ -35,7 +35,7 @@ public class OrganizadorEstados {
 	private static ArrayList<Estado> estados;
 	private static OrganizadorEstados unicaInstancia;
 	private static int estadoActual = 0;
-	private static int nEstados = 5; //numero total de estados del juego
+	private static int nEstados = 7; //numero total de estados del juego
 	private static Estado e;
 	
 	protected XmlReader reader = new XmlReader();
@@ -140,11 +140,11 @@ public class OrganizadorEstados {
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
-			if(i == 1 || i == 3)
+			if(i == 1 || i == 2 || i == 4 || i == 5)
 				estados.add(new EstadoDecision(i, pistas.get(j)));
-			else if(i == 2 || i == 5)
+			else if(i == 3 || i == 7)
 				estados.add(new EstadoCogerObjeto(i, pistas.get(j)));
-			else if(i == 4)
+			else if(i == 6)
 				estados.add(new EstadoCombinarObjeto(i, pistas.get(j)));
 			
 			if(i > 1){
@@ -303,10 +303,10 @@ public class OrganizadorEstados {
 		
 		if(estadoActual.getClass().equals(EstadoCogerObjeto.class) || estadoActual.getClass().equals(EstadoCombinarObjeto.class)){
 			//Se inicia la misión, solo si estamos en la habitación del inicio del puzzle
-			if(cadenaClase.equals(game.getScreen().getClass().toString()))
+			if(cadenaClase.equals(game.getScreen().getClass().toString())){
 				estadoActual.seIniciaMision(true);
+			}
 			
-				
 			//Se entrega el objeto, es decir, lo borramos del inventario
 			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.objetoConseguido()){
 				Inventario.borrarObjeto(estadoActual.getItem());
@@ -314,11 +314,13 @@ public class OrganizadorEstados {
 			}
 		}else if(estadoActual.getClass().equals(EstadoDecision.class)){
 			//Estamos en la habitacion de inicio y además ya se ha hablado con la persona, nos muestran las elecciones
-			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.misionEnCurso()){
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && estadoActual.misionEnCurso()){				
 				((Habitacion) game.getScreen()).horaDeElegir();
 			}
 			
-			estadoActual.seIniciaMision(true);
+			if(cadenaClase.equals(game.getScreen().getClass().toString())){
+				estadoActual.seIniciaMision(true);
+			}
 			
 			if(((EstadoDecision) estadoActual).getEleccionCorrecta() == 0){
 				((Habitacion) game.getScreen()).terminarConversacion();

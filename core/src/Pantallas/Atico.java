@@ -36,8 +36,7 @@ public final class Atico extends Habitacion {
 	 */
 	
 	private Atico(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Atico.game = game;
+		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos

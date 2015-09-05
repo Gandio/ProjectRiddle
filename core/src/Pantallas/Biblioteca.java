@@ -34,8 +34,7 @@ public final class Biblioteca extends Habitacion {
 	 */
 	
 	private Biblioteca(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Biblioteca.game = game;
+		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos

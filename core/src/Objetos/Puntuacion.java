@@ -35,7 +35,7 @@ public final class Puntuacion extends Actor{
 		Puntuacion.game = game;
 		puntos = 0;
 		numFallos = 0;
-		texto = "Puntos: " + puntos;
+		texto = "Punkte: " + puntos;
 		font = new BitmapFont();
 		font.scale(1.5f);
 		coordenadas = new Vector2();
@@ -57,7 +57,7 @@ public final class Puntuacion extends Actor{
 	
 	public static void setPuntuacion(int p){
 		puntos += p;
-		texto = "Puntos: " + puntos;
+		texto = "Punkte: " + puntos;
 	}
 	
 	/**

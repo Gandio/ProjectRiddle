@@ -36,7 +36,7 @@ public final class Inventario implements Screen{
 	private static MyGdxGame game;
 	private static Inventario unicaInstancia;
 	
-	protected Stage stage;
+	protected static Stage stage;
 	protected static Music musica;
 	private Texture textura;
 	private static Array<Objeto> inventario;
@@ -234,9 +234,11 @@ public final class Inventario implements Screen{
 		
 		while(iter.hasNext()){
 			//Comparamos los identificadores
-			if(iter.next().getIdentificador()== b.getIdentificador()){
+			if(iter.next().getIdentificador() == b.getIdentificador()){
+				System.out.println(b.getIdentificador());
 				iter.remove();
 				b.remove();
+				System.out.println(stage.getActors());
 			}
 		}
 	}

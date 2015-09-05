@@ -62,7 +62,7 @@ public class PantallaAsesino implements Screen{
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png"))));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png"))));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"))));
-				
+		
 		if(OrganizadorEstados.getAsesino().equals(NombreAsesino.NIÑA)) //es la niña
 			asesinos.get(0).setCulpable(true);
 		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.HOMBRE)) //es el hombre
@@ -74,7 +74,7 @@ public class PantallaAsesino implements Screen{
 		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.MUJER)) //es la mujer
 			asesinos.get(4).setCulpable(true);
 		
-		textura = new Texture(Gdx.files.internal("Imagenes/pruebaFondoPasillo.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/pantallaAsesino.png"));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
 		musica.play();
 		

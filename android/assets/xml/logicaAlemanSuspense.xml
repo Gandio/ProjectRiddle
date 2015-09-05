@@ -16,7 +16,24 @@
         </puzzle>
     </estado>
     
-    <estado fase = "2">
+   <estado fase = "2">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Salon"/>
+            <dialogo texto = "Dime donde está la serpiente"/>
+            <opcion1 texto = "Biblioteca" correcto = "si"/>
+            <opcion2 texto = "Atico" correcto = "no"/>
+            <opcion3 texto = "Sotano" correcto = "no"/>
+            <opcion4 texto = "Dormitorio" correcto = "no"/>
+            <pista texto = "El asesino tiene una cabeza"/>
+            <objetivo1 texto = "Ve al salon"/>
+            <objetivo2 texto = "Descubre donde esta la serpiente"/>
+            <fallo texto = "Vuelve a intentarlo"/>
+            <prePuzzle texto = "¿Ya lo sabes?"/>
+        </puzzle>
+    </estado>
+   
+    
+    <estado fase = "3">
         <puzzle id = "1">
             <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Sotano"/> <!--Habitacion donde se inicia el puzzle y termina-->
             <objeto tipoObjeto = "Veneno"/> <!--Objeto que participa en el puzzle-->
@@ -28,7 +45,7 @@
         </puzzle>
     </estado>
 
-   <estado fase = "3">
+   <estado fase = "4">
         <puzzle id = "1">
             <habitacion tipoHabitacionInicio = "Salon"/>
             <dialogo texto = "Dime donde está la serpiente"/>
@@ -44,9 +61,25 @@
         </puzzle>
     </estado>
     
-    <estado fase = "4">
+   <estado fase = "5">
         <puzzle id = "1">
-            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal1 = "Sotano" tipoHabitacionFinal2 = "Sotano"/> <!--Habitacion donde se inicia el puzzle-->
+            <habitacion tipoHabitacionInicio = "Salon"/>
+            <dialogo texto = "Dime donde está la serpiente"/>
+            <opcion1 texto = "Biblioteca" correcto = "si"/>
+            <opcion2 texto = "Atico" correcto = "no"/>
+            <opcion3 texto = "Sotano" correcto = "no"/>
+            <opcion4 texto = "Dormitorio" correcto = "no"/>
+            <pista texto = "El asesino tiene una cabeza"/>
+            <objetivo1 texto = "Ve al salon"/>
+            <objetivo2 texto = "Descubre donde esta la serpiente"/>
+            <fallo texto = "Vuelve a intentarlo"/>
+            <prePuzzle texto = "¿Ya lo sabes?"/>
+        </puzzle>
+    </estado>
+    
+    <estado fase = "6">
+        <puzzle id = "1">
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal1 = "Sotano" tipoHabitacionFinal2 = "Biblioteca"/> <!--Habitacion donde se inicia el puzzle-->
             <objeto tipoObjetoFinal = "SerpienteEnjaulada" tipoObjeto1 = "Jaula" tipoObjeto2 = "Serpiente"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Such bitte den Kaffee. Aber bitte einen süssen Kaffee!" /> <!--Texto del personaje-->
@@ -54,18 +87,17 @@
             <objetivo1 texto = "Ve al dormitorio"/>
             <objetivo2 texto = "Encuentra una serpiente y atrápala"/> <!--Objetivo que aparece en el inventario-->
             <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
-            <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
     </estado>>
    
-    <estado fase = "5">
+    <estado fase = "7">
         <puzzle id = "1">
-            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Sotano"/> <!--Habitacion donde se inicia el puzzle y termina-->
-            <objeto tipoObjeto = "Veneno"/> <!--Objeto que participa en el puzzle-->
+            <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal = "Salon"/> <!--Habitacion donde se inicia el puzzle y termina-->
+            <objeto tipoObjeto = "Tabaco"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Coge el veneno"/> <!--Texto del personaje-->
-            <objetivo1 texto = "Ve al sotano"/> <!--Objetivo que aparece en el inventario-->
-            <objetivo2 texto = "Coge el veneno"/>
+            <objetivo1 texto = "Ve al salon"/> <!--Objetivo que aparece en el inventario-->
+            <objetivo2 texto = "Coge el tabaco"/>
             <postPuzzle texto = "Was ist los? Zackibacki! Geh!!!!"/> <!--Date prisa y haz el puzzle-->
         </puzzle>
     </estado>

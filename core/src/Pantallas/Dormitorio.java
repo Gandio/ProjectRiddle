@@ -43,19 +43,18 @@ public final class Dormitorio extends Habitacion {
 	 */
 	
 	private Dormitorio(MyGdxGame game, Cursor c) {
-		super(game, c);
-		Dormitorio.game = game;
+		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			objetos.add(mascara);
 			objetos.add(basura);
 			
 			mascara.setCoordenadas(300, 170);
-			basura.setCoordenadas(800, 100);
+			basura.setCoordenadas(950, 100);
 		}else{
 			objetos.add(espejo);
 			objetos.add(libro);
@@ -103,7 +102,7 @@ public final class Dormitorio extends Habitacion {
 	 * Muestra la textura del dormitorio, depende si el suspense está activado o no
 	 */
 	public void show() {
-		if(MyGdxGame.SUSPENSE){
+		if(MyGdxGame.SUSPENSE_AMBIENTE){
 			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/dormitorio.png"));
 		}else{
 			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/dormitorioSin.png"));

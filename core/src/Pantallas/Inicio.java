@@ -115,11 +115,11 @@ public class Inicio implements Screen{
 		 * La situación de los botones también dependen de esta variable
 		 */
 		if(MyGdxGame.SUSPENSE_AMBIENTE){
-			inicio.setCoordenadas(460, 170);
-			salir.setCoordenadas(580, 100);
-		}else{
-			inicio.setCoordenadas(420, 180);
+			inicio.setCoordenadas(500, 170);
 			salir.setCoordenadas(540, 100);
+		}else{
+			inicio.setCoordenadas(430, 170);
+			salir.setCoordenadas(500, 100);
 		}
 	}
 	

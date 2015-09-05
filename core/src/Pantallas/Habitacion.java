@@ -34,7 +34,7 @@ import com.mygdx.game.OrganizadorEstados;
 public abstract class Habitacion implements Screen {
 
 	// Juego
-	public static MyGdxGame game = Pasillo.game;
+	public static MyGdxGame game = Inicio.game;
 	protected Stage stage;
 	protected Music musica;
 	protected Texture pantalla;
