@@ -142,9 +142,9 @@ public class OrganizadorEstados {
 			
 			if(i == 1 || i == 2 || i == 4 || i == 5)
 				estados.add(new EstadoDecision(i, pistas.get(j)));
-			else if(i == 3 || i == 7)
+			else if(i == 3 || i == 6)
 				estados.add(new EstadoCogerObjeto(i, pistas.get(j)));
-			else if(i == 6)
+			else if(i == 7)
 				estados.add(new EstadoCombinarObjeto(i, pistas.get(j)));
 			
 			if(i > 1){

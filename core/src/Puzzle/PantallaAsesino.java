@@ -76,6 +76,8 @@ public class PantallaAsesino implements Screen{
 		
 		textura = new Texture(Gdx.files.internal("Imagenes/pantallaAsesino.png"));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
+		
+		musica.setLooping(true);
 		musica.play();
 		
 		for(int i = 0; i < asesinos.size; ++i){

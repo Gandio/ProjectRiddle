@@ -6,6 +6,7 @@ import Botones.BotonSiguienteConversacion;
 import Pantallas.Habitacion;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -44,7 +45,11 @@ public class CuadroDialogo extends CuadroTexto{
 		siguienteConversacion = new BotonSiguienteConversacion(game);
 		finConversacion = new BotonFinConversacion(game);
 		
-		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTexto.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTextoSuspense.png"));
+		else
+			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTexto.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 	
 		siguienteConversacion.setCoordenadas(1180, 20);
@@ -79,6 +84,10 @@ public class CuadroDialogo extends CuadroTexto{
 		 */
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(3f);
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE) 
+			font.setColor(Color.BLACK);
+		
 		String textoConLimites = wrapString(texto, 50);
 		textos = dividirTexto(textoConLimites);
 		

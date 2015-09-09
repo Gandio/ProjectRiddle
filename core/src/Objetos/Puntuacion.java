@@ -57,6 +57,9 @@ public final class Puntuacion extends Actor{
 	
 	public static void setPuntuacion(int p){
 		puntos += p;
+		
+		if(puntos < 0) puntos = 0; //con esto impedimos puntuación negativa
+		
 		texto = "Punkte: " + puntos;
 	}
 	

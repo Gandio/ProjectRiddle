@@ -1,6 +1,7 @@
 package Objetos;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -37,7 +38,8 @@ public class CuadroEstado extends CuadroTexto{
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
-		String textoConLimites = wrapString(texto, 15); //como máximo 15 caracteres por linea
+		font.setColor(Color.BLACK);
+		String textoConLimites = wrapString(texto, 14); //como máximo 15 caracteres por linea
 		
 		font.drawMultiLine(batch, textoConLimites, 145, 490);
 	}

@@ -68,7 +68,7 @@
 	</objeto>
 	
 	<objeto nombre = "LibroPintado">
-		<descripcion texto = "Tiene mi firma."/> 
+		<descripcion texto = "Das hat meine Unterschrift."/> 
 	</objeto>
 	
 	<objeto nombre = "Llave">

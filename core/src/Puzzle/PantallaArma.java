@@ -55,10 +55,10 @@ public class PantallaArma implements Screen{
 		
 		armas = new Array<Arma>();
 		
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonDaga.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonPistola.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonRifle.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonSerpiente.png"))));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaDaga.png"))));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaPistola.png"))));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaRifle.png"))));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaSerpiente.png"))));
 		
 		if(OrganizadorEstados.getArma().equals(NombreArma.DAGA)) //se usa la daga
 			armas.get(0).setUsada(true);
@@ -71,6 +71,8 @@ public class PantallaArma implements Screen{
 		
 		textura = new Texture(Gdx.files.internal("Imagenes/pantallaArma.png"));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
+		
+		musica.setLooping(true);
 		musica.play();
 		
 		for(int i = 0; i < armas.size; ++i){
@@ -97,8 +99,8 @@ public class PantallaArma implements Screen{
 		
 		int coordenadaAux = 100; //los actores se empiezan a dibujar a patir de esta posición
 		for(int i = 0; i < armas.size; ++i){
-			armas.get(i).setCoordenadas(coordenadaAux, 0);
-			coordenadaAux += 100;
+			armas.get(i).setCoordenadas(coordenadaAux, 100);
+			coordenadaAux += 250;
 		}
 		
 		for(int i = 0; i < armas.size; ++i){

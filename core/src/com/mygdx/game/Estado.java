@@ -57,11 +57,12 @@ public abstract class Estado {
 		System.out.println("estado " + numEstado);
 		try {
 			if (MyGdxGame.SUSPENSE_AMBIENTE)
-				raiz = reader.parse(Gdx.files
-						.internal("xml/logicaAlemanSuspense.xml"));
+				if(MyGdxGame.TEST)
+					raiz = reader.parse(Gdx.files.internal("xml/prueba.xml"));
+				else
+					raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSuspense.xml"));
 			else
-				raiz = reader.parse(Gdx.files
-						.internal("xml/logicaAlemanSinSuspense.xml"));
+				raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSinSuspense.xml"));
 		} catch (IOException e) {
 		}
 
@@ -287,6 +288,6 @@ public abstract class Estado {
 				siguienteHabitacion = child.getAttribute("texto");
 		}
 
-		pistaPersonaje = pistaPersonaje + siguienteHabitacion;
+		pistaPersonaje = pistaPersonaje + " " + siguienteHabitacion;
 	}
 }

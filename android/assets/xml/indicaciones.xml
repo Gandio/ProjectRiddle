@@ -4,8 +4,8 @@
     <habitacion nombre = "Dormitorio" texto = "Geh jetzt bitte ins Schlafzimmer und such neue Informationen!"></habitacion>
     <habitacion nombre = "Atico" texto = "Geh jetzt bitte auf den Dachboden und such neue Informationen!"></habitacion>
     <habitacion nombre = "Sotano" texto = "Geh jetzt bitte in den Keller und such neue Informationen!"></habitacion>
-    <habitacion nombre = "Biblioteca" texto = "Geh jetzt bitte die Bibliothek und such neue Informationen!"></habitacion>
-    <habitacion nombre = "Cocina" texto = "Geh jetzt bitte la cocina und such neue Informationen!"></habitacion>
-    <habitacion nombre = "Estudio" texto = "Geh jetzt bitte al estudio und such neue Informationen!"></habitacion>
-    <habitacion nombre = "Baño" texto = "Geh jetzt bitte al baño und such neue Informationen!"></habitacion>
+    <habitacion nombre = "Biblioteca" texto = "Geh jetzt bitte in die Bibliothek und such neue Informationen!"></habitacion>
+    <habitacion nombre = "Cocina" texto = "Geh jetzt bitte in die Küche und such neue Informationen!"></habitacion>
+    <habitacion nombre = "Estudio" texto = "Geh jetzt bitte ins Arbeitszimmer und such neue Informationen!"></habitacion>
+    <habitacion nombre = "Baño" texto = "Geh jetzt bitte ins Badezimmer und such neue Informationen!"></habitacion>
 </habitaciones>

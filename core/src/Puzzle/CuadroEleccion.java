@@ -36,7 +36,11 @@ public class CuadroEleccion extends CuadroTexto{
 		super(game);
 		this.game = game;
 		
-		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroEleccion.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroEleccionSuspense.png"));
+		else
+			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroEleccion.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 		
 		texto = "";
@@ -52,7 +56,10 @@ public class CuadroEleccion extends CuadroTexto{
 	public void draw(Batch batch, float parentAlpha){
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
-		font.setColor(Color.BLACK);
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE) 
+			font.setColor(Color.BLACK);
+		
 		//No hace falta cuadrar el texto, este texto solo va a consistir en un par de 
 		//palabras
 		font.drawMultiLine(batch, texto, coordenadas.x + 20, coordenadas.y + 50); //esto hay que ajustarlo

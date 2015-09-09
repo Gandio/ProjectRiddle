@@ -36,24 +36,39 @@ public class Cursor extends Actor{
 	 */
 	public Cursor(MyGdxGame game) {
 		//Creamos el grafico del cursor
-		cursor = new Texture(Gdx.files.internal("Imagenes/personaje.png"));
-		tmp = TextureRegion.split(cursor, cursor.getWidth() / 4, cursor.getHeight());
-		arriba = new TextureRegion[3];
-		arriba[0] = arriba[1] = arriba[2] = tmp[0][0];
-		abajo = new TextureRegion[3];
-		abajo[0] = abajo[1] = abajo[2] = tmp[0][2];
-		derecha = new TextureRegion[3];
-		derecha[0] = derecha[1] = derecha[2] = tmp[0][3];
-		izquierda = new TextureRegion[3];
-		izquierda[0] = izquierda[1] = izquierda[2] = tmp[0][1];
+		cursor = new Texture(Gdx.files.internal("Imagenes/nuevoCursor.png"));
+		tmp = TextureRegion.split(cursor, cursor.getWidth() / 3, cursor.getHeight() / 4);
+		arriba = new TextureRegion[4];
+		arriba[0] = tmp[0][1];  
+		arriba[1] = tmp[0][0];
+		arriba[2] = tmp[0][1]; 
+		arriba[3] = tmp[0][2];
+		
+		abajo = new TextureRegion[4];
+		abajo[0] = tmp[2][1];
+		abajo[1] = tmp[2][0];
+		abajo[2] = tmp[2][1];
+		abajo[3] = tmp[2][2];
+		
+		derecha = new TextureRegion[4];
+		derecha[0] = tmp[1][1];
+		derecha[1] = tmp[1][0];
+		derecha[2] = tmp[1][1];
+		derecha[3] = tmp[1][2];
+		
+		izquierda = new TextureRegion[4];
+		izquierda[0] = tmp[3][1];
+		izquierda[1] = tmp[3][0];
+		izquierda[2] = tmp[3][1];
+		izquierda[3] = tmp[3][2];
 		
 		//Al principio del juego el personaje mirará hacia arriba y se situará en la entrada
 		frameActual = new TextureRegion(arriba[0]);
 		
 		stateTime = 0f;
 		setPosition(830, 170);
-		setWidth(cursor.getWidth() / 4);
-		setHeight(cursor.getHeight());
+		setWidth(cursor.getWidth() / 3);
+		setHeight((cursor.getHeight() / 4) - 40);
 		
 		//Creamos la animación
 		moverArriba = new Animation(0.3f, arriba);
@@ -65,7 +80,7 @@ public class Cursor extends Actor{
 		
 		//Creamos un rectangulo que envuelva al personaje, nos ayudará con las colisiones
 		limites = new Rectangle();
-		limites.setSize(cursor.getWidth() / 4, cursor.getHeight());
+		limites.setSize(cursor.getWidth() / 3, cursor.getHeight() / 4);
 	}
 	
 	/**

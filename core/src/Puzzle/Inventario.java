@@ -81,6 +81,7 @@ public final class Inventario implements Screen{
 		
 		// Música
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
+		musica.setLooping(true);
 		
 		estado = EstadoInventario.NORMAL;
 		inventario = new Array<Objeto>();
@@ -235,10 +236,8 @@ public final class Inventario implements Screen{
 		while(iter.hasNext()){
 			//Comparamos los identificadores
 			if(iter.next().getIdentificador() == b.getIdentificador()){
-				System.out.println(b.getIdentificador());
 				iter.remove();
 				b.remove();
-				System.out.println(stage.getActors());
 			}
 		}
 	}

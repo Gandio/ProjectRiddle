@@ -5,6 +5,7 @@ import Items.CafeAzucar;
 import Items.LibroPintado;
 import Items.Objeto;
 import Items.SerpienteEnjaulada;
+import Pantallas.Inicio;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -14,6 +15,11 @@ import com.badlogic.gdx.graphics.Texture;
  */
 
 public class Tools {
+	
+	private static Objeto serpienteEnjaulada = new SerpienteEnjaulada(Inicio.game);
+	private static Objeto cafeAzucar = new CafeAzucar(Inicio.game);
+	private static Objeto libroPintado = new LibroPintado(Inicio.game);
+	
 	
 	/**
 	 * Modifica el alto de una textura para que aparezca centrada en cualquier tamaño de 
@@ -46,9 +52,9 @@ public class Tools {
 	 * @return
 	 */
 	public static Objeto devolverCombinacion(MyGdxGame game, int i, int j){
-		if((i == 0 && j == 2) || (i == 2 && j == 0)) return new CafeAzucar(game);
-		else if((i == 1 && j == 4) || (i == 4 && j == 1)) return new LibroPintado(game);
-		else if((i == 3 && j == 5) || (i == 5 && j == 3)) return new SerpienteEnjaulada(game);
+		if((i == 0 && j == 2) || (i == 2 && j == 0)) return cafeAzucar;
+		else if((i == 1 && j == 4) || (i == 4 && j == 1)) return libroPintado;
+		else if((i == 3 && j == 5) || (i == 5 && j == 3)) return serpienteEnjaulada;
 		else return null;
 	}
 }
