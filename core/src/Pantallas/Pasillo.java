@@ -39,7 +39,7 @@ public class Pasillo implements Screen{
 	protected Stage stage;
 	protected static Music musica;
 	protected Texture pantalla;
-	private boolean debug = false;
+	private boolean debug = true;
 	
 	//Cámaras
 	protected OrthographicCamera camara;
@@ -111,7 +111,7 @@ public class Pasillo implements Screen{
 		
 		//Preparamos las colisiones con las paredes
 		colisionesParedes.add(new Rectangle(255, 403, 1000, 120)); //pared con dos puertas
-		colisionesParedes.add(new Rectangle(255, 403, 50, 430)); //superior derecha 
+		colisionesParedes.add(new Rectangle(255, 460, 50, 430)); //superior derecha 
 		colisionesParedes.add(new Rectangle(20, 690, 250, 50)); //superior
 		colisionesParedes.add(new Rectangle(0, 150, 35, 550)); //superior izquierda puerta
 		colisionesParedes.add(new Rectangle(0, 150, 765, 105)); //inferior puerta
@@ -295,7 +295,7 @@ public class Pasillo implements Screen{
 			cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
 	
 		sr.rect(255, 403, 1000, 120);
-		sr.rect(255, 403, 50, 430);
+		sr.rect(255, 460, 50, 430);
 		sr.rect(20, 690, 250, 50); //superior
 		sr.rect(0, 150, 35, 550); //superior izquierda puerta
 		sr.rect(0, 150, 765, 105); //inferior puerta

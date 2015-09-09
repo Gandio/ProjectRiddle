@@ -10,7 +10,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "ProjectRiddle";
-		config.width = 750;
+		config.width = 770;
 		new LwjglApplication(new MyGdxGame(), config);
 		Keyboard.enableRepeatEvents(true); //dejar pulsado los botones
 	}

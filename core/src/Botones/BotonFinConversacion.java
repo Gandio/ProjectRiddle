@@ -23,7 +23,12 @@ public class BotonFinConversacion extends Boton{
 	
 	public BotonFinConversacion(MyGdxGame game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal("Imagenes/Botones/finConv.png"));
+		//boton = new Texture(Gdx.files.internal("Imagenes/Botones/finConv.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonFinConversacionSuspense.png"));
+		else
+			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonFinConversacionSinSuspense.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	

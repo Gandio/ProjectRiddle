@@ -24,7 +24,8 @@ public abstract class Estado {
 	private String pistaPersonaje;
 	private String objetivo1;
 	private String objetivo2;
-	private String siguienteHabitacion; // indica la habitacion donde se desarrolla el próximo puzzle
+	private String agradecimiento;
+	protected String siguienteHabitacion; // indica la habitacion donde se desarrolla el próximo puzzle
 	
 	protected Objeto item;
 	
@@ -80,6 +81,7 @@ public abstract class Estado {
 		objetivo2 = puzzle.getChildByName("objetivo2").getAttribute("texto");
 		textoPersonaje = puzzle.getChildByName("dialogo").getAttribute("texto");
 		pistaPersonaje = pista;
+		agradecimiento = puzzle.getChildByName("agradecimiento").getAttribute("texto");
 		
 		contErrores = 0;
 	}
@@ -287,7 +289,8 @@ public abstract class Estado {
 			if(sigHab.equals(child.getAttribute("nombre")))
 				siguienteHabitacion = child.getAttribute("texto");
 		}
+		
 
-		pistaPersonaje = pistaPersonaje + " " + siguienteHabitacion;
+		pistaPersonaje = agradecimiento + " " + pistaPersonaje + " " + siguienteHabitacion;
 	}
 }

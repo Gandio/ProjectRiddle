@@ -84,7 +84,7 @@ public class Arma extends Actor{
 				
 				try {
 					writer = new PrintWriter(new FileWriter(prueba, true));
-					writer.println("Puntuacion final: " + Puntuacion.getPuntos() +  " --- " +
+					writer.println("Puntuacion final: " + Puntuacion.getPuntos() + "/7000" +  " --- " +
 									"Fallos totales: " + Puntuacion.getError());
 					writer.close();
 					} catch (IOException e) {

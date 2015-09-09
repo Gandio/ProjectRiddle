@@ -53,7 +53,8 @@ public class CuadroDialogo extends CuadroTexto{
 		coordenadas = new Vector2(Tools.centrarAncho(game, cuadroTexto), Tools.centrarAlto(game, cuadroTexto));
 	
 		siguienteConversacion.setCoordenadas(1180, 20);
-		finConversacion.setCoordenadas(1190, 30);
+		//finConversacion.setCoordenadas(1180, 30);
+		finConversacion.setCoordenadas(1070, 30);
 		
 		siguienteConversacion.setTouchable(Touchable.enabled);
 		finConversacion.setTouchable(Touchable.enabled);
