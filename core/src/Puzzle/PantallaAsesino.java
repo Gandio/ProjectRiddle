@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
@@ -74,7 +75,7 @@ public class PantallaAsesino implements Screen{
 		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.MUJER)) //es la mujer
 			asesinos.get(4).setCulpable(true);
 		
-		textura = new Texture(Gdx.files.internal("Imagenes/pantallaAsesino.png"));
+		textura = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ASESINO));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
 		
 		musica.setLooping(true);

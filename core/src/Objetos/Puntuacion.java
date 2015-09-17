@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 
 /**
  * Esta clase representa la puntuación que el jugador obtiene a lo largo  de la partida. 
@@ -35,7 +36,7 @@ public final class Puntuacion extends Actor{
 		Puntuacion.game = game;
 		puntos = 0;
 		numFallos = 0;
-		texto = "Punkte: " + puntos;
+		texto = "Punkte: " + puntos + "/7000";
 		font = new BitmapFont();
 		font.scale(1.5f);
 		coordenadas = new Vector2();
@@ -60,7 +61,7 @@ public final class Puntuacion extends Actor{
 		
 		if(puntos < 0) puntos = 0; //con esto impedimos puntuación negativa
 		
-		texto = "Punkte: " + puntos;
+		texto = "Punkte: " + puntos + "/7000";
 	}
 	
 	/**

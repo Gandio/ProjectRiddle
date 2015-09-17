@@ -38,8 +38,8 @@ public class CuadroDescripcion extends CuadroTexto{
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
 		font.setColor(Color.BLACK);
-		String textoConLimites = wrapString(texto, 17); //máximo 17 caracteres por linea
+		String textoConLimites = wrapString(texto, 14); //máximo 14 caracteres por linea
+		font.drawMultiLine(batch, textoConLimites, 145, 490);
 		
-		font.drawMultiLine(batch, textoConLimites, 900, 470);
 	}
 }

@@ -62,7 +62,7 @@ public class BotonIzquierda extends Boton{
 		while(i < paredes.size && !noIzquierda){
 			rectanguloAux = iRect.next();
 			nuevaCoordenada = rectanguloAux.getX() + rectanguloAux.getWidth();
-			if(cursor.getLimites().overlaps(rectanguloAux) && cursor.getX() == nuevaCoordenada - 1){
+			if(cursor.getLimites().overlaps(rectanguloAux) && cursor.getX() >= nuevaCoordenada - 2){
 				noIzquierda = true;
 			}
 			

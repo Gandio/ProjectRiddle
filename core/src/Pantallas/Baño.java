@@ -1,4 +1,4 @@
-package Pantallas;
+/*package Pantallas;
 
 import java.util.Iterator;
 
@@ -20,7 +20,7 @@ import com.mygdx.game.MyGdxGame;
  * @author Francisco Madueño Chulián
  */
 
-public final class Baño extends Habitacion {
+/*public final class Baño extends Habitacion {
 	
 	private static MyGdxGame game;
 	
@@ -36,7 +36,7 @@ public final class Baño extends Habitacion {
 	 * @param c
 	 */
 	
-	private Baño(MyGdxGame game, Cursor c) {
+	/*private Baño(MyGdxGame game, Cursor c) {
 		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 		
@@ -75,7 +75,7 @@ public final class Baño extends Habitacion {
 	/**
 	 * Este método se ejecuta todo el tiempo que el jugador permanezca en el baño
 	 */
-	public void render(float delta) {
+	/*public void render(float delta) {
 		super.render(delta);
 
 		Iterator<Objeto> iterObjetos = objetos.iterator();
@@ -90,7 +90,7 @@ public final class Baño extends Habitacion {
 	/**
 	 * Muestra la textura del baño
 	 */
-	public void show() {
+	/*public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/bathroom.png"));
 	}
 
@@ -104,11 +104,11 @@ public final class Baño extends Habitacion {
 	 * @return unicaInstancia
 	 */
 	
-	public static Baño getInstancia(){
+	/*public static Baño getInstancia(){
 		if(unicaInstancia == null){
 			unicaInstancia = new Baño(game, c);
 		}
 		
 		return unicaInstancia;
 	}
-}
+}*/

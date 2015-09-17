@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import Objetos.Puntuacion;
+import Pantallas.Final;
 import Pantallas.Inicio;
 
 import com.badlogic.gdx.Gdx;
@@ -93,7 +94,7 @@ public class Arma extends Actor{
 					}
 				} finally{}
 				
-				Gdx.app.exit();
+				game.setScreen(new Final());
 			}else{
 				Puntuacion.sumarError();
 				error.play();

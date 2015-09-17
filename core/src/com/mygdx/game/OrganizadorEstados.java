@@ -15,11 +15,11 @@ import Puzzle.Inventario;
 import Puzzle.PantallaAsesino;
 import Puzzle.Arma.NombreArma;
 import Pantallas.Atico;
-import Pantallas.Baño;
+//import Pantallas.Baño;
 import Pantallas.Biblioteca;
-import Pantallas.Cocina;
+//import Pantallas.Cocina;
 import Pantallas.Dormitorio;
-import Pantallas.Estudio;
+//import Pantallas.Estudio;
 import Pantallas.Habitacion;
 import Pantallas.Inicio;
 import Pantallas.Salon;
@@ -199,16 +199,16 @@ public class OrganizadorEstados {
 	private Habitacion conversorStringHabitacion(String s){
 		if(s.equals("Atico"))
 			return Atico.getInstancia();
-		else if(s.equals("Baño"))
-			return Baño.getInstancia();
+		//else if(s.equals("Baño"))
+			//return Baño.getInstancia();
 		else if(s.equals("Biblioteca"))
 			return Biblioteca.getInstancia();
-		else if(s.equals("Cocina"))
-			return Cocina.getInstancia();
+		//else if(s.equals("Cocina"))
+			//return Cocina.getInstancia();
 		else if(s.equals("Dormitorio"))
 			return Dormitorio.getInstancia();
-		else if(s.equals("Estudio"))
-			return Estudio.getInstancia();
+		//else if(s.equals("Estudio"))
+			//return Estudio.getInstancia();
 		else if(s.equals("Salon"))
 			return Salon.getInstancia();
 		else if(s.equals("Sotano"))

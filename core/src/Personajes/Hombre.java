@@ -23,7 +23,11 @@ public class Hombre extends Personaje{
 		super(game);
 		Hombre.game = game;
 		
-		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/hombre.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Hombre-suspense.png"));
+		else
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Hombre-neutro.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	

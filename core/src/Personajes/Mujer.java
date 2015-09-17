@@ -23,7 +23,11 @@ public class Mujer extends Personaje{
 		super(game);
 		Mujer.game = game;
 		
-		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-suspense.png"));
+		else
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-neutro.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	

@@ -13,6 +13,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -61,14 +62,14 @@ public final class  Sotano extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
-			//Actores
-			personaje = Joven.getInstancia();
+		//if(MyGdxGame.SUSPENSE_AMBIENTE){
+		//Actores
+		personaje = Joven.getInstancia();
 		
-			//añadimos los actores
-			stage.addActor(personaje);
-			personaje.setCoordenadas(450, 0);
-		}
+		//añadimos los actores
+		stage.addActor(personaje);
+		personaje.setCoordenadas(0, 0);
+		//}
 	}
 	
 	/**
@@ -93,7 +94,10 @@ public final class  Sotano extends Habitacion {
 	 */
 
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/sotano.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SOTANO_SUSPENSE));
+		else
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SOTANO));
 		
 	}
 

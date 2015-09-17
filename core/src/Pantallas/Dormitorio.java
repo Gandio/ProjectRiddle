@@ -15,6 +15,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -77,7 +78,7 @@ public final class Dormitorio extends Habitacion {
 		
 		//Actores
 		personaje = Hombre.getInstancia();
-		personaje.setCoordenadas(450, 0);
+		personaje.setCoordenadas(0, 0);
 		
 		//añadimos los actores
 		stage.addActor(personaje);
@@ -102,11 +103,10 @@ public final class Dormitorio extends Habitacion {
 	 * Muestra la textura del dormitorio, depende si el suspense está activado o no
 	 */
 	public void show() {
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
-			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/dormitorio.png"));
-		}else{
-			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/dormitorioSin.png"));
-		}
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DORMITORIO_SUSPENSE));
+		else
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DORMITORIO));
 	}
 
 	public void pause() {}

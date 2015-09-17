@@ -1,4 +1,4 @@
-package Pantallas;
+/*package Pantallas;
 
 import java.util.Iterator;
 
@@ -18,7 +18,7 @@ import com.mygdx.game.MyGdxGame;
  * Esta clase representa el objeto cocina
  * @author Francisco Madueño Chulián
  */
-public final class Cocina extends Habitacion {
+/*public final class Cocina extends Habitacion {
 	
 	private static MyGdxGame game;
 	
@@ -33,7 +33,7 @@ public final class Cocina extends Habitacion {
 	 * @param game
 	 * @param c
 	 */
-	private Cocina(MyGdxGame game, Cursor c) {
+	/*private Cocina(MyGdxGame game, Cursor c) {
 		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 		
@@ -73,7 +73,7 @@ public final class Cocina extends Habitacion {
 	/**
 	 * Este método se ejecuta todo el tiempo que el jugador permanezca en la cocina
 	 */
-	public void render(float delta) {
+	/*public void render(float delta) {
 		super.render(delta);
 		
 		Iterator<Objeto> iterObjetos = objetos.iterator();
@@ -88,7 +88,7 @@ public final class Cocina extends Habitacion {
 	/**
 	 * Muestra la textura de la cocina
 	 */
-	public void show() {
+	/*public void show() {
 		pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/cocina.png"));
 		
 	}
@@ -102,11 +102,11 @@ public final class Cocina extends Habitacion {
 	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
-	public static Cocina getInstancia(){
+	/*public static Cocina getInstancia(){
 		if(unicaInstancia == null){
 			unicaInstancia = new Cocina(game, c);
 		}
 		
 		return unicaInstancia;
 	}
-}
+}*/

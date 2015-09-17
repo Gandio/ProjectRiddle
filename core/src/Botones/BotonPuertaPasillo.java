@@ -5,11 +5,11 @@ import java.util.Iterator;
 import Objetos.Cursor;
 import Objetos.Cursor.Posicion;
 import Pantallas.Atico;
-import Pantallas.Baño;
+//import Pantallas.Baño;
 import Pantallas.Biblioteca;
-import Pantallas.Cocina;
+//import Pantallas.Cocina;
 import Pantallas.Dormitorio;
-import Pantallas.Estudio;
+//import Pantallas.Estudio;
 import Pantallas.Pasillo;
 import Pantallas.Salon;
 import Pantallas.Sotano;
@@ -152,20 +152,20 @@ public class BotonPuertaPasillo extends Boton{
 		}else if(numPuerta == 1){ //es el dormitorio
 			game.setScreen(Dormitorio.getInstancia());
 		}else if(numPuerta == 2){// El atico o el baño
-			if(MyGdxGame.SUSPENSE_AMBIENTE)
+			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Atico.getInstancia());
-			else
-				game.setScreen(Baño.getInstancia());
+			//else
+				//game.setScreen(Baño.getInstancia());
 		}else if(numPuerta == 3){// La biblioteca o el estudio
-			if(MyGdxGame.SUSPENSE_AMBIENTE)
+			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Biblioteca.getInstancia());
-			else
-				game.setScreen(Estudio.getInstancia());
+			//else
+				//game.setScreen(Estudio.getInstancia());
 		}else if(numPuerta == 4){// El sotano o la cocina
-			if(MyGdxGame.SUSPENSE_AMBIENTE)
+			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Sotano.getInstancia());
-			else
-				game.setScreen(Cocina.getInstancia());
+			//else
+				//game.setScreen(Cocina.getInstancia());
 		}
 	}
 }

@@ -15,6 +15,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -77,7 +78,7 @@ public final class Salon extends Habitacion {
 		
 		//Actores
 		personaje = Anciana.getInstancia();
-		personaje.setCoordenadas(450, 0);
+		personaje.setCoordenadas(0, 0);
 		
 		//añadimos los actores
 		stage.addActor(personaje);
@@ -103,11 +104,10 @@ public final class Salon extends Habitacion {
 	 */
 
 	public void show() {
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
-			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/salon.png"));
-		}else{
-			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/salonSin.png"));
-		}
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SALON_SUSPENSE));
+		else
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SALON));
 		
 	}
 

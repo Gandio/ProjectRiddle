@@ -25,6 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
@@ -73,9 +74,9 @@ public class Pasillo implements Screen{
 	public static Habitacion salon = Salon.getInstancia();
 	public static Biblioteca biblioteca = Biblioteca.getInstancia();
 	public static Atico atico = Atico.getInstancia();
-	public static Estudio estudio = Estudio.getInstancia();
-	public static Baño baño = Baño.getInstancia();
-	public static Cocina cocina = Cocina.getInstancia();
+	//public static Estudio estudio = Estudio.getInstancia();
+	//public static Baño baño = Baño.getInstancia();
+	//public static Cocina cocina = Cocina.getInstancia();
 	
 	//Organizador de estados
 	public static OrganizadorEstados organizador = OrganizadorEstados.getInstancia();
@@ -95,11 +96,11 @@ public class Pasillo implements Screen{
 		/*
 		 * La música depende de esta variable.
 		 */
-		if(MyGdxGame.SUSPENSE_MUSICA)
+		/*if(MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
-		else
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
+		else*/
 		
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 		musica.play();
 		
@@ -110,15 +111,15 @@ public class Pasillo implements Screen{
 		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
 		
 		//Preparamos las colisiones con las paredes
-		colisionesParedes.add(new Rectangle(255, 403, 1000, 120)); //pared con dos puertas
-		colisionesParedes.add(new Rectangle(255, 460, 50, 430)); //superior derecha 
+		colisionesParedes.add(new Rectangle(255, 403, 1000, 300)); //pared con dos puertas
+		//colisionesParedes.add(new Rectangle(255, 540, 50, 400)); //superior derecha 
 		colisionesParedes.add(new Rectangle(20, 690, 250, 50)); //superior
 		colisionesParedes.add(new Rectangle(0, 150, 35, 550)); //superior izquierda puerta
-		colisionesParedes.add(new Rectangle(0, 150, 765, 105)); //inferior puerta
-		colisionesParedes.add(new Rectangle(715, 0, 50, 150)); //derecha entrada
-		colisionesParedes.add(new Rectangle(715, -38, 300, 150)); //inferior entrada
-		colisionesParedes.add(new Rectangle(938, -38, 50, 293)); //izquierda entrada
-		colisionesParedes.add(new Rectangle(938, 156, 350, 100)); //inferior
+		colisionesParedes.add(new Rectangle(0, 100, 760, 150)); //inferior puerta
+		//colisionesParedes.add(new Rectangle(715, 0, 45, 250)); //derecha entrada
+		colisionesParedes.add(new Rectangle(715, -38, 300, 145)); //inferior entrada
+		//colisionesParedes.add(new Rectangle(938, -38, 45, 293)); //izquierda entrada
+		colisionesParedes.add(new Rectangle(938, 106, 450, 150)); //inferior
 		colisionesParedes.add(new Rectangle(1240, 156, 50, 300)); // derecha puerta
 		
 		//Preparamos las colisiones con las puertas
@@ -225,7 +226,7 @@ public class Pasillo implements Screen{
 	 */
 	
 	public void show(){
-		pantalla = new Texture("Imagenes/Escenarios/pruebaPasillo.png");
+		pantalla = new Texture(GestorImagen.URL_PANTALLA_PASILLO);
 	}
 	
 	public void resize(int width, int height) {
@@ -294,16 +295,16 @@ public class Pasillo implements Screen{
 		sr.rect(cursor.getLimites().getX(), cursor.getLimites().getY(), 
 			cursor.getLimites().getWidth(), cursor.getLimites().getHeight());
 	
-		sr.rect(255, 403, 1000, 120);
-		sr.rect(255, 460, 50, 430);
-		sr.rect(20, 690, 250, 50); //superior
-		sr.rect(0, 150, 35, 550); //superior izquierda puerta
-		sr.rect(0, 150, 765, 105); //inferior puerta
-		sr.rect(715, 0, 50, 150); //derecha entrada
-		sr.rect(715, -38, 300, 150); //inferior entrada
-		sr.rect(938, -38, 50, 293); //izquierda entrada
-		sr.rect(938, 156, 350, 100); //inferior
-		sr.rect(1240, 156, 50, 300);
+		sr.rect(255, 403, 1000, 300);//pared con dos puertas
+		//sr.rect(255, 540, 50, 400);
+		//sr.rect(20, 690, 250, 50); //superior
+		//sr.rect(0, 150, 35, 550); //superior izquierda puerta
+		sr.rect(0, 100, 760, 150); //inferior puerta
+		//sr.rect(715, 0, 45, 250); //izquierda entrada
+		sr.rect(715, -38, 300, 145); //inferior entrada
+		//sr.rect(938, -38, 45, 293); //derecha entrada
+		sr.rect(938, 106, 450, 150); //inferior
+		//sr.rect(1240, 156, 50, 300); //derecha puerta
 		
 		sr.setColor(Color.PURPLE);
 		sr.rect(546, 385, 75, 75);

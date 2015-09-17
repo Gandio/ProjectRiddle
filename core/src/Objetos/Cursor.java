@@ -80,7 +80,7 @@ public class Cursor extends Actor{
 		
 		//Creamos un rectangulo que envuelva al personaje, nos ayudará con las colisiones
 		limites = new Rectangle();
-		limites.setSize(cursor.getWidth() / 3, cursor.getHeight() / 4);
+		limites.setSize(cursor.getWidth() / 3, (cursor.getHeight() / 4) - 40);
 	}
 	
 	/**
@@ -167,7 +167,7 @@ public class Cursor extends Actor{
 	 * @param delta
 	 */
 	public void moverIzquierda(float delta){
-		velocity.x = -1;
+		velocity.x = -2;
 		velocity.y = 0;
 		
 		MirarIzquierda();
@@ -187,7 +187,7 @@ public class Cursor extends Actor{
 	 * @param delta
 	 */
 	public void moverDerecha(float delta){
-		velocity.x = 1;
+		velocity.x = 2;
 		velocity.y = 0;
 		
 		MirarDerecha();
@@ -208,7 +208,7 @@ public class Cursor extends Actor{
 	 */
 	public void moverArriba(float delta){
 		velocity.x = 0;
-		velocity.y = 1;
+		velocity.y = 2;
 		
 		MirarArriba();
 		
@@ -227,7 +227,7 @@ public class Cursor extends Actor{
 	 * @param delta
 	 */
 	public void moverAbajo(float delta){
-		velocity.y = -1;
+		velocity.y = -2;
 		velocity.x = 0;
 		
 		MirarAbajo();

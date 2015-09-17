@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -51,11 +52,11 @@ public class Inicio implements Screen{
 		batch = new SpriteBatch();
 		
 		//musica
-		if(MyGdxGame.SUSPENSE_MUSICA)
+		/*if(MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/titulo.mp3"));
-		else
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TituloSinSuspense.mp3"));
+		else*/
 		
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TituloSinSuspense.mp3"));
 		musica.play();
 		
 		//instanciamos la cámara
@@ -66,7 +67,7 @@ public class Inicio implements Screen{
 		inicio = new BotonInicio(game);
 		inicio.setTouchable(Touchable.enabled);
 		
-		salir = new BotonSalir(game);
+		salir = new BotonSalir(game, false);
 		salir.setTouchable(Touchable.enabled);
 		
 		Gdx.input.setInputProcessor(stage);
@@ -83,9 +84,9 @@ public class Inicio implements Screen{
 	public void show(){
 		//Dependiendo de la variable cargamos una pantalla u otra
 		if(MyGdxGame.SUSPENSE_AMBIENTE)
-			pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Titulo.png"));
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_TITULO_SUSPENSE));
 		else
-			pantalla = new Texture(Gdx.files.internal("Imagenes/EscenariosSinSuspense/tituloSin.png"));
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_TITULO));
 	}
 	
 	/**

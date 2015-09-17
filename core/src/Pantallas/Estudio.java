@@ -19,7 +19,7 @@ import com.mygdx.game.MyGdxGame;
  * Clase que representa a los objetos Estudio
  * @author Francisco Madueño Chulián
  */
-
+/*
 public final class Estudio extends Habitacion {
 	
 	private static MyGdxGame game;
@@ -35,7 +35,7 @@ public final class Estudio extends Habitacion {
 	 * @param game
 	 * @param c
 	 */
-	
+	/*
 	private Estudio(MyGdxGame game, Cursor c) {
 		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
@@ -77,7 +77,7 @@ public final class Estudio extends Habitacion {
 	 * Este método se ejecuta durante todo el tiempo que el jugador permanezca en el 
 	 * estudio
 	 */
-	
+	/*
 	public void render(float delta) {
 		super.render(delta);
 		
@@ -103,7 +103,7 @@ public final class Estudio extends Habitacion {
 	 * Si la habitación está creada no hace nada, si no se llama al contructor.
 	 * @return unicaInstancia
 	 */
-	
+	/*
 	public static Estudio getInstancia(){
 		if(unicaInstancia == null){
 			unicaInstancia = new Estudio(game, c);
@@ -111,4 +111,4 @@ public final class Estudio extends Habitacion {
 		
 		return unicaInstancia;
 	}
-}
+}*/

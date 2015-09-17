@@ -60,13 +60,13 @@ public class BotonInvestigar extends Boton{
 			boton = botonActivado;
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.INVESTIGAR);
-				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(450, -3000);
+				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, -3000);
 			}
 		}else if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.INVESTIGAR){
 			boton = botonActivado;
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.NORMAL);
-				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(450, 0);
+				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, 0);
 			}
 		}else{
 			boton = botonDesactivado;

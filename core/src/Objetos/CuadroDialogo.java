@@ -54,7 +54,11 @@ public class CuadroDialogo extends CuadroTexto{
 	
 		siguienteConversacion.setCoordenadas(1180, 20);
 		//finConversacion.setCoordenadas(1180, 30);
-		finConversacion.setCoordenadas(1070, 30);
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			finConversacion.setCoordenadas(1130, 20);
+		else
+			finConversacion.setCoordenadas(1150, 20);
 		
 		siguienteConversacion.setTouchable(Touchable.enabled);
 		finConversacion.setTouchable(Touchable.enabled);

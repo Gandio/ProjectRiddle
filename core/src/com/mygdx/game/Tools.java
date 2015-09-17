@@ -6,6 +6,7 @@ import Items.LibroPintado;
 import Items.Objeto;
 import Items.SerpienteEnjaulada;
 import Pantallas.Inicio;
+import Pantallas.Pasillo;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -16,7 +17,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Tools {
 	
-	private static Objeto serpienteEnjaulada = new SerpienteEnjaulada(Inicio.game);
+	private static Objeto serpienteEnjaulada = new SerpienteEnjaulada(Pasillo.game);
 	private static Objeto cafeAzucar = new CafeAzucar(Inicio.game);
 	private static Objeto libroPintado = new LibroPintado(Inicio.game);
 	

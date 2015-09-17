@@ -12,6 +12,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -57,14 +58,14 @@ public final class Biblioteca extends Habitacion {
 			stage.addActor(iter.next());
 		}
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
-			//Actores
-			personaje = Mujer.getInstancia();
-			personaje.setCoordenadas(450, 0);
+		//if(MyGdxGame.SUSPENSE_AMBIENTE){
+		//Actores
+		personaje = Mujer.getInstancia();
+		personaje.setCoordenadas(0, 0);
 		
-			//añadimos los actores
-			stage.addActor(personaje);
-		}
+		//añadimos los actores
+		stage.addActor(personaje);
+		//}
 	}
 	
 	/**
@@ -86,7 +87,10 @@ public final class Biblioteca extends Habitacion {
 	 * Muestra la textura de la biblioteca
 	 */
 	public void show() {
-		pantalla = new Texture(Gdx.files.internal("Imagenes/Escenarios/Biblioteca.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_BIBLIOTECA_SUSPENSE));
+		else
+			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_BIBLIOTECA));
 		
 	}
 

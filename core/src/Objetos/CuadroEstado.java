@@ -39,8 +39,7 @@ public class CuadroEstado extends CuadroTexto{
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
 		font.setColor(Color.BLACK);
-		String textoConLimites = wrapString(texto, 14); //como máximo 15 caracteres por linea
-		
-		font.drawMultiLine(batch, textoConLimites, 145, 490);
+		String textoConLimites = wrapString(texto, 17); //como máximo 17 caracteres por linea
+		font.drawMultiLine(batch, textoConLimites, 900, 470);
 	}
 }

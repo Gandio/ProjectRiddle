@@ -23,7 +23,11 @@ public class Niña extends Personaje{
 		super(game);
 		Niña.game = game;
 		
-		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/chica.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Chica-suspense.png"));
+		else
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Chica-neutro.png"));
+
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	

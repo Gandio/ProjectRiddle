@@ -88,10 +88,11 @@ public abstract class Habitacion implements Screen {
 		batch = new SpriteBatch();
 
 		// Música
-		if (MyGdxGame.SUSPENSE_MUSICA)
+		/*if (MyGdxGame.SUSPENSE_MUSICA)
 			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/pasillo.mp3"));
-		else
-			musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
+		else*/
+		
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/TemaSinSuspense.mp3"));
 		musica.setLooping(true);
 
 		// instanciamos la cámara

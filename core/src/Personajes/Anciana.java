@@ -23,7 +23,11 @@ public class Anciana extends Personaje{
 		super(game);
 		Anciana.game = game;
 		
-		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Anciana-suspense.png"));
+		else
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Anciana-neutro.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	

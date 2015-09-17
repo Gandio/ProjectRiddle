@@ -23,11 +23,11 @@ public class BotonSalir extends Boton{
 	 * ha sido pulsado. En cuyo caso sale de la aplicación.
 	 * @param game
 	 */
-	public BotonSalir(MyGdxGame game) {
+	public BotonSalir(MyGdxGame game, boolean esPantallaFinal) {
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(MyGdxGame.SUSPENSE_AMBIENTE && !esPantallaFinal)
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
 		else 
 			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalirSin.png"));

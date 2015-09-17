@@ -55,7 +55,7 @@ public class BotonArriba extends Boton{
 		while(i < paredes.size && !noArriba){
 			rectanguloAux = iRect.next(); 
 			nuevaCoordenada = rectanguloAux.getY();
-			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() + cursor.getHeight()) == nuevaCoordenada + 1){
+			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() + cursor.getHeight()) <= nuevaCoordenada + 2){
 				noArriba = true;
 			}
 			

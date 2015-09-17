@@ -58,7 +58,7 @@ public class BotonAbajo extends Boton{
 		while(i < paredes.size && !noAbajo){
 			rectanguloAux = iRect.next(); 
 			nuevaCoordenada = (rectanguloAux.getY() + rectanguloAux.getHeight());
-			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() == (nuevaCoordenada - 1))){
+			if(cursor.getLimites().overlaps(rectanguloAux) && (cursor.getY() >= (nuevaCoordenada - 2))){
 				noAbajo = true;
 			}
 			

@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
@@ -149,9 +150,8 @@ public final class Inventario implements Screen{
 		combinarObjeto.setCoordenadas(400, 80);
 		
 		//Posiciones de los cuadros de texto
-		cuadroDescripcion.setCoordenadas(850, 40);
-		cuadroObjetivo.setCoordenadas(135, 250);
-		
+		cuadroDescripcion.setCoordenadas(135, 250);
+		cuadroObjetivo.setCoordenadas(850, 40);
 		//Se comprueban si los botones han sido pulsados
 		cancelarCombinar.update();
 		aceptarCombinar.update();
@@ -201,7 +201,7 @@ public final class Inventario implements Screen{
 	 */
 
 	public void show() {
-		textura = new Texture(Gdx.files.internal("Imagenes/Escenarios/inventario.png"));
+		textura = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_INVENTARIO));
 	}
 
 	public void hide() {}

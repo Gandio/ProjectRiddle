@@ -23,7 +23,11 @@ public class Joven extends Personaje{
 		super(game);
 		Joven.game = game;
 		
-		personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png"));
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Joven-suspense.png"));
+		else
+			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Joven-neutro.png"));
+		
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}
 	

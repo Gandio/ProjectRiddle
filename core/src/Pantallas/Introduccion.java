@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -46,7 +47,7 @@ public class Introduccion implements Screen {
 		
 		Gdx.input.setInputProcessor(stage);
 		
-		textura = new Texture(Gdx.files.internal("Imagenes/pruebaFondoPasillo.png")); 
+		textura = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_INTRO)); 
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
 		musica.play();
 		
