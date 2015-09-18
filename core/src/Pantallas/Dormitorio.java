@@ -55,7 +55,7 @@ public final class Dormitorio extends Habitacion {
 			objetos.add(basura);
 			
 			mascara.setCoordenadas(300, 170);
-			basura.setCoordenadas(950, 100);
+			basura.setCoordenadas(1070, 20);
 		}else{
 			objetos.add(espejo);
 			objetos.add(libro);

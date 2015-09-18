@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -28,9 +29,9 @@ public class BotonSalir extends Boton{
 		
 		//Inicializamos los atributos del botón.
 		if(MyGdxGame.SUSPENSE_AMBIENTE && !esPantallaFinal)
-			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalir.png"));
+			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_SALIR_SUSPENSE));
 		else 
-			boton = new Texture(Gdx.files.internal("Imagenes/Botones/botonSalirSin.png"));
+			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_SALIR));
 		
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/boton.wav"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));

@@ -22,6 +22,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -55,8 +56,8 @@ public class BotonPuertaPasillo extends Boton{
 	public BotonPuertaPasillo(MyGdxGame game) {
 		super(game);
 		
-		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonPuerta.png"));
-		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonPuertaDesactivado.png"));
+		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_PUERTA_PASILLO));
+		botonDesactivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_PUERTA_PASILLO_DES));
 		boton = botonDesactivado;
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/botonPuerta.wav"));
 		

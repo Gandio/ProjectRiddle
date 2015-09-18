@@ -15,9 +15,9 @@ public class MyGdxGame extends Game{
 	public static final int HEIGHT = 800;
 	//public static final boolean SUSPENSE = true;
 	
-	public static final boolean SUSPENSE_AMBIENTE = false;
+	public static final boolean SUSPENSE_AMBIENTE = true;
 	//public static final boolean SUSPENSE_MUSICA = false;
-	public static final boolean SUSPENSE_OBJETOS = false;
+	public static final boolean SUSPENSE_OBJETOS = true;
 	public static final boolean TEST = false;
 	//public static final boolean SUSPENSE_OBJETOS = false;
 	

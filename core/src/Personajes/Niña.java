@@ -3,6 +3,7 @@ package Personajes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -24,9 +25,9 @@ public class Niña extends Personaje{
 		Niña.game = game;
 		
 		if(MyGdxGame.SUSPENSE_AMBIENTE)
-			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Chica-suspense.png"));
+			personaje = new Texture(Gdx.files.internal(GestorImagen.URL_CHICA_SUSPENSE));
 		else
-			personaje = new Texture(Gdx.files.internal("Imagenes/Personajes/Chica-neutro.png"));
+			personaje = new Texture(Gdx.files.internal(GestorImagen.URL_CHICA));
 
 		coordenadas = new Vector2(Tools.centrarAncho(game, personaje), Tools.centrarAlto(game, personaje));
 	}

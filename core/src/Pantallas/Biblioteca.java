@@ -46,7 +46,7 @@ public final class Biblioteca extends Habitacion {
 		objetos.add(serpiente);
 		
 		calavera.setCoordenadas(530, 220);
-		serpiente.setCoordenadas(10, 50);
+		serpiente.setCoordenadas(40, 10);
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);

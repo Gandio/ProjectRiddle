@@ -48,8 +48,8 @@ public final class  Sotano extends Habitacion {
 		objetos.add(veneno);
 		objetos.add(jaula);
 		
-		daga.setCoordenadas(400, 240);
-		veneno.setCoordenadas(175, 290);
+		daga.setCoordenadas(400, 260);
+		veneno.setCoordenadas(175, 310);
 		jaula.setCoordenadas(1150, 280);
 		
 		while(iter.hasNext()){

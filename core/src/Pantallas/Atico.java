@@ -47,9 +47,9 @@ public final class Atico extends Habitacion {
 		objetos.add(cuadro);
 		objetos.add(navaja);
 		
-		ataud.setCoordenadas(900, 40);
+		ataud.setCoordenadas(755, 0);
 		cuadro.setCoordenadas(450, 225);
-		navaja.setCoordenadas(600, 150);
+		navaja.setCoordenadas(600, 120);
 		
 		
 		while(iter.hasNext()){

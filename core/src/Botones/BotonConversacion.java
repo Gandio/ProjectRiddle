@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -28,8 +29,8 @@ public class BotonConversacion extends Boton{
 
 	public BotonConversacion(MyGdxGame game) {
 		super(game);
-		botonActivado = new Texture(Gdx.files.internal("Imagenes/Botones/botonConversacion.png"));
-		botonDesactivado = new Texture(Gdx.files.internal("Imagenes/Botones/Desactivados/botonConversacionDesactivado.png"));
+		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CONVERSACION));
+		botonDesactivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CONVERSARION_DES));
 		
 		boton = botonActivado; //inicialmente el botón está activado
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
