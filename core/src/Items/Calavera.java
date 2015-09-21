@@ -20,14 +20,20 @@ public class Calavera extends Objeto{
 	 */
 	public Calavera(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/calavera.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCalavera.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCalaveraActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Calavera;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/calavera.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/calavera.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

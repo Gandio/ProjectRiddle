@@ -3,11 +3,13 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Bombilla;
+import Items.Joya;
 import Items.Llave;
 import Items.Objeto;
 import Items.Pistola;
 import Items.Rifle;
 import Items.Tabaco;
+import Items.Zapato;
 import Objetos.Cursor;
 import Personajes.Anciana;
 
@@ -31,7 +33,8 @@ public final class Salon extends Habitacion {
 	
 	//Objetos sin suspense
 	private static Objeto llave = new Llave(game);
-	private static Objeto bombilla = new Bombilla(game);
+	private static Objeto joya = new Joya(game);
+	private static Objeto zapato = new Zapato(game);
 	
 	private static Salon unicaInstancia;
 	
@@ -49,7 +52,7 @@ public final class Salon extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitación
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
+		if(MyGdxGame.SUSPENSE_OBJETOS){
 			objetos.add(pistola);
 			objetos.add(rifle);
 			objetos.add(tabaco);
@@ -60,10 +63,12 @@ public final class Salon extends Habitacion {
 			
 		}else{
 			objetos.add(llave);
-			objetos.add(bombilla);
+			objetos.add(joya);
+			objetos.add(zapato);
 			
 			llave.setCoordenadas(500, 220);
-			bombilla.setCoordenadas(50, 250);
+			joya.setCoordenadas(50, 120);
+			zapato.setCoordenadas(600, 25);
 		}
 		
 		while(iter.hasNext()){
@@ -82,6 +87,11 @@ public final class Salon extends Habitacion {
 		
 		//añadimos los actores
 		stage.addActor(personaje);
+		
+		// Añadimos actores
+		stage.addActor(botonConversacion);
+		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	/**

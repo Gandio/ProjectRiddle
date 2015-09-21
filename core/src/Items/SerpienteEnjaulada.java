@@ -21,7 +21,7 @@ public class SerpienteEnjaulada extends Objeto{
 	
 	public SerpienteEnjaulada(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/serpiente.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/serpiente.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonSerpienteEnjaulada.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonSerpienteEnjauladaActivado.png"));
 		texturaActualBoton = botonObjeto;

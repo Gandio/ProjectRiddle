@@ -2,6 +2,9 @@ package Pantallas;
 
 import java.util.Iterator;
 
+import Items.Azucar;
+import Items.Bombilla;
+import Items.Cafe;
 import Items.Daga;
 import Items.Jaula;
 import Items.Objeto;
@@ -31,6 +34,10 @@ public final class  Sotano extends Habitacion {
 	private static Objeto veneno = new Veneno(game);
 	private static Objeto jaula = new Jaula(game);
 	
+	private static Objeto cafe = new Cafe(game);
+	private static Objeto azucar = new Azucar(game);
+	private static Objeto bombilla = new Bombilla(game);
+	
 	/**
 	 * Contructor de la clase Sotano
 	 * @param game
@@ -44,13 +51,28 @@ public final class  Sotano extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		objetos.add(daga);
-		objetos.add(veneno);
-		objetos.add(jaula);
+		if(MyGdxGame.SUSPENSE_OBJETOS){
+			objetos.add(daga);
+			objetos.add(veneno);
+			objetos.add(jaula);
 		
-		daga.setCoordenadas(400, 260);
-		veneno.setCoordenadas(175, 310);
-		jaula.setCoordenadas(1150, 280);
+			daga.setCoordenadas(400, 260);
+			veneno.setCoordenadas(175, 310);
+			jaula.setCoordenadas(1150, 280);
+		}else{
+			objetos.add(azucar);
+			objetos.add(bombilla);
+			objetos.add(cafe);
+			
+			azucar.setCoordenadas(410, 260);
+			
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				cafe.setCoordenadas(175, 310);
+			else
+				cafe.setCoordenadas(160, 300);
+				
+			bombilla.setCoordenadas(1150, 280);
+		}
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -70,6 +92,11 @@ public final class  Sotano extends Habitacion {
 		stage.addActor(personaje);
 		personaje.setCoordenadas(0, 0);
 		//}
+		
+		// Añadimos actores
+		stage.addActor(botonConversacion);
+		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	/**

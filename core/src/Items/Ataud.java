@@ -21,14 +21,20 @@ public class Ataud extends Objeto{
 	
 	public Ataud(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/ataud.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonAtaud.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonAtaudActivado.png"));
 		texturaActualBoton = botonObjeto;
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Ataud;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/ataud.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/ataud.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

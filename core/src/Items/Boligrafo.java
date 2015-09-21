@@ -22,10 +22,8 @@ public class Boligrafo extends Objeto{
 	
 	public Boligrafo(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/boligrafo.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBoligrafo.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonBoligrafoActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		
 		combinables = new Array<Identificador>();
@@ -34,6 +32,14 @@ public class Boligrafo extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Boligrafo;
 		id = 1;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/boligrafo.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/boligrafo.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

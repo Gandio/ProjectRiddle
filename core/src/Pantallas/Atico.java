@@ -3,9 +3,12 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Ataud;
+import Items.Boligrafo;
 import Items.Cuadro;
+import Items.Espejo;
 import Items.Navaja;
 import Items.Objeto;
+import Items.Reloj;
 import Objetos.Cursor;
 import Personajes.Niña;
 
@@ -30,6 +33,10 @@ public final class Atico extends Habitacion {
 	private static Objeto cuadro = new Cuadro(game);
 	private static Objeto navaja = new Navaja(game);
 	
+	private static Objeto reloj = new Reloj(game);
+	private static Objeto espejo = new Espejo(game);
+	private static Objeto boligrafo = new Boligrafo(game);
+	
 	/**
 	 * Contructor de la clase Atico
 	 * @param game
@@ -43,13 +50,30 @@ public final class Atico extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		objetos.add(ataud);
-		objetos.add(cuadro);
-		objetos.add(navaja);
+		if(MyGdxGame.SUSPENSE_OBJETOS){
+			objetos.add(ataud);
+			objetos.add(cuadro);
+			objetos.add(navaja);
 		
-		ataud.setCoordenadas(755, 0);
-		cuadro.setCoordenadas(450, 225);
-		navaja.setCoordenadas(600, 120);
+			cuadro.setCoordenadas(450, 225);
+			
+			if(MyGdxGame.SUSPENSE_AMBIENTE){
+				navaja.setCoordenadas(600, 120);
+				ataud.setCoordenadas(755, 0);
+			}else{
+				navaja.setCoordenadas(600, 140);
+				ataud.setCoordenadas(770, -10);
+			}
+			
+		}else{
+			objetos.add(boligrafo);
+			objetos.add(espejo);
+			objetos.add(reloj);
+			
+			boligrafo.setCoordenadas(600, 140);
+			espejo.setCoordenadas(450, 225);
+			reloj.setCoordenadas(850, 0);
+		}
 		
 		
 		while(iter.hasNext()){
@@ -70,6 +94,11 @@ public final class Atico extends Habitacion {
 		//añadimos los actores
 		stage.addActor(personaje);
 		//}
+		
+		// Añadimos actores
+		stage.addActor(botonConversacion);
+		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	/**

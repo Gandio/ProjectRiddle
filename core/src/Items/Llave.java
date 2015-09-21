@@ -21,14 +21,20 @@ public class Llave extends Objeto{
 	
 	public Llave(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/llave.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonLlave.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonLlaveActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Llave;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/llave.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/llave.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))

@@ -2,6 +2,7 @@ package Pantallas;
 
 import java.util.Iterator;
 
+import Items.Anillo;
 import Items.Basura;
 import Items.Espejo;
 import Items.Libro;
@@ -33,9 +34,8 @@ public final class Dormitorio extends Habitacion {
 	private static Objeto basura = new Basura(game);
 	
 	//Objetos sin suspense
-	private static Objeto reloj = new Reloj(game);
-	private static Objeto espejo = new Espejo(game);
 	private static Objeto libro = new Libro(game);
+	private static Objeto anillo = new Anillo(game);
 	
 	/**
 	 * Contructor de la clase Dormitorio
@@ -50,20 +50,18 @@ public final class Dormitorio extends Habitacion {
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE){
+		if(MyGdxGame.SUSPENSE_OBJETOS){
 			objetos.add(mascara);
 			objetos.add(basura);
 			
 			mascara.setCoordenadas(300, 170);
 			basura.setCoordenadas(1070, 20);
 		}else{
-			objetos.add(espejo);
 			objetos.add(libro);
-			objetos.add(reloj);
+			objetos.add(anillo);
 			
-			espejo.setCoordenadas(400, 430);
-			libro.setCoordenadas(1000, 100);
-			reloj.setCoordenadas(100, 270);
+			libro.setCoordenadas(300, 170);
+			anillo.setCoordenadas(1070, 20);
 		}
 		
 		while(iter.hasNext()){
@@ -82,6 +80,11 @@ public final class Dormitorio extends Habitacion {
 		
 		//añadimos los actores
 		stage.addActor(personaje);
+		
+		// Añadimos actores
+		stage.addActor(botonConversacion);
+		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	/**

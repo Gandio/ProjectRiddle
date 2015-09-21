@@ -21,14 +21,20 @@ public class Moneda extends Objeto{
 
 	public Moneda(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/moneda.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonMoneda.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonMonedaActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Moneda;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/moneda.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/moneda.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

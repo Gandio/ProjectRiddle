@@ -21,14 +21,19 @@ public class Mascara extends Objeto{
 
 	public Mascara(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/mascara.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonMascara.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonMascaraActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Mascara;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/mascara.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/mascara.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

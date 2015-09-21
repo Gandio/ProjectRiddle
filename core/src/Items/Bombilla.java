@@ -20,14 +20,20 @@ public class Bombilla extends Objeto{
 	 */
 	public Bombilla(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/bombilla.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBombilla.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonBombillaActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Bombilla;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/bombilla.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/bombilla.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

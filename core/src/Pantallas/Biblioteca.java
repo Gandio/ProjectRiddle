@@ -3,6 +3,8 @@ package Pantallas;
 import java.util.Iterator;
 
 import Items.Calavera;
+import Items.Caramelo;
+import Items.Moneda;
 import Items.Objeto;
 import Items.Serpiente;
 import Objetos.Cursor;
@@ -28,6 +30,9 @@ public final class Biblioteca extends Habitacion {
 	private static Objeto serpiente = new Serpiente(game);
 	private static Objeto calavera = new Calavera(game);
 	
+	private static Objeto caramelo = new Caramelo(game);
+	private static Objeto moneda = new Moneda(game);
+	
 	/**
 	 * Contructor de la clase Biblioteca
 	 * @param game
@@ -42,11 +47,22 @@ public final class Biblioteca extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitacion
-		objetos.add(calavera);
-		objetos.add(serpiente);
+		if(MyGdxGame.SUSPENSE_OBJETOS){
+			objetos.add(calavera);
+			objetos.add(serpiente);
 		
-		calavera.setCoordenadas(530, 220);
-		serpiente.setCoordenadas(40, 10);
+			calavera.setCoordenadas(530, 220);
+			if(MyGdxGame.SUSPENSE_AMBIENTE)
+				serpiente.setCoordenadas(40, 10);
+			else
+				serpiente.setCoordenadas(60, 10);
+		}else{
+			objetos.add(caramelo);
+			objetos.add(moneda);
+			
+			caramelo.setCoordenadas(510, 210);
+			moneda.setCoordenadas(40, 10);
+		}
 		
 		while(iter.hasNext()){
 			iter.next().setTouchable(Touchable.enabled);
@@ -66,6 +82,11 @@ public final class Biblioteca extends Habitacion {
 		//añadimos los actores
 		stage.addActor(personaje);
 		//}
+		
+		// Añadimos actores
+		stage.addActor(botonConversacion);
+		stage.addActor(botonInvestigar);
+		stage.addActor(botonPuerta);
 	}
 	
 	/**

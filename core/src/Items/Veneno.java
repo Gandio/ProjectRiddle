@@ -21,14 +21,20 @@ public class Veneno extends Objeto{
 	
 	public Veneno(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/Objetos/veneno.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonVeneno.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonVenenoActivado.png"));
 		texturaActualBoton = botonObjeto;
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		combinables = null;
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Veneno;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/veneno.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/veneno.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		//Descripción del objeto
 		for (Element child : objetos){	

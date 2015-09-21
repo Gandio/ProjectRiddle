@@ -57,7 +57,7 @@ public abstract class Estado {
 	public Estado(int numEstado, String pista) {
 		System.out.println("estado " + numEstado);
 		try {
-			if (MyGdxGame.SUSPENSE_AMBIENTE)
+			if (MyGdxGame.SUSPENSE_OBJETOS)
 				if(MyGdxGame.TEST)
 					raiz = reader.parse(Gdx.files.internal("xml/prueba.xml"));
 				else

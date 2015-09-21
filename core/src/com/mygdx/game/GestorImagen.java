@@ -8,12 +8,12 @@ public class GestorImagen {
 	public static final String URL_PANTALLA_INTRO = "Imagenes/pruebaFondoPasillo.png";
 	public static final String URL_PANTALLA_ATICO = "Imagenes/Pantallas/Desvаn-neutro.jpg";
 	public static final String URL_PANTALLA_BIBLIOTECA = "Imagenes/Pantallas/Biblioteca-neutro.jpg";
-	public static final String URL_PANTALLA_DORMITORIO = "Imagenes/Pantallas/Dormitorio-suspense.jpg";
+	public static final String URL_PANTALLA_DORMITORIO = "Imagenes/Pantallas/Dormitorio-neutro.jpg";
 	public static final String URL_PANTALLA_SALON = "Imagenes/Pantallas/Salon-neutro.jpg";
 	public static final String URL_PANTALLA_SOTANO = "Imagenes/Pantallas/Sotano-neutro.jpg";
 	public static final String URL_PANTALLA_ATICO_SUSPENSE = "Imagenes/Pantallas/Desvаn-suspense.jpg";
 	public static final String URL_PANTALLA_BIBLIOTECA_SUSPENSE = "Imagenes/Pantallas/Biblioteca-suspense.jpg";
-	public static final String URL_PANTALLA_DORMITORIO_SUSPENSE = "Imagenes/Pantallas/Dormitorio-neutro.jpg";
+	public static final String URL_PANTALLA_DORMITORIO_SUSPENSE = "Imagenes/Pantallas/Dormitorio-suspense.jpg";
 	public static final String URL_PANTALLA_SALON_SUSPENSE = "Imagenes/Pantallas/Salon-suspense.jpg";
 	public static final String URL_PANTALLA_SOTANO_SUSPENSE = "Imagenes/Pantallas/Sotano-suspense.jpg";
 	public static final String URL_PANTALLA_ARMA = "Imagenes/pantallaArma.png";

@@ -21,10 +21,8 @@ public class Cafe extends Objeto{
 	 */
 	public Cafe(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/cafe.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCafe.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCafeActivado.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		
 		combinables = new Array<Identificador>();
@@ -33,6 +31,14 @@ public class Cafe extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Cafe;
 		id = 2;
+		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/cafe.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/cafe.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))

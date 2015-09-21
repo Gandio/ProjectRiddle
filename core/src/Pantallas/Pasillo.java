@@ -40,7 +40,7 @@ public class Pasillo implements Screen{
 	protected Stage stage;
 	protected static Music musica;
 	protected Texture pantalla;
-	private boolean debug = true;
+	private boolean debug = false;
 	
 	//Cámaras
 	protected OrthographicCamera camara;

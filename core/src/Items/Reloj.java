@@ -21,8 +21,6 @@ public class Reloj extends Objeto{
 	
 	public Reloj(MyGdxGame game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/reloj.png"));
-		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonRelojActivado.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonReloj.png"));
 		texturaActualBoton = botonObjeto;
@@ -30,6 +28,13 @@ public class Reloj extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Reloj;
 		
+		if(MyGdxGame.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/reloj.png"));
+		else
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/reloj.png"));
+		
+		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
+
 		//Descripción del objeto
 		for (Element child : objetos){	
 			if(identificador.name().equals(child.getAttribute("nombre")))

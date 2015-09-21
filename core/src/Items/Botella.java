@@ -1,4 +1,4 @@
-package Items;
+/*package Items;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,13 +12,13 @@ import com.mygdx.game.Tools;
  * @author Francisco Madueño Chulián
  */
 
-public class Botella extends Objeto{
+/*public class Botella extends Objeto{
 
 	/**
 	 * Constructor de la clase Botella
 	 * @param game
 	 */
-	public Botella(MyGdxGame game) {
+	/*public Botella(MyGdxGame game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSin/botella.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBotella.png"));
@@ -35,4 +35,4 @@ public class Botella extends Objeto{
 				descripcionObjeto = child.getChildByName("descripcion").getAttribute("texto");
 		}
 	}
-}
+}*/

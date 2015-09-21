@@ -119,11 +119,6 @@ public abstract class Habitacion implements Screen {
 			cuadrosEleccion.add(new CuadroEleccion(game));
 			cuadrosEleccion.get(i).setTouchable(Touchable.enabled);
 		}
-
-		// Añadimos actores
-		stage.addActor(botonConversacion);
-		stage.addActor(botonInvestigar);
-		stage.addActor(botonPuerta);
 	}
 	
 	/**
