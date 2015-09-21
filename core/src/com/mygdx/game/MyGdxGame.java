@@ -1,8 +1,12 @@
 package com.mygdx.game;
 
 
+import java.util.Date;
+
 import Pantallas.Inicio;
+
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.utils.TimeUtils;
 
 /**
  * Clase principal del juego.
@@ -36,5 +40,11 @@ public class MyGdxGame extends Game{
 	
 	public static void setUsuario(String usuario){
 		usuarioActual = usuario;
+	}
+	
+	public static String getHora(){
+		Date d = new Date(TimeUtils.millis());
+		
+		return d.toString();
 	}
 }
