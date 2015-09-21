@@ -21,10 +21,20 @@ public class MyGdxGame extends Game{
 	public static final boolean TEST = false;
 	//public static final boolean SUSPENSE_OBJETOS = false;
 	
+	private static String usuarioActual;
+	
 	/**
 	 * Se crea la pantalla de Inicio
 	 */
 	public void create() {
 		setScreen(new Inicio(this));
+	}
+	
+	public static String getUsuario(){
+		return usuarioActual;
+	}
+	
+	public static void setUsuario(String usuario){
+		usuarioActual = usuario;
 	}
 }

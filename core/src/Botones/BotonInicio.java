@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.EntradaTexto;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
@@ -59,6 +60,9 @@ public class BotonInicio extends Boton{
         
 		if(pulsado){
 			sonido.play();
+			
+			Gdx.input.getTextInput(new EntradaTexto(), "Introduce tu nombre", "Usuario 1");
+			
 			game.getScreen().dispose();
 			game.setScreen(new Introduccion());
 		}
