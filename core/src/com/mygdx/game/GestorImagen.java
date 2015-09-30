@@ -50,6 +50,7 @@ public class GestorImagen {
 	public static final String URL_BOTON_SALIR_SUSPENSE = "Imagenes/Botones/botonSalir.png";
 	public static final String URL_BOTON_SALIR = "Imagenes/Botones/botonSalirSin.png";
 	public static final String URL_BOTON_SIGUIENTE_CONVERSACION = "Imagenes/Botones/sigConv.png";
+	public static final String URL_BOTON_CREDITOS = "Imagenes/Botones/botonCreditos.png";
 	
 	//URLs de todos los personajes del juego
 	public static final String URL_ANCIANA_SUSPENSE = "Imagenes/Personajes/Anciana-suspense.png";

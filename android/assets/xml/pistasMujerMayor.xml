@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pistas>
-    <pista id = "1" texto = "Ich weiss, dass der Mörder keine Krawatte trägt."></pista> <!--El asesino no lleva corbata-->
-    <pista id = "2" texto = "Ich weiss, dass der Mörder nicht jung ist."></pista> <!--El asesino no es joven-->
-    <pista id = "3" texto = "Ich weiss, dass der Mörder eine Kette trägt."></pista> <!--El asesino lleva collar-->
-    <pista id = "4" texto = "Ich weiss, dass der Mörder eine Frau ist."></pista> <!--es mujer-->
+    <pista id = "1" texto = "Ich weiss, dass der Mörder keine Krawatte trägt." resumen = "no corbata"></pista> <!--El asesino no lleva corbata-->
+    <pista id = "2" texto = "Ich weiss, dass der Mörder nicht jung ist." resumen = "no joven"></pista> <!--El asesino no es joven-->
+    <pista id = "3" texto = "Ich weiss, dass der Mörder eine Kette trägt." resumen = "collar"></pista> <!--El asesino lleva collar-->
+    <pista id = "4" texto = "Ich weiss, dass der Mörder eine Frau ist." resumen = "mujer"></pista> <!--es mujer-->
+    <tipoPista texto = "personaje"/>
 </pistas>

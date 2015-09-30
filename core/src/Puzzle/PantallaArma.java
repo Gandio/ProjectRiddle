@@ -30,6 +30,8 @@ public class PantallaArma implements Screen{
 	private Stage stage;
 	private Texture textura;
 	private Music musica;
+	private int nFallos = 0;
+	private NombreArma arma;
 	
 	// Camaras
 	protected OrthographicCamera camara;
@@ -56,19 +58,24 @@ public class PantallaArma implements Screen{
 		
 		armas = new Array<Arma>();
 		
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaDaga.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaPistola.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaRifle.png"))));
-		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaSerpiente.png"))));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaDaga.png")), NombreArma.DAGA));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaPistola.png")), NombreArma.PISTOLA));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaRifle.png")), NombreArma.RIFLE));
+		armas.add(new Arma(new Texture(Gdx.files.internal("Imagenes/armaSerpiente.png")), NombreArma.SERPIENTE));
 		
-		if(OrganizadorEstados.getArma().equals(NombreArma.DAGA)) //se usa la daga
+		if(OrganizadorEstados.getArma().equals(NombreArma.DAGA)){ //se usa la daga
 			armas.get(0).setUsada(true);
-		else if(OrganizadorEstados.getArma().equals(NombreArma.PISTOLA)) //se usa la pistola
+			arma = NombreArma.DAGA;
+		}else if(OrganizadorEstados.getArma().equals(NombreArma.PISTOLA)){ //se usa la pistola
 			armas.get(1).setUsada(true);
-		else if(OrganizadorEstados.getArma().equals(NombreArma.RIFLE)) //se usa el rifle
+			arma = NombreArma.PISTOLA;
+		}else if(OrganizadorEstados.getArma().equals(NombreArma.RIFLE)){ //se usa el rifle
 			armas.get(2).setUsada(true);
-		else if(OrganizadorEstados.getArma().equals(NombreArma.SERPIENTE)) //se usa la serpiente
+			arma = NombreArma.RIFLE;
+		}else if(OrganizadorEstados.getArma().equals(NombreArma.SERPIENTE)){ //se usa la serpiente
 			armas.get(3).setUsada(true);
+			arma = NombreArma.SERPIENTE;
+		}
 		
 		textura = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ARMA));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
@@ -121,6 +128,18 @@ public class PantallaArma implements Screen{
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 		
+	}
+	
+	public void sumaFallo(){
+		nFallos++;
+	}
+	
+	public int getNFallos(){
+		return nFallos;
+	}
+	
+	public NombreArma getArma(){
+		return arma;
 	}
 
 	public void show() {}

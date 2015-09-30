@@ -1,5 +1,6 @@
 package Botones;
 
+import Objetos.Puntuacion;
 import Pantallas.Habitacion;
 import Pantallas.Habitacion.EstadoHabitacion;
 
@@ -8,7 +9,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.ArchivoLog;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -62,12 +65,24 @@ public class BotonInvestigar extends Boton{
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.INVESTIGAR);
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, -3000);
+				
+				//Linea de archivo de log uso de lupa
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+						Puntuacion.getPuntos() + ";" +  "L" + ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + "1"));
 			}
 		}else if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.INVESTIGAR){
 			boton = botonActivado;
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.NORMAL);
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, 0);
+				
+				//Linea de archivo de log uso de lupa
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "L" + ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + "0"));
 			}
 		}else{
 			boton = botonDesactivado;

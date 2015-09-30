@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pistas>
-    <pista id = "1" texto = "Ich weiss, dass der Mörder kleine Waffen liebt."></pista> <!--El asesino usa armas pequeñas-->
-    <pista id = "2" texto = "Ich weiss, dass der Mörder aus grosser Distanz tötet."></pista> <!--Grandes distancias-->
-    <pista id = "3" texto = "Ich weiss, dass der Mörder keine konventionellen Waffen liebt."></pista> <!-- Armas comunes -->
+    <pista id = "1" texto = "Ich weiss, dass der Mörder kleine Waffen liebt." resumen = "arma pequeña"></pista> <!--El asesino usa armas pequeñas-->
+    <pista id = "2" texto = "Ich weiss, dass der Mörder aus grosser Distanz tötet." resumen = "grandes distancias"></pista> <!--Grandes distancias-->
+    <pista id = "3" texto = "Ich weiss, dass der Mörder keine konventionellen Waffen liebt." resumen = "arma normal"></pista> <!-- Armas comunes -->
+    <tipoPista texto = "arma"/>
 </pistas>

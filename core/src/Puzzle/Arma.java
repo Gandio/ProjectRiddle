@@ -1,9 +1,6 @@
 package Puzzle;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import Objetos.Puntuacion;
 import Pantallas.Final;
@@ -17,6 +14,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.dropbox.core.DbxException;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -39,15 +38,18 @@ public class Arma extends Actor{
 		DAGA, PISTOLA, RIFLE, SERPIENTE
 	}
 	
+	private NombreArma nombre;
 	/**
 	 * Constructor de la clase
 	 * @param t
 	 */
-	public Arma(Texture t){
+	public Arma(Texture t, NombreArma n){
 		textura = t;
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		
 		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
+		
+		nombre = n;
 	}
 	
 	/**
@@ -67,37 +69,37 @@ public class Arma extends Actor{
 		
 		if(pulsado){
 			if(armaUsada){ //Se acaba el juego
-				/*Se crea un fichero para almacenar las puntuaciones, si ya existe no se
-				 * sobreescribe. En este fichero se indica tanto los puntos conseguidos al 
-				 * final de la partida como el número de fallos que el jugador ha cometido.
-				 */
-				File prueba = new File("puntuaciones.txt");
-				PrintWriter writer;
-				try {
-					if(!prueba.exists()){
-						try {
-							prueba.createNewFile();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
+				
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
+						MyGdxGame.getFecha() + ";" + 
+						((PantallaArma) game.getScreen()).getNFallos() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "H" + ";" + "arma" + ";" + 
+						this.nombre + ";" + ((PantallaArma) game.getScreen()).getArma() 
+						+ ";" + "1"));
 				
 				try {
-					writer = new PrintWriter(new FileWriter(prueba, true));
-					writer.println("Puntuacion final: " + Puntuacion.getPuntos() + "/7000" +  " --- " +
-									"Fallos totales: " + Puntuacion.getError());
-					writer.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} finally{}
+					MyGdxGame.getArchivoLog().subirArchivo();
+				} catch (DbxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
+				game.getScreen().dispose();
 				game.setScreen(new Final());
 			}else{
 				Puntuacion.sumarError();
+				((PantallaArma) game.getScreen()).sumaFallo();
 				error.play();
+				
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
+						MyGdxGame.getFecha() + ";" + 
+						((PantallaArma) game.getScreen()).getNFallos() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "H" + ";" + "arma" + ";" + 
+						this.nombre + ";" + ((PantallaArma) game.getScreen()).getArma() 
+						+ ";" + "0"));
 			}
 		}
 		

@@ -32,6 +32,8 @@ public class PantallaAsesino implements Screen{
 	private Stage stage;
 	private Texture textura;
 	private Music musica;
+	private int nFallos = 0;
+	private NombreAsesino asesino;
 	
 	// Camaras
 	protected OrthographicCamera camara;
@@ -58,22 +60,28 @@ public class PantallaAsesino implements Screen{
 		
 		asesinos = new Array<Asesino>();
 		
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/chica.png"))));
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/hombre.png"))));
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png"))));
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png"))));
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png"))));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/chica.png")), NombreAsesino.NIÑA));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/hombre.png")), NombreAsesino.HOMBRE));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png")), NombreAsesino.JOVEN));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png")), NombreAsesino.ANCIANA));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png")), NombreAsesino.MUJER));
 		
-		if(OrganizadorEstados.getAsesino().equals(NombreAsesino.NIÑA)) //es la niña
+		if(OrganizadorEstados.getAsesino().equals(NombreAsesino.NIÑA)){ //es la niña
 			asesinos.get(0).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.HOMBRE)) //es el hombre
+			asesino = NombreAsesino.NIÑA;
+		}else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.HOMBRE)){ //es el hombre
 			asesinos.get(1).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.JOVEN)) //es el joven
+			asesino = NombreAsesino.HOMBRE;
+		}else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.JOVEN)){ //es el joven
 			asesinos.get(2).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.ANCIANA)) //es la anciana
+			asesino = NombreAsesino.JOVEN;
+		}else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.ANCIANA)){ //es la anciana
 			asesinos.get(3).setCulpable(true);
-		else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.MUJER)) //es la mujer
+			asesino = NombreAsesino.ANCIANA;
+		}else if(OrganizadorEstados.getAsesino().equals(NombreAsesino.MUJER)){ //es la mujer
 			asesinos.get(4).setCulpable(true);
+			asesino = NombreAsesino.MUJER;
+		}
 		
 		textura = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ASESINO));
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Tension.mp3"));
@@ -126,6 +134,18 @@ public class PantallaAsesino implements Screen{
 		viewport.update(width, height);
 		stage.setViewport(viewport);
 		
+	}
+	
+	public void sumaFallo(){
+		nFallos++;
+	}
+	
+	public int getNFallos(){
+		return nFallos;
+	}
+	
+	public NombreAsesino getAsesino(){
+		return asesino;
 	}
 
 	public void show() {}

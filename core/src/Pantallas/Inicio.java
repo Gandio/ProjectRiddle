@@ -1,5 +1,8 @@
 package Pantallas;
 
+import java.io.IOException;
+
+import Botones.BotonCreditos;
 import Botones.BotonInicio;
 import Botones.BotonSalir;
 
@@ -38,6 +41,8 @@ public class Inicio implements Screen{
 	private BotonInicio inicio;
 	//Boton que permite salir del juego
 	private BotonSalir salir;
+	//Boton que permite ver los créditos del juego
+	private BotonCreditos creditos;
 	
 	/**
 	 * Constructor de la clase Inicio.
@@ -70,11 +75,15 @@ public class Inicio implements Screen{
 		salir = new BotonSalir(game, false);
 		salir.setTouchable(Touchable.enabled);
 		
+		creditos = new BotonCreditos(game);
+		creditos.setTouchable(Touchable.enabled);
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		//se añaden los botones
 		stage.addActor(inicio);
 		stage.addActor(salir);
+		stage.addActor(creditos);
 	}
 	
 	/**
@@ -109,8 +118,14 @@ public class Inicio implements Screen{
 		stage.draw();
 		
 		//Estamos constantemente comprobando el estado de los botones
-		inicio.esPulsado();
+		try {
+			inicio.esPulsado();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		salir.esPulsado();
+		creditos.update();
 		
 		/*
 		 * La situación de los botones también dependen de esta variable
@@ -122,6 +137,8 @@ public class Inicio implements Screen{
 			inicio.setCoordenadas(430, 170);
 			salir.setCoordenadas(500, 100);
 		}
+		
+		creditos.setCoordenadas(50, 50);
 	}
 	
 	public void resize(int width, int height) {

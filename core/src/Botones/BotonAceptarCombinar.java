@@ -1,6 +1,7 @@
 package Botones;
 
 import Items.Objeto;
+import Objetos.Puntuacion;
 import Puzzle.Inventario;
 import Puzzle.Inventario.EstadoInventario;
 
@@ -11,7 +12,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
 /**
@@ -76,6 +79,19 @@ public class BotonAceptarCombinar extends Boton{
 				if(((Inventario) game.getScreen()).sePuedeCombinar()){
 					sonido.play();
 					combinar();
+					//Linea de archivo de log transición
+					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
+							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + 
+							";" + Puntuacion.getPuntos() + ";" +  "B" + ";" + "Inventario" + ";" +
+							Inventario.getCombinacion(0) + ";" + Inventario.getCombinacion(1) + 
+							";" + OrganizadorEstados.getEstadoActual().getObjeto()));
+					
+				}else{
+					//Linea de archivo de log transición
+					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
+							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + 
+							";" +Puntuacion.getPuntos() + ";" +  "B" + ";" + "Inventario" + 
+							Inventario.getCombinacion(0) + ";" + Inventario.getCombinacion(1)));
 				}
 				
 				((Inventario) game.getScreen()).getCombinacion().clear();

@@ -1,5 +1,6 @@
 package Botones;
 
+import Objetos.Puntuacion;
 import Pantallas.Habitacion;
 import Pantallas.Habitacion.EstadoHabitacion;
 
@@ -9,7 +10,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
 /**
@@ -62,6 +65,23 @@ public class BotonConversacion extends Boton{
 			if(pulsado){
 				((Habitacion) game.getScreen()).setEstado(EstadoHabitacion.CONVERSAR);
 				((Habitacion) game.getScreen()).setConversando(true);
+				
+				//Si estoy en la habitacion de inicio del puzzle significa que he conseguido hablar
+				//con el personaje
+				if(game.getScreen().getClass().getSimpleName().equals(OrganizadorEstados.getEstadoActual().getHabitacionInicio())){
+					//Linea de archivo de log conversacion
+					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
+							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
+							+ Puntuacion.getPuntos() + ";" +  "V" + ";" + 
+							((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
+							game.getScreen().getClass().getSimpleName() + ";" + "1"));
+				}else{
+					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" 
+							+  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
+							+ Puntuacion.getPuntos() + ";" +  "V" + ";" + 
+							((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
+							game.getScreen().getClass().getSimpleName() + ";" + "0"));
+				}
 			}
 		}else if(((Habitacion) game.getScreen()).getEstado() == EstadoHabitacion.CONVERSAR){
 			boton = botonActivado;

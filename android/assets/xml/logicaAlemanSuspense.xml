@@ -16,6 +16,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Veneno"/>
         </puzzle>
         
         <puzzle id = "2">
@@ -30,6 +31,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Jaula"/>
         </puzzle>
 
         <puzzle id = "3">
@@ -44,6 +46,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Serpiente"/>
         </puzzle>
 
         <puzzle id = "4">
@@ -58,6 +61,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Serpiente"/>
         </puzzle>
 
         <puzzle id = "5">
@@ -72,6 +76,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Tabaco"/>
         </puzzle>
 
         <puzzle id = "6">
@@ -86,6 +91,22 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Mascara"/>
+        </puzzle>
+        
+        <puzzle id = "7">
+            <habitacion tipoHabitacionInicio = "Sotano"/>
+            <dialogo texto = "Geh ins Wohnzimmer und such die Pistole! Komm dann zurück und sag mir, wo die Pistole ist!"/>
+            <opcion1 texto = "über dem Tisch" correcto = "no"/>
+            <opcion2 texto = "hinter dem Tisch" correcto = "no"/>
+            <opcion3 texto = "unter dem Tisch" correcto = "si"/>
+            <opcion4 texto = "neben dem Tisch" correcto = "no"/>
+            <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
+            <objetivo2 texto = "Such die Pistole im Wohnzimmer und sag dem jungen Mann im Keller, wo sie ist!"/>
+            <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
+            <prePuzzle texto = "Und, hast du die Information?"/>
+            <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Pistola"/>
         </puzzle>
     </estado>
     
@@ -106,6 +127,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Daga"/>
         </puzzle>
         
         <puzzle id = "2">
@@ -120,6 +142,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Calavera"/>
         </puzzle>
         
         <puzzle id = "3">
@@ -134,6 +157,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Calavera"/>
         </puzzle>
         
         <puzzle id = "4">
@@ -148,6 +172,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Pistola"/>
         </puzzle>
         
         <puzzle id = "5">
@@ -162,6 +187,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Mascara"/>
         </puzzle>
         
         <puzzle id = "6">
@@ -176,6 +202,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Cuadro"/>
         </puzzle>
     </estado>
     
@@ -257,6 +284,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Basura"/>
         </puzzle>
         
         <puzzle id = "2">
@@ -271,6 +299,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Tabaco"/>
         </puzzle>
         
         <puzzle id = "3">
@@ -285,6 +314,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Rifle"/>
         </puzzle>
         
         <puzzle id = "4">
@@ -299,6 +329,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Navaja"/>
         </puzzle>
         
         <puzzle id = "5">
@@ -313,6 +344,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Ataud"/>
         </puzzle>
     </estado>
     
@@ -333,23 +365,10 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Basura"/>
         </puzzle>
         
         <puzzle id = "2">
-            <habitacion tipoHabitacionInicio = "Sotano"/>
-            <dialogo texto = "Geh ins Wohnzimmer und such die Pistole! Komm dann zurück und sag mir, wo die Pistole ist!"/>
-            <opcion1 texto = "über dem Tisch" correcto = "no"/>
-            <opcion2 texto = "hinter dem Tisch" correcto = "no"/>
-            <opcion3 texto = "unter dem Tisch" correcto = "si"/>
-            <opcion4 texto = "neben dem Tisch" correcto = "no"/>
-            <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
-            <objetivo2 texto = "Such die Pistole im Wohnzimmer und sag dem jungen Mann im Keller, wo sie ist!"/>
-            <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
-            <prePuzzle texto = "Und, hast du die Information?"/>
-            <agradecimiento texto = "Danke für die Information!"/>
-        </puzzle>
-        
-        <puzzle id = "3">
             <habitacion tipoHabitacionInicio = "Salon"/>
             <dialogo texto = "Geh auf den Dachboden und such den Sarg! Komm dann zurück und sag mir, welche Farbe der Sarg hat!"/>
             <opcion1 texto = "schwarz" correcto = "si"/>
@@ -361,9 +380,10 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Ataud"/>
         </puzzle>
         
-        <puzzle id = "4">
+        <puzzle id = "3">
             <habitacion tipoHabitacionInicio = "Dormitorio"/>
             <dialogo texto = "Geh ins Wohnzimmer und such das Gewehr! Komm dann zurück und sag mir, welche Farbe das Gewehr hat!"/>
             <opcion1 texto = "blau" correcto = "no"/>
@@ -375,9 +395,10 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Rifle"/>
         </puzzle>
         
-        <puzzle id = "5">
+        <puzzle id = "4">
             <habitacion tipoHabitacionInicio = "Dormitorio"/>
             <dialogo texto = "Geh in den Keller und such den Käfig! Komm dann zurück und sag mir, wo der Käfig ist!"/>
             <opcion1 texto = "links neben dem Regal" correcto = "no"/>
@@ -389,9 +410,10 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Jaula"/>
         </puzzle>
         
-        <puzzle id = "6">
+        <puzzle id = "5">
             <habitacion tipoHabitacionInicio = "Salon"/>
             <dialogo texto = "Geh auf den Dachboden und such das Rasiermesser! Komm dann zurück und sag mir, welche Farbe das Rasiermesser hat!"/>
             <opcion1 texto = "rot" correcto = "no"/>
@@ -403,6 +425,7 @@
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
+            <objeto texto = "Navaja"/>
         </puzzle>
     </estado>
     

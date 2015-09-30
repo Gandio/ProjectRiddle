@@ -43,6 +43,8 @@ public class OrganizadorEstados {
 	protected Array<Element> pistasAsesino;
 	protected Array<Element> pistasArma;
 	protected Array<String> pistas;
+	protected Array<String> resumenPista;
+	protected Array<String> tipoPista;
 	
 	private static NombreAsesino nombreAsesino;
 	private static NombreArma nombreArma;
@@ -55,6 +57,8 @@ public class OrganizadorEstados {
 	private OrganizadorEstados(MyGdxGame game){
 		estados = new ArrayList<Estado>(nEstados-1);
 		pistas = new Array<String>(nEstados);
+		resumenPista = new Array<String>(nEstados);
+		tipoPista = new Array<String>(nEstados);
 		
 		//Vamos a seleccionar al asesino y almacenar las pistas para descubrirlo
 		
@@ -96,6 +100,8 @@ public class OrganizadorEstados {
 		
 		for(int i = 0; i < pistasAsesino.size; ++i){
 			pistas.add(raiz.getChild(i).getAttribute("texto"));
+			resumenPista.add(raiz.getChild(i).getAttribute("resumen"));
+			tipoPista.add(raiz.getChildByName("tipoPista").getAttribute("texto"));
 		}
 		
 		//Vamos a escoger el arma y las pistas para descubrirla
@@ -133,6 +139,8 @@ public class OrganizadorEstados {
 		
 		for(int i = 0; i < pistasArma.size; ++i){
 			pistas.add(raiz.getChild(i).getAttribute("texto"));
+			resumenPista.add(raiz.getChild(i).getAttribute("resumen"));
+			tipoPista.add(raiz.getChildByName("tipoPista").getAttribute("texto"));
 		}
 		
 		//llenamos el array de estados aleatorios y le pasamos una pista al azar
@@ -140,12 +148,19 @@ public class OrganizadorEstados {
 		for(int i = 1; i <= nEstados; ++i){
 			int j = rm.nextInt((pistas.size - 0)) + 0;
 			
-			if(i == 1 || i == 2 || i == 4 || i == 5)
+			if(i == 1 || i == 2 || i == 4 || i == 5){
 				estados.add(new EstadoDecision(i, pistas.get(j)));
-			else if(i == 3 || i == 6)
+				estados.get(i-1).setResumenPista(resumenPista.get(j));
+				estados.get(i-1).setTipoPista(tipoPista.get(j));
+			}else if(i == 3 || i == 6){
 				estados.add(new EstadoCogerObjeto(i, pistas.get(j)));
-			else if(i == 7)
+				estados.get(i-1).setResumenPista(resumenPista.get(j));
+				estados.get(i-1).setTipoPista(tipoPista.get(j));
+			}else if(i == 7){
 				estados.add(new EstadoCombinarObjeto(i, pistas.get(j)));
+				estados.get(i-1).setResumenPista(resumenPista.get(j));
+				estados.get(i-1).setTipoPista(tipoPista.get(j));
+			}
 			
 			if(i > 1){
 				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
@@ -178,9 +193,26 @@ public class OrganizadorEstados {
 		//Si se supera el puzzle, pasamos al nuevo estado
 		
 		if(e.puzzleSuperado()){
+			//Linea de archivo de log de pista
+			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  MyGdxGame.getFecha() + ";" + 
+					Puntuacion.getError() * (-100) + ";" +Puntuacion.getPuntos() + ";" +  "P" + ";" 
+					+ ((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
+					game.getScreen().getClass().getSimpleName() + ";" + 
+					OrganizadorEstados.getEstadoActual().getTipoPista() + ";" + 
+					OrganizadorEstados.getEstadoActual().getResumenPista()));
+			
 			habitacionInicio.terminarConversacion();
 			habitacionInicio.getCuadroDialogo().setTexto(habitacionInicio.getCuadroDialogo().getTextoDefecto());
 			Puntuacion.setPuntuacion(1000 - e.getContErrores()*100);
+			
+			//Linea de archivo de log fin mision
+			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+					Puntuacion.getPuntos() + ";" +  "F" + ";" + 
+					((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
+					game.getScreen().getClass().getSimpleName() + ";" 
+					+ OrganizadorEstados.getEstadoActual().getObjeto()));
+			
 			estadoActual++;
 			
 			if(estadoActual >= nEstados){ //Se pasa a la pantalla de seleccion de asesino
@@ -318,8 +350,15 @@ public class OrganizadorEstados {
 				((Habitacion) game.getScreen()).horaDeElegir();
 			}
 			
-			if(cadenaClase.equals(game.getScreen().getClass().toString())){
+			if(cadenaClase.equals(game.getScreen().getClass().toString()) && !estadoActual.misionEnCurso()){
 				estadoActual.seIniciaMision(true);
+				
+				//Linea de archivo de log inicio mision
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "I" + ";" + 
+						((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + OrganizadorEstados.getEstadoActual().getObjeto()));
 			}
 			
 			if(((EstadoDecision) estadoActual).getEleccionCorrecta() == 0){

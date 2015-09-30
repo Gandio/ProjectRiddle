@@ -48,6 +48,7 @@ public class EstadoDecision extends Estado{
 		opcion3 = puzzle.getChildByName("opcion3").getAttribute("correcto");
 		opcion4 = puzzle.getChildByName("opcion4").getAttribute("correcto");
 		
+		objeto = puzzle.getChildByName("objeto").getAttribute("texto");
 		error = puzzle.getChildByName("fallo").getAttribute("texto");
 		prePuzzle = puzzle.getChildByName("prePuzzle").getAttribute("texto");
 	}

@@ -8,12 +8,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.mygdx.game.Estado;
 import com.mygdx.game.EstadoDecision;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
 import Objetos.CuadroTexto;
+import Objetos.Puntuacion;
 import Pantallas.Habitacion;
 
 /**
@@ -84,8 +87,24 @@ public class CuadroEleccion extends CuadroTexto{
 		if(pulsado){
 			if(eleccionCorrecta){
 				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(1);
+				
+				//Linea de archivo de log acertijo
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "J" + ";" + 
+						((Habitacion) game.getScreen()).getPersonaje().toString()+ ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + 
+						OrganizadorEstados.getEstadoActual().getObjeto() + ";" + "1"));
 			}else{
 				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(0);
+				
+				//Linea de archivo de log acertijo
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "J" + ";" + 
+						((Habitacion) game.getScreen()).getPersonaje().toString()+ ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" 
+						+ OrganizadorEstados.getEstadoActual().getObjeto() + ";" + "0"));
 				
 			}
 			/*Siempre que eliges una opción sigue una conversación, ya sea para

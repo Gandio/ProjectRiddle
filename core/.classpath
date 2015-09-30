@@ -3,7 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry exported="true" kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apiGoogleDrive"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/google drive"/>
 	<classpathentry exported="true" kind="lib" path="/home/fran/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.4.1/f31a8b9a0b7955fadf25ff3b77f1824b3927d4ed/gdx-backend-lwjgl-1.4.1.jar" sourcepath="/home/fran/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.4.1/c5d5fbe371abcda49e3e392fb6503a8dd6b3c5fa/gdx-backend-lwjgl-1.4.1-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Dropbox"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

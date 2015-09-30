@@ -1,5 +1,6 @@
 package Botones;
 
+import Objetos.Puntuacion;
 import Pantallas.Pasillo;
 import Puzzle.Inventario;
 
@@ -10,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -58,6 +60,12 @@ public class BotonInventario extends Boton{
 			pulsado = false;
 			((Pasillo) game.getScreen()).pararMusica();
 			sonido.play();
+			
+			//Linea de archivo de log transición
+			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+					Puntuacion.getPuntos() + ";" +  "T" + ";" + "inventario."));
+			
 			Pasillo.getCursor();
 			game.setScreen(Inventario.getInstancia());
 		}

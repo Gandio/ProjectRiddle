@@ -1,6 +1,8 @@
 package Botones;
 
 
+import java.io.IOException;
+
 import Pantallas.Introduccion;
 
 import com.badlogic.gdx.Gdx;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.dropbox.core.DbxException;
 import com.mygdx.game.EntradaTexto;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.MyGdxGame;
@@ -44,7 +47,7 @@ public class BotonInicio extends Boton{
 	 * Si el botón ha sido pulsado crea una nueva partida, se comprueba continuamente en el método render()
 	 * de la clase Inicio.
 	 */
-	public void esPulsado(){
+	public void esPulsado() throws IOException{
 		//Capturador de eventos, si el actor ha sido tocado pone la variable pulsado a true.
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
         addListener(new InputListener(){

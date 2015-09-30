@@ -3,6 +3,7 @@ package Botones;
 import java.util.Iterator;
 
 import Objetos.Cursor;
+import Objetos.Puntuacion;
 import Objetos.Cursor.Posicion;
 import Pantallas.Atico;
 //import Pantallas.Baño;
@@ -23,6 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools;
 
@@ -150,21 +152,47 @@ public class BotonPuertaPasillo extends Boton{
 	private void cambiarHabitacion(int numPuerta){
 		if(numPuerta == 0){ //es el salon
 			game.setScreen(Salon.getInstancia());
+			
+			//Linea de archivo de log transición
+			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+					Puntuacion.getPuntos() + ";" +  "T" + ";" + "Salon."));
+			
 		}else if(numPuerta == 1){ //es el dormitorio
 			game.setScreen(Dormitorio.getInstancia());
+			
+			//Linea de archivo de log transición
+			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
+					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+					Puntuacion.getPuntos() + ";" +  "T" + ";" + "Dormitorio."));
 		}else if(numPuerta == 2){// El atico o el baño
 			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Atico.getInstancia());
+				
+				//Linea de archivo de log transición
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Atico."));
 			//else
 				//game.setScreen(Baño.getInstancia());
 		}else if(numPuerta == 3){// La biblioteca o el estudio
 			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Biblioteca.getInstancia());
+				
+				//Linea de archivo de log transición
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Biblioteca."));
 			//else
 				//game.setScreen(Estudio.getInstancia());
 		}else if(numPuerta == 4){// El sotano o la cocina
 			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Sotano.getInstancia());
+				
+				//Linea de archivo de log transición
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Sotano."));
 			//else
 				//game.setScreen(Cocina.getInstancia());
 		}

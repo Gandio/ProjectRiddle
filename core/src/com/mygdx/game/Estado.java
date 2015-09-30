@@ -26,6 +26,9 @@ public abstract class Estado {
 	private String objetivo2;
 	private String agradecimiento;
 	protected String siguienteHabitacion; // indica la habitacion donde se desarrolla el próximo puzzle
+	protected String resumenPista;
+	protected String tipoPista;
+	
 	
 	protected Objeto item;
 	
@@ -267,6 +270,22 @@ public abstract class Estado {
 	 */
 	public void aumentarContErrores(){
 		contErrores++;
+	}
+	
+	public String getResumenPista(){
+		return resumenPista;
+	}
+	
+	public void setResumenPista(String s){
+		resumenPista = s;
+	}
+	
+	public String getTipoPista(){
+		return tipoPista;
+	}
+	
+	public void setTipoPista(String s){
+		tipoPista = s;
 	}
 	
 	/**

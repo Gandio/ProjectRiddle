@@ -41,7 +41,7 @@ public final class Inventario implements Screen{
 	protected static Music musica;
 	private Texture textura;
 	private static Array<Objeto> inventario;
-	private Array<Objeto> combinacion;
+	private static Array<Objeto> combinacion;
 	
 	//Camaras
 	protected OrthographicCamera camara;
@@ -334,12 +334,16 @@ public final class Inventario implements Screen{
 	/**
 	 * Este método quita el resplandor exterior de los botones objeto
 	 */
-	public void restaurarBotonesObjetos(){
+	public static void restaurarBotonesObjetos(){
 		Iterator<Objeto> iter = inventario.iterator();
 		
 		iter = inventario.iterator();
 		while(iter.hasNext()){
 			iter.next().devolverTexturaOriginal();
 		}
+	}
+	
+	public static Objeto getCombinacion(int i){
+		return combinacion.get(i);
 	}
 }

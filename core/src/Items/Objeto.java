@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.OrganizadorEstados;
 
@@ -115,6 +116,12 @@ public abstract class Objeto extends Actor{
 		
 		if(investigando && seleccionado){
 			if(sePuedeCoger){
+				//Linea de archivo de log adquisicion
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + "1"));
+				
 				c.getInventario();
 				//Colocamos el objeto en el inventario
 				Inventario.añadirObjeto(this);
@@ -135,6 +142,12 @@ public abstract class Objeto extends Actor{
 				Puntuacion.sumarError();
 				OrganizadorEstados.getEstadoActual().aumentarContErrores();
 				error.play();
+				
+				//Linea de archivo de log adquisicion
+				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
+						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
+						game.getScreen().getClass().getSimpleName() + ";" + "0"));
 			}
 		}
 	}
@@ -215,8 +228,11 @@ public abstract class Objeto extends Actor{
                 	}
                 }
             	
-            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.NORMAL)
+            	if(((Inventario) game.getScreen()).getEstado() == Puzzle.Inventario.EstadoInventario.NORMAL){
             		Inventario.getCuadroDescripcion().setTexto(o.getDescripcion());
+            		Inventario.restaurarBotonesObjetos();
+            		texturaActualBoton = botonObjetoActivado;
+            	}
                 
                 return true;
             }

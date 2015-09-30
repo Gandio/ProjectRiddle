@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pistas>
-    <pista id = "1" texto = "Ich weiss, dass der Mörder keine konventionellen Waffen liebt."></pista> <!--Armas raras-->
-    <pista id = "2" texto = "Ich weiss, dass der Mörder gefährliche Tiere liebt."></pista> <!--Animales peligrosos-->
-    <pista id = "3" texto = "Ich weiss, dass der Mörder aus kleiner Distanz tötet."></pista> <!--Corta distancia-->
+    <pista id = "1" texto = "Ich weiss, dass der Mörder keine konventionellen Waffen liebt." resumen = "arma rara"></pista> <!--Armas raras-->
+    <pista id = "2" texto = "Ich weiss, dass der Mörder gefährliche Tiere liebt." resumen = "animal peligroso"></pista> <!--Animales peligrosos-->
+    <pista id = "3" texto = "Ich weiss, dass der Mörder aus kleiner Distanz tötet." resumen = "corta distancia"></pista> <!--Corta distancia-->
+    <tipoPista texto = "arma"/>
 </pistas>
