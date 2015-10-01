@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -20,7 +20,7 @@ public class Boligrafo extends Objeto{
 	 * @param game
 	 */
 	
-	public Boligrafo(MyGdxGame game) {
+	public Boligrafo(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonBoligrafo.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonBoligrafoActivado.png"));
@@ -33,7 +33,7 @@ public class Boligrafo extends Objeto{
 		identificador = Identificador.Boligrafo;
 		id = 1;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/boligrafo.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/boligrafo.png"));

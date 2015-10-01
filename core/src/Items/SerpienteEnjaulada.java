@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -19,7 +19,7 @@ public class SerpienteEnjaulada extends Objeto{
 	 * @param game
 	 */
 	
-	public SerpienteEnjaulada(MyGdxGame game) {
+	public SerpienteEnjaulada(TheCrimeHouse game) {
 		super(game);
 		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/serpiente.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonSerpienteEnjaulada.png"));

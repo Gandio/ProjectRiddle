@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -19,7 +19,7 @@ public class Navaja extends Objeto{
 	 * @param game
 	 */
 	
-	public Navaja(MyGdxGame game) {
+	public Navaja(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonNavaja.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonNavajaActivado.png"));
@@ -28,7 +28,7 @@ public class Navaja extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Navaja;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/navaja.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/navaja.png"));

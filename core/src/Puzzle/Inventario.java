@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -34,7 +34,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 
 public final class Inventario implements Screen{
-	private static MyGdxGame game;
+	private static TheCrimeHouse game;
 	private static Inventario unicaInstancia;
 	
 	protected static Stage stage;
@@ -74,7 +74,7 @@ public final class Inventario implements Screen{
 	 * @param game
 	 */
 
-	private Inventario(MyGdxGame game) {
+	private Inventario(TheCrimeHouse game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		Inventario.game = game;
 		camara = new OrthographicCamera();
@@ -91,8 +91,8 @@ public final class Inventario implements Screen{
 		combinacion = new Array<Objeto>(2);
 		
 		//instanciamos la cámara
-		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f ,0);
-		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
+		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f ,0);
+		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
 		
 		//Inicializamos los botones y hacemos que se puedan pulsar
 		cerrarInventario = new BotonCerrarInventario(game);
@@ -136,7 +136,7 @@ public final class Inventario implements Screen{
 		batch.setProjectionMatrix(camara.combined);
 		
 		batch.begin();
-		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(textura, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
@@ -343,6 +343,11 @@ public final class Inventario implements Screen{
 		}
 	}
 	
+	/**
+	 * Devuelve uno de los objetos de combinación
+	 * @param i
+	 * @return
+	 */
 	public static Objeto getCombinacion(int i){
 		return combinacion.get(i);
 	}

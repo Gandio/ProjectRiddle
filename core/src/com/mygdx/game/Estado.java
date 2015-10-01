@@ -60,8 +60,8 @@ public abstract class Estado {
 	public Estado(int numEstado, String pista) {
 		System.out.println("estado " + numEstado);
 		try {
-			if (MyGdxGame.SUSPENSE_OBJETOS)
-				if(MyGdxGame.TEST)
+			if (TheCrimeHouse.SUSPENSE_OBJETOS)
+				if(TheCrimeHouse.TEST)
 					raiz = reader.parse(Gdx.files.internal("xml/prueba.xml"));
 				else
 					raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSuspense.xml"));
@@ -272,18 +272,35 @@ public abstract class Estado {
 		contErrores++;
 	}
 	
+	/**
+	 * Devuelve el resumen de la pista
+	 * @return resumenPista
+	 */
+	
 	public String getResumenPista(){
 		return resumenPista;
 	}
 	
+	/**
+	 * Modifica el resumen de la pista
+	 * @param s
+	 */
 	public void setResumenPista(String s){
 		resumenPista = s;
 	}
 	
+	/**
+	 * Devuelve el tipo de pista, arma o asesino
+	 * @return tipoPista
+	 */
 	public String getTipoPista(){
 		return tipoPista;
 	}
 	
+	/**
+	 * Modifica el tipo de pista
+	 * @param s
+	 */
 	public void setTipoPista(String s){
 		tipoPista = s;
 	}

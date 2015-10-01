@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /**
  * Esta clase representa los cuadros donde aparecerá el texto durante el juego
@@ -16,7 +16,7 @@ import com.mygdx.game.MyGdxGame;
  */
 
 public class CuadroTexto extends Actor{
-	protected MyGdxGame game;
+	protected TheCrimeHouse game;
 	
 	protected Texture cuadroTexto;
 	protected Vector2 coordenadas;
@@ -28,7 +28,7 @@ public class CuadroTexto extends Actor{
 	 * @param game
 	 */
 	
-	public CuadroTexto(MyGdxGame game){
+	public CuadroTexto(TheCrimeHouse game){
 		this.game = Inicio.game;
 		
 	}

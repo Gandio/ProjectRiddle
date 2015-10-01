@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -18,7 +18,7 @@ public class Espejo extends Objeto{
 	 * Constructor de la clase Espejo
 	 * @param game
 	 */
-	public Espejo(MyGdxGame game) {
+	public Espejo(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonEspejo.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonEspejoActivado.png"));
@@ -27,7 +27,7 @@ public class Espejo extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Espejo;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/espejo.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/espejo.png"));

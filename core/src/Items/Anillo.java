@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -19,7 +19,7 @@ public class Anillo extends Objeto{
 	 * @param game
 	 */
 	
-	public Anillo(MyGdxGame game) {
+	public Anillo(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonAnillo.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonAnilloActivado.png"));
@@ -27,7 +27,7 @@ public class Anillo extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Anillo;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/anillo.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinSin/anillo.png"));

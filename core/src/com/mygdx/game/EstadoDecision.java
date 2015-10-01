@@ -1,11 +1,5 @@
 package com.mygdx.game;
 
-import java.io.IOException;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.XmlReader;
-import com.badlogic.gdx.utils.XmlReader.Element;
 
 /**
  * Esta clase representa al estado en el que el puzzle consiste en responder a una pregunta

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -21,7 +21,7 @@ public class CuadroDescripcion extends CuadroTexto{
 	 * Constructor de la clase
 	 * @param game
 	 */
-	public CuadroDescripcion(MyGdxGame game) {
+	public CuadroDescripcion(TheCrimeHouse game) {
 		super(game);
 		
 		cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroDescripcion.png"));

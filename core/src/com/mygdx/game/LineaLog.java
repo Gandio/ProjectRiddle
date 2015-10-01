@@ -1,9 +1,14 @@
 package com.mygdx.game;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+/**
+ * Esta clase representa cada línea del archivo de log.
+ * @author Francisco Madueño Chulián
+ *
+ */
 
 public class LineaLog {
 	private String _iId_Usuario;
@@ -28,7 +33,11 @@ public class LineaLog {
 	
 	private String sLineaLog;
 
-
+	/**
+	 * Contructor de la clase, divide cada linea en varias partes usando el ; como referencia
+	 * @param sLineaLog
+	 */
+	
 	public LineaLog(String sLineaLog) {
 		this.sLineaLog = sLineaLog;
 		

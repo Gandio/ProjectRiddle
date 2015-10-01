@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
@@ -32,7 +32,7 @@ public class BotonAceptarCombinar extends Boton{
 	 * Constructor de la clase
 	 * @param game
 	 */
-	public BotonAceptarCombinar(MyGdxGame game) {
+	public BotonAceptarCombinar(TheCrimeHouse game) {
 		super(game);
 		
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_ACEPTAR_COMBINAR));
@@ -74,22 +74,22 @@ public class BotonAceptarCombinar extends Boton{
 				//inventario, se añade el resultado de la combinación y se vuelve al estado normal, si no 
 				//se vuelve al estado normal y se vacia el array de combinacion
 				
-				((Inventario) game.getScreen()).restaurarBotonesObjetos();
+				Inventario.restaurarBotonesObjetos();
 				
 				if(((Inventario) game.getScreen()).sePuedeCombinar()){
 					sonido.play();
 					combinar();
 					//Linea de archivo de log transición
-					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
-							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + 
+					TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + 
+							";" +  TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + 
 							";" + Puntuacion.getPuntos() + ";" +  "B" + ";" + "Inventario" + ";" +
 							Inventario.getCombinacion(0) + ";" + Inventario.getCombinacion(1) + 
 							";" + OrganizadorEstados.getEstadoActual().getObjeto()));
 					
 				}else{
 					//Linea de archivo de log transición
-					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
-							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + 
+					TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + 
+							";" +  TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + 
 							";" +Puntuacion.getPuntos() + ";" +  "B" + ";" + "Inventario" + 
 							Inventario.getCombinacion(0) + ";" + Inventario.getCombinacion(1)));
 				}

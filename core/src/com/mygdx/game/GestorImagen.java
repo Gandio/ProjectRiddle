@@ -1,5 +1,11 @@
 package com.mygdx.game;
 
+/**
+ * Esta clase guarda las imágenes del juego para hacerlas más accesibles al cambio.
+ * @author Francisco Madueño Chulián
+ *
+ */
+
 public class GestorImagen {
 	//URLs de todas las pantallas del juego
 	public static final String URL_PANTALLA_TITULO_SUSPENSE = "Imagenes/Escenarios/Titulo.png";

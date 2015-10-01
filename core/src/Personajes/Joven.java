@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -13,18 +13,18 @@ import com.mygdx.game.Tools;
  */
 public class Joven extends Personaje{
 	
-	private static MyGdxGame game;
+	private static TheCrimeHouse game;
 	private static Joven unicaInstancia;
 	
 	/**
 	 * Contructor de la clase
 	 * @param game
 	 */
-	private Joven(MyGdxGame game) {
+	private Joven(TheCrimeHouse game) {
 		super(game);
 		Joven.game = game;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			personaje = new Texture(Gdx.files.internal(GestorImagen.URL_JOVEN_SUSPENSE));
 		else
 			personaje = new Texture(Gdx.files.internal(GestorImagen.URL_JOVEN));

@@ -1,30 +1,35 @@
 package com.mygdx.game;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Locale;
 
 import com.badlogic.gdx.utils.Array;
-import com.dropbox.core.DbxAppInfo;
-import com.dropbox.core.DbxAuthFinish;
+
 import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
-import com.dropbox.core.DbxWebAuthNoRedirect;
+
 import com.dropbox.core.DbxWriteMode;
 
+/**
+ * Esta clase representa el fichero de log que se va actualizado durante toda la partida.
+ * Le provee de métodos necesarios para su actualización y subida a un servidor web.
+ * @author Francisco Madueño Chulián
+ *
+ */
 public class ArchivoLog {
 	private Array<LineaLog> lineas;
 	private PrintWriter writer;
 	private File archivoLog = new File("Log.txt");
 	
+	/**
+	 * Constructor de la clase.
+	 */
 	public ArchivoLog(){
 		lineas = new Array<LineaLog>();
 		
@@ -64,6 +69,10 @@ public class ArchivoLog {
 		} finally{}
 	}
 	
+	/**
+	 * Añade líneas al fichero de log
+	 * @param l
+	 */
 	public void escribirLinea(LineaLog l){
 		lineas.add(l);
 		
@@ -77,6 +86,12 @@ public class ArchivoLog {
 			}
 	}
 	
+	/**
+	 * Permite subir el fichero de log a una cuenta de Dropbox
+	 * @throws DbxException
+	 * @throws IOException
+	 */
+	
 	public void subirArchivo() throws DbxException, IOException{
         DbxRequestConfig config = new DbxRequestConfig(
                 "JavaTutorial/1.0", Locale.getDefault().toString());
@@ -89,7 +104,7 @@ public class ArchivoLog {
         FileInputStream inputStream = new FileInputStream(archivoLog);
         try {
             DbxEntry.File uploadedFile = client.uploadFile(
-            		"/ArchivoLog_ " + MyGdxGame.getUsuario() + "_" + MyGdxGame.getFecha(),
+            		"/ArchivoLog_ " + TheCrimeHouse.getUsuario() + "_" + TheCrimeHouse.getFecha(),
                 DbxWriteMode.add(), archivoLog.length(), inputStream);
             System.out.println("Uploaded: " + uploadedFile.toString());
         } finally {

@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.ArchivoLog;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -30,7 +30,7 @@ public class BotonInvestigar extends Boton{
 	 * @param game
 	 */
 	
-	public BotonInvestigar(MyGdxGame game) {
+	public BotonInvestigar(TheCrimeHouse game) {
 		super(game);
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INVESTIGAR));
 		botonDesactivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INVESTIGAR_DES));
@@ -67,8 +67,8 @@ public class BotonInvestigar extends Boton{
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, -3000);
 				
 				//Linea de archivo de log uso de lupa
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 						Puntuacion.getPuntos() + ";" +  "L" + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "1"));
 			}
@@ -79,8 +79,8 @@ public class BotonInvestigar extends Boton{
 				((Habitacion) game.getScreen()).getPersonaje().setCoordenadas(0, 0);
 				
 				//Linea de archivo de log uso de lupa
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "L" + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "0"));
 			}

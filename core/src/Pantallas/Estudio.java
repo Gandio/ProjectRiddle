@@ -1,4 +1,4 @@
-package Pantallas;
+/*package Pantallas;
 
 import java.util.Iterator;
 
@@ -13,7 +13,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /**
  * Clase que representa a los objetos Estudio

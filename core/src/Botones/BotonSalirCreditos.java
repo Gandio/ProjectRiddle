@@ -8,19 +8,33 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
-public class BotonSalirCreditos extends Boton{
+/**
+ * Esta clase representa el botón que permite salir de la pantalla de los títulos de crédito a
+ * la pantalla Inicio
+ * @author Francisco Madueño Chulián
+ *
+ */
 
-	public BotonSalirCreditos(MyGdxGame game) {
+public class BotonSalirCreditos extends Boton{
+	
+	/**
+	 * Constructor de la clase
+	 * @param game
+	 */
+
+	public BotonSalirCreditos(TheCrimeHouse game) {
 		super(game);
 		
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CERRAR_INVENTARIO));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 	}
 	
-	
+	/**
+	 * Comprueba si se ha pulsado el botón, si es así, el jugador vuelve a la pantalla Inicio
+	 */
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		

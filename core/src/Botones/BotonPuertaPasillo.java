@@ -25,7 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -55,7 +55,7 @@ public class BotonPuertaPasillo extends Boton{
 	 * @param game
 	 */
 	
-	public BotonPuertaPasillo(MyGdxGame game) {
+	public BotonPuertaPasillo(TheCrimeHouse game) {
 		super(game);
 		
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_PUERTA_PASILLO));
@@ -142,6 +142,10 @@ public class BotonPuertaPasillo extends Boton{
 		return false;
 	}
 	
+	/**
+	 * El personaje mira en la dirección contraria de la que entró por la puerta.
+	 */
+	
 	private void cambiarPosicionPersonaje(){
 		if(cursor.getPosicion() == Posicion.ARRIBA) cursor.MirarAbajo();
 		else if(cursor.getPosicion() == Posicion.ABAJO) cursor.MirarArriba();
@@ -149,29 +153,34 @@ public class BotonPuertaPasillo extends Boton{
 		else cursor.MirarDerecha();
 	}
 	
+	/**
+	 * Comprueba por qué puerta ha estado el jugador y muestra la habitación correspondiente.
+	 * @param numPuerta
+	 */
+	
 	private void cambiarHabitacion(int numPuerta){
 		if(numPuerta == 0){ //es el salon
 			game.setScreen(Salon.getInstancia());
 			
 			//Linea de archivo de log transición
-			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+			TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+					TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 					Puntuacion.getPuntos() + ";" +  "T" + ";" + "Salon."));
 			
 		}else if(numPuerta == 1){ //es el dormitorio
 			game.setScreen(Dormitorio.getInstancia());
 			
 			//Linea de archivo de log transición
-			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
-					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+			TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
+					TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 					Puntuacion.getPuntos() + ";" +  "T" + ";" + "Dormitorio."));
 		}else if(numPuerta == 2){// El atico o el baño
 			//if(MyGdxGame.SUSPENSE_AMBIENTE)
 				game.setScreen(Atico.getInstancia());
 				
 				//Linea de archivo de log transición
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Atico."));
 			//else
 				//game.setScreen(Baño.getInstancia());
@@ -180,8 +189,8 @@ public class BotonPuertaPasillo extends Boton{
 				game.setScreen(Biblioteca.getInstancia());
 				
 				//Linea de archivo de log transición
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Biblioteca."));
 			//else
 				//game.setScreen(Estudio.getInstancia());
@@ -190,8 +199,8 @@ public class BotonPuertaPasillo extends Boton{
 				game.setScreen(Sotano.getInstancia());
 				
 				//Linea de archivo de log transición
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Sotano."));
 			//else
 				//game.setScreen(Cocina.getInstancia());

@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /**
  * Clase que representa al objeto Biblioteca
@@ -24,7 +24,7 @@ import com.mygdx.game.MyGdxGame;
 
 public final class Biblioteca extends Habitacion {
 	
-	private static MyGdxGame game;
+	private static TheCrimeHouse game;
 	private static Biblioteca unicaInstancia;
 	
 	private static Objeto serpiente = new Serpiente(game);
@@ -39,7 +39,7 @@ public final class Biblioteca extends Habitacion {
 	 * @param c
 	 */
 	
-	private Biblioteca(MyGdxGame game, Cursor c) {
+	private Biblioteca(TheCrimeHouse game, Cursor c) {
 		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 		
@@ -47,12 +47,12 @@ public final class Biblioteca extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitacion
-		if(MyGdxGame.SUSPENSE_OBJETOS){
+		if(TheCrimeHouse.SUSPENSE_OBJETOS){
 			objetos.add(calavera);
 			objetos.add(serpiente);
 		
 			calavera.setCoordenadas(530, 220);
-			if(MyGdxGame.SUSPENSE_AMBIENTE)
+			if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 				serpiente.setCoordenadas(40, 10);
 			else
 				serpiente.setCoordenadas(60, 10);
@@ -108,7 +108,7 @@ public final class Biblioteca extends Habitacion {
 	 * Muestra la textura de la biblioteca
 	 */
 	public void show() {
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_BIBLIOTECA_SUSPENSE));
 		else
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_BIBLIOTECA));

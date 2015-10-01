@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -29,7 +29,7 @@ public class BotonInventario extends Boton{
 	 * @param game
 	 */
 
-	public BotonInventario(MyGdxGame game) {
+	public BotonInventario(TheCrimeHouse game) {
 		super(game);
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INVENTARIO));
 		
@@ -62,8 +62,8 @@ public class BotonInventario extends Boton{
 			sonido.play();
 			
 			//Linea de archivo de log transición
-			MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-					MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+			TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+					TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 					Puntuacion.getPuntos() + ";" +  "T" + ";" + "inventario."));
 			
 			Pasillo.getCursor();

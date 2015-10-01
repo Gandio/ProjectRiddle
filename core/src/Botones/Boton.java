@@ -7,14 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /** Esta clase abstracta representa las funcionalidades básicas de los botones de todo el juego.
 *   @author Francisco Madueño Chulián 
 */
 
 public abstract class Boton extends Actor{
-	protected static MyGdxGame game = Inicio.game;
+	protected static TheCrimeHouse game = Inicio.game;
 	protected Texture boton;
 	protected Vector2 coordenadas;
 	protected boolean pulsado = false;
@@ -23,7 +23,7 @@ public abstract class Boton extends Actor{
 	 * Constructor de la clase botón
 	 * @param game
 	 */
-	public Boton(MyGdxGame game){}
+	public Boton(TheCrimeHouse game){}
 	
 	/**
 	 * Este método modifica las coordenadas del botón

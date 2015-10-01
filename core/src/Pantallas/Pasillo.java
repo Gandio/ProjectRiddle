@@ -26,7 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -36,7 +36,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 public class Pasillo implements Screen{
 	//Juego
-	public static MyGdxGame game = Inicio.game;
+	public static TheCrimeHouse game = Inicio.game;
 	protected Stage stage;
 	protected static Music musica;
 	protected Texture pantalla;
@@ -86,7 +86,7 @@ public class Pasillo implements Screen{
 	 * @param game
 	 */
 	
-	public Pasillo(MyGdxGame game) {
+	public Pasillo(TheCrimeHouse game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		Pasillo.game = game;
 		
@@ -108,7 +108,7 @@ public class Pasillo implements Screen{
 		camara.setToOrtho(false, cursor.getX(), cursor.getY());
 		camara.position.set(cursor.getX(), cursor.getY(), 0);
 		camara.zoom -= 0.4;
-		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
+		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
 		
 		//Preparamos las colisiones con las paredes
 		colisionesParedes.add(new Rectangle(255, 403, 1000, 300)); //pared con dos puertas
@@ -178,7 +178,7 @@ public class Pasillo implements Screen{
 		
 		//Empezamos a dibujar
 		batch.begin();
-		batch.draw(pantalla, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(pantalla, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
 		batch.end();
 		
 		//Hacemos que la camara siga al jugador

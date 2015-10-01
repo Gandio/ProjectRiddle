@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
@@ -30,7 +30,7 @@ public class BotonConversacion extends Boton{
 	 * @param game
 	 */
 
-	public BotonConversacion(MyGdxGame game) {
+	public BotonConversacion(TheCrimeHouse game) {
 		super(game);
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CONVERSACION));
 		botonDesactivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CONVERSARION_DES));
@@ -70,14 +70,14 @@ public class BotonConversacion extends Boton{
 				//con el personaje
 				if(game.getScreen().getClass().getSimpleName().equals(OrganizadorEstados.getEstadoActual().getHabitacionInicio())){
 					//Linea de archivo de log conversacion
-					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + 
-							";" +  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
+					TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + 
+							";" +  TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
 							+ Puntuacion.getPuntos() + ";" +  "V" + ";" + 
 							((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
 							game.getScreen().getClass().getSimpleName() + ";" + "1"));
 				}else{
-					MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" 
-							+  MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
+					TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" 
+							+  TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" 
 							+ Puntuacion.getPuntos() + ";" +  "V" + ";" + 
 							((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
 							game.getScreen().getClass().getSimpleName() + ";" + "0"));

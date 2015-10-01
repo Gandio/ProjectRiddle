@@ -23,7 +23,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -33,7 +33,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 
 public abstract class Objeto extends Actor{
-	private MyGdxGame game = Pasillo.game;
+	private TheCrimeHouse game = Pasillo.game;
 	protected Texture textura, botonObjeto, botonObjetoActivado, texturaActualBoton;
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
@@ -50,7 +50,12 @@ public abstract class Objeto extends Actor{
 	
 	private Sound sonido, error;
 	
-	public Objeto(MyGdxGame game){
+	/**
+	 * Contructor de la clase
+	 * @param game
+	 */
+	
+	public Objeto(TheCrimeHouse game){
 		sePuedeCoger = false;
 		investigando = false;
 		seleccionado = false;
@@ -65,14 +70,25 @@ public abstract class Objeto extends Actor{
 		objetos = raiz.getChildrenByName("objeto");
 	}
 	
+	/**
+	 * Modifica las coordenadas de un objeto
+	 * @param x
+	 * @param y
+	 */
+	
 	public void setCoordenadas(float x, float y){
 		coordenadas.x = x;
 		coordenadas.y = y;
 	}
 	
-	//Si estamos en el inventario se pinta el botón asociado al objeto, si no dibujamos el objeto.
 	
+	
+	
+	/**
+	 * Dibuja un objeto en las coordenandas indicadas
+	 */
 	public void draw(Batch batch, float parentAlpha) {
+		//Si estamos en el inventario se pinta el botón asociado al objeto, si no dibujamos el objeto.
 		game.getClass();
 		if(game.getScreen().getClass() == Inventario.class){
 			batch.draw(texturaActualBoton, coordenadas.x, coordenadas.y);
@@ -117,8 +133,8 @@ public abstract class Objeto extends Actor{
 		if(investigando && seleccionado){
 			if(sePuedeCoger){
 				//Linea de archivo de log adquisicion
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" + 
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "1"));
 				
@@ -144,8 +160,8 @@ public abstract class Objeto extends Actor{
 				error.play();
 				
 				//Linea de archivo de log adquisicion
-				MyGdxGame.getArchivoLog().escribirLinea(new LineaLog(MyGdxGame.getUsuario() + ";" +  
-						MyGdxGame.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
+						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "0"));
 			}

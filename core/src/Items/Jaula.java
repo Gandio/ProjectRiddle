@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -20,7 +20,7 @@ public class Jaula extends Objeto{
 	 * @param game
 	 */
 	
-	public Jaula(MyGdxGame game) {
+	public Jaula(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonJaula.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonJaulaActivado.png"));
@@ -33,7 +33,7 @@ public class Jaula extends Objeto{
 		identificador = Identificador.Jaula;
 		id = 3;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/jaula.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/jaula.png"));

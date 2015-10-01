@@ -29,8 +29,8 @@ public class Tools {
 	 * @param textura
 	 * @return
 	 */
-	public static float centrarAlto(MyGdxGame game, Texture textura){
-		return MyGdxGame.HEIGHT / 2f - textura.getHeight() / 2f;
+	public static float centrarAlto(TheCrimeHouse game, Texture textura){
+		return TheCrimeHouse.HEIGHT / 2f - textura.getHeight() / 2f;
 	}
 	
 	/**
@@ -40,8 +40,8 @@ public class Tools {
 	 * @param textura
 	 * @return
 	 */
-	public static float centrarAncho(MyGdxGame game, Texture textura){
-		return MyGdxGame.WIDTH / 2f - textura.getWidth() / 2f;
+	public static float centrarAncho(TheCrimeHouse game, Texture textura){
+		return TheCrimeHouse.WIDTH / 2f - textura.getWidth() / 2f;
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class Tools {
 	 * @param j
 	 * @return
 	 */
-	public static Objeto devolverCombinacion(MyGdxGame game, int i, int j){
+	public static Objeto devolverCombinacion(TheCrimeHouse game, int i, int j){
 		if((i == 0 && j == 2) || (i == 2 && j == 0)) return cafeAzucar;
 		else if((i == 1 && j == 4) || (i == 4 && j == 1)) return libroPintado;
 		else if((i == 3 && j == 5) || (i == 5 && j == 3)) return serpienteEnjaulada;

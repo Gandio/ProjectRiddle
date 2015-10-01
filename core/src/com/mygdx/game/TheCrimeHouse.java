@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.TimeUtils;
  *
  */
 
-public class MyGdxGame extends Game{
+public class TheCrimeHouse extends Game{
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 800;
 	//public static final boolean SUSPENSE = true;
@@ -25,7 +25,7 @@ public class MyGdxGame extends Game{
 	public static final boolean TEST = false;
 	//public static final boolean SUSPENSE_OBJETOS = false;
 	
-	private static String usuarioActual;
+	private static String usuarioActual = "Usuario 1";
 	private static ArchivoLog archivoLog = new ArchivoLog();
 	
 	/**
@@ -35,20 +35,36 @@ public class MyGdxGame extends Game{
 		setScreen(new Inicio(this));
 	}
 	
+	/**
+	 * Devuelve el nombre de usuario del jugador
+	 * @return
+	 */
 	public static String getUsuario(){
 		return usuarioActual;
 	}
 	
+	/**
+	 * Modifica el nombre de usuario del jugador
+	 * @param usuario
+	 */
 	public static void setUsuario(String usuario){
 		usuarioActual = usuario;
 	}
 	
+	/**
+	 * Devuelve la fecha convertida en cadena
+	 * @return
+	 */
 	public static String getFecha(){
 		Date d = new Date(TimeUtils.millis());
 		
 		return d.toString();
 	}
 	
+	/**
+	 * Devuelve el fichero de log de la partida
+	 * @return
+	 */
 	public static ArchivoLog getArchivoLog(){
 		return archivoLog;
 	}

@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -34,7 +34,7 @@ import com.mygdx.game.OrganizadorEstados;
 public abstract class Habitacion implements Screen {
 
 	// Juego
-	public static MyGdxGame game = Inicio.game;
+	public static TheCrimeHouse game = Inicio.game;
 	protected Stage stage;
 	protected Music musica;
 	protected Texture pantalla;
@@ -81,7 +81,7 @@ public abstract class Habitacion implements Screen {
 	 * @param game
 	 */
 
-	public Habitacion(MyGdxGame game, Cursor c) {
+	public Habitacion(TheCrimeHouse game, Cursor c) {
 		estado = EstadoHabitacion.NORMAL;
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -96,8 +96,8 @@ public abstract class Habitacion implements Screen {
 		musica.setLooping(true);
 
 		// instanciamos la cámara
-		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f, 0);
-		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
+		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f, 0);
+		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
 
 		Gdx.input.setInputProcessor(stage);
 
@@ -135,7 +135,7 @@ public abstract class Habitacion implements Screen {
 		batch.setProjectionMatrix(camara.combined);
 
 		batch.begin();
-		batch.draw(pantalla, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(pantalla, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
 		batch.end();
 
 		// Posicion de botones

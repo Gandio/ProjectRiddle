@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -53,8 +53,8 @@ public class PantallaAsesino implements Screen{
 		batch = new SpriteBatch();
 		
 		// instanciamos la camara
-		camara.position.set(MyGdxGame.WIDTH / 2f, MyGdxGame.HEIGHT / 2f, 0);
-		viewport = new FillViewport(MyGdxGame.WIDTH, MyGdxGame.HEIGHT, camara);
+		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f, 0);
+		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
 		
 		Gdx.input.setInputProcessor(stage);
 		
@@ -106,7 +106,7 @@ public class PantallaAsesino implements Screen{
 		camara.update();
 		batch.setProjectionMatrix(camara.combined);
 		batch.begin();
-		batch.draw(textura, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
+		batch.draw(textura, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
 		batch.end();
 		
 		Gdx.input.setInputProcessor(stage);
@@ -136,14 +136,25 @@ public class PantallaAsesino implements Screen{
 		
 	}
 	
+	/**
+	 * Aumenta el número de fallos
+	 */
 	public void sumaFallo(){
 		nFallos++;
 	}
 	
+	/**
+	 * Devuelve el número de fallos
+	 * @return
+	 */
 	public int getNFallos(){
 		return nFallos;
 	}
 	
+	/**
+	 * Devuelve el nombre del asesino
+	 * @return
+	 */
 	public NombreAsesino getAsesino(){
 		return asesino;
 	}

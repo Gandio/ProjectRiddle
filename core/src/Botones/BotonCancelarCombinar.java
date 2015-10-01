@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -27,7 +27,7 @@ public class BotonCancelarCombinar extends Boton{
 	 * @param game
 	 */
 
-	public BotonCancelarCombinar(MyGdxGame game) {
+	public BotonCancelarCombinar(TheCrimeHouse game) {
 		super(game);
 		
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CANCELAR_COMBINAR));
@@ -65,7 +65,7 @@ public class BotonCancelarCombinar extends Boton{
 				//la textura original de los objetos
 				((Inventario) game.getScreen()).setEstado(EstadoInventario.NORMAL);
 				((Inventario) game.getScreen()).getCombinacion().clear();
-				((Inventario) game.getScreen()).restaurarBotonesObjetos();
+				Inventario.restaurarBotonesObjetos();
 			}
 		}else{
 			//El botón está desactivado y no funciona

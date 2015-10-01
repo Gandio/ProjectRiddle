@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 import com.mygdx.game.Tools;
 
 /**
@@ -18,7 +18,7 @@ public class Daga extends Objeto{
 	 * Constructor de la clase Daga
 	 * @param game
 	 */
-	public Daga(MyGdxGame game) {
+	public Daga(TheCrimeHouse game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonDaga.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonDagaActivado.png"));
@@ -27,7 +27,7 @@ public class Daga extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Daga;
 		
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/daga.png"));
 		else
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/daga.png"));

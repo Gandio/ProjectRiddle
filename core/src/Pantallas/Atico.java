@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /**
  * Clase que representa al objeto ático
@@ -26,7 +26,7 @@ import com.mygdx.game.MyGdxGame;
 
 public final class Atico extends Habitacion {
 	
-	private static MyGdxGame game;
+	private static TheCrimeHouse game;
 	private static Atico unicaInstancia;
 	
 	private static Objeto ataud = new Ataud(game);
@@ -43,21 +43,21 @@ public final class Atico extends Habitacion {
 	 * @param c
 	 */
 	
-	private Atico(MyGdxGame game, Cursor c) {
+	private Atico(TheCrimeHouse game, Cursor c) {
 		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		if(MyGdxGame.SUSPENSE_OBJETOS){
+		if(TheCrimeHouse.SUSPENSE_OBJETOS){
 			objetos.add(ataud);
 			objetos.add(cuadro);
 			objetos.add(navaja);
 		
 			cuadro.setCoordenadas(450, 225);
 			
-			if(MyGdxGame.SUSPENSE_AMBIENTE){
+			if(TheCrimeHouse.SUSPENSE_AMBIENTE){
 				navaja.setCoordenadas(600, 120);
 				ataud.setCoordenadas(755, 0);
 			}else{
@@ -122,7 +122,7 @@ public final class Atico extends Habitacion {
 	 */
 
 	public void show() {
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ATICO_SUSPENSE));
 		else
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ATICO));

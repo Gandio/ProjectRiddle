@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.TheCrimeHouse;
 
 /**
  * Clase que representa al objeto dormitorio 
@@ -26,7 +26,7 @@ import com.mygdx.game.MyGdxGame;
 
 public final class Dormitorio extends Habitacion {
 	
-	private static MyGdxGame game;
+	private static TheCrimeHouse game;
 	private static Dormitorio unicaInstancia;
 	
 	//Objetos con suspense
@@ -43,14 +43,14 @@ public final class Dormitorio extends Habitacion {
 	 * @param c
 	 */
 	
-	private Dormitorio(MyGdxGame game, Cursor c) {
+	private Dormitorio(TheCrimeHouse game, Cursor c) {
 		super(Inicio.game, c);
 		objetos = new Array<Objeto>();
 		
 		//Objetos
 		Iterator<Objeto> iter = objetos.iterator();
 		
-		if(MyGdxGame.SUSPENSE_OBJETOS){
+		if(TheCrimeHouse.SUSPENSE_OBJETOS){
 			objetos.add(mascara);
 			objetos.add(basura);
 			
@@ -106,7 +106,7 @@ public final class Dormitorio extends Habitacion {
 	 * Muestra la textura del dormitorio, depende si el suspense está activado o no
 	 */
 	public void show() {
-		if(MyGdxGame.SUSPENSE_AMBIENTE)
+		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DORMITORIO_SUSPENSE));
 		else
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DORMITORIO));
