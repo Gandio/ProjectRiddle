@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Esta clase representa al protagonista mientras se mueve por los pasillos de la casa.
@@ -34,7 +34,7 @@ public class Cursor extends Actor{
 	 * Recibe un objeto MyGdxGame que hereda de la clase Game
 	 * @param game
 	 */
-	public Cursor(TheCrimeHouse game) {
+	public Cursor(TheHouseOfCrimes game) {
 		//Creamos el grafico del cursor
 		cursor = new Texture(Gdx.files.internal("Imagenes/nuevoCursor.png"));
 		tmp = TextureRegion.split(cursor, cursor.getWidth() / 3, cursor.getHeight() / 4);

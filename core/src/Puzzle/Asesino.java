@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -27,7 +27,7 @@ public class Asesino extends Actor{
 	private Texture textura;
 	private boolean pulsado = false;
 	public Vector2 coordenadas;
-	private static TheCrimeHouse game = Inicio.game;
+	private static TheHouseOfCrimes game = Inicio.game;
 	private Sound error;
 	
 	public enum NombreAsesino{
@@ -67,8 +67,8 @@ public class Asesino extends Actor{
 			if(culpable){ //se pasa a la pantalla de seleccion de arma
 				
 				//Linea de archivo de log hipotesis
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
-						TheCrimeHouse.getFecha() + ";" + 
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
+						TheHouseOfCrimes.getFecha() + ";" + 
 						((PantallaAsesino) game.getScreen()).getNFallos() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "H" + ";" + "asesino" + ";" + 
 						this.nombre + ";" + ((PantallaAsesino) game.getScreen()).getAsesino() 
@@ -82,8 +82,8 @@ public class Asesino extends Actor{
 				error.play();
 				
 				//Linea de archivo de log hipotesis
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
-						TheCrimeHouse.getFecha() + ";" + 
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
+						TheHouseOfCrimes.getFecha() + ";" + 
 						((PantallaAsesino) game.getScreen()).getNFallos() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "H" + ";" + "asesino" + ";" + 
 						this.nombre + ";" + ((PantallaAsesino) game.getScreen()).getAsesino() 

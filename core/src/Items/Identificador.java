@@ -3,7 +3,7 @@ package Items;
 /**
  * Esta enumeración se encarga de proveer un identificador por cual podemos distinguir los 
  * objetos
- * @author fran
+ * @author Francisco Madueño Chulián
  *
  */
 public enum Identificador {

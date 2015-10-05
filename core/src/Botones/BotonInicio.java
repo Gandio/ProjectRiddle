@@ -11,10 +11,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.dropbox.core.DbxException;
 import com.mygdx.game.EntradaTexto;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -30,11 +29,11 @@ public class BotonInicio extends Boton{
 	 * ha sido pulsado. En cuyo caso inicia una nueva partida.
 	 * @param game
 	 */
-	public BotonInicio(TheCrimeHouse game) {
+	public BotonInicio(TheHouseOfCrimes game) {
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INICIO_SUSPENSE));
 		else
 			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INICIO));
@@ -64,7 +63,7 @@ public class BotonInicio extends Boton{
 		if(pulsado){
 			sonido.play();
 			
-			Gdx.input.getTextInput(new EntradaTexto(), "Introduce tu nombre", "Usuario 1");
+			Gdx.input.getTextInput(new EntradaTexto(), "Introduce tu nombre y apellidos", "Usuario 1");
 			
 			game.getScreen().dispose();
 			game.setScreen(new Introduccion());

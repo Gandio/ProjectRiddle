@@ -23,7 +23,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -33,7 +33,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 
 public abstract class Objeto extends Actor{
-	private TheCrimeHouse game = Pasillo.game;
+	private TheHouseOfCrimes game = Pasillo.game;
 	protected Texture textura, botonObjeto, botonObjetoActivado, texturaActualBoton;
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
@@ -55,7 +55,7 @@ public abstract class Objeto extends Actor{
 	 * @param game
 	 */
 	
-	public Objeto(TheCrimeHouse game){
+	public Objeto(TheHouseOfCrimes game){
 		sePuedeCoger = false;
 		investigando = false;
 		seleccionado = false;
@@ -133,8 +133,8 @@ public abstract class Objeto extends Actor{
 		if(investigando && seleccionado){
 			if(sePuedeCoger){
 				//Linea de archivo de log adquisicion
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "1"));
 				
@@ -160,8 +160,8 @@ public abstract class Objeto extends Actor{
 				error.play();
 				
 				//Linea de archivo de log adquisicion
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "A" + ";" + this.toString() + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + "0"));
 			}

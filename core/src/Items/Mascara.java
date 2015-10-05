@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -19,7 +19,7 @@ public class Mascara extends Objeto{
 	 * @param game
 	 */
 
-	public Mascara(TheCrimeHouse game) {
+	public Mascara(TheHouseOfCrimes game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonMascara.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonMascaraActivado.png"));
@@ -28,10 +28,10 @@ public class Mascara extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Mascara;
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
-			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/mascara.png"));
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/mascaraConCon.png"));
 		else
-			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/mascara.png"));
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/mascaraConSin.png"));
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		

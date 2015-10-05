@@ -2,7 +2,6 @@ package Pantallas;
 
 import java.util.Iterator;
 
-import Items.Bombilla;
 import Items.Joya;
 import Items.Llave;
 import Items.Objeto;
@@ -18,7 +17,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Clase que representa al objeto Salon
@@ -44,7 +43,7 @@ public final class Salon extends Habitacion {
 	 * @param c
 	 */
 	
-	private Salon(TheCrimeHouse game, Cursor c) {
+	private Salon(TheHouseOfCrimes game, Cursor c) {
 		super(Pasillo.game, c);
 		objetos = new Array<Objeto>();
 		
@@ -52,7 +51,7 @@ public final class Salon extends Habitacion {
 		Iterator<Objeto> iter = objetos.iterator();
 		
 		//Añadimos objetos a la habitación
-		if(TheCrimeHouse.SUSPENSE_OBJETOS){
+		if(TheHouseOfCrimes.SUSPENSE_OBJETOS){
 			objetos.add(pistola);
 			objetos.add(rifle);
 			objetos.add(tabaco);
@@ -114,7 +113,7 @@ public final class Salon extends Habitacion {
 	 */
 
 	public void show() {
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SALON_SUSPENSE));
 		else
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_SALON));

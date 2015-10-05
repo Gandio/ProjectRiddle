@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.TheCrimeHouse;
-import com.mygdx.game.OrganizadorEstados;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Esta clase representa la puntuación que el jugador obtiene a lo largo  de la partida. 
@@ -17,7 +16,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 
 public final class Puntuacion extends Actor{
-	private static TheCrimeHouse game;
+	private static TheHouseOfCrimes game;
 	private static Puntuacion unicaInstancia;
 	private Vector2 coordenadas;
 	
@@ -32,7 +31,7 @@ public final class Puntuacion extends Actor{
 	 * @param game
 	 */
 	
-	private Puntuacion(TheCrimeHouse game){
+	private Puntuacion(TheHouseOfCrimes game){
 		Puntuacion.game = game;
 		puntos = 0;
 		numFallos = 0;

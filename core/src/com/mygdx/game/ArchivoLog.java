@@ -60,6 +60,11 @@ public class ArchivoLog {
 				writer.println("#######FICHERO DE LOG DE PARTIDA, PUEDES BORRARLO###########");
 				writer.println("############################################################");
 				
+				if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
+					writer.println(TheHouseOfCrimes.getFecha() + ";" + "Suspense");
+				else
+					writer.println(TheHouseOfCrimes.getFecha() + ";" + "Neutro");
+				
 				writer.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -104,7 +109,7 @@ public class ArchivoLog {
         FileInputStream inputStream = new FileInputStream(archivoLog);
         try {
             DbxEntry.File uploadedFile = client.uploadFile(
-            		"/ArchivoLog_ " + TheCrimeHouse.getUsuario() + "_" + TheCrimeHouse.getFecha(),
+            		"/ArchivoLog_ " + TheHouseOfCrimes.getUsuario() + "_" + TheHouseOfCrimes.getFecha(),
                 DbxWriteMode.add(), archivoLog.length(), inputStream);
             System.out.println("Uploaded: " + uploadedFile.toString());
         } finally {

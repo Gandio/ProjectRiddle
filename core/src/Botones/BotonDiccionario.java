@@ -2,7 +2,6 @@ package Botones;
 
 import Objetos.Puntuacion;
 import Pantallas.Pasillo;
-import Puzzle.Inventario;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -16,23 +15,21 @@ import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
- * Esta clase representa el botón que da acceso al inventario del jugador.
+ * Esta clase representa el botón que da acceso al diccionario de palabras.
  * @author Francisco Madueño Chulián
  *
  */
-
-public class BotonInventario extends Boton{
+public class BotonDiccionario extends Boton {
 	private Sound sonido;
 	
 	/**
-	 * Constructor de la clase.
+	 * Constructor de la clase
 	 * @param game
 	 */
 
-	public BotonInventario(TheHouseOfCrimes game) {
+	public BotonDiccionario(TheHouseOfCrimes game) {
 		super(game);
-		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_INVENTARIO));
-		
+		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_DICCIONARIO));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 		
 		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirInventario.wav"));
@@ -41,19 +38,18 @@ public class BotonInventario extends Boton{
 	/**
 	 * Este método actualiza el comportamiento del botón durante toda la partida
 	 */
-	
 	public void update(){
 		setBounds(coordenadas.x, coordenadas.y, boton.getWidth(), boton.getHeight());
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonInventario)event.getTarget()).pulsado = true;
+                ((BotonDiccionario)event.getTarget()).pulsado = true;
                 return true;
             }
 		});
 		
 		/*
-		 * Si pulsamos el botón nos muestra el inventario del jugador
+		 * Si pulsamos el botón nos muestra el diccionario
 		 */
 		
 		if(pulsado){
@@ -64,10 +60,7 @@ public class BotonInventario extends Boton{
 			//Linea de archivo de log transición
 			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
 					TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
-					Puntuacion.getPuntos() + ";" +  "T" + ";" + "inventario."));
-			
-			Pasillo.getCursor();
-			game.setScreen(Inventario.getInstancia());
+					Puntuacion.getPuntos() + ";" +  "T" + ";" + "diccionario."));
 		}
 		
 		pulsado = false;

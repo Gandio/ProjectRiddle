@@ -1,35 +1,34 @@
 package Botones;
 
-import Pantallas.Inicio;
+import Objetos.Puntuacion;
+import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
+import com.mygdx.game.LineaLog;
 import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
-/**
- * Esta clase representa el botón que permite salir de la pantalla de los títulos de crédito a
- * la pantalla Inicio
- * @author Francisco Madueño Chulián
- *
- */
+public class BotonSalirDiccionario extends Boton{
+	private Sound sonido;
 
-public class BotonSalirCreditos extends Boton{
-	
 	/**
 	 * Constructor de la clase
 	 * @param game
 	 */
 
-	public BotonSalirCreditos(TheHouseOfCrimes game) {
+	public BotonSalirDiccionario(TheHouseOfCrimes game) {
 		super(game);
 		
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CERRAR_INVENTARIO));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
+		
+		//sonido = 
 	}
 	
 	/**
@@ -44,15 +43,23 @@ public class BotonSalirCreditos extends Boton{
 		
 		addListener(new InputListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                ((BotonSalirCreditos)event.getTarget()).pulsado = true;
+                ((BotonSalirDiccionario)event.getTarget()).pulsado = true;
                 return true;
             }
 		});
 	
+		//Cerramos el diccionario
+		
 		if(pulsado){
 			pulsado = false;
-			game.getScreen().dispose();
-			game.setScreen(new Inicio(game));
+			sonido.play();
+			
+			//Linea de archivo de log transición
+			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + 
+					";" +  TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + 
+					";" +Puntuacion.getPuntos() + ";" +  "T" + ";" + "pasillo."));
+			
+			game.setScreen(new Pasillo(game));
 		}
 		
 		pulsado = false;

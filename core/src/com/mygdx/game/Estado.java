@@ -60,8 +60,8 @@ public abstract class Estado {
 	public Estado(int numEstado, String pista) {
 		System.out.println("estado " + numEstado);
 		try {
-			if (TheCrimeHouse.SUSPENSE_OBJETOS)
-				if(TheCrimeHouse.TEST)
+			if (TheHouseOfCrimes.SUSPENSE_OBJETOS)
+				if(TheHouseOfCrimes.TEST)
 					raiz = reader.parse(Gdx.files.internal("xml/prueba.xml"));
 				else
 					raiz = reader.parse(Gdx.files.internal("xml/logicaAlemanSuspense.xml"));

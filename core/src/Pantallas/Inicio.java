@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Esta clase representa la pantalla de título del juego.
@@ -27,7 +27,7 @@ import com.mygdx.game.TheCrimeHouse;
 
 public class Inicio implements Screen{
 	//Juego
-	public static TheCrimeHouse game;
+	public static TheHouseOfCrimes game;
 	protected Stage stage;
 	protected Music musica;
 	protected Texture pantalla;
@@ -49,7 +49,7 @@ public class Inicio implements Screen{
 	 * @param game
 	 */
 	
-	public Inicio(TheCrimeHouse game){
+	public Inicio(TheHouseOfCrimes game){
 		Inicio.game = game;
 		
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -65,8 +65,8 @@ public class Inicio implements Screen{
 		musica.play();
 		
 		//instanciamos la cámara
-		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f ,0);
-		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
+		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f ,0);
+		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
 		
 		//añadimos botones y hacemos que sean tocables
 		inicio = new BotonInicio(game);
@@ -92,7 +92,7 @@ public class Inicio implements Screen{
 
 	public void show(){
 		//Dependiendo de la variable cargamos una pantalla u otra
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_TITULO_SUSPENSE));
 		else
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_TITULO));
@@ -111,7 +111,7 @@ public class Inicio implements Screen{
 		batch.setProjectionMatrix(camara.combined);
 		
 		batch.begin();
-		batch.draw(pantalla, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
+		batch.draw(pantalla, 0, 0, TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT);
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
@@ -130,7 +130,7 @@ public class Inicio implements Screen{
 		/*
 		 * La situación de los botones también dependen de esta variable
 		 */
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE){
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE){
 			inicio.setCoordenadas(500, 170);
 			salir.setCoordenadas(540, 100);
 		}else{

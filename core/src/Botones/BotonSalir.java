@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -24,11 +24,11 @@ public class BotonSalir extends Boton{
 	 * ha sido pulsado. En cuyo caso sale de la aplicación.
 	 * @param game
 	 */
-	public BotonSalir(TheCrimeHouse game, boolean esPantallaFinal) {
+	public BotonSalir(TheHouseOfCrimes game, boolean esPantallaFinal) {
 		super(game);
 		
 		//Inicializamos los atributos del botón.
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE && !esPantallaFinal)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE && !esPantallaFinal)
 			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_SALIR_SUSPENSE));
 		else 
 			boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_SALIR));

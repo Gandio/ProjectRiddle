@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -40,12 +40,12 @@ public class CuadroDialogo extends CuadroTexto{
 	 * @param game
 	 */
 	
-	public CuadroDialogo(TheCrimeHouse game) {
+	public CuadroDialogo(TheHouseOfCrimes game) {
 		super(game);
 		siguienteConversacion = new BotonSiguienteConversacion(game);
 		finConversacion = new BotonFinConversacion(game);
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTextoSuspense.png"));
 		else
 			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroTexto.png"));
@@ -55,7 +55,7 @@ public class CuadroDialogo extends CuadroTexto{
 		siguienteConversacion.setCoordenadas(1180, 20);
 		//finConversacion.setCoordenadas(1180, 30);
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			finConversacion.setCoordenadas(1130, 20);
 		else
 			finConversacion.setCoordenadas(1150, 20);
@@ -90,7 +90,7 @@ public class CuadroDialogo extends CuadroTexto{
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(3f);
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE) 
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE) 
 			font.setColor(Color.BLACK);
 		
 		String textoConLimites = wrapString(texto, 50);

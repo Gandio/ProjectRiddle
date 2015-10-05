@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -19,7 +19,7 @@ public class Basura extends Objeto{
 	 * @param game
 	 */
 
-	public Basura(TheCrimeHouse game) {
+	public Basura(TheHouseOfCrimes game) {
 		super(game);
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonPapelera.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonPapeleraActivado.png"));
@@ -28,10 +28,10 @@ public class Basura extends Objeto{
 		tipoObjeto = this.getClass();
 		identificador = Identificador.Basura;
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
-			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/basura.png"));
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/basuraConCon.png"));
 		else
-			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/basura.png"));
+			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConSin/basuraConSin.png"));
 		
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 

@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.dropbox.core.DbxException;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -31,7 +31,7 @@ public class Arma extends Actor{
 	private Texture textura;
 	private boolean pulsado = false;
 	private Vector2 coordenadas;
-	private static TheCrimeHouse game = Inicio.game;
+	private static TheHouseOfCrimes game = Inicio.game;
 	private Sound error;
 	
 	public enum NombreArma{
@@ -70,15 +70,15 @@ public class Arma extends Actor{
 		if(pulsado){
 			if(armaUsada){ //Se acaba el juego
 				
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
-						TheCrimeHouse.getFecha() + ";" + 
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
+						TheHouseOfCrimes.getFecha() + ";" + 
 						((PantallaArma) game.getScreen()).getNFallos() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "H" + ";" + "arma" + ";" + 
 						this.nombre + ";" + ((PantallaArma) game.getScreen()).getArma() 
 						+ ";" + "1"));
 				
 				try {
-					TheCrimeHouse.getArchivoLog().subirArchivo();
+					TheHouseOfCrimes.getArchivoLog().subirArchivo();
 				} catch (DbxException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -94,8 +94,8 @@ public class Arma extends Actor{
 				((PantallaArma) game.getScreen()).sumaFallo();
 				error.play();
 				
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" + 
-						TheCrimeHouse.getFecha() + ";" + 
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
+						TheHouseOfCrimes.getFecha() + ";" + 
 						((PantallaArma) game.getScreen()).getNFallos() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "H" + ";" + "arma" + ";" + 
 						this.nombre + ";" + ((PantallaArma) game.getScreen()).getArma() 

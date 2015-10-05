@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -24,7 +24,7 @@ import com.mygdx.game.Tools;
 public class BotonArriba extends Boton{
 	private boolean noArriba = false;
 	
-	public BotonArriba(TheCrimeHouse game) {
+	public BotonArriba(TheHouseOfCrimes game) {
 		super(game);
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_ARRIBA));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));

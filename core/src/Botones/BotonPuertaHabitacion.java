@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -31,7 +31,7 @@ public class BotonPuertaHabitacion extends Boton{
 	 * @param game
 	 */
 	
-	public BotonPuertaHabitacion(TheCrimeHouse game) {
+	public BotonPuertaHabitacion(TheHouseOfCrimes game) {
 		super(game);
 		
 		botonActivado = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_PUERTA_HABITACION));
@@ -71,8 +71,8 @@ public class BotonPuertaHabitacion extends Boton{
 				((Habitacion) game.getScreen()).pararMusica();
 				
 				//Linea de archivo de log transición
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 						Puntuacion.getPuntos() + ";" +  "T" + ";" + "Pasillo."));
 				
 				game.setScreen(new Pasillo(game));

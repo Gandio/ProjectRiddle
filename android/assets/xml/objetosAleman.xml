@@ -1,46 +1,46 @@
 <objetos>
     <objeto nombre = "Anillo">
-        <descripcion texto = "Es ist sehr teuer und wertvoll."/>
+        <descripcion texto = "Der Ring ist sehr teuer und wertvoll."/>
     </objeto>
         
     <objeto nombre = "Ataud">
-        <descripcion texto = "Es ist ein Sarg für kleine Tiere."/>
+        <descripcion texto = "Der Sarg ist für kleine Tiere."/>
     </objeto>
     
     <objeto nombre = "Azucar">
-		<descripcion texto = "Trinkst du gerne süssen Kaffee? Dann vergiss nicht den Z...!"/> 
+		<descripcion texto = "Trinkst du gerne süssen Kaffee? Dann vergiss nicht den Zucker!"/> 
 	</objeto>
 	
 	<objeto nombre = "Basura">
-		<descripcion texto = "Oh, Gott! Das riecht fatal! Und etwas bewegt sich in der Tüte!"/> 
+		<descripcion texto = "Igitt! Der Müll riecht fatal!"/> 
 	</objeto>
 	
 	<objeto nombre = "Boligrafo">
-		<descripcion texto = "Wow, das ist der beste Kuli der Welt!"/>
+		<descripcion texto = "Wow, der Kuli ist geil!"/>
 	</objeto>
 	
 	<objeto nombre = "Bombilla">
-		<descripcion texto = "Ich denke, die ist neu und funktioniert noch."/>
+		<descripcion texto = "Ich denke, die Glühbirne ist neu und funktioniert."/>
 	</objeto>
 
 	<objeto nombre = "Botella">
-		<descripcion texto = "Wie schade! Die Flasche Wein ist leer."/>
+		<descripcion texto = "Oh, schade! Die Flasche Wein ist leer."/>
 	</objeto>
 	
 	<objeto nombre = "Cafe">
-		<descripcion texto = "Oh, ich liebe dieses Getränk! Und es ist noch warm."/>
+		<descripcion texto = "Oh, ich liebe Kaffee!"/>
 	</objeto>
 	
 	<objeto nombre = "CafeAzucar">
-		<descripcion texto = "Está dulce."/>
+		<descripcion texto = "Hm, der Kaffee ist süss."/>
 	</objeto>
 	
 	<objeto nombre = "Calavera">
-		<descripcion texto = "Oh, ich glaube der ist authentisch."/>
+		<descripcion texto = "Oh, ich glaube der Totenkopf ist authentisch."/>
 	</objeto>
 	
 	<objeto nombre = "Caramelo">
-		<descripcion texto = "Kinder lieben das. Ich so lala."/>
+		<descripcion texto = "Kinder lieben Bonbon. Ich so lala."/>
 	</objeto>
 	
 	<objeto nombre = "Cuadro">
@@ -48,19 +48,19 @@
 	</objeto>
 	
 	<objeto nombre = "Daga">
-		<descripcion texto = "Uhhh, dieses Objekt ist gefährlich."/>
+		<descripcion texto = "Aaaaah, dieses Objekt ist gefährlich."/>
 	</objeto>
 	
 	<objeto nombre = "Espejo">
-		<descripcion texto = "Oh, ich muss mich rasieren."/>
+		<descripcion texto = "Oh, ich muss mich kämmen."/>
 	</objeto>
 	
 	<objeto nombre = "Jaula">
-		<descripcion texto = "Der ist ja super gross!"/>
+		<descripcion texto = "Der Käfig ist super gross!"/>
 	</objeto>
 	
 	<objeto nombre = "Joya">
-		<descripcion texto = "Dieses Objekt ist sehr teuer."/>
+		<descripcion texto = "Dieser Diamant ist super teuer."/>
 	</objeto>
 	
 	<objeto nombre = "Libro">
@@ -68,11 +68,11 @@
 	</objeto>
 	
 	<objeto nombre = "LibroPintado">
-		<descripcion texto = "Das hat meine Unterschrift."/> 
+		<descripcion texto = "Das Buch hat meine Unterschrift."/> 
 	</objeto>
 	
 	<objeto nombre = "Llave">
-		<descripcion texto = "Das ist ein kleiner Schlüssel. Was öffnet der?"/>
+		<descripcion texto = "Der Schlüssel ist aber klein."/>
 	</objeto>
 	
 	<objeto nombre = "Mascara">
@@ -84,30 +84,30 @@
 	</objeto>
 	
 	<objeto nombre = "Navaja">
-		<descripcion texto = "Wow, das ist aber alt!"/>
+		<descripcion texto = "Wow, das Messer ist aber cool!"/>
 	</objeto>
 	
 	<objeto nombre = "Pistola">
-		<descripcion texto = "Ich mag keine Pistolen!"/>
+		<descripcion texto = "Ich finde Pistolen doof!"/>
 	</objeto>
 	
 	<objeto nombre = "Serpiente">
-		<descripcion texto = "Ohhhhh, die ist sicher gefährlich!"/>
+		<descripcion texto = "Ohhhhh, die Schlange ist gefährlich!"/>
 	</objeto>
 	
 	<objeto nombre = "SerpienteEnjaulada">
-		<descripcion texto = "Ahora no es peligrosa"/>
+		<descripcion texto = "Jetzt ist die Schlange nicht mehr gefährlich."/>
 	</objeto>
 	
 	<objeto nombre = "Tabaco">
-		 <descripcion texto = "Ich rauche nicht mehr"/>
+		 <descripcion texto = "Ich rauche nicht."/>
 	</objeto>
 	
 	<objeto nombre = "Veneno">
-		<descripcion texto = "Gefährlich für Ratten, Kakerlaken und ..."/>
+		<descripcion texto = "Das Gift ist gut für Ratten, Kakerlaken und ..."/>
 	</objeto>
 	
 	<objeto nombre = "Zapato">
-		<descripcion texto = "Hiervon brauchst du 2!"/>
+		<descripcion texto = "Ein Schuh ist kein Schuh!"/>
 	</objeto>
 </objetos>

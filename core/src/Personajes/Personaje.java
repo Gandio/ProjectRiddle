@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Clase abstracta que representa a los personajes que participan en una patida
@@ -19,7 +19,7 @@ public abstract class Personaje extends Actor{
 	 * Constructor de la clase personaje
 	 * @param game
 	 */
-	public Personaje(TheCrimeHouse game){}
+	public Personaje(TheHouseOfCrimes game){}
 	
 	/**
 	 * Dibuja al actor en el stage

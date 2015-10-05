@@ -31,7 +31,7 @@ import Pantallas.Sotano;
  */
 
 public class OrganizadorEstados {
-	private static TheCrimeHouse game = Inicio.game;
+	private static TheHouseOfCrimes game = Inicio.game;
 	private static ArrayList<Estado> estados;
 	private static OrganizadorEstados unicaInstancia;
 	private static int estadoActual = 0;
@@ -54,7 +54,7 @@ public class OrganizadorEstados {
 	 * @param game
 	 */
 	
-	private OrganizadorEstados(TheCrimeHouse game){
+	private OrganizadorEstados(TheHouseOfCrimes game){
 		estados = new ArrayList<Estado>(nEstados-1);
 		pistas = new Array<String>(nEstados);
 		resumenPista = new Array<String>(nEstados);
@@ -194,7 +194,7 @@ public class OrganizadorEstados {
 		
 		if(e.puzzleSuperado()){
 			//Linea de archivo de log de pista
-			TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  TheCrimeHouse.getFecha() + ";" + 
+			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  TheHouseOfCrimes.getFecha() + ";" + 
 					Puntuacion.getError() * (-100) + ";" +Puntuacion.getPuntos() + ";" +  "P" + ";" 
 					+ ((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
 					game.getScreen().getClass().getSimpleName() + ";" + 
@@ -206,8 +206,8 @@ public class OrganizadorEstados {
 			Puntuacion.setPuntuacion(1000 - e.getContErrores()*100);
 			
 			//Linea de archivo de log fin mision
-			TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-					TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+					TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 					Puntuacion.getPuntos() + ";" +  "F" + ";" + 
 					((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
 					game.getScreen().getClass().getSimpleName() + ";" 
@@ -354,8 +354,8 @@ public class OrganizadorEstados {
 				estadoActual.seIniciaMision(true);
 				
 				//Linea de archivo de log inicio mision
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "I" + ";" + 
 						((Habitacion) game.getScreen()).getPersonaje().toString() + ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + OrganizadorEstados.getEstadoActual().getObjeto()));

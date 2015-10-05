@@ -12,20 +12,21 @@ public class GestorImagen {
 	public static final String URL_PANTALLA_TITULO = "Imagenes/EscenariosSinSuspense/tituloSin.png";
 	public static final String URL_PANTALLA_PASILLO = "Imagenes/Escenarios/pruebaPasillo.png";
 	public static final String URL_PANTALLA_INTRO = "Imagenes/pruebaFondoPasillo.png";
-	public static final String URL_PANTALLA_ATICO = "Imagenes/Pantallas/Desvаn-neutro.jpg";
-	public static final String URL_PANTALLA_BIBLIOTECA = "Imagenes/Pantallas/Biblioteca-neutro.jpg";
-	public static final String URL_PANTALLA_DORMITORIO = "Imagenes/Pantallas/Dormitorio-neutro.jpg";
-	public static final String URL_PANTALLA_SALON = "Imagenes/Pantallas/Salon-neutro.jpg";
-	public static final String URL_PANTALLA_SOTANO = "Imagenes/Pantallas/Sotano-neutro.jpg";
-	public static final String URL_PANTALLA_ATICO_SUSPENSE = "Imagenes/Pantallas/Desvаn-suspense.jpg";
-	public static final String URL_PANTALLA_BIBLIOTECA_SUSPENSE = "Imagenes/Pantallas/Biblioteca-suspense.jpg";
-	public static final String URL_PANTALLA_DORMITORIO_SUSPENSE = "Imagenes/Pantallas/Dormitorio-suspense.jpg";
-	public static final String URL_PANTALLA_SALON_SUSPENSE = "Imagenes/Pantallas/Salon-suspense.jpg";
-	public static final String URL_PANTALLA_SOTANO_SUSPENSE = "Imagenes/Pantallas/Sotano-suspense.jpg";
+	public static final String URL_PANTALLA_ATICO = "Imagenes/Pantallas/DesvаnNeutro.jpg";
+	public static final String URL_PANTALLA_BIBLIOTECA = "Imagenes/Pantallas/BibliotecaNeutro.jpg";
+	public static final String URL_PANTALLA_DORMITORIO = "Imagenes/Pantallas/DormitorioNeutro.jpg";
+	public static final String URL_PANTALLA_SALON = "Imagenes/Pantallas/SalonNeutro.jpg";
+	public static final String URL_PANTALLA_SOTANO = "Imagenes/Pantallas/SotanoNeutro.jpg";
+	public static final String URL_PANTALLA_ATICO_SUSPENSE = "Imagenes/Pantallas/DesvаnSuspense.jpg";
+	public static final String URL_PANTALLA_BIBLIOTECA_SUSPENSE = "Imagenes/Pantallas/BibliotecaSuspense.jpg";
+	public static final String URL_PANTALLA_DORMITORIO_SUSPENSE = "Imagenes/Pantallas/DormitorioSuspense.jpg";
+	public static final String URL_PANTALLA_SALON_SUSPENSE = "Imagenes/Pantallas/SalonsuSpense.jpg";
+	public static final String URL_PANTALLA_SOTANO_SUSPENSE = "Imagenes/Pantallas/SotanoSuspense.jpg";
 	public static final String URL_PANTALLA_ARMA = "Imagenes/pantallaArma.png";
 	public static final String URL_PANTALLA_ASESINO = "Imagenes/pantallaAsesino.png";
 	public static final String URL_PANTALLA_INVENTARIO = "Imagenes/Escenarios/inventario.png";
 	public static final String URL_PANTALLA_FINAL = "Imagenes/final.png";
+	public static final String URL_PANTALLA_DICCIONARIO = "";
 	
 	//URLs de todos los botones del juego
 	public static final String URL_BOTON_ABAJO = "Imagenes/Botones/botonAbajo.png";
@@ -57,45 +58,17 @@ public class GestorImagen {
 	public static final String URL_BOTON_SALIR = "Imagenes/Botones/botonSalirSin.png";
 	public static final String URL_BOTON_SIGUIENTE_CONVERSACION = "Imagenes/Botones/sigConv.png";
 	public static final String URL_BOTON_CREDITOS = "Imagenes/Botones/botonCreditos.png";
+	public static final String URL_BOTON_DICCIONARIO = "";
 	
 	//URLs de todos los personajes del juego
-	public static final String URL_ANCIANA_SUSPENSE = "Imagenes/Personajes/Anciana-suspense.png";
-	public static final String URL_ANCIANA = "Imagenes/Personajes/Anciana-neutro.png";
-	public static final String URL_HOMBRE_SUSPENSE = "Imagenes/Personajes/Hombre-suspense.png";
-	public static final String URL_HOMBRE = "Imagenes/Personajes/Hombre-neutro.png";
-	public static final String URL_JOVEN_SUSPENSE = "Imagenes/Personajes/Joven-suspense.png";
-	public static final String URL_JOVEN = "Imagenes/Personajes/Joven-neutro.png";
-	public static final String URL_MUJER_SUSPENSE = "Imagenes/Personajes/Mujer-suspense.png";
-	public static final String URL_MUJER = "Imagenes/Personajes/Mujer-neutro.png";
-	public static final String URL_CHICA_SUSPENSE = "Imagenes/Personajes/Chica-suspense.png";
-	public static final String URL_CHICA = "Imagenes/Personajes/Chica-neutro.png";
-	
-	//URLs de todos los objetos del juego
-	public static final String URL_SERPIENTE = "";
-	public static final String URL_MONEDA = "";
-	public static final String URL_CALAVERA = "";
-	public static final String URL_CARAMELO = "";
-	public static final String URL_CUADRO = "";
-	public static final String URL_ESPEJO = "";
-	public static final String URL_NAVAJA = "";
-	public static final String URL_BOTELLA = "";
-	public static final String URL_ATAUD = "";
-	public static final String URL_BOLIGRAFO = "";
-	public static final String URL_MASCARA = "";
-	public static final String URL_LIBRO = "";
-	public static final String URL_BASURA = "";
-	public static final String URL_ANILLO = "";
-	public static final String URL_ESCOPETA = "";
-	public static final String URL_JOYA = "";
-	public static final String URL_CIGARRILLOS = "";
-	public static final String LLAVE = "";
-	public static final String PISTOLA = "";
-	public static final String ZAPATO = "";
-	public static final String VENENO = "";
-	public static final String AZUCAR = "";
-	public static final String DAGA = "";
-	public static final String CAFE = "";
-	public static final String JAULA = "";
-	public static final String BOMBILLA = "";
+	public static final String URL_ANCIANA_SUSPENSE = "Imagenes/Personajes/AncianaSuspense.png";
+	public static final String URL_ANCIANA = "Imagenes/Personajes/AncianaNeutro.png";
+	public static final String URL_HOMBRE_SUSPENSE = "Imagenes/Personajes/HombreSuspense.png";
+	public static final String URL_HOMBRE = "Imagenes/Personajes/HombreNeutro.png";
+	public static final String URL_JOVEN_SUSPENSE = "Imagenes/Personajes/JovenSuspense.png";
+	public static final String URL_JOVEN = "Imagenes/Personajes/JovenNeutro.png";
+	public static final String URL_MUJER_SUSPENSE = "Imagenes/Personajes/MujerSuspense.png";
+	public static final String URL_MUJER = "Imagenes/Personajes/MujerNeutro.png";
+	public static final String URL_CHICA_SUSPENSE = "Imagenes/Personajes/ChicaSuspense.png";
+	public static final String URL_CHICA = "Imagenes/Personajes/ChicaNeutro.png";
 }
-

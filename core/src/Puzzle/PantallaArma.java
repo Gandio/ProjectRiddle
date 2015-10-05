@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -51,8 +51,8 @@ public class PantallaArma implements Screen{
 		batch = new SpriteBatch();
 		
 		// instanciamos la camara
-		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f, 0);
-		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
+		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f, 0);
+		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
 		
 		Gdx.input.setInputProcessor(stage);
 		
@@ -102,7 +102,7 @@ public class PantallaArma implements Screen{
 		batch.setProjectionMatrix(camara.combined);
 
 		batch.begin();
-		batch.draw(textura, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
+		batch.draw(textura, 0, 0, TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT);
 		batch.end();
 		
 		int coordenadaAux = 100; //los actores se empiezan a dibujar a patir de esta posición

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.Tools;
 
 /**
@@ -18,9 +18,9 @@ public class CafeAzucar extends Objeto{
 	 * Constructor de la clase CafeAzucar
 	 * @param game
 	 */
-	public CafeAzucar(TheCrimeHouse game) {
+	public CafeAzucar(TheHouseOfCrimes game) {
 		super(game);
-		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/cafe.png"));
+		textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/cafeSinCon.png"));
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonCafeAzucar.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCafeAzucarActivado.png"));
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));

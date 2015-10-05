@@ -11,7 +11,7 @@ public class EntradaTexto implements TextInputListener{
 
 	@Override
 	public void input(String usuario) {
-		TheCrimeHouse.setUsuario(usuario);
+		TheHouseOfCrimes.setUsuario(usuario);
 	}
 
 	@Override

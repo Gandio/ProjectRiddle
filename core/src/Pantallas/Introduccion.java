@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 
 /**
  * Esta clase representa la pantalla de introducción al juego. Aquí se explicará en que 
@@ -25,7 +25,7 @@ import com.mygdx.game.TheCrimeHouse;
 public class Introduccion implements Screen {
 	private Stage stage;
 	private Texture textura;
-	private TheCrimeHouse game = Inicio.game;
+	private TheHouseOfCrimes game = Inicio.game;
 	private Music musica;
 	
 	// Camaras
@@ -52,8 +52,8 @@ public class Introduccion implements Screen {
 		musica.play();
 		
 		// instanciamos la cámara
-		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f, 0);
-		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
+		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f, 0);
+		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
 		
 		//Actores
 		botonContinuar = new BotonContinuar(game);
@@ -74,7 +74,7 @@ public class Introduccion implements Screen {
 		camara.update();
 		batch.setProjectionMatrix(camara.combined);
 		batch.begin();
-		batch.draw(textura, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
+		batch.draw(textura, 0, 0, TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT);
 		batch.end();
 		
 		botonContinuar.esPulsado();

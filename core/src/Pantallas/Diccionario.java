@@ -1,66 +1,47 @@
 package Pantallas;
 
-import Botones.BotonSalirCreditos;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.TheHouseOfCrimes;
 
-/**
- * Esta pantalla representa la pantalla de créditos del juego.
- * @author Francisco Madueño Chulián
- */
-
-public class Creditos implements Screen{
-	
+public class Diccionario implements Screen{
 	// Juego
 	public static TheHouseOfCrimes game = Inicio.game;
 	private Stage stage;
 	private Texture pantalla;
+	private Music musica;
 	
 	// Camaras
 	private OrthographicCamera camara;
 	public SpriteBatch batch;
 	private FillViewport viewport; // se usa para adaptar la pantalla
 	
-	private BotonSalirCreditos botonSalir;
-	
-	/**
-	 * Contructor de la clase
-	 */
-	
-	public Creditos(){
+	public Diccionario(){
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
 		batch = new SpriteBatch();
 		
 		Gdx.input.setInputProcessor(stage);
 		
-		pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_FINAL)); 
+		pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DICCIONARIO)); 
 		
 		// instanciamos la cámara
 		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f, 0);
 		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
 		
-		botonSalir = new BotonSalirCreditos(game);
-		botonSalir.setTouchable(Touchable.enabled);
-		
-		stage.addActor(botonSalir);
+		// Música
+		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
+		musica.setLooping(true);
 	}
 	
-	/**
-	 * Se dibuja la pantalla y se comprueban los botones durante el tiempo que el jugador
-	 * permanezca en esta.
-	 */
-
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -74,10 +55,8 @@ public class Creditos implements Screen{
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 		
-		botonSalir.setCoordenadas(50, 50);
-		botonSalir.update();
+		musica.play();
 	}
-
 
 	public void resize(int width, int height) {
 		viewport.update(width, height);
@@ -85,16 +64,15 @@ public class Creditos implements Screen{
 	}
 
 	public void show() {}
-
 	public void hide() {}
-
 	public void pause() {}
-
 	public void resume() {}
 
+	@Override
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();
 		pantalla.dispose();
+		musica.dispose();
 	}
 }

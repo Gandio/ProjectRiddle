@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.OrganizadorEstados;
 
 /**
@@ -34,7 +34,7 @@ import com.mygdx.game.OrganizadorEstados;
  */
 
 public final class Inventario implements Screen{
-	private static TheCrimeHouse game;
+	private static TheHouseOfCrimes game;
 	private static Inventario unicaInstancia;
 	
 	protected static Stage stage;
@@ -74,7 +74,7 @@ public final class Inventario implements Screen{
 	 * @param game
 	 */
 
-	private Inventario(TheCrimeHouse game) {
+	private Inventario(TheHouseOfCrimes game) {
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		Inventario.game = game;
 		camara = new OrthographicCamera();
@@ -91,8 +91,8 @@ public final class Inventario implements Screen{
 		combinacion = new Array<Objeto>(2);
 		
 		//instanciamos la cámara
-		camara.position.set(TheCrimeHouse.WIDTH / 2f, TheCrimeHouse.HEIGHT / 2f ,0);
-		viewport = new FillViewport(TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT, camara);
+		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f ,0);
+		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
 		
 		//Inicializamos los botones y hacemos que se puedan pulsar
 		cerrarInventario = new BotonCerrarInventario(game);
@@ -136,7 +136,7 @@ public final class Inventario implements Screen{
 		batch.setProjectionMatrix(camara.combined);
 		
 		batch.begin();
-		batch.draw(textura, 0, 0, TheCrimeHouse.WIDTH, TheCrimeHouse.HEIGHT);
+		batch.draw(textura, 0, 0, TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT);
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());

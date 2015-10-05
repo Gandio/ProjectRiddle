@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.EstadoDecision;
 import com.mygdx.game.LineaLog;
-import com.mygdx.game.TheCrimeHouse;
+import com.mygdx.game.TheHouseOfCrimes;
 import com.mygdx.game.OrganizadorEstados;
 import com.mygdx.game.Tools;
 
@@ -34,11 +34,11 @@ public class CuadroEleccion extends CuadroTexto{
 	 * @param game
 	 */
 
-	public CuadroEleccion(TheCrimeHouse game) {
+	public CuadroEleccion(TheHouseOfCrimes game) {
 		super(game);
 		this.game = game;
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE)
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroEleccionSuspense.png"));
 		else
 			cuadroTexto = new Texture(Gdx.files.internal("Imagenes/cuadroEleccion.png"));
@@ -59,7 +59,7 @@ public class CuadroEleccion extends CuadroTexto{
 		batch.draw(cuadroTexto, coordenadas.x, coordenadas.y);
 		font.setScale(2.5f);
 		
-		if(TheCrimeHouse.SUSPENSE_AMBIENTE) 
+		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE) 
 			font.setColor(Color.BLACK);
 		
 		//No hace falta cuadrar el texto, este texto solo va a consistir en un par de 
@@ -88,8 +88,8 @@ public class CuadroEleccion extends CuadroTexto{
 				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(1);
 				
 				//Linea de archivo de log acertijo
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "J" + ";" + 
 						((Habitacion) game.getScreen()).getPersonaje().toString()+ ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" + 
@@ -98,8 +98,8 @@ public class CuadroEleccion extends CuadroTexto{
 				((EstadoDecision) OrganizadorEstados.getEstadoActual()).eleccionCorrecta(0);
 				
 				//Linea de archivo de log acertijo
-				TheCrimeHouse.getArchivoLog().escribirLinea(new LineaLog(TheCrimeHouse.getUsuario() + ";" +  
-						TheCrimeHouse.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
+				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
+						TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" +
 						Puntuacion.getPuntos() + ";" +  "J" + ";" + 
 						((Habitacion) game.getScreen()).getPersonaje().toString()+ ";" + 
 						game.getScreen().getClass().getSimpleName() + ";" 
