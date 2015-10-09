@@ -38,10 +38,8 @@ public abstract class Objeto extends Actor{
 	protected Vector2 coordenadas;
 	protected Array<Identificador> combinables;
 	private boolean sePuedeCoger, investigando, seleccionado;
-	protected Class<?> tipoObjeto;
 	private boolean tocadoUnaVez = false, control1 = false, control2 = false;
 	protected Identificador identificador;
-	protected int id = -1;
 	
 	protected XmlReader reader = new XmlReader();
 	protected Element raiz;
@@ -147,7 +145,7 @@ public abstract class Objeto extends Actor{
 			sonido.play();
 			
 			while(iter.hasNext()){
-				if(iter.next().getClass() == tipoObjeto){
+				if(iter.next().getIdentificador() == identificador){
 					iter.remove();
 					remove();
 				}
@@ -284,13 +282,5 @@ public abstract class Objeto extends Actor{
 	 */
 	public Array<Identificador> getCombinables(){
 		return combinables;
-	}
-	
-	/**
-	 * Devuelve el id del objeto
-	 * @return
-	 */
-	public int getId(){
-		return id;
 	}
 }

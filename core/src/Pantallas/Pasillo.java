@@ -3,6 +3,7 @@ package Pantallas;
 import Botones.BotonAbajo;
 import Botones.BotonArriba;
 import Botones.BotonDerecha;
+import Botones.BotonDiccionario;
 import Botones.BotonInventario;
 import Botones.BotonIzquierda;
 import Botones.BotonPuertaPasillo;
@@ -61,6 +62,7 @@ public class Pasillo implements Screen{
 	private BotonDerecha botonDerecha;
 	private BotonIzquierda botonIzquierda;
 	private BotonInventario botonInventario;
+	private BotonDiccionario botonDiccionario;
 		
 	//Puntuación
 	private static Puntuacion puntuacion = Puntuacion.getInstancia();
@@ -150,6 +152,9 @@ public class Pasillo implements Screen{
 		botonInventario = new BotonInventario(game);
 		botonInventario.setTouchable(Touchable.enabled);
 		
+		botonDiccionario = new BotonDiccionario(game);
+		botonDiccionario.setTouchable(Touchable.enabled);
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		//añadimos actores
@@ -160,6 +165,7 @@ public class Pasillo implements Screen{
 		stage.addActor(botonDerecha);
 		stage.addActor(botonIzquierda);
 		stage.addActor(botonInventario);
+		stage.addActor(botonDiccionario);
 		stage.addActor(puntuacion);
 	}
 	
@@ -192,6 +198,7 @@ public class Pasillo implements Screen{
 		botonIzquierda.esPulsado(delta);
 		botonPuerta.update();
 		botonInventario.update();
+		botonDiccionario.update();
 		
 		//Coordenadas de los botones
 		botonAbajo.setCoordenadas(cursor.getX() - 285, cursor.getY() - 210);
@@ -200,6 +207,7 @@ public class Pasillo implements Screen{
 		botonIzquierda.setCoordenadas(cursor.getX() - 370, cursor.getY() - 125);
 		botonPuerta.setCoordenadas(cursor.getX() + 280, cursor.getY() + 140);
 		botonInventario.setCoordenadas(cursor.getX() + 200, cursor.getY() + 140);
+		botonDiccionario.setCoordenadas(cursor.getX() + 120, cursor.getY() + 140);
 		
 		//Coordenada del marcador de puntos
 		puntuacion.setCoordenadas(cursor.getX() - 350, cursor.getY() + 230);

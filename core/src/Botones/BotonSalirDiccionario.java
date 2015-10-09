@@ -28,7 +28,7 @@ public class BotonSalirDiccionario extends Boton{
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_CERRAR_INVENTARIO));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 		
-		//sonido = 
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirDiccionario.wav"));
 	}
 	
 	/**

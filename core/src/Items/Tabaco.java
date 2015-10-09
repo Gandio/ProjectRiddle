@@ -25,7 +25,6 @@ public class Tabaco extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCigarrillosActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Tabaco;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

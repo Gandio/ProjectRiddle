@@ -24,7 +24,6 @@ public class Daga extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonDagaActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Daga;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

@@ -57,7 +57,7 @@
             <opcion3 texto = "gelb " correcto = "si"/>
             <opcion4 texto = "braun" correcto = "no"/>
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
-            <objetivo2 texto = "Such die Farbe des Diamanten! Sag dann dem jungen Mann, welche Farbe der Diamant hat!"/>
+            <objetivo2 texto = "Such den Diamanten! Sag dann dem jungen Mann, welche Farbe der Diamant hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -72,7 +72,7 @@
             <opcion3 texto = "weiss" correcto = "si"/>
             <opcion4 texto = "schwarz" correcto = "no"/>
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
-            <objetivo2 texto = "Such die Farbe der Glühbirne! Sag dann der alten Frau, welche Farbe die Glühbirne hat!"/>
+            <objetivo2 texto = "Such die Glühbirne! Sag dann der alten Frau, welche Farbe die Glühbirne hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -102,13 +102,13 @@
     <estado fase = "2">
         <puzzle id = "1">
             <habitacion tipoHabitacionInicio = "Salon"/>
-            <dialogo texto = "Geh in die Bibliothek und such das Bonbon! Komm dann zurück und sag mir, welche Farbe hat das Bonbon"/>
+            <dialogo texto = "Geh in die Bibliothek und such das Bonbon! Komm dann zurück und sag mir, welche Farbe hat das Bonbon!"/>
             <opcion1 texto = "gelb" correcto = "no"/>
             <opcion2 texto = "grün" correcto = "si"/>
             <opcion3 texto = "blau" correcto = "no"/>
             <opcion4 texto = "rot" correcto = "no"/>
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
-            <objetivo2 texto = "Such die Farbe des Bonbons! Sag dann der alten Frau im Wohnzimmer, welche Farbe das Bonbon hat!"/>
+            <objetivo2 texto = "Such das Bonbon! Sag dann der alten Frau im Wohnzimmer, welche Farbe das Bonbon hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -138,7 +138,7 @@
             <opcion3 texto = "braun " correcto = "no"/>
             <opcion4 texto = "schwarz" correcto = "si"/>
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
-            <objetivo2 texto = "Such die Farbe des Schuhs! Sag dann dem Mann im Schlafzimmer, welche Farbe der Schuh hat!"/>
+            <objetivo2 texto = "Such den Schuh! Sag dann dem Mann im Schlafzimmer, welche Farbe der Schuh hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -161,18 +161,18 @@
         </puzzle>
         
         <puzzle id = "5">
-            <habitacion tipoHabitacionInicio = "Sotano"/>
-            <dialogo texto = "Geh auf den Dachboden und such den Kuli! Komm dann zurück und sag mir, wo der Kuli ist!"/>
-            <opcion1 texto = "auf der Kiste" correcto = "si"/>
-            <opcion2 texto = "unter der Kiste" correcto = "no"/>
-            <opcion3 texto = "über der Kiste" correcto = "no"/>
-            <opcion4 texto = "in der Kiste" correcto = "no"/>
-            <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
-            <objetivo2 texto = "Such den Kuli!  Sag dann dem jungen Mann im Keller, wo der Kuli ist!"/>
+            <habitacion tipoHabitacionInicio = "Salon"/>
+            <dialogo texto = "Geh auf den Dachboden und such die Uhr! Komm dann zurück und sag mir, wo die Uhr ist!"/>
+            <opcion1 texto = "links neben der Kiste" correcto = "no"/>
+            <opcion2 texto = "rechts neben der Kiste" correcto = "si"/>
+            <opcion3 texto = "hinter der Kiste" correcto = "no"/>
+            <opcion4 texto = "vor der Kiste" correcto = "no"/>
+            <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
+            <objetivo2 texto = "Such die Uhr! Sag dann der alten Frau im Wohnzimmer, wo die Uhr ist!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
-            <objeto texto = "Boligrafo"/>
+            <objeto texto = "Reloj"/>
         </puzzle>
     </estado>
     
@@ -187,8 +187,8 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte in die Bibliothek! Such und bring mir das Bonbon!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/> <!--Objetivo que aparece en el inventario-->
-            <objetivo2 texto = "Nimm das Bonbon! Bring dann das Bonbon dem Mann im Schlafzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <objetivo2 texto = "Nimm das Bonbon aus der Bibliothek! Bring dann das Bonbon dem Mann im Schlafzimmer!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in die Bibliothek!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für das Bonbon!"/>
         </puzzle>
         
@@ -198,8 +198,8 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und bring mir den Schlüssel!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/> <!--Objetivo que aparece en el inventario-->
-            <objetivo2 texto = "Nimm den Schlüssel! Bring dann den Schlüssel dem jungen Mann im Keller!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <objetivo2 texto = "Nimm den Schlüssel aus dem Wohnzimmer! Bring dann den Schlüssel dem jungen Mann im Keller!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für den Schlüssel!"/>
         </puzzle>
         
@@ -209,9 +209,9 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte auf den Dachboden! Such und bring mir die Uhr!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/> <!--Objetivo que aparece en el inventario-->
-            <objetivo2 texto = "Nimm die Uhr! Bring dann die Uhr dem Mann im Schlafzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
-        	<agradecimiento texto = "Danke für den Wecker!"/>
+            <objetivo2 texto = "Nimm die Uhr vom Dachboden! Bring dann die Uhr dem Mann im Schlafzimmer!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon auf den Dachboden!!!"/> <!--Date prisa y haz el puzzle-->
+        	<agradecimiento texto = "Danke für den 	Uhr!"/>
         </puzzle>
         
         <puzzle id = "4">
@@ -220,8 +220,8 @@
             <personaje tipoPersonaje = "chica"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und bring mir den Schuh!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/> <!--Objetivo que aparece en el inventario-->
-            <objetivo2 texto = "Nimm den Schuh! Bring dann den Schuh dem Kind auf dem Dachboden!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <objetivo2 texto = "Nimm den Schuh aus dem Wohnzimmer! Bring dann den Schuh dem Kind auf dem Dachboden!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für den Schuh!"/>
         </puzzle>
     </estado>
@@ -239,7 +239,7 @@
             <opcion3 texto = "braun" correcto = "no"/>
             <opcion4 texto = "grau" correcto = "no"/>
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem Kind!"/>
-            <objetivo2 texto = "Such die Farbe der Tasse Kaffee! Sag dann dem Kind auf dem Dachboden, welche Farbe die Tasse Kaffee hat!"/>
+            <objetivo2 texto = "Such die Tasse Kaffee! Sag dann dem Kind auf dem Dachboden, welche Farbe die Tasse Kaffee hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -254,7 +254,7 @@
             <opcion3 texto = "weiss" correcto = "si"/>
             <opcion4 texto = "blau" correcto = "no"/>
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/>
-            <objetivo2 texto = "Such die Farbe des Zuckers! Sag dann der jungen Frau in der Bibliothek, welche Farbe die Tasse hat!"/>
+            <objetivo2 texto = "Such den Zucker! Sag dann der jungen Frau in der Bibliothek, welche Farbe die Tasse hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -299,7 +299,7 @@
             <opcion3 texto = "grau" correcto = "no"/>
             <opcion4 texto = "blau" correcto = "no"/>
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/>
-            <objetivo2 texto = "Such die Farbe des Buchs! Sag dann dem Kind auf dem Dachboden, welche Farbe das Buch hat!"/>
+            <objetivo2 texto = "Such das Buch! Sag dann dem Kind auf dem Dachboden, welche Farbe das Buch hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -335,7 +335,7 @@
             <opcion3 texto = "braun" correcto = "no"/>
             <opcion4 texto = "grün" correcto = "no"/>
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/>
-            <objetivo2 texto = "Such die Farbe des Ringes! Sag dann dem Kind auf dem Dachboden, welche Farbe er hat!"/>
+            <objetivo2 texto = "Such den Ring! Sag dann dem Kind auf dem Dachboden, welche Farbe er hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -365,7 +365,7 @@
             <opcion3 texto = "rot" correcto = "no"/>
             <opcion4 texto = "blau" correcto = "no"/>
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/>
-            <objetivo2 texto = "Such die Farbe des Spiegels! Sag dann der jungen Frau in der Bibliothek, welche Farbe er hat!"/>
+            <objetivo2 texto = "Such den Spiegel! Sag dann der jungen Frau in der Bibliothek, welche Farbe er hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -388,18 +388,18 @@
         </puzzle>
         
         <puzzle id = "5">
-            <habitacion tipoHabitacionInicio = "Salon"/>
-            <dialogo texto = "Geh auf den Dachboden und such die Uhr! Komm dann zurück und sag mir, wo die Uhr ist!"/>
-            <opcion1 texto = "links neben der Kiste" correcto = "no"/>
-            <opcion2 texto = "rechts neben der Kiste" correcto = "si"/>
-            <opcion3 texto = "hinter der Kiste" correcto = "no"/>
-            <opcion4 texto = "vor der Kiste" correcto = "no"/>
-            <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
-            <objetivo2 texto = "Such die Uhr! Sag dann der alten Frau im Wohnzimmer, wo die Uhr ist!"/>
+            <habitacion tipoHabitacionInicio = "Sotano"/>
+            <dialogo texto = "Geh auf den Dachboden und such den Kuli! Komm dann zurück und sag mir, wo der Kuli ist!"/>
+            <opcion1 texto = "auf der Kiste" correcto = "si"/>
+            <opcion2 texto = "unter der Kiste" correcto = "no"/>
+            <opcion3 texto = "über der Kiste" correcto = "no"/>
+            <opcion4 texto = "in der Kiste" correcto = "no"/>
+            <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
+            <objetivo2 texto = "Such den Kuli!  Sag dann dem jungen Mann im Keller, wo der Kuli ist!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
-            <objeto texto = "Reloj"/>
+            <objeto texto = "Boligrafo"/>
         </puzzle>
     </estado>
     
@@ -415,7 +415,7 @@
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und bring mir den Ring!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Ring! Bring dann den Ring dem jungen Mann!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Schlafzimmer!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für den Ring!"/>
         </puzzle>
         
@@ -427,7 +427,7 @@
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm die Glühbirne! Bring dann die Glühbirne dem Mann!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in den Keller!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für die Glühbirne!"/>
         </puzzle>
         
@@ -439,7 +439,7 @@
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Spiegel! Bring dann den Spiegel der jungen Frau in der Bibliothek!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon auf den Dachboden!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für den Spiegel!"/>
         </puzzle>
         
@@ -451,7 +451,7 @@
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Diamanten! Bring dann den Diamanten dem Mann!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für den Diamanten!"/>
         </puzzle>
         
@@ -463,7 +463,7 @@
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Geldstück! Bring dann das Geldstück der alten Frau im Wohnzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in die Bibliothek!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für das Geldstück!"/>
         </puzzle>
     </estado>
@@ -477,11 +477,11 @@
             <habitacion tipoHabitacionInicio = "Dormitorio" tipoHabitacionFinal1 = "Sotano" tipoHabitacionFinal2 = "Sotano"/> <!--Habitacion donde se inicia el puzzle-->
             <objeto tipoObjetoFinal = "CafeAzucar" tipoObjeto1 = "Cafe" tipoObjeto2 = "Azucar"/> <!--Objeto que participa en el puzzle-->
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
-            <dialogo texto = "Such bitte den Kaffee! Aber bitte einen süssen Kaffee!" /> <!--Texto del personaje-->
+            <dialogo texto = "Such bitte den Kaffee! Aber bitte Zucker!" /> <!--Texto del personaje-->
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
-            <objetivo2 texto = "Such den süssen Kaffee!"/> <!--Objetivo que aparece en el inventario-->
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <objetivo2 texto = "Such einen Kaffee mit Zucker!"/> <!--Objetivo que aparece en el inventario-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon und such einen Kaffee mit Zucker!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für deine Hilfe!"/>
         </puzzle>
         
@@ -493,7 +493,7 @@
             <pista texto = "Ich weiss, dass der Mörder eine Krawatte trägt."/> <!--Pista que te dará al completar el puzzle-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
             <objetivo2 texto = "Notier etwas in dem Buch!"/> <!--Objetivo que aparece en el inventario-->
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon und notier etwas in dem Buch!!!"/> <!--Date prisa y haz el puzzle-->
         	<agradecimiento texto = "Danke für deine Hilfe!"/>
         </puzzle>
     </estado>

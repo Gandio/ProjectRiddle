@@ -25,7 +25,6 @@ public class Reloj extends Objeto{
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonReloj.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Reloj;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

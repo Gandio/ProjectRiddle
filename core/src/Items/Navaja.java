@@ -25,7 +25,6 @@ public class Navaja extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonNavajaActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Navaja;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

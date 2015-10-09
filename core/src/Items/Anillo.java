@@ -24,7 +24,6 @@ public class Anillo extends Objeto{
 		botonObjeto = new Texture(Gdx.files.internal("Imagenes/BotonesObjeto/botonAnillo.png"));
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonAnilloActivado.png"));
 		texturaActualBoton = botonObjeto;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Anillo;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

@@ -135,7 +135,7 @@ public class Inicio implements Screen{
 			salir.setCoordenadas(540, 100);
 		}else{
 			inicio.setCoordenadas(430, 170);
-			salir.setCoordenadas(500, 100);
+			salir.setCoordenadas(500, 65);
 		}
 		
 		creditos.setCoordenadas(50, 50);

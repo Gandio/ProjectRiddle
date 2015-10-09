@@ -125,7 +125,7 @@ public final class Atico extends Habitacion {
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ATICO_SUSPENSE));
 		else
-			pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_ATICO));
+			pantalla = new Texture(Gdx.files.internal("Imagenes/Pantallas/Desvan.png"));
 	}
 
 	public void pause() {}

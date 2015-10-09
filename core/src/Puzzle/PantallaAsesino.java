@@ -63,7 +63,7 @@ public class PantallaAsesino implements Screen{
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/chica.png")), NombreAsesino.NIÑA));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/hombre.png")), NombreAsesino.HOMBRE));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/joven.png")), NombreAsesino.JOVEN));
-		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/Mujer-mayor.png")), NombreAsesino.ANCIANA));
+		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/MujerMayor.png")), NombreAsesino.ANCIANA));
 		asesinos.add(new Asesino(new Texture(Gdx.files.internal("Imagenes/Personajes/mujer.png")), NombreAsesino.MUJER));
 		
 		if(OrganizadorEstados.getAsesino().equals(NombreAsesino.NIÑA)){ //es la niña

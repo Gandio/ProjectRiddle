@@ -12,21 +12,22 @@ public class GestorImagen {
 	public static final String URL_PANTALLA_TITULO = "Imagenes/EscenariosSinSuspense/tituloSin.png";
 	public static final String URL_PANTALLA_PASILLO = "Imagenes/Escenarios/pruebaPasillo.png";
 	public static final String URL_PANTALLA_INTRO = "Imagenes/pruebaFondoPasillo.png";
-	public static final String URL_PANTALLA_ATICO = "Imagenes/Pantallas/DesvаnNeutro.jpg";
+	public static final String URL_PANTALLA_ATICO = "Imagenes/Pantallas/Desvаn.png";
 	public static final String URL_PANTALLA_BIBLIOTECA = "Imagenes/Pantallas/BibliotecaNeutro.jpg";
 	public static final String URL_PANTALLA_DORMITORIO = "Imagenes/Pantallas/DormitorioNeutro.jpg";
 	public static final String URL_PANTALLA_SALON = "Imagenes/Pantallas/SalonNeutro.jpg";
 	public static final String URL_PANTALLA_SOTANO = "Imagenes/Pantallas/SotanoNeutro.jpg";
-	public static final String URL_PANTALLA_ATICO_SUSPENSE = "Imagenes/Pantallas/DesvаnSuspense.jpg";
+	public static final String URL_PANTALLA_ATICO_SUSPENSE = "Imagenes/Pantallas/DesvanSuspense.jpg";
 	public static final String URL_PANTALLA_BIBLIOTECA_SUSPENSE = "Imagenes/Pantallas/BibliotecaSuspense.jpg";
 	public static final String URL_PANTALLA_DORMITORIO_SUSPENSE = "Imagenes/Pantallas/DormitorioSuspense.jpg";
-	public static final String URL_PANTALLA_SALON_SUSPENSE = "Imagenes/Pantallas/SalonsuSpense.jpg";
+	public static final String URL_PANTALLA_SALON_SUSPENSE = "Imagenes/Pantallas/SalonSuspense.jpg";
 	public static final String URL_PANTALLA_SOTANO_SUSPENSE = "Imagenes/Pantallas/SotanoSuspense.jpg";
 	public static final String URL_PANTALLA_ARMA = "Imagenes/pantallaArma.png";
 	public static final String URL_PANTALLA_ASESINO = "Imagenes/pantallaAsesino.png";
 	public static final String URL_PANTALLA_INVENTARIO = "Imagenes/Escenarios/inventario.png";
 	public static final String URL_PANTALLA_FINAL = "Imagenes/final.png";
-	public static final String URL_PANTALLA_DICCIONARIO = "";
+	public static final String URL_PANTALLA_DICCIONARIO = "Imagenes/Pantallas/diccionario.png";
+	public static final String URL_PANTALLA_CREDITOS = "Imagenes/Pantallas/creditos.png";
 	
 	//URLs de todos los botones del juego
 	public static final String URL_BOTON_ABAJO = "Imagenes/Botones/botonAbajo.png";
@@ -58,7 +59,7 @@ public class GestorImagen {
 	public static final String URL_BOTON_SALIR = "Imagenes/Botones/botonSalirSin.png";
 	public static final String URL_BOTON_SIGUIENTE_CONVERSACION = "Imagenes/Botones/sigConv.png";
 	public static final String URL_BOTON_CREDITOS = "Imagenes/Botones/botonCreditos.png";
-	public static final String URL_BOTON_DICCIONARIO = "";
+	public static final String URL_BOTON_DICCIONARIO = "Imagenes/Botones/botonDiccionario.png";
 	
 	//URLs de todos los personajes del juego
 	public static final String URL_ANCIANA_SUSPENSE = "Imagenes/Personajes/AncianaSuspense.png";

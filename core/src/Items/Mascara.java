@@ -25,7 +25,6 @@ public class Mascara extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonMascaraActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Mascara;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

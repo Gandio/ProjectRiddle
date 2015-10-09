@@ -25,7 +25,6 @@ public class Basura extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonPapeleraActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Basura;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

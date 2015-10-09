@@ -29,9 +29,7 @@ public class Jaula extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Serpiente);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Jaula;
-		id = 3;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/jaulaConCon.png"));

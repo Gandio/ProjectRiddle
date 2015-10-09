@@ -25,7 +25,6 @@ public class Joya extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonJoyaActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Joya;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

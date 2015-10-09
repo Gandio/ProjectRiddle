@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 
 import Items.CafeAzucar;
+import Items.Identificador;
 import Items.LibroPintado;
 import Items.Objeto;
 import Items.SerpienteEnjaulada;
@@ -52,10 +53,13 @@ public class Tools {
 	 * @param j
 	 * @return
 	 */
-	public static Objeto devolverCombinacion(TheHouseOfCrimes game, int i, int j){
-		if((i == 0 && j == 2) || (i == 2 && j == 0)) return cafeAzucar;
-		else if((i == 1 && j == 4) || (i == 4 && j == 1)) return libroPintado;
-		else if((i == 3 && j == 5) || (i == 5 && j == 3)) return serpienteEnjaulada;
+	public static Objeto devolverCombinacion(TheHouseOfCrimes game, Identificador i, Identificador j){
+		if((i == Identificador.Azucar && j == Identificador.Cafe) || 
+		   (i == Identificador.Cafe && j == Identificador.Azucar)) return cafeAzucar;
+		else if((i == Identificador.Libro && j == Identificador.Boligrafo) || 
+				(i == Identificador.Boligrafo && j == Identificador.Libro)) return libroPintado;
+		else if((i == Identificador.Jaula && j == Identificador.Serpiente) || 
+				(i == Identificador.Serpiente && j == Identificador.Jaula)) return serpienteEnjaulada;
 		else return null;
 	}
 }

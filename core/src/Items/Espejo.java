@@ -24,7 +24,6 @@ public class Espejo extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonEspejoActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Espejo;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

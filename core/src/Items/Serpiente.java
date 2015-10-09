@@ -28,9 +28,7 @@ public class Serpiente extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Jaula);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Serpiente;
-		id = 5;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosConCon/serpienteConCon.png"));

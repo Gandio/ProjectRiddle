@@ -1,5 +1,7 @@
 package Pantallas;
 
+import Botones.BotonSalirDiccionario;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -8,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.GestorImagen;
 import com.mygdx.game.TheHouseOfCrimes;
@@ -24,6 +27,8 @@ public class Diccionario implements Screen{
 	public SpriteBatch batch;
 	private FillViewport viewport; // se usa para adaptar la pantalla
 	
+	private BotonSalirDiccionario salirDiccionario;
+	
 	public Diccionario(){
 		stage = new Stage(new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 		camara = new OrthographicCamera();
@@ -33,6 +38,9 @@ public class Diccionario implements Screen{
 		
 		pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_DICCIONARIO)); 
 		
+		salirDiccionario = new BotonSalirDiccionario(game);
+		salirDiccionario.setTouchable(Touchable.enabled);
+		
 		// instanciamos la cámara
 		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f, 0);
 		viewport = new FillViewport(TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT, camara);
@@ -40,6 +48,8 @@ public class Diccionario implements Screen{
 		// Música
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
 		musica.setLooping(true);
+		
+		stage.addActor(salirDiccionario);
 	}
 	
 	public void render(float delta) {
@@ -51,6 +61,9 @@ public class Diccionario implements Screen{
 		batch.begin();
 		batch.draw(pantalla, 0, 0, TheHouseOfCrimes.WIDTH, TheHouseOfCrimes.HEIGHT);
 		batch.end();
+		
+		salirDiccionario.update();
+		salirDiccionario.setCoordenadas(20, 10);
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();

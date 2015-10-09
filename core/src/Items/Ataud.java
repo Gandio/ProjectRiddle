@@ -25,7 +25,6 @@ public class Ataud extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonAtaudActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Ataud;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

@@ -28,9 +28,7 @@ public class Cafe extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Azucar);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Cafe;
-		id = 2;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/cafeSinCon.png"));

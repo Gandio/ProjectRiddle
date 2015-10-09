@@ -44,7 +44,7 @@ public class Creditos implements Screen{
 		
 		Gdx.input.setInputProcessor(stage);
 		
-		pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_FINAL)); 
+		pantalla = new Texture(Gdx.files.internal(GestorImagen.URL_PANTALLA_CREDITOS)); 
 		
 		// instanciamos la cámara
 		camara.position.set(TheHouseOfCrimes.WIDTH / 2f, TheHouseOfCrimes.HEIGHT / 2f, 0);
@@ -74,7 +74,7 @@ public class Creditos implements Screen{
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 		
-		botonSalir.setCoordenadas(50, 50);
+		botonSalir.setCoordenadas(50, 30);
 		botonSalir.update();
 	}
 

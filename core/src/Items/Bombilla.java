@@ -24,7 +24,6 @@ public class Bombilla extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonBombillaActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Bombilla;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

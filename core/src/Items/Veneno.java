@@ -25,7 +25,6 @@ public class Veneno extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonVenenoActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Veneno;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

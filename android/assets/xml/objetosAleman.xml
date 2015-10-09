@@ -99,6 +99,10 @@
 		<descripcion texto = "Jetzt ist die Schlange nicht mehr gefährlich."/>
 	</objeto>
 	
+	<objeto nombre = "Rifle">
+	    <descripcion texto = "Das Gewehr ist aber cool."/>
+	</objeto>
+	
 	<objeto nombre = "Tabaco">
 		 <descripcion texto = "Ich rauche nicht."/>
 	</objeto>

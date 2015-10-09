@@ -24,7 +24,6 @@ public class Caramelo extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCarameloActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Caramelo;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

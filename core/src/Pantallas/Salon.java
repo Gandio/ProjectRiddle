@@ -56,7 +56,7 @@ public final class Salon extends Habitacion {
 			objetos.add(rifle);
 			objetos.add(tabaco);
 			
-			pistola.setCoordenadas(600, 25);
+			pistola.setCoordenadas(420, 0);
 			rifle.setCoordenadas(50, 100);
 			tabaco.setCoordenadas(500, 240);
 			

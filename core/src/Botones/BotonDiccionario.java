@@ -1,6 +1,7 @@
 package Botones;
 
 import Objetos.Puntuacion;
+import Pantallas.Diccionario;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
@@ -32,7 +33,7 @@ public class BotonDiccionario extends Boton {
 		boton = new Texture(Gdx.files.internal(GestorImagen.URL_BOTON_DICCIONARIO));
 		coordenadas = new Vector2(Tools.centrarAncho(game, boton), Tools.centrarAlto(game, boton));
 		
-		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirInventario.wav"));
+		sonido = Gdx.audio.newSound(Gdx.files.internal("Sonido/abrirDiccionario.wav"));
 	}
 	
 	/**
@@ -61,6 +62,8 @@ public class BotonDiccionario extends Boton {
 			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" +  
 					TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + ";" + 
 					Puntuacion.getPuntos() + ";" +  "T" + ";" + "diccionario."));
+			
+			game.setScreen(new Diccionario());
 		}
 		
 		pulsado = false;

@@ -25,7 +25,6 @@ public class Zapato extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonZapatoActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Zapato;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

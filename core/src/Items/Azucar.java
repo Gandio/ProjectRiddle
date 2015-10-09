@@ -29,9 +29,7 @@ public class Azucar extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Cafe);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Azucar;
-		id = 0;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/azucarSinCon.png"));

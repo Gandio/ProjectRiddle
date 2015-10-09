@@ -25,7 +25,6 @@ public class Moneda extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonMonedaActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Moneda;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

@@ -24,7 +24,6 @@ public class Calavera extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCalaveraActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Calavera;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

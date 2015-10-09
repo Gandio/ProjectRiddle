@@ -94,6 +94,9 @@ public class Arma extends Actor{
 				((PantallaArma) game.getScreen()).sumaFallo();
 				error.play();
 				
+				Puntuacion.setPuntuacion(-1 * Puntuacion.getPuntos() / 2);
+				
+				
 				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
 						TheHouseOfCrimes.getFecha() + ";" + 
 						((PantallaArma) game.getScreen()).getNFallos() * (-100) + ";" +

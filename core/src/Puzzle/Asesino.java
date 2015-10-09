@@ -79,6 +79,9 @@ public class Asesino extends Actor{
 			}else{
 				Puntuacion.sumarError();
 				((PantallaAsesino) game.getScreen()).sumaFallo();
+				
+				Puntuacion.setPuntuacion(-1 * Puntuacion.getPuntos() / 2);
+				
 				error.play();
 				
 				//Linea de archivo de log hipotesis

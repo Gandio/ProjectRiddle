@@ -24,7 +24,6 @@ public class Cuadro extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonCuadroActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Cuadro;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

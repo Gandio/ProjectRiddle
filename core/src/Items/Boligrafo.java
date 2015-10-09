@@ -29,9 +29,7 @@ public class Boligrafo extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Libro);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Boligrafo;
-		id = 1;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/boligrafoSinCon.png"));

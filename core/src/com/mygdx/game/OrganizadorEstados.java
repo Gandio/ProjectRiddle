@@ -76,10 +76,12 @@ public class OrganizadorEstados {
 			if(asesino == 0){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasChica.xml"));
 				nombreAsesino = NombreAsesino.NIÑA;
+				System.out.println("Es la niña");
 			}
 			else if(asesino == 1){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasHombre.xml"));
 				nombreAsesino = NombreAsesino.HOMBRE;
+				System.out.println("Es el hombre");
 			}
 			else if(asesino == 2){
 				raiz = reader.parse(Gdx.files.internal("xml/pistasJoven.xml"));
@@ -166,6 +168,9 @@ public class OrganizadorEstados {
 				siguienteHabitacion = estados.get(i-1).getHabitacionInicio();
 				estados.get(i-2).crearPista(siguienteHabitacion);
 			}
+			if(i == 7)
+				estados.get(i-1).crearPista("");
+			
 			
 			pistas.removeIndex(j);
 		}
@@ -404,7 +409,10 @@ public class OrganizadorEstados {
 			else if(((EstadoDecision) e).getEleccionCorrecta() == 0){
 				habitacionInicio.getCuadroDialogo().setTexto(((EstadoDecision) e).getError());
 			}else{ //si pulsas el correcto aparece el cuadro de texto con la pista y continua el juego
-				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+				if(e.getContErrores() > 2)
+					habitacionInicio.getCuadroDialogo().setTexto(e.getFinalSinPista());
+				else
+					habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 			}
 		}else{
 			habitacionInicio.getCuadroDialogo().setTexto(e.getTextoPersonaje());
@@ -434,7 +442,10 @@ public class OrganizadorEstados {
 		}
 	
 		if(inventarioContieneObjeto()){
-			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+			if(e.getContErrores() > 2)
+				habitacionInicio.getCuadroDialogo().setTexto(e.getFinalSinPista());
+			else
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 		}
 	}
 	
@@ -466,7 +477,10 @@ public class OrganizadorEstados {
 		}
 	
 		if(inventarioContieneObjeto()){
-			habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
+			if(e.getContErrores() > 2)
+				habitacionInicio.getCuadroDialogo().setTexto(e.getFinalSinPista());
+			else
+				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());
 		}
 	}
 }

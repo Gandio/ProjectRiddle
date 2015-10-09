@@ -27,7 +27,6 @@ public class LibroPintado extends Objeto{
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.LibroPintado;
 		
 		//Descripción del objeto

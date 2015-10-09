@@ -22,7 +22,7 @@
         <puzzle id = "2">
             <habitacion tipoHabitacionInicio = "Dormitorio"/>
             <dialogo texto = "Geh in den Keller und such den Käfig! Komm dann zurück und sag mir, welche Farbe der Käfig hat!"/>
-            <opcion1 texto = "blau" correcto = "si"/>
+            <opcion1 texto = "braun" correcto = "si"/>
             <opcion2 texto = "weiss" correcto = "no"/>
             <opcion3 texto = "rot" correcto = "no"/>
             <opcion4 texto = "gelb" correcto = "no"/>
@@ -53,7 +53,7 @@
             <habitacion tipoHabitacionInicio = "Dormitorio"/>
             <dialogo texto = "Geh in die Bibliothek und such die Schlange! Komm dann zurück und sag mir, welche Farbe die Schlange hat!"/>
             <opcion1 texto = "blau" correcto = "no"/>
-            <opcion2 texto = "grau" correcto = "si"/>
+            <opcion2 texto = "gelb" correcto = "si"/>
             <opcion3 texto = "weiss" correcto = "no"/>
             <opcion4 texto = "braun" correcto = "no"/>
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
@@ -97,7 +97,7 @@
         <puzzle id = "7">
             <habitacion tipoHabitacionInicio = "Sotano"/>
             <dialogo texto = "Geh ins Wohnzimmer und such die Pistole! Komm dann zurück und sag mir, wo die Pistole ist!"/>
-            <opcion1 texto = "vor dem Tisch" correcto = "si"/>
+            <opcion1 texto = "links vor dem Tisch" correcto = "si"/>
             <opcion2 texto = "hinter dem Tisch" correcto = "no"/>
             <opcion3 texto = "unter dem Tisch" correcto = "no"/>
             <opcion4 texto = "neben dem Tisch" correcto = "no"/>
@@ -234,7 +234,7 @@
             <dialogo texto = "Geh bitte in den Keller! Such und bring mir das Messer!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Messer aus dem Keller! Bring dann das Messer dem Mann im Schlafzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in den Keller!!!!"/>
             <agradecimiento texto = "Danke für das Messer!"/>
         </puzzle>
         
@@ -245,7 +245,7 @@
             <dialogo texto = "Geh bitte in die Bibliothek! Such und bring mir den Totenkopf!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Totenkopf aus der Bibliothek! Bring dann den Totenkopf dem Kind auf dem Dachboden!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in die Bibliothek!!!"/>
             <agradecimiento texto = "Danke für den Totenkopf!"/>
         </puzzle>
         
@@ -256,7 +256,7 @@
             <dialogo texto = "Geh bitte zuerst auf den Dachboden und such das Bild!  Bring mir danach das Bild!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Bild auf dem Dachboden! Bring dann das Bild der alten Frau im Wohnzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon auf den Dachboden!!!"/>
             <agradecimiento texto = "Danke für das Bild!"/>
         </puzzle>
         
@@ -267,7 +267,7 @@
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und bring mir die Maske!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm die Maske aus dem Schlafzimmer! Bring dann die Maske dem jungen Mann im Keller!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Schlafzimmer!!!"/>
             <agradecimiento texto = "Danke für die Maske!"/>
         </puzzle>
         
@@ -278,7 +278,7 @@
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und bring mir die Pistole!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm die Pistole aus dem Wohnzimmer! Bring dann die Pistole der jungen Frau in der Bibliothek!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/>
             <agradecimiento texto = "Danke für die Pistole!"/>
         </puzzle>
     </estado>
@@ -309,7 +309,7 @@
             <opcion1 texto = "blau" correcto = "no"/>
             <opcion2 texto = "grün" correcto = "no"/>
             <opcion3 texto = "gelb" correcto = "no"/>
-            <opcion4 texto = "weiss" correcto = "si"/>
+            <opcion4 texto = "rot" correcto = "si"/>
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
             <objetivo2 texto = "Such den Tabak im Wohnzimmer! Sag dann dem jungen Mann im Keller, welche Farbe er hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
@@ -457,7 +457,7 @@
             <dialogo texto = "Geh bitte auf den Dachboden! Such und bring mir den Sarg!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Sarg vom Dachboden! Bring dann den Sarg der jungen Frau in der Bibliothek!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon auf den Dachboden!!!"/>
             <agradecimiento texto = "Danke für den Sarg!"/>
         </puzzle>
         
@@ -468,7 +468,7 @@
             <dialogo texto = "Geh bitte ins Schlafzimmer! Such und bring mir den Müll!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Müll aus dem Schlafzimmer! Bring dann den Müll dem Kind auf dem Dachboden!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Schlafzimmer!!!"/>
             <agradecimiento texto = "Danke für den Müll!"/>
         </puzzle>
         
@@ -479,7 +479,7 @@
             <dialogo texto = "Geh bitte auf den Dachboden! Such und bring mir das Rasiermesser!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Rasiermesser vom Dachboden! Bring dann das Rasiermesser dem jungen Mann im Keller!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon auf den Dachboden!!!"/>
             <agradecimiento texto = "Danke für das Rasiermesser!"/>
         </puzzle>
         
@@ -490,7 +490,7 @@
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und bring mir das Gewehr!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Gewehr aus dem Wohnzimmer! Bring dann das Gewehr der jungen Frau in der Bibliothek!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/>
             <agradecimiento texto = "Danke für das Gewehr!"/>
         </puzzle>
         
@@ -501,7 +501,7 @@
             <dialogo texto = "Geh bitte ins Wohnzimmer! Such und bring mir den Tabak!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm den Tabak aus dem Wohnzimmer! Bring dann den Tabak dem jungen Mann im Keller!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon ins Wohnzimmer!!!"/>
             <agradecimiento texto = "Danke für den Tabak!"/>
         </puzzle>
         
@@ -512,7 +512,7 @@
             <dialogo texto = "Geh bitte in den Keller! Such und bring mir das Gift!"/> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/> <!--Objetivo que aparece en el inventario-->
             <objetivo2 texto = "Nimm das Gift aus dem Keller! Bring dann das Gift der alten Frau im Wohnzimmer!"/>
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/>
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon in den Keller!!!"/>
             <agradecimiento texto = "Danke für das Gift!"/>
         </puzzle>
     </estado>
@@ -528,8 +528,8 @@
             <personaje tipoPersonaje = "hombre"/> <!--Personaje que inicia el puzzle-->
             <dialogo texto = "Such zuerst mein Haustier und dann den Käfig! Steck dann das Tier in den Käfig!" /> <!--Texto del personaje-->
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
-            <objetivo2 texto = "Steck die Schlange in den Käfig!"/> <!--Objetivo que aparece en el inventario-->
-            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon!!!"/> <!--Date prisa y haz el puzzle-->
+            <objetivo2 texto = "Such das Haustier! Steck dann das Haustier in den Käfig und geh danach zu dem Mann im Schlafzimmer!"/> <!--Objetivo que aparece en el inventario-->
+            <postPuzzle texto = "Was ist los? Zackibacki! Komm, jetzt geh schon und steck die Schlange in den Käfig!!!"/> <!--Date prisa y haz el puzzle-->
        		<agradecimiento texto = "Danke für deine Hilfe!"/>
        </puzzle>
     </estado>

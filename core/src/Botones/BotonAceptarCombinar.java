@@ -115,6 +115,6 @@ public class BotonAceptarCombinar extends Boton{
 		Inventario.borrarObjeto(o1);
 		Inventario.borrarObjeto(o2);
 		
-		Inventario.añadirObjeto(Tools.devolverCombinacion(game, o1.getId(), o2.getId()));
+		Inventario.añadirObjeto(Tools.devolverCombinacion(game, o1.getIdentificador(), o2.getIdentificador()));
 	}
 }

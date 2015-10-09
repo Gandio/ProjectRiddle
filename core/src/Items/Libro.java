@@ -29,9 +29,7 @@ public class Libro extends Objeto{
 		combinables = new Array<Identificador>();
 		combinables.add(Identificador.Boligrafo);
 		
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Libro;
-		id = 4;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)
 			textura = new Texture(Gdx.files.internal("Imagenes/ObjetosSinCon/libroSinCon.png"));

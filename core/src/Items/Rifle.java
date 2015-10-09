@@ -25,7 +25,6 @@ public class Rifle extends Objeto{
 		botonObjetoActivado = new Texture(Gdx.files.internal("Imagenes/BotonesObjetoActivado/botonRifleActivado.png"));
 		texturaActualBoton = botonObjeto;
 		combinables = null;
-		tipoObjeto = this.getClass();
 		identificador = Identificador.Rifle;
 		
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE)

@@ -22,10 +22,11 @@ public abstract class Estado {
 	protected String personaje;
 	private String textoPersonaje;
 	private String pistaPersonaje;
+	private String finalSinPista;
 	private String objetivo1;
 	private String objetivo2;
 	private String agradecimiento;
-	protected String siguienteHabitacion; // indica la habitacion donde se desarrolla el próximo puzzle
+	protected String siguienteHabitacion = ""; // indica la habitacion donde se desarrolla el próximo puzzle
 	protected String resumenPista;
 	protected String tipoPista;
 	
@@ -58,7 +59,6 @@ public abstract class Estado {
 	 */
 
 	public Estado(int numEstado, String pista) {
-		System.out.println("estado " + numEstado);
 		try {
 			if (TheHouseOfCrimes.SUSPENSE_OBJETOS)
 				if(TheHouseOfCrimes.TEST)
@@ -306,6 +306,14 @@ public abstract class Estado {
 	}
 	
 	/**
+	 * Devuelve el dialogo final de un puzzle, pero sin la pista del personaje
+	 * @return
+	 */
+	public String getFinalSinPista(){
+		return finalSinPista;
+	}
+	
+	/**
 	 * Escoge la pista que te dará el personaje una vez acabado el puzzle
 	 * @param sigHab
 	 */
@@ -326,7 +334,7 @@ public abstract class Estado {
 				siguienteHabitacion = child.getAttribute("texto");
 		}
 		
-
+		finalSinPista = agradecimiento + " "  + siguienteHabitacion;
 		pistaPersonaje = agradecimiento + " " + pistaPersonaje + " " + siguienteHabitacion;
 	}
 }
