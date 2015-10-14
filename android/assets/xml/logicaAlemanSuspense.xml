@@ -8,9 +8,9 @@
             <habitacion tipoHabitacionInicio = "Biblioteca"/>
             <dialogo texto = "Geh in den Keller und such das Gift! Komm dann zurück und sag mir, welche Farbe das Gift hat!"/>
             <opcion1 texto = "gelb" correcto = "no"/>
-            <opcion2 texto = "weiss" correcto = "si"/>
+            <opcion2 texto = "weiss" correcto = "no"/>
             <opcion3 texto = "braun" correcto = "no"/>
-            <opcion4 texto = "schwarz" correcto = "no"/>
+            <opcion4 texto = "schwarz" correcto = "si"/>
             <objetivo1 texto = "Geh bitte in die Bibliothek und sprich mit der jungen Frau!"/>
             <objetivo2 texto = "Sag dann der jungen Frau in der Bibliothek, welche Farbe das Gift hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
@@ -134,9 +134,9 @@
             <habitacion tipoHabitacionInicio = "Atico"/>
             <dialogo texto = "Geh in die Bibliothek und such den Totenkopf! Komm dann zurück und sag mir, welche Farbe der Totenkopf hat!"/>
             <opcion1 texto = "weiss" correcto = "no"/>
-            <opcion2 texto = "braun" correcto = "no"/>
+            <opcion2 texto = "braun" correcto = "si"/>
             <opcion3 texto = "grün" correcto = "no"/>
-            <opcion4 texto = "grau" correcto = "si"/>
+            <opcion4 texto = "rot" correcto = "no"/>
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/>
             <objetivo2 texto = "Such den Totenkopf in der Bibliothek! Sag dann dem Kind auf dem Dachboden, welche Farbe der Totenkopf hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
@@ -387,10 +387,10 @@
         <puzzle id = "2">
             <habitacion tipoHabitacionInicio = "Salon"/>
             <dialogo texto = "Geh auf den Dachboden und such den Sarg! Komm dann zurück und sag mir, welche Farbe der Sarg hat!"/>
-            <opcion1 texto = "schwarz" correcto = "si"/>
+            <opcion1 texto = "schwarz" correcto = "no"/>
             <opcion2 texto = "blau" correcto = "no"/>
             <opcion3 texto = "grau" correcto = "no"/>
-            <opcion4 texto = "braun" correcto = "no"/>
+            <opcion4 texto = "braun" correcto = "si"/>
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
             <objetivo2 texto = "Such den Sarg auf dem Dachboden und sag, welche Farbe der Sarg hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
@@ -419,7 +419,7 @@
             <dialogo texto = "Geh in den Keller und such den Käfig! Komm dann zurück und sag mir, wo der Käfig ist!"/>
             <opcion1 texto = "links neben dem Regal" correcto = "no"/>
             <opcion2 texto = "rechts hinter dem Regal" correcto = "no"/>
-            <opcion3 texto = "links detrás dem Regal" correcto = "no"/>
+            <opcion3 texto = "links hinter dem Regal" correcto = "no"/>
             <opcion4 texto = "rechts neben dem Regal" correcto = "si"/>
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
             <objetivo2 texto = "Such den Käfig im Keller! Sag dann dem Mann im Schlafzimmer, wo der Käfig ist!"/>
