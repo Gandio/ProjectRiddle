@@ -20,7 +20,7 @@ public class Diccionario implements Screen{
 	public static TheHouseOfCrimes game = Inicio.game;
 	private Stage stage;
 	private Texture pantalla;
-	private Music musica;
+	private static Music musica;
 	
 	// Camaras
 	private OrthographicCamera camara;
@@ -48,6 +48,7 @@ public class Diccionario implements Screen{
 		// Música
 		musica = Gdx.audio.newMusic(Gdx.files.internal("Musica/Inventario.mp3"));
 		musica.setLooping(true);
+		musica.play();
 		
 		stage.addActor(salirDiccionario);
 	}
@@ -67,8 +68,6 @@ public class Diccionario implements Screen{
 		
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
-		
-		musica.play();
 	}
 
 	public void resize(int width, int height) {

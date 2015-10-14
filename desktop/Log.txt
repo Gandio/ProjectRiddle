@@ -1,5 +1,8 @@
 ############################################################
 #######FICHERO DE LOG DE PARTIDA, PUEDES BORRARLO###########
 ############################################################
-Wed Oct 14 13:59:41 CEST 2015;Suspense
-Usuario 1;Wed Oct 14 13:59:56 CEST 2015;0;0;T;diccionario.
+Thu Oct 15 00:31:47 CEST 2015;Neutro
+Usuario 1;Thu Oct 15 00:31:53 CEST 2015;0;0;T;diccionario.
+Usuario 1;Thu Oct 15 00:31:54 CEST 2015;0;0;T;pasillo.
+Usuario 1;Thu Oct 15 00:31:57 CEST 2015;0;0;T;diccionario.
+Usuario 1;Thu Oct 15 00:31:59 CEST 2015;0;0;T;pasillo.

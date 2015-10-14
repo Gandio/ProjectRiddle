@@ -1,6 +1,7 @@
 package Botones;
 
 import Objetos.Puntuacion;
+import Pantallas.Diccionario;
 import Pantallas.Pasillo;
 
 import com.badlogic.gdx.Gdx;
@@ -58,6 +59,8 @@ public class BotonSalirDiccionario extends Boton{
 			TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + 
 					";" +  TheHouseOfCrimes.getFecha() + ";" + Puntuacion.getError() * (-100) + 
 					";" +Puntuacion.getPuntos() + ";" +  "T" + ";" + "pasillo."));
+			
+			game.getScreen().dispose();
 			
 			game.setScreen(new Pasillo(game));
 		}
