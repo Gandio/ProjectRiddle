@@ -48,6 +48,7 @@ public class BotonCombinarObjeto extends Boton{
 		if(((Inventario) game.getScreen()).getEstado() == EstadoInventario.NORMAL){
 			if(pulsado){
 				((Inventario) game.getScreen()).setEstado(EstadoInventario.COMBINANDO);
+				Inventario.restaurarBotonesObjetos();
 			}
 		}
 		

@@ -22,8 +22,8 @@
         <puzzle id = "2">
             <habitacion tipoHabitacionInicio = "Dormitorio"/>
             <dialogo texto = "Geh in den Keller und such den Käfig! Komm dann zurück und sag mir, welche Farbe der Käfig hat!"/>
-            <opcion1 texto = "braun" correcto = "si"/>
-            <opcion2 texto = "weiss" correcto = "no"/>
+            <opcion1 texto = "braun" correcto = "no"/>
+            <opcion2 texto = "weiss" correcto = "si"/>
             <opcion3 texto = "rot" correcto = "no"/>
             <opcion4 texto = "gelb" correcto = "no"/>
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
@@ -153,7 +153,7 @@
             <opcion3 texto = "rechts auf dem Tisch" correcto = "si"/>
             <opcion4 texto = "links über dem Tisch" correcto = "no"/>
             <objetivo1 texto = "Geh bitte in den Keller und sprich mit dem jungen Mann!"/>
-            <objetivo2 texto = "Such den Totenkopf! Sag dem jungen Mann im Keller, wo der Totenkopf ist!"/>
+            <objetivo2 texto = "Such den Totenkopf in der Bibliothek! Sag dem jungen Mann im Keller, wo der Totenkopf ist!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -213,7 +213,7 @@
             <opcion3 texto = "rechts über der Kiste" correcto = "no"/>
             <opcion4 texto = "links auf der Kiste" correcto = "si"/>
             <objetivo1 texto = "Geh bitte ins Schlafzimmer und sprich mit dem Mann!"/>
-            <objetivo2 texto = "Such das Gift! Sag dann dem Mann im Schlafzimmer, wo das Gift ist!"/>
+            <objetivo2 texto = "Such das Gift im Keller! Sag dann dem Mann im Schlafzimmer, wo das Gift ist!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>
@@ -291,10 +291,10 @@
         <puzzle id = "1">
             <habitacion tipoHabitacionInicio = "Atico"/>
             <dialogo texto = "Geh ins Schlafzimmer und such den Müll! Komm dann zurück und sag mir, wo der Müll ist!"/>
-            <opcion1 texto = "auf dem Kamin" correcto = "si"/>
+            <opcion1 texto = "auf dem Kamin" correcto = "no"/>
             <opcion2 texto = "unter dem Kamin" correcto = "no"/>
             <opcion3 texto = "über dem Kamin" correcto = "no"/>
-            <opcion4 texto = "neben dem Kamin" correcto = "no"/>
+            <opcion4 texto = "neben dem Kamin" correcto = "si"/>
             <objetivo1 texto = "Geh bitte auf den Dachboden und sprich mit dem Kind!"/>
             <objetivo2 texto = "Such den Müll im Schlafzimmer! Sag dem Kind auf dem Dachboden, wo der Müll ist!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
@@ -392,7 +392,7 @@
             <opcion3 texto = "grau" correcto = "no"/>
             <opcion4 texto = "braun" correcto = "si"/>
             <objetivo1 texto = "Geh bitte ins Wohnzimmer und sprich mit der alten Frau!"/>
-            <objetivo2 texto = "Such den Sarg auf dem Dachboden und sag, welche Farbe der Sarg hat!"/>
+            <objetivo2 texto = "Such den Sarg auf dem Dachboden! Sag dann der alten Frau im Wohnzimmer, welche Farbe der Sarg hat!"/>
             <fallo texto = "Deine Antwort ist leider nicht korrekt! Versuch es noch einmal!"/>
             <prePuzzle texto = "Und, hast du die Information?"/>
             <agradecimiento texto = "Danke für die Information!"/>

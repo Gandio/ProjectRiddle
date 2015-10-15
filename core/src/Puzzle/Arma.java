@@ -32,7 +32,7 @@ public class Arma extends Actor{
 	private boolean pulsado = false;
 	private Vector2 coordenadas;
 	private static TheHouseOfCrimes game = Inicio.game;
-	private Sound error;
+	private Sound error, exito;
 	
 	public enum NombreArma{
 		DAGA, PISTOLA, RIFLE, SERPIENTE
@@ -48,6 +48,7 @@ public class Arma extends Actor{
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		
 		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
+		exito = Gdx.audio.newSound(Gdx.files.internal("Sonido/exito.wav"));
 		
 		nombre = n;
 	}
@@ -69,6 +70,8 @@ public class Arma extends Actor{
 		
 		if(pulsado){
 			if(armaUsada){ //Se acaba el juego
+				
+				exito.play();
 				
 				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
 						TheHouseOfCrimes.getFecha() + ";" + 

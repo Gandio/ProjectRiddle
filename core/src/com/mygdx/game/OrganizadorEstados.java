@@ -477,7 +477,7 @@ public class OrganizadorEstados {
 		}
 	
 		if(inventarioContieneObjeto()){
-			if(e.getContErrores() > 2)
+			if(e.getContErrores() > 1)
 				habitacionInicio.getCuadroDialogo().setTexto(e.getFinalSinPista());
 			else
 				habitacionInicio.getCuadroDialogo().setTexto(e.getPistaPersonaje());

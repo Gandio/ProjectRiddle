@@ -132,7 +132,7 @@ public class Inicio implements Screen{
 		 */
 		if(TheHouseOfCrimes.SUSPENSE_AMBIENTE){
 			inicio.setCoordenadas(500, 170);
-			salir.setCoordenadas(540, 100);
+			salir.setCoordenadas(540, 65);
 		}else{
 			inicio.setCoordenadas(430, 170);
 			salir.setCoordenadas(500, 65);

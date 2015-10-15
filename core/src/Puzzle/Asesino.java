@@ -28,7 +28,7 @@ public class Asesino extends Actor{
 	private boolean pulsado = false;
 	public Vector2 coordenadas;
 	private static TheHouseOfCrimes game = Inicio.game;
-	private Sound error;
+	private Sound error, exito;
 	
 	public enum NombreAsesino{
 		NIÑA, JOVEN, MUJER, HOMBRE, ANCIANA
@@ -44,6 +44,7 @@ public class Asesino extends Actor{
 		coordenadas = new Vector2(Tools.centrarAncho(game, textura), Tools.centrarAlto(game, textura));
 		
 		error = Gdx.audio.newSound(Gdx.files.internal("Sonido/Error.wav"));
+		exito = Gdx.audio.newSound(Gdx.files.internal("Sonido/exito.wav"));
 		
 		nombre = n;
 	}
@@ -65,6 +66,8 @@ public class Asesino extends Actor{
 		
 		if(pulsado){
 			if(culpable){ //se pasa a la pantalla de seleccion de arma
+				
+				exito.play();
 				
 				//Linea de archivo de log hipotesis
 				TheHouseOfCrimes.getArchivoLog().escribirLinea(new LineaLog(TheHouseOfCrimes.getUsuario() + ";" + 
