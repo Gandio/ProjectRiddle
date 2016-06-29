@@ -7,6 +7,7 @@ Durante la partida el alumno deberá buscar pistas, resolver puzzles y hablar co
 Existen dos versiones del juego, casa sin misterio, será el grupo de control, el jugador no recibirá ningún estímulo que pueda hacerle abandonar su estado habitual. Casa con misterio, el jugador recibirá estímulos con la finalidad de ejercer cierta presión sobre su aprendizaje.
 
 Participantes:
+
 Anke Berns (Departamento de Filología Francesa e Inglesa)
 Francisco Madueño Chulián (Escuela Superior de Ingeniería, UCA)
 Manuel Palomo Duarte (Departamento de Ingeniería Informática)
@@ -16,5 +17,4 @@ Pablo Gervás (Universidad Complutense de Madrid)
 Estudiantes de la Universidad de Cádiz que colaboraron:
 
 Alicia Garrido Guerrero (Departamento de Filología Francesa e Inglesa)
-
 Mercedes Paéz Piña (Departamento de Filología Francesa e Inglesa)
