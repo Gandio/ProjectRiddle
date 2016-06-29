@@ -12,5 +12,8 @@ Francisco Madueño Chulián (Escuela Superior de Ingeniería, UCA)
 Manuel Palomo Duarte (Departamento de Ingeniería Informática)
 Pablo de la Torre Moreno (Departamento de Ingeniería Informática)
 Pablo Gervás (Universidad Complutense de Madrid)
+
+Estudiantes de la Universidad de Cádiz que colaboraron:
+
 Alicia Garrido Guerrero (Departamento de Filología Francesa e Inglesa)
 Mercedes Paéz Piña (Departamento de Filología Francesa e Inglesa)
